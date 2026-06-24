@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# Claude
+.claude
+
+# Archives
+*.zip
+
+# Local preview
+node_modules/
+.venv/
+
+# Reference images (if any)
+reference/
