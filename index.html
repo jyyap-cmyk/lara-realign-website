@@ -261,6 +261,24 @@
       border-color: rgba(28,20,9,0.28);
       transform: translateY(-2px);
     }
+    .btn-clarity-glass {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(238,231,221,0.28);
+      border-radius: 100px;
+      padding: 14px 32px;
+      font-family: var(--f-body); font-size: 13px; font-style: italic;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(238,231,221,0.9);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 8px 24px rgba(0,0,0,0.18);
+      transition: all 0.28s ease;
+    }
+    .btn-clarity-glass:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(238,231,221,0.4);
+    }
     .link-arrow {
       display: inline-flex; align-items: center; gap: 6px;
       font-family: var(--f-body); font-style: italic;
@@ -278,6 +296,19 @@
       border-top: 1px solid var(--line);
       margin: 0;
     }
+
+    /* reusable paper texture */
+    .tex { position: relative; }
+    .tex::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 0;
+      background-image: url('./Website FINAL Images/Paper texture overlay.png');
+      background-size: 420px;
+      background-repeat: repeat;
+      opacity: 0.07;
+      pointer-events: none;
+    }
+    .tex > * { position: relative; z-index: 1; }
 
     /* ═══════════════════════════════════════════════════
        NAVIGATION
@@ -347,9 +378,17 @@
     .hero {
       position: relative;
       height: 100dvh; min-height: 620px;
-      display: flex; align-items: center; justify-content: center;
+      background: #F4E4B8;
+      padding: 20px 20px 0;
+      box-sizing: border-box;
+    }
+    .hero-frame {
+      position: relative;
+      width: 100%; height: 100%;
+      border-radius: 20px;
       overflow: hidden;
       background: var(--dark);
+      display: flex; align-items: center; justify-content: center;
     }
     .hero-img {
       position: absolute; top: -15%; left: 0; right: 0;
@@ -431,44 +470,41 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background: var(--dark);
-    }
-    .who-bg {
-      position: absolute; top: -15%; left: 0; right: 0;
-      width: 100%; height: 130%;
-      object-fit: cover; object-position: center;
-      filter: saturate(0.90) brightness(0.97);
-      will-change: transform;
-    }
-    .who-overlay {
-      position: absolute; inset: 0;
-      background: rgba(28,20,9,0.16);
+      background: #F4E4B8;
     }
     .who-inner {
       position: relative; z-index: 2;
       max-width: 680px; margin: 0 auto; padding: 80px 48px;
       text-align: center;
     }
-    .who-inner .h2 { color: rgba(238,231,221,0.94); }
-    .who-inner .body { color: rgba(238,231,221,0.68); max-width: 56ch; margin: 0 auto; }
+    .who-inner .h2 { color: var(--dark); }
+    .who-inner .body { color: rgba(28,20,16,0.72); max-width: 56ch; margin: 0 auto; }
     .who-inner .body p + p { margin-top: 22px; }
     .who-close {
       font-family: var(--f-bn); font-style: italic;
       font-weight: 400; font-size: clamp(18px, 2vw, 24px);
-      color: rgba(206,178,152,0.9); display: block; margin-top: 44px;
+      color: var(--sienna); display: block; margin-top: 44px;
     }
 
     /* ═══════════════════════════════════════════════════
        S3a: THE REALIGN (Sakazuki mega-type)
     ═══════════════════════════════════════════════════ */
     .s-realign {
-      background: #F4E4B8;
+      position: relative;
       overflow: hidden;
       padding: 100px 0 80px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      background: var(--dark);
+    }
+    .realign-bg {
+      position: absolute; top: -15%; left: 0; right: 0;
+      width: 100%; height: 130%;
+      object-fit: cover; object-position: center;
+      opacity: 0.92;
+      will-change: transform;
     }
     .realign-pre-row {
       max-width: 1220px; margin: 0 auto;
@@ -479,7 +515,7 @@
     .realign-pre {
       font-family: var(--f-body); font-style: italic;
       font-size: 15px; letter-spacing: 0.04em;
-      color: var(--sienna);
+      color: rgba(238,231,221,0.58);
     }
     .realign-mega-block {
       overflow: hidden;
@@ -490,14 +526,14 @@
       font-family: var(--f-now); font-weight: 100;
       font-size: 8.8vw;
       line-height: 0.92; letter-spacing: -0.02em;
-      color: var(--dark);
+      color: rgba(238,231,221,0.94);
       display: block;
     }
     .realign-name {
       font-family: var(--f-bn); font-weight: 400; font-style: italic;
       font-size: 8.8vw;
       line-height: 0.92; letter-spacing: -0.02em;
-      color: var(--dark);
+      color: rgba(238,231,221,0.94);
       display: block;
     }
     .realign-post-row {
@@ -507,10 +543,11 @@
       display: flex; justify-content: center;
     }
     .realign-post {
-      font-family: var(--f-body); font-size: 17px;
-      line-height: 1.72; color: var(--text-2);
-      max-width: 42ch; text-align: center;
+      font-family: var(--f-body); font-size: 16px;
+      line-height: 2.0; color: rgba(238,231,221,0.82);
+      max-width: 36ch; text-align: center;
     }
+    .realign-post p { margin: 0; }
 
     /* ═══════════════════════════════════════════════════
        S3b: THE PHILOSOPHY (bg image)
@@ -550,15 +587,8 @@
        S4: NEUROSCIENCE
     ═══════════════════════════════════════════════════ */
     .s-science {
-      background: var(--dark);
+      background: #342f09;
       position: relative; overflow: hidden;
-    }
-    .s-science::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: url("./Website Images/pexels-robert-clark-504241532-20087170.jpg");
-      background-size: cover; background-position: center;
-      opacity: 0.09;
     }
     .s-science .inner {
       position: relative; z-index: 1;
@@ -682,8 +712,6 @@
     ═══════════════════════════════════════════════════ */
     .s-about { background: #F4E4B8; }
     .about-quote-band {
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
       padding: 60px 0; margin-bottom: 88px;
     }
     .about-quote-inner {
@@ -713,42 +741,44 @@
       font-size: 15px; color: var(--sienna);
       margin-top: 36px; display: block;
     }
-    .about-img { position: relative; display: flex; flex-direction: column; }
+    .about-img {
+      position: relative;
+      display: flex; flex-direction: column;
+      align-items: flex-end;
+      overflow: visible;
+    }
     .about-img img {
-      width: 100%; height: 100%; min-height: 460px;
-      flex: 1;
-      object-fit: cover; object-position: top center;
-      border-radius: 3px;
-    }
-    .about-badge {
-      position: absolute; bottom: -18px; left: -18px;
-      width: 118px; height: 118px; border-radius: 50%;
-      background: var(--dark);
-      display: flex; align-items: center; justify-content: center;
-      text-align: center; padding: 16px;
-    }
-    .about-badge span {
-      font-family: var(--f-body); font-size: 9px;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--blue-m); line-height: 1.7;
+      width: 110%;
+      max-width: none;
+      height: auto;
+      border-radius: 0;
+      object-fit: contain;
+      margin-right: -48px;
     }
 
     /* ═══════════════════════════════════════════════════
        S7: TESTIMONIALS
     ═══════════════════════════════════════════════════ */
-    .s-testi { background: var(--bg); }
+    .s-testi { background: var(--dark); position: relative; overflow: hidden; }
+    .testi-bg {
+      position: absolute; top: -15%; left: 0; right: 0;
+      width: 100%; height: 130%;
+      object-fit: cover; object-position: center;
+      opacity: 0.88;
+      will-change: transform;
+    }
     .s-testi .hd { text-align: center; margin-bottom: 48px; }
     .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
     .testi-card {
-      background: rgba(228,221,212,0.45);
+      background: rgba(255,255,255,0.06);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.5);
-      box-shadow: 0 4px 20px rgba(28,20,9,0.05), inset 0 1px 0 rgba(255,255,255,0.4);
+      border: 1px solid rgba(238,231,221,0.12);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.08);
       border-radius: 16px; padding: 36px 28px 30px;
       transition: box-shadow 0.28s ease;
     }
-    .testi-card:hover { box-shadow: 0 10px 36px rgba(159,108,82,0.12), inset 0 1px 0 rgba(255,255,255,0.4); }
+    .testi-card:hover { box-shadow: 0 10px 36px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.1); }
     .testi-mark {
       font-family: var(--f-bn); font-style: italic;
       font-size: 44px; line-height: 0.8;
@@ -758,12 +788,12 @@
     .testi-q {
       font-family: var(--f-body); font-weight: 400;
       font-size: 14.5px; line-height: 1.8;
-      color: var(--text-2); margin-bottom: 24px; min-height: 96px;
+      color: rgba(238,231,221,0.68); margin-bottom: 24px; min-height: 96px;
     }
     .testi-name {
       font-family: var(--f-body); font-size: 11px;
       letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--sienna);
+      color: rgba(206,178,152,0.8);
     }
 
     /* ═══════════════════════════════════════════════════
@@ -832,58 +862,82 @@
     /* ═══════════════════════════════════════════════════
        S9: CLARITY CALL
     ═══════════════════════════════════════════════════ */
-    .s-clarity { position: relative; overflow: hidden; background: var(--dark); text-align: center; }
+    .s-clarity {
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--dark);
+    }
     .clarity-bg {
       position: absolute; top: -15%; left: 0; right: 0;
       width: 100%; height: 130%;
       object-fit: cover; object-position: center;
-      filter: saturate(0.75) brightness(0.55);
+      opacity: 0.92;
       will-change: transform;
     }
-    .clarity-overlay {
-      position: absolute; inset: 0;
-      background: rgba(28,20,9,0.35);
+    .clarity-glass {
+      position: relative; z-index: 2;
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 24px;
+      padding: 72px 80px;
+      max-width: 680px;
+      margin: 0 auto;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.06) inset,
+        0 24px 80px rgba(0,0,0,0.22);
     }
-    .s-clarity .inner {
-      max-width: 600px; margin: 0 auto; padding: 0 48px;
-    }
-    .s-clarity .eyebrow { color: rgba(167,185,198,0.75); }
-    .s-clarity .body { color: rgba(238,231,221,0.62); margin: 0 auto 44px; }
 
     /* ═══════════════════════════════════════════════════
        S10: COMMON PATTERNS
     ═══════════════════════════════════════════════════ */
     .s-tags {
-      background: var(--bg);
+      background: #A88457;
+      position: relative;
       padding: 100px 0 120px;
       overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: stretch;
     }
     .tags-hd {
+      position: absolute;
+      left: 52px; top: 50%;
+      transform: translateY(-50%);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      rotate: 180deg;
       text-align: center;
-      margin-bottom: 72px;
+      z-index: 2;
     }
+    .tags-hd .eyebrow-sm { display: block; margin-bottom: 12px; letter-spacing: 0.3em; }
+    .tags-hd .h2 { font-size: clamp(14px, 1.4vw, 18px); writing-mode: vertical-rl; }
     .tags-canvas {
       position: relative;
-      height: 68vh;
-      min-height: 460px;
-      max-height: 700px;
+      width: 100%;
+      height: 72vh;
+      min-height: 520px;
+      max-height: 750px;
+      margin-left: 100px;
       user-select: none;
+      overflow: hidden;
     }
     .tw {
       position: absolute;
-      font-family: var(--f-body);
-      font-size: clamp(12px, 1.35vw, 19px);
-      color: var(--text-2);
-      white-space: nowrap;
+      font-family: var(--f-now); font-weight: 300;
+      font-size: clamp(13px, 1.4vw, 18px);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(238,231,221,0.82);
       cursor: default;
-      transition: color 0.35s ease, font-weight 0.35s ease, font-style 0.35s ease, opacity 0.35s ease;
+      transition: transform 0.12s ease-out, font-size 0.2s ease, opacity 0.2s ease;
       will-change: transform;
-      opacity: 0.72;
-      letter-spacing: 0.01em;
-    }
-    .tw:hover {
-      color: var(--sienna);
-      opacity: 1;
+      white-space: nowrap;
     }
     .tw-it { font-style: italic; }
     .tw-bd { font-weight: 500; }
@@ -1134,48 +1188,42 @@
   </div>
 
   <!-- ── HERO ─────────────────────────────────────────── -->
-  <section class="hero" id="hero">
-    <img class="hero-img"
-      src="./Website Images/pexels-evie-shaffer-1259279-11734795.jpg"
-      alt=""
-      role="presentation"
-      fetchpriority="high">
-    <div class="hero-overlay" aria-hidden="true"></div>
+  <section class="hero tex" id="hero">
+    <div class="hero-frame">
+      <img class="hero-img" src="./Website FINAL Images/Hero.jpg" alt="" role="presentation" fetchpriority="high">
+      <div class="hero-overlay" aria-hidden="true"></div>
 
-    <div class="hero-inner">
-      <div class="hero-3col">
+      <div class="hero-inner">
+        <div class="hero-3col">
 
-        <div class="hero-side hero-side-l gs-up" data-delay="0.6">
-          Fill the gap between what you<br>want and how you show up.
-        </div>
-
-        <div class="hero-center">
-          <p class="hero-eyebrow gs-up" data-delay="0.2">The Realign &ensp;·&ensp; 1:1 Subconscious Repatterning</p>
-          <h1 class="hero-h1 gs-up" data-delay="0.38"><em>alive</em> again</h1>
-          <div class="gs-up" data-delay="0.56">
-            <a href="https://calendly.com/lara" class="btn btn-cream">Book a Clarity Call</a>
+          <div class="hero-side hero-side-l gs-up" data-delay="0.6">
+            Fill the gap between what you<br>want and how you show up.
           </div>
-        </div>
 
-        <div class="hero-side hero-side-r gs-up" data-delay="0.6">
-          by Lara Yap.
-        </div>
+          <div class="hero-center">
+            <p class="hero-eyebrow gs-up" data-delay="0.2">The Realign &ensp;·&ensp; 1:1 Subconscious Repatterning</p>
+            <h1 class="hero-h1 gs-up" data-delay="0.38"><em>alive</em> again</h1>
+            <div class="gs-up" data-delay="0.56">
+              <a href="https://calendly.com/lara" class="btn btn-cream">Book a Clarity Call</a>
+            </div>
+          </div>
 
+          <div class="hero-side hero-side-r gs-up" data-delay="0.6">
+            by Lara Yap.
+          </div>
+
+        </div>
       </div>
-    </div>
 
-    <div class="hero-scroll" aria-hidden="true">
-      <span class="hero-scroll-lbl">Scroll</span>
-      <div class="hero-scroll-line"></div>
+      <div class="hero-scroll" aria-hidden="true">
+        <span class="hero-scroll-lbl">Scroll</span>
+        <div class="hero-scroll-line"></div>
+      </div>
     </div>
   </section>
 
   <!-- ── S2: WHO THIS IS FOR ───────────────────────────── -->
   <section class="s-who" id="who">
-    <img class="who-bg parallax-img"
-      src="./Website Images/_ (30).jpeg"
-      alt="" role="presentation" loading="lazy">
-    <div class="who-overlay" aria-hidden="true"></div>
     <div class="who-inner">
       <h2 class="h2 gs-up">You know you're meant for more.</h2>
       <div class="body gs-up">
@@ -1183,12 +1231,13 @@
         <p>You've invested in the right things. The self-help books gave you frameworks. The podcasts kept you going, for a while. A retreat cracked something open and you believed those changes would hold.</p>
         <p>Then real life resumed. And the old patterns resumed with it. Same triggers, same loops, as though nothing had shifted at all. Part of you began to wonder if this is just who you are.</p>
       </div>
-      <span class="who-close gs-up">If any of this is you, you're in the right place.</span>
+      <span class="who-close gs-up">If this is you, you're in the right place.</span>
     </div>
   </section>
 
   <!-- ── S3a: THE REALIGN (mega-type) ──────────────────── -->
   <section class="s-realign" id="realign">
+    <img class="realign-bg" src="./Website FINAL Images/1.svg" alt="" role="presentation" loading="lazy">
 
     <div class="realign-pre-row">
       <p class="realign-pre gs-up">Meet the part of you that has answers.</p>
@@ -1200,7 +1249,14 @@
     </div>
 
     <div class="realign-post-row">
-      <p class="realign-post gs-up">Aligning your mind and body with your goals.<br>One session and the shift happens.</p>
+      <div class="realign-post gs-up">
+        <p>Align mind and body with your goal</p>
+        <p>Bypass conscious resistance</p>
+        <p>Unlock creative solutions</p>
+        <p>Improve relationships</p>
+        <p>Improve health and well-being</p>
+        <p>Greater sense of happiness and freedom</p>
+      </div>
     </div>
 
   </section>
@@ -1208,22 +1264,21 @@
   <!-- ── S3b: THE PHILOSOPHY ───────────────────────────── -->
   <section class="s-philosophy" id="realign-b">
     <img class="philosophy-bg parallax-img"
-      src="./Website Images/liana-s-dLRRPJ57PSU-unsplash.jpg"
+      src="./Website FINAL Images/2.svg"
       alt="" role="presentation" loading="lazy">
     <div class="philosophy-overlay" aria-hidden="true"></div>
     <div class="philosophy-inner">
       <span class="eyebrow-lt gs-up">The Philosophy</span>
-      <h2 class="h2 gs-up">How the shift actually happens.</h2>
       <div class="body gs-up">
         <p>Everything you've tried but hasn't worked targeted the conscious mind. The thinking. The goal-setting. The frameworks.</p>
-        <p>But the unconscious mind runs 95% of how you actually operate. Quietly. On programming shaped by what you absorbed before you had words for any of it.</p>
+        <p>But the unconscious mind runs 95% of how you actually operate. Quietly. On programming shaped by what you absorbed before you developed conscious awareness.</p>
         <p>The Realign works at that layer. We find where the pattern was wired, update it at the root, and let your mind, body, and goals finally move as one.</p>
       </div>
     </div>
   </section>
 
   <!-- ── S4: NEUROSCIENCE ─────────────────────────────── -->
-  <section class="s-science sec-lg" id="science">
+  <section class="s-science sec-lg tex" id="science">
     <div class="s-science inner">
       <span class="eyebrow gs-up">The Neuroscience</span>
       <h2 class="h2 h2-light gs-up">How your mind actually works.</h2>
@@ -1249,7 +1304,7 @@
   <!-- ── S5: THE SESSION — WHAT YOU GET ───────────────── -->
   <section class="s-benefits sec-lg" id="benefits">
     <img class="benefits-bg parallax-img"
-      src="./Website Images/justin-wilkens-eS-cam4l4Zo-unsplash.jpg"
+      src="./Website FINAL Images/3.svg"
       alt="" role="presentation" loading="lazy">
     <div class="benefits-overlay" aria-hidden="true"></div>
     <div class="benefits-inner">
@@ -1334,7 +1389,7 @@
   </section>
 
   <!-- ── S6: ABOUT LARA ────────────────────────────────── -->
-  <section class="s-about sec-lg" id="about">
+  <section class="s-about sec-lg tex" id="about">
 
     <div class="about-quote-band gs-up">
       <div class="about-quote-inner">
@@ -1360,23 +1415,50 @@
         </div>
       </div>
       <div class="about-img gs-up">
-        <img src="./Website Images/EC8CAC3C-AEF7-4C3E-973C-4860CF0ADD00-labbet-app.JPG"
-          alt="Lara Yap" loading="lazy" width="340" height="500">
-        <div class="about-badge" aria-hidden="true">
-          <span>IHA Certified Hypno&shy;therapist</span>
-        </div>
+        <img src="./Website FINAL Images/Lara.png"
+          alt="Lara Yap" loading="lazy"
+          style="width:100%; height:auto; object-fit:contain; object-position:bottom right;">
       </div>
     </div>
 
   </section>
 
 
+  <!-- ── S10: COMMON PATTERNS ──────────────────────────── -->
+  <section class="s-tags tex" id="concerns">
+    <div class="tags-hd gs-up">
+      <span class="eyebrow-sm">Common Patterns</span>
+      <h2 class="h2">What Brings People Here</h2>
+    </div>
+    <div class="tags-canvas" id="tagsCanvas" aria-label="Topics people work on">
+      <span class="tw tw-it"    data-depth="0.9"  style="left:28%;top:8%">Self-worth</span>
+      <span class="tw tw-thin"  data-depth="1.1"  style="left:52%;top:6%">Procrastination</span>
+      <span class="tw tw-bd"    data-depth="1.0"  style="left:38%;top:16%">Perfectionism</span>
+      <span class="tw"           data-depth="1.2"  style="left:62%;top:14%">Imposter syndrome</span>
+      <span class="tw tw-it"    data-depth="0.95" style="left:22%;top:26%">Self-sabotage</span>
+      <span class="tw tw-bd-it" data-depth="1.1"  style="left:44%;top:28%">Chronic overthinking</span>
+      <span class="tw tw-thin"  data-depth="1.15" style="left:68%;top:24%">Fear of failure</span>
+      <span class="tw"           data-depth="0.9"  style="left:18%;top:40%">Fear of visibility</span>
+      <span class="tw tw-it"    data-depth="1.05" style="left:40%;top:42%">People-pleasing</span>
+      <span class="tw tw-bd"    data-depth="1.2"  style="left:60%;top:38%">Burnout</span>
+      <span class="tw tw-thin"  data-depth="0.92" style="left:25%;top:54%">Career transitions</span>
+      <span class="tw tw-it"    data-depth="1.1"  style="left:48%;top:56%">Finding purpose</span>
+      <span class="tw"           data-depth="0.88" style="left:20%;top:68%">Feeling disconnected</span>
+      <span class="tw tw-bd-it" data-depth="1.1"  style="left:42%;top:70%">Inner conflict</span>
+      <span class="tw tw-thin"  data-depth="1.2"  style="left:64%;top:62%">Limiting beliefs</span>
+      <span class="tw tw-it"    data-depth="0.92" style="left:28%;top:80%">Relationship patterns</span>
+      <span class="tw tw-bd"    data-depth="1.15" style="left:52%;top:82%">Emotional eating</span>
+      <span class="tw"           data-depth="1.1"  style="left:70%;top:76%">Sleep issues</span>
+    </div>
+  </section>
+
   <!-- ── S7: TESTIMONIALS ─────────────────────────────── -->
   <section class="s-testi sec-lg" id="testimonials">
-    <div class="max-w">
+    <img class="testi-bg" src="./Website FINAL Images/4.svg" alt="" role="presentation" loading="lazy">
+    <div class="max-w" style="position:relative;z-index:2;">
       <div class="hd gs-up" style="text-align:center; margin-bottom:48px;">
-        <span class="eyebrow-sm">What Clients Say</span>
-        <h2 class="h2">In their own words.</h2>
+        <span class="eyebrow-sm">Clients</span>
+        <h2 class="h2 h2-light">In their own words.</h2>
       </div>
       <div class="testi-grid">
         <div class="testi-card gs-up">
@@ -1401,48 +1483,16 @@
 
   <!-- ── S9: CLARITY CALL ──────────────────────────────── -->
   <section class="s-clarity sec-lg" id="clarity">
-    <img class="clarity-bg" src="./Website Images/New 1.jpg" alt="" role="presentation" loading="lazy">
-    <div class="clarity-overlay" aria-hidden="true"></div>
-    <div class="s-clarity inner" style="position:relative;z-index:2;">
+    <img class="clarity-bg" src="./Website FINAL Images/5.svg" alt="" role="presentation" loading="lazy">
+    <div class="clarity-glass">
       <span class="eyebrow gs-up">Free &nbsp;·&nbsp; 20 Minutes</span>
       <h2 class="h2 h2-light gs-up">Your clarity starts here.</h2>
       <div class="body body-light gs-up">
         <p>A free 20-minute safe space for honest conversation and clarity, before you decide if The Realign is right for you.</p>
       </div>
-      <div class="gs-up" style="margin-top:44px;">
+      <div class="gs-up" style="margin-top:52px;">
         <a href="https://calendly.com/lara" class="btn btn-cream">Book a Free Clarity Call</a>
       </div>
-    </div>
-  </section>
-
-  <!-- ── S10: COMMON PATTERNS ──────────────────────────── -->
-  <section class="s-tags" id="concerns">
-    <div class="max-w">
-      <div class="tags-hd gs-up">
-        <span class="eyebrow-sm">Common Patterns</span>
-        <h2 class="h2">What Brings People Here</h2>
-      </div>
-    </div>
-    <div class="tags-canvas" id="tagsCanvas" aria-label="Topics people work on">
-      <!-- words placed absolutely; JS drives parallax -->
-      <span class="tw tw-it"   data-depth="0.9"  style="left:6%;top:8%">Self-worth</span>
-      <span class="tw tw-thin" data-depth="1.4"  style="left:58%;top:5%">Procrastination</span>
-      <span class="tw tw-bd"   data-depth="1.0"  style="left:30%;top:16%">Perfectionism</span>
-      <span class="tw"          data-depth="1.5"  style="left:74%;top:20%">Imposter syndrome</span>
-      <span class="tw tw-it"   data-depth="0.95" style="left:12%;top:30%">Self-sabotage</span>
-      <span class="tw tw-bd-it" data-depth="1.1" style="left:44%;top:28%">Chronic overthinking</span>
-      <span class="tw tw-thin" data-depth="1.4"  style="left:78%;top:36%">Fear of failure</span>
-      <span class="tw"          data-depth="0.88" style="left:4%;top:46%">Fear of visibility</span>
-      <span class="tw tw-it"   data-depth="1.05" style="left:35%;top:44%">People-pleasing</span>
-      <span class="tw tw-bd"   data-depth="1.3"  style="left:65%;top:50%">Burnout</span>
-      <span class="tw tw-thin" data-depth="0.92" style="left:20%;top:58%">Career transitions</span>
-      <span class="tw tw-it"   data-depth="1.25" style="left:55%;top:62%">Finding purpose</span>
-      <span class="tw"          data-depth="0.88" style="left:8%;top:70%">Feeling disconnected</span>
-      <span class="tw tw-bd-it" data-depth="1.1" style="left:40%;top:74%">Inner conflict</span>
-      <span class="tw tw-thin" data-depth="1.4"  style="left:72%;top:68%">Limiting beliefs</span>
-      <span class="tw tw-it"   data-depth="0.92" style="left:22%;top:82%">Relationship patterns</span>
-      <span class="tw tw-bd"   data-depth="1.45" style="left:58%;top:84%">Emotional eating</span>
-      <span class="tw"          data-depth="1.5"  style="left:82%;top:78%">Sleep issues</span>
     </div>
   </section>
 
@@ -1452,7 +1502,7 @@
       <div class="book-grid">
 
         <div class="book-left gs-up">
-          <span class="eyebrow">The Book</span>
+          <span class="eyebrow">Reality, simplified</span>
           <h2 class="h2" style="font-style:italic;">Death of the Old World</h2>
           <div class="body">
             <p>If you've been asking existential questions nobody around you can answer, this book was written for you.</p>
@@ -1461,9 +1511,9 @@
         </div>
 
         <div class="book-img-wrap gs-up">
-          <img src="./Website Images/Death of the Old World 7 Universal Truths of Existence by Althaia The Present.png"
+          <img src="./Website FINAL Images/Book.png"
             alt="Death of the Old World by Althaia The Present"
-            loading="lazy" width="260" height="390">
+            loading="lazy" width="300" height="450">
         </div>
 
         <div class="book-right gs-up">
@@ -1472,7 +1522,7 @@
             <p>Drawn from science, philosophy, and ancient wisdom. Non-religious. For the ones who were always meant to know.</p>
           </div>
           <div class="book-btn-wrap">
-            <a href="https://amazon.com/Death-Old-World" class="btn-glass-full">Get the Book</a>
+            <a href="https://amazon.com/Death-Old-World" class="btn-clarity-glass">Get the Book</a>
           </div>
         </div>
 
@@ -1712,35 +1762,42 @@
       }
     }
 
-    /* ─── COMMON PATTERNS: mouse + scroll parallax ─────── */
+    /* ─── COMMON PATTERNS: proximity cursor repulsion ─── */
     (function () {
       const canvas = document.getElementById('tagsCanvas');
       if (!canvas) return;
-      const words = canvas.querySelectorAll('.tw');
+      const words = Array.from(canvas.querySelectorAll('.tw'));
 
-      let targetMX = 0, targetMY = 0;
-      let smoothMX = 0, smoothMY = 0;
+      let mx = -9999, my = -9999;
       let raf;
 
       document.addEventListener('mousemove', e => {
-        const rect = canvas.getBoundingClientRect();
-        targetMX = (e.clientX - rect.left - rect.width  / 2) / rect.width;
-        targetMY = (e.clientY - rect.top  - rect.height / 2) / rect.height;
+        mx = e.clientX;
+        my = e.clientY;
       });
 
       function tick() {
-        smoothMX += (targetMX - smoothMX) * 0.06;
-        smoothMY += (targetMY - smoothMY) * 0.06;
-
-        const rect = canvas.getBoundingClientRect();
-        const progress = (window.innerHeight / 2 - rect.top) / rect.height;
-
         words.forEach(w => {
-          const d = parseFloat(w.dataset.depth) || 0.5;
-          const tx       = smoothMX * d * 28;
-          const scrollTy = progress  * d * 32;
-          const mouseTy  = smoothMY  * d * 18;
-          w.style.transform = `translate(${tx}px, ${scrollTy + mouseTy}px)`;
+          const rect = w.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          const dx = mx - cx;
+          const dy = my - cy;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          const maxDist = 180;
+          const hoverDist = 48;
+
+          if (dist < maxDist) {
+            const strength = Math.pow(1 - dist / maxDist, 1.6) * 38;
+            const tx = -(dx / (dist || 1)) * strength;
+            const ty = -(dy / (dist || 1)) * strength;
+            const scale = dist < hoverDist ? 1.18 : 1;
+            w.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+            w.style.opacity = dist < hoverDist ? '1' : '';
+          } else {
+            w.style.transform = 'translate(0,0) scale(1)';
+            w.style.opacity = '';
+          }
         });
         raf = requestAnimationFrame(tick);
       }
@@ -1748,7 +1805,7 @@
       const obs = new IntersectionObserver(entries => {
         entries.forEach(e => {
           if (e.isIntersecting) { if (!raf) tick(); }
-          else { cancelAnimationFrame(raf); raf = null; }
+          else { cancelAnimationFrame(raf); raf = null; mx = -9999; my = -9999; }
         });
       }, { threshold: 0.05 });
       obs.observe(canvas);
@@ -1767,22 +1824,7 @@
           yPercent: 8,
           ease: 'none',
           scrollTrigger: {
-            trigger: '.hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true
-          }
-        }
-      );
-
-      /* Who section bg parallax — rotated -90deg to landscape */
-      gsap.fromTo('.who-bg',
-        { yPercent: -8, rotation: -90, scale: 1.65, transformOrigin: 'center center' },
-        {
-          yPercent: 8, rotation: -90, scale: 1.65,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '.s-who',
+            trigger: '.hero-frame',
             start: 'top bottom',
             end: 'bottom top',
             scrub: true
@@ -1805,14 +1847,44 @@
         }
       );
 
-      /* Benefits bg parallax — rotated -90deg to landscape */
+      /* Benefits bg parallax */
       gsap.fromTo('.benefits-bg',
-        { yPercent: -8, rotation: -90, scale: 1.65, transformOrigin: 'center center' },
+        { yPercent: -8 },
         {
-          yPercent: 8, rotation: -90, scale: 1.65,
+          yPercent: 8,
           ease: 'none',
           scrollTrigger: {
             trigger: '.s-benefits',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+          }
+        }
+      );
+
+      /* Testi bg parallax */
+      gsap.fromTo('.testi-bg',
+        { yPercent: -8 },
+        {
+          yPercent: 8,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.s-testi',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+          }
+        }
+      );
+
+      /* Clarity bg parallax */
+      gsap.fromTo('.clarity-bg',
+        { yPercent: -8 },
+        {
+          yPercent: 8,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.s-clarity',
             start: 'top bottom',
             end: 'bottom top',
             scrub: true
