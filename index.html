@@ -119,9 +119,9 @@
       flex-direction: column; gap: 20px;
     }
     .loader-name {
-      font-family: var(--f-now); font-weight: 100;
-      font-size: 22px; letter-spacing: 0.35em;
-      text-transform: uppercase; color: rgba(238,231,221,0.82);
+      font-family: var(--f-bn); font-weight: 400; font-style: normal;
+      font-size: 13px; letter-spacing: 0.22em;
+      color: rgba(238,231,221,0.82);
     }
     .loader-bar {
       width: 0; height: 1px;
@@ -217,17 +217,29 @@
       box-shadow: 0 10px 32px rgba(28,20,9,0.22), inset 0 1px 0 rgba(255,255,255,0.07);
     }
     .btn-cream {
-      background: rgba(238,231,221,0.18);
+      background: rgba(238,231,221,0.14);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(238,231,221,0.45);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.28);
+      border: none;
+      position: relative;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.20);
       color: rgba(238,231,221,0.94);
     }
+    .btn-cream::before {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(238,231,221,0.65) 0%, rgba(238,231,221,0.0) 55%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
     .btn-cream:hover {
-      background: rgba(238,231,221,0.3);
+      background: rgba(238,231,221,0.26);
       transform: translateY(-2px);
-      box-shadow: 0 10px 32px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.32);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.28);
     }
     .btn-outline {
       background: rgba(238,231,221,0.1);
@@ -263,21 +275,22 @@
     }
     .btn-clarity-glass {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.10);
+      background: rgba(28,20,9,0.06);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(238,231,221,0.28);
+      border: 1px solid rgba(28,20,9,0.22);
       border-radius: 100px;
       padding: 14px 32px;
       font-family: var(--f-body); font-size: 13px; font-style: italic;
       letter-spacing: 0.1em; text-transform: uppercase;
-      color: rgba(238,231,221,0.9);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 8px 24px rgba(0,0,0,0.18);
+      color: rgba(28,20,9,0.8);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.32), 0 4px 16px rgba(0,0,0,0.06);
       transition: all 0.28s ease;
     }
     .btn-clarity-glass:hover {
-      background: rgba(255,255,255,0.18);
-      border-color: rgba(238,231,221,0.4);
+      background: rgba(28,20,9,0.12);
+      border-color: rgba(28,20,9,0.32);
+      transform: translateY(-2px);
     }
     .link-arrow {
       display: inline-flex; align-items: center; gap: 6px;
@@ -315,15 +328,15 @@
     ═══════════════════════════════════════════════════ */
     .nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      height: 60px;
+      height: 80px;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 52px;
     }
     .nav-logo {
       font-family: var(--f-now); font-weight: 300;
       font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-      color: rgba(238,231,221,0.88);
-      text-shadow: 0 1px 14px rgba(0,0,0,0.65);
+      color: #EEE7DD;
+      mix-blend-mode: difference;
     }
     .nav-logo span { opacity: 0.45; margin: 0 8px; }
     .nav-links {
@@ -332,19 +345,19 @@
     .nav-links a {
       font-family: var(--f-now); font-size: 10.5px; font-weight: 300;
       letter-spacing: 0.22em; text-transform: uppercase;
-      color: rgba(238,231,221,0.75);
-      text-shadow: 0 1px 12px rgba(0,0,0,0.65);
-      transition: color 0.2s;
+      color: #EEE7DD;
+      mix-blend-mode: difference;
+      transition: opacity 0.2s;
     }
-    .nav-links a:hover { color: rgba(238,231,221,1); }
+    .nav-links a:hover { opacity: 0.7; }
     .nav-burger {
       display: none; flex-direction: column; gap: 5px;
       padding: 8px; background: none; border: none; cursor: none;
     }
     .nav-burger span {
       display: block; width: 22px; height: 1px;
-      background: rgba(238,231,221,0.85);
-      box-shadow: 0 1px 6px rgba(0,0,0,0.5);
+      background: #EEE7DD;
+      mix-blend-mode: difference;
     }
 
     .mob-nav {
@@ -440,6 +453,7 @@
       font-weight: 400; letter-spacing: -0.01em;
       font-size: 0.82em; vertical-align: -0.06em;
     }
+    .hero-again { font-size: 0.8em; }
     .hero-scroll {
       position: absolute; bottom: 36px; left: 50%;
       transform: translateX(-50%);
@@ -747,13 +761,23 @@
       align-items: flex-end;
       overflow: visible;
     }
-    .about-img img {
-      width: 110%;
-      max-width: none;
-      height: auto;
-      border-radius: 0;
-      object-fit: contain;
-      margin-right: -48px;
+    .about-img-stack {
+      position: relative;
+      width: 100%; height: 460px;
+    }
+    .about-img-back {
+      position: absolute;
+      right: -24px; top: 0;
+      width: 76%; height: 80%;
+      object-fit: cover; object-position: center;
+      border-radius: 3px;
+    }
+    .about-img-front {
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 76%; height: 82%;
+      object-fit: cover; object-position: top center;
+      border-radius: 3px;
     }
 
     /* ═══════════════════════════════════════════════════
@@ -933,7 +957,7 @@
       font-family: var(--f-now); font-weight: 300;
       font-size: clamp(13px, 1.4vw, 18px);
       letter-spacing: 0.08em; text-transform: uppercase;
-      color: rgba(238,231,221,0.82);
+      color: rgba(28,20,9,0.78);
       cursor: default;
       transition: transform 0.12s ease-out, font-size 0.2s ease, opacity 0.2s ease;
       will-change: transform;
@@ -942,7 +966,10 @@
     .tw-it { font-style: italic; }
     .tw-bd { font-weight: 500; }
     .tw-bd-it { font-weight: 500; font-style: italic; }
-    .tw-thin { opacity: 0.38; }
+    .tw-thin { opacity: 0.42; }
+    .clarity-glass .eyebrow { color: rgba(28,20,9,0.55); }
+    .clarity-glass .h2 { color: rgba(28,20,9,0.9); }
+    .clarity-glass .body { color: rgba(28,20,9,0.68); }
 
     /* ═══════════════════════════════════════════════════
        S11: BOOK
@@ -958,7 +985,7 @@
     .book-left .body p + p { margin-top: 20px; }
     .book-img-wrap { display: flex; justify-content: center; }
     .book-img-wrap img {
-      width: 100%; max-width: 260px;
+      width: 100%; max-width: 338px;
       filter: drop-shadow(0 24px 56px rgba(28,20,9,0.28));
       mix-blend-mode: multiply;
     }
@@ -1108,10 +1135,11 @@
 
       .sec { padding: 72px 0; }
       .sec-lg { padding: 88px 0; }
-      .hero-3col { grid-template-columns: 1fr; padding: 0 28px; gap: 20px; }
-      .hero-side-l { display: none; }
-      .hero-side-r { display: none; }
-      .hero-h1 { font-size: clamp(58px, 14vw, 80px); }
+      .hero-3col { display: flex; flex-direction: column; align-items: center; padding: 0 28px; gap: 16px; }
+      .hero-center { order: 1; width: 100%; }
+      .hero-side-l { order: 2; display: block; text-align: center; margin-top: 8px; }
+      .hero-side-r { order: 3; display: block; text-align: center; }
+      .hero-h1 { font-size: clamp(58px, 14vw, 80px); white-space: normal; text-align: center; }
 
       .max-w, .about-quote-inner, .about-main { padding: 0 24px; }
 
@@ -1197,12 +1225,12 @@
         <div class="hero-3col">
 
           <div class="hero-side hero-side-l gs-up" data-delay="0.6">
-            Fill the gap between what you<br>want and how you show up.
+            From where you were,<br>to who you are
           </div>
 
           <div class="hero-center">
-            <p class="hero-eyebrow gs-up" data-delay="0.2">The Realign &ensp;·&ensp; 1:1 Subconscious Repatterning</p>
-            <h1 class="hero-h1 gs-up" data-delay="0.38"><em>alive</em> again</h1>
+            <p class="hero-eyebrow gs-up" data-delay="0.2">PROGRAM YOUR REALITY</p>
+            <h1 class="hero-h1 gs-up" data-delay="0.38"><em>alive</em> <span class="hero-again">again</span></h1>
             <div class="gs-up" data-delay="0.56">
               <a href="https://calendly.com/lara" class="btn btn-cream">Book a Clarity Call</a>
             </div>
@@ -1228,16 +1256,16 @@
       <h2 class="h2 gs-up">You know you're meant for more.</h2>
       <div class="body gs-up">
         <p>That feeling has been deep within you.</p>
-        <p>You've invested in the right things. The self-help books gave you frameworks. The podcasts kept you going, for a while. A retreat cracked something open and you believed those changes would hold.</p>
+        <p>You've invested in the right things. The self-help books gave you frameworks. The podcasts kept you going, for a while. A retreat gave you the peace you've never felt before. And you believed those changes would hold.</p>
         <p>Then real life resumed. And the old patterns resumed with it. Same triggers, same loops, as though nothing had shifted at all. Part of you began to wonder if this is just who you are.</p>
       </div>
-      <span class="who-close gs-up">If this is you, you're in the right place.</span>
+      <span class="who-close gs-up">If this resonates, you are in the right place.</span>
     </div>
   </section>
 
   <!-- ── S3a: THE REALIGN (mega-type) ──────────────────── -->
   <section class="s-realign" id="realign">
-    <img class="realign-bg" src="./Website FINAL Images/1.svg" alt="" role="presentation" loading="lazy">
+    <img class="realign-bg" src="./Website FINAL Images/1.png" alt="" role="presentation" loading="lazy">
 
     <div class="realign-pre-row">
       <p class="realign-pre gs-up">Meet the part of you that has answers.</p>
@@ -1264,7 +1292,7 @@
   <!-- ── S3b: THE PHILOSOPHY ───────────────────────────── -->
   <section class="s-philosophy" id="realign-b">
     <img class="philosophy-bg parallax-img"
-      src="./Website FINAL Images/2.svg"
+      src="./Website FINAL Images/2.png"
       alt="" role="presentation" loading="lazy">
     <div class="philosophy-overlay" aria-hidden="true"></div>
     <div class="philosophy-inner">
@@ -1279,7 +1307,7 @@
 
   <!-- ── S4: NEUROSCIENCE ─────────────────────────────── -->
   <section class="s-science sec-lg tex" id="science">
-    <div class="s-science inner">
+    <div class="inner">
       <span class="eyebrow gs-up">The Neuroscience</span>
       <h2 class="h2 h2-light gs-up">How your mind actually works.</h2>
       <div class="science-stats gs-up">
@@ -1304,7 +1332,7 @@
   <!-- ── S5: THE SESSION — WHAT YOU GET ───────────────── -->
   <section class="s-benefits sec-lg" id="benefits">
     <img class="benefits-bg parallax-img"
-      src="./Website FINAL Images/3.svg"
+      src="./Website FINAL Images/3.png"
       alt="" role="presentation" loading="lazy">
     <div class="benefits-overlay" aria-hidden="true"></div>
     <div class="benefits-inner">
@@ -1394,7 +1422,7 @@
     <div class="about-quote-band gs-up">
       <div class="about-quote-inner">
         <span class="about-quote-mark" aria-hidden="true">"</span>
-        <p class="about-pullquote">For a long time, I couldn't name what was wrong. I had built the career. The title. The appearance of a life that was working. And still, every day felt the same kind of empty.</p>
+        <p class="about-pullquote">For a long time, I couldn't name what was wrong. I had built the career, the title, the appearance of a life that was working. And still, every day felt the same kind of empty.</p>
       </div>
     </div>
 
@@ -1415,14 +1443,45 @@
         </div>
       </div>
       <div class="about-img gs-up">
-        <img src="./Website FINAL Images/Lara.png"
-          alt="Lara Yap" loading="lazy"
-          style="width:100%; height:auto; object-fit:contain; object-position:bottom right;">
+        <div class="about-img-stack">
+          <img class="about-img-back" src="./Website FINAL Images/Lara section.png"
+            alt="" role="presentation" loading="lazy">
+          <img class="about-img-front" src="./Website FINAL Images/New Lara.png"
+            alt="Lara Yap" loading="lazy">
+        </div>
       </div>
     </div>
 
   </section>
 
+
+  <!-- ── S7: TESTIMONIALS ─────────────────────────────── -->
+  <section class="s-testi sec-lg" id="testimonials">
+    <img class="testi-bg" src="./Website FINAL Images/4.png" alt="" role="presentation" loading="lazy">
+    <div class="max-w" style="position:relative;z-index:2;">
+      <div class="hd gs-up" style="text-align:center; margin-bottom:48px;">
+        <span class="eyebrow-sm">Clients</span>
+        <h2 class="h2 h2-light">In their own words</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <span class="testi-mark" aria-hidden="true">"</span>
+          <p class="testi-q">Placeholder for a real client quote. Something specific and honest, in their own voice, about what actually shifted for them.</p>
+          <span class="testi-name">Name &ensp;·&ensp; Role</span>
+        </div>
+        <div class="testi-card">
+          <span class="testi-mark" aria-hidden="true">"</span>
+          <p class="testi-q">Placeholder for a second quote. The layout holds two to four sentences comfortably. Real quotes follow after early sessions.</p>
+          <span class="testi-name">Name &ensp;·&ensp; Role</span>
+        </div>
+        <div class="testi-card">
+          <span class="testi-mark" aria-hidden="true">"</span>
+          <p class="testi-q">Placeholder for a third quote. Intentionally sized to feel personal and unhurried, not a wall of endorsements.</p>
+          <span class="testi-name">Name &ensp;·&ensp; Role</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ── S10: COMMON PATTERNS ──────────────────────────── -->
   <section class="s-tags tex" id="concerns">
@@ -1452,38 +1511,10 @@
     </div>
   </section>
 
-  <!-- ── S7: TESTIMONIALS ─────────────────────────────── -->
-  <section class="s-testi sec-lg" id="testimonials">
-    <img class="testi-bg" src="./Website FINAL Images/4.svg" alt="" role="presentation" loading="lazy">
-    <div class="max-w" style="position:relative;z-index:2;">
-      <div class="hd gs-up" style="text-align:center; margin-bottom:48px;">
-        <span class="eyebrow-sm">Clients</span>
-        <h2 class="h2 h2-light">In their own words.</h2>
-      </div>
-      <div class="testi-grid">
-        <div class="testi-card gs-up">
-          <span class="testi-mark" aria-hidden="true">"</span>
-          <p class="testi-q">Placeholder for a real client quote. Something specific and honest, in their own voice, about what actually shifted for them.</p>
-          <span class="testi-name">Name &ensp;·&ensp; Role</span>
-        </div>
-        <div class="testi-card gs-up">
-          <span class="testi-mark" aria-hidden="true">"</span>
-          <p class="testi-q">Placeholder for a second quote. The layout holds two to four sentences comfortably. Real quotes follow after early sessions.</p>
-          <span class="testi-name">Name &ensp;·&ensp; Role</span>
-        </div>
-        <div class="testi-card gs-up">
-          <span class="testi-mark" aria-hidden="true">"</span>
-          <p class="testi-q">Placeholder for a third quote. Intentionally sized to feel personal and unhurried, not a wall of endorsements.</p>
-          <span class="testi-name">Name &ensp;·&ensp; Role</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
 
   <!-- ── S9: CLARITY CALL ──────────────────────────────── -->
   <section class="s-clarity sec-lg" id="clarity">
-    <img class="clarity-bg" src="./Website FINAL Images/5.svg" alt="" role="presentation" loading="lazy">
+    <img class="clarity-bg" src="./Website FINAL Images/5.png" alt="" role="presentation" loading="lazy">
     <div class="clarity-glass">
       <span class="eyebrow gs-up">Free &nbsp;·&nbsp; 20 Minutes</span>
       <h2 class="h2 h2-light gs-up">Your clarity starts here.</h2>
@@ -1976,7 +2007,7 @@
         { opacity: 0, y: 16 },
         {
           opacity: (i, el) => {
-            return el.classList.contains('tw-thin') ? 0.38 : 0.72;
+            return el.classList.contains('tw-thin') ? 0.38 : 0.78;
           },
           y: 0,
           stagger: { each: 0.04, from: 'random' },
