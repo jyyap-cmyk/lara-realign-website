@@ -275,12 +275,12 @@
     }
     .btn-clarity-glass {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(28,20,9,0.06);
+      background: transparent;
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(28,20,9,0.22);
+      border: 1px solid rgba(28,20,9,0.30);
       border-radius: 100px;
-      padding: 14px 32px;
+      padding: 10px 32px;
       font-family: var(--f-body); font-size: 13px; font-style: italic;
       letter-spacing: 0.1em; text-transform: uppercase;
       color: rgba(28,20,9,0.8);
@@ -288,7 +288,7 @@
       transition: all 0.28s ease;
     }
     .btn-clarity-glass:hover {
-      background: rgba(28,20,9,0.12);
+      background: rgba(28,20,9,0.06);
       border-color: rgba(28,20,9,0.32);
       transform: translateY(-2px);
     }
@@ -335,8 +335,8 @@
     .nav-logo {
       font-family: var(--f-now); font-weight: 300;
       font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-      color: #EEE7DD;
-      mix-blend-mode: difference;
+      color: rgba(238,231,221,0.88);
+      transition: color 0.35s ease;
     }
     .nav-logo span { opacity: 0.45; margin: 0 8px; }
     .nav-links {
@@ -345,20 +345,22 @@
     .nav-links a {
       font-family: var(--f-now); font-size: 10.5px; font-weight: 300;
       letter-spacing: 0.22em; text-transform: uppercase;
-      color: #EEE7DD;
-      mix-blend-mode: difference;
-      transition: opacity 0.2s;
+      color: rgba(238,231,221,0.75);
+      transition: color 0.35s ease, opacity 0.2s;
     }
     .nav-links a:hover { opacity: 0.7; }
+    .nav--light .nav-logo { color: rgba(28,20,9,0.82); }
+    .nav--light .nav-links a { color: rgba(28,20,9,0.62); }
     .nav-burger {
       display: none; flex-direction: column; gap: 5px;
       padding: 8px; background: none; border: none; cursor: none;
     }
     .nav-burger span {
       display: block; width: 22px; height: 1px;
-      background: #EEE7DD;
-      mix-blend-mode: difference;
+      background: rgba(238,231,221,0.85);
+      transition: background 0.35s ease;
     }
+    .nav--light .nav-burger span { background: rgba(28,20,9,0.72); }
 
     .mob-nav {
       position: fixed; inset: 60px 0 0 0;
@@ -421,37 +423,39 @@
     .hero-inner {
       position: relative; z-index: 2;
       width: 100%;
+      display: flex; flex-direction: column; align-items: center;
     }
-    .hero-3col {
-      display: grid;
-      grid-template-columns: 1fr 2fr 1fr;
-      align-items: center;
-      width: 100%; padding: 0 52px;
-    }
-    .hero-side {
-      font-family: var(--f-body); font-style: italic;
-      font-weight: 400; font-size: clamp(15px, 1.6vw, 20px); line-height: 1.75;
-      color: rgba(238,231,221,0.52); letter-spacing: 0.01em;
-    }
-    .hero-side-l {
-      font-family: var(--f-bn); font-style: italic;
-      font-size: clamp(16px, 1.8vw, 22px);
-      letter-spacing: 0.01em; line-height: 1.4;
-    }
-    .hero-side-r { text-align: right; }
-    .hero-center { text-align: center; }
     .hero-eyebrow {
       font-family: var(--f-now); font-weight: 300; font-size: 10px;
       letter-spacing: 0.28em; text-transform: uppercase;
       color: rgba(167,185,198,0.72);
-      margin-bottom: 32px; display: block;
+      margin-bottom: 28px; display: block;
+      text-align: center;
     }
+    .hero-3col {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      width: 100%; padding: 0 52px; gap: 32px;
+    }
+    .hero-side {
+      font-family: var(--f-body); font-style: italic;
+      font-weight: 400; font-size: clamp(14px, 1.5vw, 19px); line-height: 1.75;
+      color: rgba(238,231,221,0.52); letter-spacing: 0.01em;
+    }
+    .hero-side-l {
+      font-family: var(--f-bn); font-style: italic;
+      font-size: clamp(15px, 1.7vw, 21px);
+      letter-spacing: 0.01em; line-height: 1.4;
+    }
+    .hero-side-r { text-align: right; }
+    .hero-cta { margin-top: 52px; text-align: center; }
     .hero-h1 {
       font-family: var(--f-now); font-weight: 100;
-      font-size: clamp(52px, 7.2vw, 100px);
+      font-size: clamp(57px, 7.9vw, 110px);
       line-height: 1.0; letter-spacing: -0.03em;
-      color: #EEE7DD; margin-bottom: 44px;
-      white-space: nowrap;
+      color: #EEE7DD; margin-bottom: 0;
+      white-space: nowrap; text-align: center;
     }
     .hero-h1 em {
       font-style: italic; font-family: var(--f-bn);
@@ -501,7 +505,7 @@
     .who-inner .body p + p { margin-top: 22px; }
     .who-close {
       font-family: var(--f-now); font-weight: 300;
-      font-size: clamp(14px, 1.4vw, 17px);
+      font-size: clamp(12.5px, 1.26vw, 15px);
       letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--sienna); display: block; margin-top: 44px;
     }
@@ -560,12 +564,12 @@
     .realign-post-row {
       max-width: 1220px; margin: 0 auto;
       padding: 0 56px;
-      margin-top: 40px;
+      margin-top: 18px;
       display: flex; justify-content: center;
     }
     .realign-post {
       font-family: var(--f-body); font-size: 16px;
-      line-height: 2.0; color: rgba(238,231,221,0.82);
+      line-height: 1.55; color: rgba(238,231,221,0.82);
       max-width: 36ch; text-align: center;
     }
     .realign-post p { margin: 0; }
@@ -591,7 +595,7 @@
     }
     .philosophy-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(28,20,9,0.30) 0%, rgba(28,20,9,0.18) 100%);
+      background: linear-gradient(135deg, rgba(238,231,221,0.82) 0%, rgba(238,231,221,0.72) 100%);
     }
     .philosophy-inner {
       position: relative; z-index: 2;
@@ -599,9 +603,9 @@
       padding: 80px 48px;
       text-align: center;
     }
-    .philosophy-inner .eyebrow-lt { margin-bottom: 20px; }
-    .philosophy-inner .h2 { color: rgba(238,231,221,0.94); margin-bottom: 36px; }
-    .philosophy-inner .body { color: rgba(238,231,221,0.66); max-width: 56ch; margin: 0 auto; }
+    .philosophy-inner .eyebrow-lt { margin-bottom: 20px; color: rgba(44,37,29,0.55); }
+    .philosophy-inner .h2 { color: #2c251d; margin-bottom: 36px; }
+    .philosophy-inner .body { color: #2c251d; max-width: 56ch; margin: 0 auto; }
     .philosophy-inner .body p + p { margin-top: 20px; }
 
     /* ═══════════════════════════════════════════════════
@@ -656,8 +660,11 @@
       margin: 0 auto;
     }
     .s-science .pullquote {
-      color: rgba(238,231,221,0.75); max-width: 600px;
+      font-family: var(--f-body); font-size: 16px; font-weight: 400; font-style: normal;
+      line-height: 1.75;
+      color: rgba(238,231,221,0.70); max-width: 560px;
       margin: 0 auto; text-align: center;
+      letter-spacing: 0;
     }
 
     /* ═══════════════════════════════════════════════════
@@ -800,7 +807,16 @@
       will-change: transform;
     }
     .s-testi .hd { text-align: center; margin-bottom: 48px; }
-    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .testi-grid {
+      display: flex; gap: 22px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 8px;
+      scrollbar-width: none; -ms-overflow-style: none;
+    }
+    .testi-grid::-webkit-scrollbar { display: none; }
+    .testi-card { flex: 0 0 340px; scroll-snap-align: start; }
     .testi-card {
       background: rgba(255,255,255,0.06);
       backdrop-filter: blur(10px);
@@ -930,33 +946,27 @@
        S10: COMMON PATTERNS
     ═══════════════════════════════════════════════════ */
     .s-tags {
-      background: #ac906d;
+      background: #cec1ab;
       position: relative;
-      padding: 100px 0 120px;
       overflow: hidden;
-      min-height: 100vh;
+      min-height: 130vh;
       display: flex;
-      align-items: stretch;
+      flex-direction: column;
     }
     .tags-hd {
-      position: absolute;
-      left: 52px; top: 44%;
-      transform: translateY(-50%);
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      rotate: 180deg;
-      text-align: center;
+      position: relative;
       z-index: 2;
+      padding: 64px 56px 0;
+      text-align: left;
     }
-    .tags-hd .eyebrow-sm { display: block; margin-bottom: 12px; letter-spacing: 0.3em; }
-    .tags-hd .h2 { font-size: clamp(14px, 1.4vw, 18px); writing-mode: vertical-rl; }
+    .tags-hd .eyebrow-sm { display: block; margin-bottom: 10px; letter-spacing: 0.3em; font-size: 11px; color: rgba(28,20,9,0.55); }
+    .tags-hd .h2 { font-size: clamp(22px, 2.4vw, 32px); color: rgba(28,20,9,0.82); }
     .tags-canvas {
       position: relative;
+      flex: 1;
       width: 100%;
-      height: 72vh;
-      min-height: 520px;
-      max-height: 750px;
-      margin-left: 100px;
+      min-height: 600px;
+      margin-left: 0;
       user-select: none;
       overflow: hidden;
     }
@@ -982,7 +992,7 @@
     /* ═══════════════════════════════════════════════════
        S11: BOOK
     ═══════════════════════════════════════════════════ */
-    .s-book { background: #EBE7CD; }
+    .s-book { background: #cec6a5; }
     .book-grid {
       display: grid;
       grid-template-columns: 1fr 280px 1fr;
@@ -1130,7 +1140,7 @@
       .hero-3col { padding: 0 40px; gap: 28px; }
       .about-main { grid-template-columns: 1fr; padding: 0 32px; }
       .about-img { max-width: 380px; }
-      .testi-grid { grid-template-columns: 1fr 1fr; }
+      .testi-card { flex: 0 0 300px; }
       .cards-grid { grid-template-columns: repeat(3,1fr); }
       .book-grid { grid-template-columns: 1fr 1fr; }
       .book-left { grid-column: 1; }
@@ -1149,10 +1159,10 @@
 
       .sec { padding: 72px 0; }
       .sec-lg { padding: 88px 0; }
-      .hero-3col { display: flex; flex-direction: column; align-items: center; padding: 0 28px; gap: 16px; }
-      .hero-center { order: 1; width: 100%; }
-      .hero-side-l { order: 2; display: block; text-align: center; margin-top: 8px; }
+      .hero-3col { display: flex; flex-direction: column; align-items: center; padding: 0 28px; gap: 12px; }
+      .hero-side-l { order: 2; display: block; text-align: center; }
       .hero-side-r { order: 3; display: block; text-align: center; }
+      .hero-cta { margin-top: 36px; }
       .hero-h1 { font-size: clamp(58px, 14vw, 80px); white-space: normal; text-align: center; }
 
       .max-w, .about-quote-inner, .about-main { padding: 0 24px; }
@@ -1161,7 +1171,7 @@
       .cards-grid { grid-template-columns: repeat(2,1fr); }
       .book-grid { grid-template-columns: 1fr; }
       .book-img-wrap { grid-column: 1; grid-row: auto; }
-      .testi-grid { grid-template-columns: 1fr; }
+      .testi-card { flex: 0 0 80vw; }
       .science-stats { grid-template-columns: 1fr; gap: 36px; }
       .science-divider { display: none; }
 
@@ -1236,25 +1246,21 @@
       <div class="hero-overlay" aria-hidden="true"></div>
 
       <div class="hero-inner">
-        <div class="hero-3col">
+          <p class="hero-eyebrow gs-up" data-delay="0.2">From where you were,<br>to who you are</p>
 
-          <div class="hero-side hero-side-l gs-up" data-delay="0.6">
-            PROGRAM YOUR REALITY
-          </div>
-
-          <div class="hero-center">
-            <p class="hero-eyebrow gs-up" data-delay="0.2">From where you were, to who you are</p>
+          <div class="hero-3col">
+            <div class="hero-side hero-side-l gs-up" data-delay="0.6">
+              Program your reality
+            </div>
             <h1 class="hero-h1 gs-up" data-delay="0.38"><em>alive</em> <span class="hero-again">again</span></h1>
-            <div class="gs-up" data-delay="0.56">
-              <a href="https://calendly.com/lara" class="btn btn-cream">Book a Clarity Call</a>
+            <div class="hero-side hero-side-r gs-up" data-delay="0.6">
+              by Lara Yap
             </div>
           </div>
 
-          <div class="hero-side hero-side-r gs-up" data-delay="0.6">
-            by Lara Yap
+          <div class="hero-cta gs-up" data-delay="0.56">
+            <a href="https://calendly.com/lara" class="btn btn-cream">Book a Clarity Call</a>
           </div>
-
-        </div>
       </div>
 
       <div class="hero-scroll" aria-hidden="true">
@@ -1311,10 +1317,10 @@
     <div class="philosophy-inner">
       <span class="eyebrow-lt gs-up">The Philosophy</span>
       <div class="body gs-up">
-        <p>Everything you've tried targeted the conscious mind. The reflection. The goal setting.</p>
-        <p>But the unconscious mind runs 95% of how you operate, built on programming absorbed before your conscious awareness even developed. It controls what you notice, filtering perception before it ever reaches your awareness. What it lets through becomes what you call reality. That reality shapes your decisions. Those decisions build the life you're living.</p>
+        <p>Everything you've tried targeted the conscious mind. The reflection. The goal setting. Change through conscious effort alone is possible, it's just working against the current the whole way.</p>
+        <p>Your unconscious mind runs 95% of how you operate, built on programming absorbed before your conscious awareness developed.</p>
         <p>Like having two heads on one body. It wants one thing, you want another, and they are constantly in conflict or in alignment. In alignment, things flow. In conflict, you set an intention tonight and override it tomorrow morning. You doubt yourself, feeling hopeless. And you wonder why you're not happy.</p>
-        <p>The Realign works at that layer to bring both parts into agreement. We find where the pattern was wired, update it at the root, and let your mind and body finally move toward the same thing.</p>
+        <p>The Realign works at that layer to bring both parts into agreement. We find where the pattern was wired, update it at the root, and let your mind and body finally move as one.</p>
       </div>
     </div>
   </section>
@@ -1339,7 +1345,7 @@
           <span class="science-stat-unit">bits per second</span>
         </div>
       </div>
-      <p class="pullquote gs-up">Change through conscious effort alone is possible. It's just working against the current the whole way.</p>
+      <p class="pullquote gs-up">The unconscious mind controls what you notice, filtering perception before it reaches your awareness. What it lets through becomes what you call reality. That reality shapes your decisions. Those decisions build the life you're living.</p>
     </div>
   </section>
 
@@ -1491,6 +1497,21 @@
         <div class="testi-card">
           <span class="testi-mark" aria-hidden="true">"</span>
           <p class="testi-q">Placeholder for a third quote. Intentionally sized to feel personal and unhurried, not a wall of endorsements.</p>
+          <span class="testi-name">Name &ensp;·&ensp; Role</span>
+        </div>
+        <div class="testi-card">
+          <span class="testi-mark" aria-hidden="true">"</span>
+          <p class="testi-q">Placeholder for a fourth quote. A moment of recognition, described in the client's own words, that feels real and unscripted.</p>
+          <span class="testi-name">Name &ensp;·&ensp; Role</span>
+        </div>
+        <div class="testi-card">
+          <span class="testi-mark" aria-hidden="true">"</span>
+          <p class="testi-q">Placeholder for a fifth quote. Something about a specific feeling or behavior that changed, told from the inside out.</p>
+          <span class="testi-name">Name &ensp;·&ensp; Role</span>
+        </div>
+        <div class="testi-card">
+          <span class="testi-mark" aria-hidden="true">"</span>
+          <p class="testi-q">Placeholder for a sixth quote. The kind of thing you only say after something has genuinely shifted, not just moved.</p>
           <span class="testi-name">Name &ensp;·&ensp; Role</span>
         </div>
       </div>
@@ -1775,9 +1796,20 @@
 
     /* ─── NAV ────────────────────────────────────────── */
     const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
+    const lightSections = ['who', 'about', 'concerns'];
+    function updateNavColor() {
       nav.classList.toggle('scrolled', window.scrollY > 60);
-    }, { passive: true });
+      const atY = 50;
+      const isLight = lightSections.some(id => {
+        const el = document.getElementById(id);
+        if (!el) return false;
+        const r = el.getBoundingClientRect();
+        return r.top <= atY && r.bottom > atY;
+      });
+      nav.classList.toggle('nav--light', isLight);
+    }
+    window.addEventListener('scroll', updateNavColor, { passive: true });
+    updateNavColor();
 
     const burger = document.getElementById('burger');
     const mobNav = document.getElementById('mobNav');
