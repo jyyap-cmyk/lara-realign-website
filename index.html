@@ -362,6 +362,17 @@
       transition: background 0.35s ease;
     }
     .nav--light .nav-burger span { background: rgba(28,20,9,0.72); }
+    .lang-toggle {
+      font-family: var(--f-now); font-size: 10px; font-weight: 300;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(238,231,221,0.75);
+      background: none; border: 1px solid rgba(238,231,221,0.28);
+      border-radius: 100px; padding: 5px 13px;
+      cursor: pointer; transition: color 0.25s, border-color 0.25s;
+    }
+    .lang-toggle:hover { color: rgba(238,231,221,0.95); border-color: rgba(238,231,221,0.55); }
+    .nav--light .lang-toggle { color: rgba(28,20,9,0.65); border-color: rgba(28,20,9,0.25); }
+    .nav--light .lang-toggle:hover { color: rgba(28,20,9,0.9); border-color: rgba(28,20,9,0.5); }
 
     .mob-nav {
       position: fixed; inset: 60px 0 0 0;
@@ -666,11 +677,12 @@
       max-width: 520px; margin: 0 auto 52px; text-align: center;
     }
     .science-outro {
-      font-family: var(--f-bn); font-style: italic; font-weight: 400;
+      font-family: var(--f-bn); font-style: normal; font-weight: 400;
       font-size: clamp(13px, 1.5vw, 20px); line-height: 1.5;
       color: rgba(238,231,221,0.82); max-width: 720px;
       margin: 0 auto; text-align: center;
     }
+    .science-outro em { font-style: italic; }
 
     /* ═══════════════════════════════════════════════════
        S5: THE SESSION — WHAT YOU GET
@@ -1172,7 +1184,7 @@
     }
 
     @media (max-width: 767px) {
-      .nav { padding: 0 24px; height: 56px; }
+      .nav { padding: 0 28px; height: 56px; }
       .nav-links { display: none; }
       .nav-burger { display: flex; }
 
@@ -1240,22 +1252,23 @@
 
   <!-- ── NAV ──────────────────────────────────────────── -->
   <nav class="nav" id="nav" role="navigation" aria-label="Main" style="background:transparent">
-    <div class="nav-logo">Lara Yap <span>·</span> Mind Aligner</div>
+    <div class="nav-logo" data-i18n="nav-logo">Lara Yap <span>·</span> Mind Aligner</div>
     <ul class="nav-links" role="list">
-      <li><a href="#about">About</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#book">Book</a></li>
+      <li><a href="#about" data-i18n="nav-about">About</a></li>
+      <li><a href="#faq" data-i18n="nav-faq">FAQ</a></li>
+      <li><a href="#book" data-i18n="nav-book">Book</a></li>
     </ul>
+    <button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
     <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
   <div class="mob-nav" id="mobNav" aria-hidden="true">
-    <a href="#who"    onclick="closeMob()">About</a>
-    <a href="#faq"    onclick="closeMob()">FAQ</a>
-    <a href="#book"   onclick="closeMob()">Book</a>
-    <a href="https://calendly.com/lara" class="mob-cta">Book a Clarity Call</a>
+    <a href="#who"    onclick="closeMob()" data-i18n="nav-about">About</a>
+    <a href="#faq"    onclick="closeMob()" data-i18n="nav-faq">FAQ</a>
+    <a href="#book"   onclick="closeMob()" data-i18n="nav-book">Book</a>
+    <a href="https://calendly.com/lara" class="mob-cta" data-i18n="cta-clarity">Book a Clarity Call</a>
   </div>
 
   <!-- ── HERO ─────────────────────────────────────────── -->
@@ -1265,20 +1278,20 @@
       <div class="hero-overlay" aria-hidden="true"></div>
 
       <div class="hero-inner">
-          <p class="hero-eyebrow gs-up" data-delay="0.2">From where you were,<br>to who you are</p>
+          <p class="hero-eyebrow gs-up" data-delay="0.2" data-i18n="hero-eyebrow">From where you were,<br>to who you are</p>
 
           <div class="hero-3col">
-            <div class="hero-side hero-side-l gs-up" data-delay="0.6">
+            <div class="hero-side hero-side-l gs-up" data-delay="0.6" data-i18n="hero-side-l">
               Program your reality
             </div>
             <h1 class="hero-h1 gs-up" data-delay="0.38"><em>alive</em> <span class="hero-again">again</span></h1>
-            <div class="hero-side hero-side-r gs-up" data-delay="0.6">
+            <div class="hero-side hero-side-r gs-up" data-delay="0.6" data-i18n="hero-side-r">
               by Lara Yap
             </div>
           </div>
 
           <div class="hero-cta gs-up" data-delay="0.56">
-            <a href="https://calendly.com/lara" class="btn btn-cream">Book a Clarity Call</a>
+            <a href="https://calendly.com/lara" class="btn btn-cream" data-i18n="cta-clarity">Book a Clarity Call</a>
           </div>
       </div>
 
@@ -1292,11 +1305,11 @@
   <!-- ── S2: WHO THIS IS FOR ───────────────────────────── -->
   <section class="s-who" id="who">
     <div class="who-inner">
-      <h2 class="h2 gs-up">You know you're meant for more</h2>
+      <h2 class="h2 gs-up" data-i18n="who-h2">You know you're meant for more</h2>
       <div class="body gs-up">
-        <p>That feeling has been deep within you.</p>
-        <p>You've invested in the right things. The self-help books gave you frameworks. The podcasts kept you going, for a while. A retreat gave you the peace you have not felt before. And you believed those changes would hold.</p>
-        <p>Then real life resumed. And the old patterns resumed with it. Same triggers, same loops, as though nothing had shifted at all. Part of you began to wonder if this is just who you are.</p>
+        <p data-i18n="who-p1">That feeling has been deep within you.</p>
+        <p data-i18n="who-p2">You've invested in the right things. The self-help books gave you frameworks. The podcasts kept you going, for a while. A retreat gave you the peace you have not felt before. And you believed those changes would hold.</p>
+        <p data-i18n="who-p3">Then real life resumed. And the old patterns resumed with it. Same triggers, same loops, as though nothing had shifted at all. Part of you began to wonder if this is just who you are.</p>
       </div>
     </div>
   </section>
@@ -1306,7 +1319,7 @@
     <img class="realign-bg" src="./Website FINAL Images/1 LATEST.png" alt="" role="presentation" loading="lazy">
 
     <div class="realign-pre-row">
-      <p class="realign-pre gs-up">Meet the part of you that has answers.</p>
+      <p class="realign-pre gs-up" data-i18n="realign-pre">Meet the part of you that has answers.</p>
     </div>
 
     <div class="realign-mega-block">
@@ -1316,11 +1329,11 @@
 
     <div class="realign-post-row">
       <div class="realign-post gs-up">
-        <p>Align mind and body with your goals</p>
-        <p>Bypass conscious resistance</p>
-        <p>Improve relationships</p>
-        <p>Improve health and well-being</p>
-        <p>Greater sense of happiness and freedom</p>
+        <p data-i18n="realign-b1">Align mind and body with your goals</p>
+        <p data-i18n="realign-b2">Bypass conscious resistance</p>
+        <p data-i18n="realign-b3">Improve relationships</p>
+        <p data-i18n="realign-b4">Improve health and well-being</p>
+        <p data-i18n="realign-b5">Greater sense of happiness and freedom</p>
       </div>
     </div>
 
@@ -1333,12 +1346,12 @@
       alt="" role="presentation" loading="lazy">
     <div class="philosophy-overlay" aria-hidden="true"></div>
     <div class="philosophy-inner">
-      <span class="eyebrow-lt gs-up">The Philosophy</span>
+      <span class="eyebrow-lt gs-up" data-i18n="philo-eyebrow">The Philosophy</span>
       <div class="body gs-up">
-        <p>Your unconscious mind runs 95% of how you operate, built on programming absorbed before your conscious awareness developed.</p>
-        <p>Everything you've tried targeted the conscious mind. The reflection. The goal setting. Change through conscious effort alone is possible, it's just working against the current the whole way.</p>
-        <p>Just like two heads on one body. One wants one thing, you want another.</p>
-        <p>The Realign works to bring both parts into agreement. We find where the pattern was wired, update it at the root, and let your mind and body finally move as one.</p>
+        <p data-i18n="philo-p1">Your unconscious mind runs 95% of how you operate, built on programming absorbed before your conscious awareness developed.</p>
+        <p data-i18n="philo-p2">Everything you've tried targeted the conscious mind. The reflection. The goal setting. Change through conscious effort alone is possible, it's just working against the current the whole way.</p>
+        <p data-i18n="philo-p3">Just like two heads on one body. One wants one thing, you want another.</p>
+        <p data-i18n="philo-p4">The Realign works to bring both parts into agreement. We find where the pattern was wired, update it at the root, and let your mind and body finally move as one.</p>
       </div>
     </div>
   </section>
@@ -1346,25 +1359,25 @@
   <!-- ── S4: NEUROSCIENCE ─────────────────────────────── -->
   <section class="s-science sec-lg tex" id="science">
     <div class="inner">
-      <span class="eyebrow gs-up">The Neuroscience</span>
-      <h2 class="h2 h2-light gs-up">How your mind actually works</h2>
-      <p class="science-intro gs-up">The unconscious mind controls what you notice,<br>filtering perception before it reaches your awareness.</p>
+      <span class="eyebrow gs-up" data-i18n="sci-eyebrow">The Neuroscience</span>
+      <h2 class="h2 h2-light gs-up" data-i18n="sci-h2">How your mind actually works</h2>
+      <p class="science-intro gs-up" data-i18n="sci-intro">The unconscious mind controls what you notice,<br>filtering perception before it reaches your awareness.</p>
       <div class="science-stats gs-up">
         <div class="science-stat">
-          <span class="science-stat-role">Conscious</span>
-          <span class="science-stat-category">Information Processing</span>
+          <span class="science-stat-role" data-i18n="sci-conscious">Conscious</span>
+          <span class="science-stat-category" data-i18n="sci-info-proc">Information Processing</span>
           <span class="science-stat-n">40</span>
-          <span class="science-stat-unit">bits per second</span>
+          <span class="science-stat-unit" data-i18n="sci-bits">bits per second</span>
         </div>
         <div class="science-divider"></div>
         <div class="science-stat">
-          <span class="science-stat-role">Unconscious</span>
-          <span class="science-stat-category">Information Processing</span>
+          <span class="science-stat-role" data-i18n="sci-unconscious">Unconscious</span>
+          <span class="science-stat-category" data-i18n="sci-info-proc">Information Processing</span>
           <span class="science-stat-n">40M</span>
-          <span class="science-stat-unit">bits per second</span>
+          <span class="science-stat-unit" data-i18n="sci-bits">bits per second</span>
         </div>
       </div>
-      <p class="science-outro gs-up">What it lets through becomes what you call reality. That reality<br>shapes your decisions. Those decisions build the life you're living.</p>
+      <p class="science-outro gs-up" data-i18n="sci-outro">What it lets through becomes what you call <em>reality</em>. That <em>reality</em><br>shapes your <em>decisions</em>. Those decisions build the <em>life</em> you're living.</p>
     </div>
   </section>
 
@@ -1376,8 +1389,8 @@
     <div class="benefits-overlay" aria-hidden="true"></div>
     <div class="benefits-inner">
       <div class="hd gs-up">
-        <span class="eyebrow-lt">The Session</span>
-        <h2 class="h2 h2-light">What You Get</h2>
+        <span class="eyebrow-lt" data-i18n="sess-eyebrow">The Session</span>
+        <h2 class="h2 h2-light" data-i18n="sess-h2">What You Get</h2>
       </div>
       <div class="cards-grid">
 
@@ -1385,70 +1398,70 @@
           <div class="card-icon">
             <svg viewBox="0 0 24 24"><path d="M9.5 2a2.5 2.5 0 0 1 5 0"/><path d="M12 12c3.866 0 7-2.24 7-5s-3.134-5-7-5-7 2.24-7 5 3.134 5 7 5z"/><path d="M12 12v10"/><path d="M8 16l4 2 4-2"/></svg>
           </div>
-          <span class="card-label">Uncover the patterns holding you back</span>
+          <span class="card-label" data-i18n="card-1">Uncover the patterns holding you back</span>
         </div>
 
         <div class="card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
           </div>
-          <span class="card-label">Clarity on the next chapter</span>
+          <span class="card-label" data-i18n="card-2">Clarity on the next chapter</span>
         </div>
 
         <div class="card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </div>
-          <span class="card-label">Feel like yourself again</span>
+          <span class="card-label" data-i18n="card-3">Feel like yourself again</span>
         </div>
 
         <div class="card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
           </div>
-          <span class="card-label">Overcome self-sabotage</span>
+          <span class="card-label" data-i18n="card-4">Overcome self-sabotage</span>
         </div>
 
         <div class="card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-          <span class="card-label">Healthier relationships</span>
+          <span class="card-label" data-i18n="card-5">Healthier relationships</span>
         </div>
 
         <div class="card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
           </div>
-          <span class="card-label">Unlock creative solutions</span>
+          <span class="card-label" data-i18n="card-6">Unlock creative solutions</span>
         </div>
 
         <div class="card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
           </div>
-          <span class="card-label">Freedom to live on your own terms</span>
+          <span class="card-label" data-i18n="card-7">Freedom to live on your own terms</span>
         </div>
 
         <div class="card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           </div>
-          <span class="card-label">Sleep peacefully, without tension</span>
+          <span class="card-label" data-i18n="card-8">Sleep peacefully, without tension</span>
         </div>
 
         <div class="card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24"><path d="M12 22V12"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><circle cx="12" cy="5" r="3"/></svg>
           </div>
-          <span class="card-label">Self confidence and empowerment</span>
+          <span class="card-label" data-i18n="card-9">Self confidence and empowerment</span>
         </div>
 
         <div class="card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <span class="card-label">Accelerated self evolution</span>
+          <span class="card-label" data-i18n="card-10">Accelerated self evolution</span>
         </div>
 
       </div>
@@ -1461,21 +1474,21 @@
     <div class="about-quote-band gs-up">
       <div class="about-quote-inner">
         <span class="about-quote-mark" aria-hidden="true">"</span>
-        <p class="about-pullquote">For a long time, I couldn't name what was wrong. I had built the career, the title, the appearance of a life that was working. And still, every day felt the same kind of empty.</p>
+        <p class="about-pullquote" data-i18n="about-pull">For a long time, I couldn't name what was wrong. I had built the career, the title, the appearance of a life that was working. And still, every day felt the same kind of empty.</p>
       </div>
     </div>
 
     <div class="about-main">
       <div class="about-copy">
         <div class="body gs-up">
-          <p>I built and ran an agency for five years as its founder. The kind of work that makes people say, "you must love what you do." I smiled and kept going. But underneath the performance, something in me had gone flat.</p>
-          <p>When that chapter closed, I spent a year doing my own inner work. To give myself a real reset and find what I genuinely wanted.</p>
-          <p>The decision was real. What followed was months of watching myself try and slip right back. Eventually I understood the issue was never clarity or motivation. The old code was still running. When I started working at that layer, the internal friction dissolved, and naturally, my action and energy clicked into alignment.</p>
-          <p>A lot of people I see now are in that same place. Mid-transition, pivoting careers, wondering if they have what it takes. Clearing what's been resisting it from the inside started to feel like the most honest thing I could offer.</p>
+          <p data-i18n="about-p1">I built and ran an agency for five years as its founder. The kind of work that makes people say, "you must love what you do." I smiled and kept going. But underneath the performance, something in me had gone flat.</p>
+          <p data-i18n="about-p2">When that chapter closed, I spent a year doing my own inner work. To give myself a real reset and find what I genuinely wanted.</p>
+          <p data-i18n="about-p3">The decision was real. What followed was months of watching myself try and slip right back. Eventually I understood the issue was never clarity or motivation. The old code was still running. When I started working at that layer, the internal friction dissolved, and naturally, my action and energy clicked into alignment.</p>
+          <p data-i18n="about-p4">A lot of people I see now are in that same place. Mid-transition, pivoting careers, wondering if they have what it takes. Clearing what's been resisting it from the inside started to feel like the most honest thing I could offer.</p>
         </div>
-        <span class="about-sig gs-up">Lara Yap, IHA Certified Hypnotherapist</span>
+        <span class="about-sig gs-up" data-i18n="about-sig">Lara Yap, IHA Certified Hypnotherapist</span>
         <div class="gs-up" style="margin-top:32px;">
-          <a href="https://calendly.com/lara" class="link-arrow">
+          <a href="https://calendly.com/lara" class="link-arrow" data-i18n="cta-clarity-arrow">
             Book a Clarity Call
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -1499,8 +1512,8 @@
     <img class="testi-bg" src="./Website FINAL Images/4.png" alt="" role="presentation" loading="lazy">
     <div class="max-w" style="position:relative;z-index:2;">
       <div class="hd gs-up" style="text-align:center; margin-bottom:48px;">
-        <span class="eyebrow-sm">Clients</span>
-        <h2 class="h2 h2-light">In their own words</h2>
+        <span class="eyebrow-sm" data-i18n="testi-eyebrow">Clients</span>
+        <h2 class="h2 h2-light" data-i18n="testi-h2">In their own words</h2>
       </div>
       <div class="testi-carousel-wrap">
         <button class="testi-arrow testi-arrow-prev" aria-label="Previous">
@@ -1548,29 +1561,29 @@
   <!-- ── S10: COMMON PATTERNS ──────────────────────────── -->
   <section class="s-tags tex" id="concerns">
     <div class="tags-hd gs-up">
-      <span class="eyebrow-sm">Common Patterns</span>
-      <h2 class="h2">What Brings People Here</h2>
+      <span class="eyebrow-sm" data-i18n="tags-eyebrow">Common Patterns</span>
+      <h2 class="h2" data-i18n="tags-h2">What Brings People Here</h2>
     </div>
     <div class="tags-canvas" id="tagsCanvas" aria-label="Topics people work on">
-      <span class="tw tw-it"    data-depth="0.9"  style="left:28%;top:6%">Self-worth</span>
-      <span class="tw tw-thin"  data-depth="1.1"  style="left:52%;top:4%">Procrastination</span>
-      <span class="tw tw-bd"    data-depth="1.0"  style="left:38%;top:14%">Perfectionism</span>
-      <span class="tw"           data-depth="1.2"  style="left:62%;top:12%">Imposter syndrome</span>
-      <span class="tw tw-it"    data-depth="0.95" style="left:14%;top:22%">Self-sabotage</span>
-      <span class="tw tw-bd-it" data-depth="1.1"  style="left:44%;top:24%">Chronic overthinking</span>
-      <span class="tw tw-thin"  data-depth="1.15" style="left:68%;top:20%">Fear of failure</span>
-      <span class="tw"           data-depth="0.9"  style="left:12%;top:34%">Fear of visibility</span>
-      <span class="tw tw-it"    data-depth="1.05" style="left:40%;top:36%">People-pleasing</span>
-      <span class="tw tw-bd"    data-depth="1.2"  style="left:62%;top:32%">Burnout</span>
-      <span class="tw tw-thin"  data-depth="0.92" style="left:22%;top:46%">Career transitions</span>
-      <span class="tw tw-it"    data-depth="1.1"  style="left:50%;top:48%">Finding purpose</span>
-      <span class="tw"           data-depth="0.88" style="left:16%;top:58%">Feeling disconnected</span>
-      <span class="tw tw-bd-it" data-depth="1.1"  style="left:44%;top:60%">Inner conflict</span>
-      <span class="tw tw-thin"  data-depth="1.2"  style="left:66%;top:54%">Limiting beliefs</span>
-      <span class="tw tw-it"    data-depth="0.92" style="left:26%;top:70%">Relationship patterns</span>
-      <span class="tw tw-bd"    data-depth="1.15" style="left:54%;top:72%">Emotional eating</span>
-      <span class="tw"           data-depth="1.1"  style="left:70%;top:66%">Sleep issues</span>
-      <span class="tw tw-bd"    data-depth="1.0"  style="left:36%;top:80%">Weight management</span>
+      <span class="tw tw-it"    data-depth="0.9"  style="left:28%;top:6%"  data-i18n="tw-selfworth">Self-worth</span>
+      <span class="tw tw-thin"  data-depth="1.1"  style="left:52%;top:4%"  data-i18n="tw-procrastination">Procrastination</span>
+      <span class="tw tw-bd"    data-depth="1.0"  style="left:38%;top:14%" data-i18n="tw-perfectionism">Perfectionism</span>
+      <span class="tw"           data-depth="1.2"  style="left:62%;top:12%" data-i18n="tw-imposter">Imposter syndrome</span>
+      <span class="tw tw-it"    data-depth="0.95" style="left:14%;top:22%" data-i18n="tw-sabotage">Self-sabotage</span>
+      <span class="tw tw-bd-it" data-depth="1.1"  style="left:44%;top:24%" data-i18n="tw-overthinking">Chronic overthinking</span>
+      <span class="tw tw-thin"  data-depth="1.15" style="left:68%;top:20%" data-i18n="tw-failure">Fear of failure</span>
+      <span class="tw"           data-depth="0.9"  style="left:12%;top:34%" data-i18n="tw-visibility">Fear of visibility</span>
+      <span class="tw tw-it"    data-depth="1.05" style="left:40%;top:36%" data-i18n="tw-pleasing">People-pleasing</span>
+      <span class="tw tw-bd"    data-depth="1.2"  style="left:62%;top:32%" data-i18n="tw-burnout">Burnout</span>
+      <span class="tw tw-thin"  data-depth="0.92" style="left:22%;top:46%" data-i18n="tw-career">Career transitions</span>
+      <span class="tw tw-it"    data-depth="1.1"  style="left:50%;top:48%" data-i18n="tw-purpose">Finding purpose</span>
+      <span class="tw"           data-depth="0.88" style="left:16%;top:58%" data-i18n="tw-disconnected">Feeling disconnected</span>
+      <span class="tw tw-bd-it" data-depth="1.1"  style="left:44%;top:60%" data-i18n="tw-conflict">Inner conflict</span>
+      <span class="tw tw-thin"  data-depth="1.2"  style="left:66%;top:54%" data-i18n="tw-limiting">Limiting beliefs</span>
+      <span class="tw tw-it"    data-depth="0.92" style="left:26%;top:70%" data-i18n="tw-relationship">Relationship patterns</span>
+      <span class="tw tw-bd"    data-depth="1.15" style="left:54%;top:72%" data-i18n="tw-eating">Emotional eating</span>
+      <span class="tw"           data-depth="1.1"  style="left:70%;top:66%" data-i18n="tw-sleep">Sleep issues</span>
+      <span class="tw tw-bd"    data-depth="1.0"  style="left:36%;top:80%" data-i18n="tw-weight">Weight management</span>
     </div>
   </section>
 
@@ -1579,13 +1592,13 @@
   <section class="s-clarity sec-lg" id="clarity">
     <img class="clarity-bg" src="./Website FINAL Images/5.png" alt="" role="presentation" loading="lazy">
     <div class="clarity-glass">
-      <span class="eyebrow gs-up">Free &nbsp;·&nbsp; 20 Minutes</span>
-      <h2 class="h2 h2-light gs-up">Your clarity starts here</h2>
+      <span class="eyebrow gs-up" data-i18n="clarity-eyebrow">Free &nbsp;·&nbsp; 20 Minutes</span>
+      <h2 class="h2 h2-light gs-up" data-i18n="clarity-h2">Your clarity starts here</h2>
       <div class="body body-light gs-up">
-        <p>A free 20-minute safe space for honest conversation and clarity, before you decide if The Realign is right for you.</p>
+        <p data-i18n="clarity-p">A free 20-minute safe space for honest conversation and clarity, before you decide if The Realign is right for you.</p>
       </div>
       <div class="gs-up" style="margin-top:52px;">
-        <a href="https://calendly.com/lara" class="btn btn-cream">Claim your clarity</a>
+        <a href="https://calendly.com/lara" class="btn btn-cream" data-i18n="clarity-cta">Claim your clarity</a>
       </div>
     </div>
   </section>
@@ -1596,11 +1609,11 @@
       <div class="book-grid">
 
         <div class="book-left gs-up">
-          <span class="eyebrow">Reality, simplified</span>
-          <h2 class="h2" style="font-style:italic;">Death of the Old World</h2>
+          <span class="eyebrow" data-i18n="book-eyebrow">Reality, simplified</span>
+          <h2 class="h2" style="font-style:italic;" data-i18n="book-h2">Death of the Old World</h2>
           <div class="body">
-            <p>If you've been asking existential questions nobody around you can answer, this book was written for you.</p>
-            <p>Most books answer one question. This one follows them all the way down: why reality is not what it appears, how your inner world shapes your outer one, what time and death are, and what you are capable of when you understand how consciousness works.</p>
+            <p data-i18n="book-p1">If you've been asking existential questions nobody around you can answer, this book was written for you.</p>
+            <p data-i18n="book-p2">Most books answer one question. This one follows them all the way down: why reality is not what it appears, how your inner world shapes your outer one, what time and death are, and what you are capable of when you understand how consciousness works.</p>
           </div>
         </div>
 
@@ -1612,11 +1625,11 @@
 
         <div class="book-right gs-up">
           <div class="body">
-            <p>After 11 years of researching consciousness and the psychology of the mind, I wrote the book my younger self wished had existed.</p>
-            <p>Drawn from science, philosophy, and ancient wisdom. Non-religious. For the ones who were always meant to know.</p>
+            <p data-i18n="book-p3">After 11 years of researching consciousness and the psychology of the mind, I wrote the book my younger self wished had existed.</p>
+            <p data-i18n="book-p4">Drawn from science, philosophy, and ancient wisdom. Non-religious. For the ones who were always meant to know.</p>
           </div>
           <div class="book-btn-wrap">
-            <a href="https://amazon.com/Death-Old-World" class="btn-clarity-glass">I AM</a>
+            <a href="https://amazon.com/Death-Old-World" class="btn-clarity-glass" data-i18n="book-btn">I AM</a>
           </div>
         </div>
 
@@ -1628,12 +1641,12 @@
   <section class="s-faq sec-lg" id="faq">
     <div class="s-faq inner-faq">
       <div class="hd gs-up">
-        <span class="eyebrow-sm">Questions</span>
-        <h2 class="h2">Frequently Asked</h2>
+        <span class="eyebrow-sm" data-i18n="faq-eyebrow">Questions</span>
+        <h2 class="h2" data-i18n="faq-h2">Frequently Asked</h2>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" data-i18n="faq-q1">
           How is The Realign different from therapy or coaching?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
@@ -1645,7 +1658,7 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" data-i18n="faq-q2">
           What actually happens in a session?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
@@ -1657,7 +1670,7 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" data-i18n="faq-q3">
           Do I have to talk about trauma or relive painful things?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
@@ -1668,7 +1681,7 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" data-i18n="faq-q4">
           How much does a session cost?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
@@ -1679,7 +1692,7 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" data-i18n="faq-q5">
           Is this spiritual or scientific?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
@@ -1691,7 +1704,7 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" data-i18n="faq-q6">
           Online or in-person?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
@@ -1701,7 +1714,7 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" data-i18n="faq-q7">
           What languages do you work in?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
@@ -1717,13 +1730,13 @@
   <footer class="footer" role="contentinfo">
     <div class="max-w">
       <div class="footer-quote">
-        <p class="footer-quote-text">The privilege of a lifetime is to become<br><em>who you truly are.</em></p>
-        <cite class="footer-quote-attr">Carl Jung</cite>
+        <p class="footer-quote-text" data-i18n="footer-quote">The privilege of a lifetime is to become<br><em>who you truly are.</em></p>
+        <cite class="footer-quote-attr" data-i18n="footer-cite">Carl Jung</cite>
       </div>
       <div class="footer-grid">
         <div>
           <p class="footer-brand">Lara Yap · Mind Aligner</p>
-          <p class="footer-tagline">Subconscious repatterning for people ready to stop running on old code.</p>
+          <p class="footer-tagline" data-i18n="footer-tagline">Subconscious repatterning for people ready to stop running on old code.</p>
         </div>
         <div>
           <p class="footer-col-label">Navigate</p>
@@ -2105,6 +2118,190 @@
         }
       });
     });
+
+    // ─── LANGUAGE TOGGLE ─────────────────────────────────
+    const i18n = {
+      en: {
+        'nav-logo': 'Lara Yap <span>·</span> Mind Aligner',
+        'nav-about': 'About', 'nav-faq': 'FAQ', 'nav-book': 'Book',
+        'cta-clarity': 'Book a Clarity Call',
+        'cta-clarity-arrow': 'Book a Clarity Call <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>',
+        'hero-eyebrow': 'From where you were,<br>to who you are',
+        'hero-side-l': 'Program your reality',
+        'hero-side-r': 'by Lara Yap',
+        'who-h2': "You know you're meant for more",
+        'who-p1': 'That feeling has been deep within you.',
+        'who-p2': "You've invested in the right things. The self-help books gave you frameworks. The podcasts kept you going, for a while. A retreat gave you the peace you have not felt before. And you believed those changes would hold.",
+        'who-p3': "Then real life resumed. And the old patterns resumed with it. Same triggers, same loops, as though nothing had shifted at all. Part of you began to wonder if this is just who you are.",
+        'realign-pre': 'Meet the part of you that has answers.',
+        'realign-b1': 'Align mind and body with your goals',
+        'realign-b2': 'Bypass conscious resistance',
+        'realign-b3': 'Improve relationships',
+        'realign-b4': 'Improve health and well-being',
+        'realign-b5': 'Greater sense of happiness and freedom',
+        'philo-eyebrow': 'The Philosophy',
+        'philo-p1': 'Your unconscious mind runs 95% of how you operate, built on programming absorbed before your conscious awareness developed.',
+        'philo-p2': "Everything you've tried targeted the conscious mind. The reflection. The goal setting. Change through conscious effort alone is possible, it's just working against the current the whole way.",
+        'philo-p3': 'Just like two heads on one body. One wants one thing, you want another.',
+        'philo-p4': 'The Realign works to bring both parts into agreement. We find where the pattern was wired, update it at the root, and let your mind and body finally move as one.',
+        'sci-eyebrow': 'The Neuroscience',
+        'sci-h2': 'How your mind actually works',
+        'sci-intro': 'The unconscious mind controls what you notice,<br>filtering perception before it reaches your awareness.',
+        'sci-conscious': 'Conscious', 'sci-unconscious': 'Unconscious',
+        'sci-info-proc': 'Information Processing', 'sci-bits': 'bits per second',
+        'sci-outro': 'What it lets through becomes what you call <em>reality</em>. That <em>reality</em><br>shapes your <em>decisions</em>. Those decisions build the <em>life</em> you\'re living.',
+        'sess-eyebrow': 'The Session', 'sess-h2': 'What You Get',
+        'card-1': 'Uncover the patterns holding you back',
+        'card-2': 'Clarity on the next chapter',
+        'card-3': 'Feel like yourself again',
+        'card-4': 'Overcome self-sabotage',
+        'card-5': 'Healthier relationships',
+        'card-6': 'Unlock creative solutions',
+        'card-7': 'Freedom to live on your own terms',
+        'card-8': 'Sleep peacefully, without tension',
+        'card-9': 'Self confidence and empowerment',
+        'card-10': 'Accelerated self evolution',
+        'about-pull': "For a long time, I couldn't name what was wrong. I had built the career, the title, the appearance of a life that was working. And still, every day felt the same kind of empty.",
+        'about-p1': 'I built and ran an agency for five years as its founder. The kind of work that makes people say, “you must love what you do.” I smiled and kept going. But underneath the performance, something in me had gone flat.',
+        'about-p2': 'When that chapter closed, I spent a year doing my own inner work. To give myself a real reset and find what I genuinely wanted.',
+        'about-p3': 'The decision was real. What followed was months of watching myself try and slip right back. Eventually I understood the issue was never clarity or motivation. The old code was still running. When I started working at that layer, the internal friction dissolved, and naturally, my action and energy clicked into alignment.',
+        'about-p4': "A lot of people I see now are in that same place. Mid-transition, pivoting careers, wondering if they have what it takes. Clearing what's been resisting it from the inside started to feel like the most honest thing I could offer.",
+        'about-sig': 'Lara Yap, IHA Certified Hypnotherapist',
+        'testi-eyebrow': 'Clients', 'testi-h2': 'In their own words',
+        'tags-eyebrow': 'Common Patterns', 'tags-h2': 'What Brings People Here',
+        'tw-selfworth': 'Self-worth', 'tw-procrastination': 'Procrastination',
+        'tw-perfectionism': 'Perfectionism', 'tw-imposter': 'Imposter syndrome',
+        'tw-sabotage': 'Self-sabotage', 'tw-overthinking': 'Chronic overthinking',
+        'tw-failure': 'Fear of failure', 'tw-visibility': 'Fear of visibility',
+        'tw-pleasing': 'People-pleasing', 'tw-burnout': 'Burnout',
+        'tw-career': 'Career transitions', 'tw-purpose': 'Finding purpose',
+        'tw-disconnected': 'Feeling disconnected', 'tw-conflict': 'Inner conflict',
+        'tw-limiting': 'Limiting beliefs', 'tw-relationship': 'Relationship patterns',
+        'tw-eating': 'Emotional eating', 'tw-sleep': 'Sleep issues', 'tw-weight': 'Weight management',
+        'clarity-eyebrow': 'Free &nbsp;·&nbsp; 20 Minutes',
+        'clarity-h2': 'Your clarity starts here',
+        'clarity-p': 'A free 20-minute safe space for honest conversation and clarity, before you decide if The Realign is right for you.',
+        'clarity-cta': 'Claim your clarity',
+        'book-eyebrow': 'Reality, simplified',
+        'book-h2': 'Death of the Old World',
+        'book-p1': "If you've been asking existential questions nobody around you can answer, this book was written for you.",
+        'book-p2': "Most books answer one question. This one follows them all the way down: why reality is not what it appears, how your inner world shapes your outer one, what time and death are, and what you are capable of when you understand how consciousness works.",
+        'book-p3': 'After 11 years of researching consciousness and the psychology of the mind, I wrote the book my younger self wished had existed.',
+        'book-p4': 'Drawn from science, philosophy, and ancient wisdom. Non-religious. For the ones who were always meant to know.',
+        'book-btn': 'I AM',
+        'faq-eyebrow': 'Questions', 'faq-h2': 'Frequently Asked',
+        'faq-q1': 'How is The Realign different from therapy or coaching? <span class="faq-icon" aria-hidden="true">+</span>',
+        'faq-q2': 'What actually happens in a session? <span class="faq-icon" aria-hidden="true">+</span>',
+        'faq-q3': 'Do I have to talk about trauma or relive painful things? <span class="faq-icon" aria-hidden="true">+</span>',
+        'faq-q4': 'How much does a session cost? <span class="faq-icon" aria-hidden="true">+</span>',
+        'faq-q5': 'Is this spiritual or scientific? <span class="faq-icon" aria-hidden="true">+</span>',
+        'faq-q6': 'Online or in-person? <span class="faq-icon" aria-hidden="true">+</span>',
+        'faq-q7': 'What languages do you work in? <span class="faq-icon" aria-hidden="true">+</span>',
+        'footer-quote': 'The privilege of a lifetime is to become<br><em>who you truly are.</em>',
+        'footer-cite': 'Carl Jung',
+        'footer-tagline': 'Subconscious repatterning for people ready to stop running on old code.',
+      },
+      zh: {
+        'nav-logo': 'Lara Yap <span>·</span> 心灵对齐师',
+        'nav-about': '关于', 'nav-faq': '常见问题', 'nav-book': '书籍',
+        'cta-clarity': '预约清晰通话',
+        'cta-clarity-arrow': '预约清晰通话 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>',
+        'hero-eyebrow': '从你曾经的模样，<br>到你本来的自己',
+        'hero-side-l': '重塑你的现实',
+        'hero-side-r': 'Lara Yap 著',
+        'who-h2': '你知道，自己本应不止于此',
+        'who-p1': '那种感觉，一直深藏在你心里。',
+        'who-p2': '你做了该做的事。自我成长书籍给了你框架。播客一时间让你保持动力。静修带来了前所未有的平静。你相信那些改变会延续。',
+        'who-p3': '然而现实重启了。旧模式也随之而来。同样的触发，同样的循环，仿佛什么都没有发生。你开始怀疑，也许这就是真实的你。',
+        'realign-pre': '遇见那个拥有答案的自己。',
+        'realign-b1': '让身心与你的目标对齐',
+        'realign-b2': '突破意识层面的阻力',
+        'realign-b3': '改善人际关系',
+        'realign-b4': '提升健康与幸福感',
+        'realign-b5': '更深的幸福感与自由感',
+        'philo-eyebrow': '核心理念',
+        'philo-p1': '你95%的运作方式由潜意识主导，建立在意识形成之前所吸收的编程之上。',
+        'philo-p2': '你曾尝试的一切都针对意识层面。那些反思。那些目标设定。仅靠意识努力改变是可能的，只是一路都在逆流而上。',
+        'philo-p3': '就像一个身体长了两个头。一个想要一件事，而你想要的是另一件事。',
+        'philo-p4': 'Realign 致力于让两个部分达成一致。我们找到模式被植入的根源，在那里更新它，让你的身心终于能够同向而行。',
+        'sci-eyebrow': '神经科学依据',
+        'sci-h2': '你的大脑究竟如何运作',
+        'sci-intro': '潜意识掌控着你所注意的一切，<br>在感知到达意识之前便已完成过滤。',
+        'sci-conscious': '意识', 'sci-unconscious': '潜意识',
+        'sci-info-proc': '信息处理', 'sci-bits': '比特/秒',
+        'sci-outro': '它所允许通过的，成了你所称的<em>现实</em>。那个<em>现实</em><br>塑造了你的<em>决定</em>。那些决定构建了你所过的<em>生活</em>。',
+        'sess-eyebrow': '疗程内容', 'sess-h2': '你将获得的',
+        'card-1': '揭开阻碍你前进的模式',
+        'card-2': '对下一个人生篇章的清晰认知',
+        'card-3': '重新感受真实的自己',
+        'card-4': '克服自我破坏',
+        'card-5': '更健康的人际关系',
+        'card-6': '解锁创意与解决方案',
+        'card-7': '按自己的方式自由生活',
+        'card-8': '平静入眠，远离紧绷',
+        'card-9': '自信与内在力量',
+        'card-10': '加速自我进化',
+        'about-pull': '很长一段时间，我说不清哪里出了问题。我建立了事业、头衔、一个看起来运转正常的人生。然而每一天，都带着同一种空洞感。',
+        'about-p1': '我创立并经营了一家公司长达五年。那种工作会让人说，"你一定很热爱你的事业。"我微笑着，继续前行。但在那层表演之下，某些东西在我内心悄然熄灭。',
+        'about-p2': '当那个篇章落幕，我花了一年时间做自己的内在工作。给自己一个真正的重置，找回我真正想要的。',
+        'about-p3': '那个决定是真实的。随之而来的，是数月来不断尝试、又不断滑回原处的过程。最终我明白，问题从来不在于缺乏清晰或动力。旧的代码仍在运行。当我开始从那个层面工作，内在的阻力消融了，行动与能量自然而然地走向了协调。',
+        'about-p4': '我现在接触的很多人都处于同样的境地。人生过渡期，转换跑道，不确定自己是否有那个能力。从内在清除阻力，开始成为我所能给予的最诚实的礼物。',
+        'about-sig': 'Lara Yap，IHA 认证催眠治疗师',
+        'testi-eyebrow': '客户感言', 'testi-h2': '用他们自己的话',
+        'tags-eyebrow': '常见模式', 'tags-h2': '是什么带他们来到这里',
+        'tw-selfworth': '自我价值', 'tw-procrastination': '拖延症',
+        'tw-perfectionism': '完美主义', 'tw-imposter': '冒名顶替综合症',
+        'tw-sabotage': '自我破坏', 'tw-overthinking': '长期过度思虑',
+        'tw-failure': '对失败的恐惧', 'tw-visibility': '对被看见的恐惧',
+        'tw-pleasing': '讨好他人', 'tw-burnout': '职业倦怠',
+        'tw-career': '职业转换', 'tw-purpose': '寻找人生目的',
+        'tw-disconnected': '内心疏离感', 'tw-conflict': '内在冲突',
+        'tw-limiting': '限制性信念', 'tw-relationship': '关系模式',
+        'tw-eating': '情绪性进食', 'tw-sleep': '睡眠问题', 'tw-weight': '体重管理',
+        'clarity-eyebrow': '免费 &nbsp;·&nbsp; 20 分钟',
+        'clarity-h2': '你的清晰，从这里开始',
+        'clarity-p': '一个免费的20分钟安全空间，坦诚交流，找到清晰，再决定 Realign 是否适合你。',
+        'clarity-cta': '预约清晰通话',
+        'book-eyebrow': '现实，简而言之',
+        'book-h2': '旧世界的终结',
+        'book-p1': '如果你一直在问那些周围没人能回答的存在主义问题，这本书是为你而写的。',
+        'book-p2': '大多数书回答一个问题。而这本书追随所有问题一路向下：现实为何不是表面的那样，你的内心世界如何塑造外部世界，时间与死亡是什么，以及当你理解意识如何运作时，你所能做到的一切。',
+        'book-p3': '经过11年对意识与心理学的研究，我写下了那本年轻时的自己渴望拥有的书。',
+        'book-p4': '源自科学、哲学与古老智慧。非宗教性。为那些本就注定要知晓的人而写。',
+        'book-btn': '我是',
+        'faq-eyebrow': '常见问题', 'faq-h2': '常被问到的',
+        'faq-q1': 'Realign 与心理治疗或教练有何不同？<span class="faq-icon" aria-hidden="true">+</span>',
+        'faq-q2': '一次疗程中实际会发生什么？<span class="faq-icon" aria-hidden="true">+</span>',
+        'faq-q3': '我需要谈及创伤或重历痛苦的经历吗？<span class="faq-icon" aria-hidden="true">+</span>',
+        'faq-q4': '一次疗程的费用是多少？<span class="faq-icon" aria-hidden="true">+</span>',
+        'faq-q5': '这是灵性的还是科学的？<span class="faq-icon" aria-hidden="true">+</span>',
+        'faq-q6': '线上还是面对面？<span class="faq-icon" aria-hidden="true">+</span>',
+        'faq-q7': '你用哪些语言工作？<span class="faq-icon" aria-hidden="true">+</span>',
+        'footer-quote': '一生中最大的特权，是成为<br><em>真正的自己。</em>',
+        'footer-cite': '卡尔·荣格',
+        'footer-tagline': '潜意识重塑，为那些准备好摆脱旧有模式的人。',
+      }
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'en';
+
+    function setLang(lang) {
+      currentLang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[lang][key] !== undefined) el.innerHTML = i18n[lang][key];
+      });
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      const btn = document.getElementById('langToggle');
+      if (btn) btn.textContent = lang === 'zh' ? 'EN' : '中文';
+      localStorage.setItem('lang', lang);
+    }
+
+    document.getElementById('langToggle').addEventListener('click', function() {
+      setLang(currentLang === 'zh' ? 'en' : 'zh');
+    });
+
+    if (currentLang === 'zh') setLang('zh');
 
     // Testimonials infinite scroll
     (function() {
