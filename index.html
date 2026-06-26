@@ -430,8 +430,13 @@
     }
     .hero-side {
       font-family: var(--f-body); font-style: italic;
-      font-weight: 400; font-size: 13px; line-height: 1.75;
+      font-weight: 400; font-size: clamp(15px, 1.6vw, 20px); line-height: 1.75;
       color: rgba(238,231,221,0.52); letter-spacing: 0.01em;
+    }
+    .hero-side-l {
+      font-family: var(--f-bn); font-style: italic;
+      font-size: clamp(16px, 1.8vw, 22px);
+      letter-spacing: 0.01em; line-height: 1.4;
     }
     .hero-side-r { text-align: right; }
     .hero-center { text-align: center; }
@@ -491,12 +496,13 @@
       max-width: 680px; margin: 0 auto; padding: 80px 48px;
       text-align: center;
     }
-    .who-inner .h2 { color: var(--dark); }
-    .who-inner .body { color: rgba(28,20,16,0.72); max-width: 56ch; margin: 0 auto; }
+    .who-inner .h2 { color: var(--dark); font-family: var(--f-bn); font-style: italic; }
+    .who-inner .body { color: rgba(28,20,16,0.72); max-width: 62ch; margin: 0 auto; }
     .who-inner .body p + p { margin-top: 22px; }
     .who-close {
-      font-family: var(--f-bn); font-style: italic;
-      font-weight: 400; font-size: clamp(18px, 2vw, 24px);
+      font-family: var(--f-now); font-weight: 300;
+      font-size: clamp(14px, 1.4vw, 17px);
+      letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--sienna); display: block; margin-top: 44px;
     }
 
@@ -518,6 +524,7 @@
       width: 100%; height: 130%;
       object-fit: cover; object-position: center;
       opacity: 0.92;
+      filter: brightness(0.92);
       will-change: transform;
     }
     .realign-pre-row {
@@ -584,7 +591,7 @@
     }
     .philosophy-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(28,20,9,0.22) 0%, rgba(28,20,9,0.10) 100%);
+      background: linear-gradient(135deg, rgba(28,20,9,0.30) 0%, rgba(28,20,9,0.18) 100%);
     }
     .philosophy-inner {
       position: relative; z-index: 2;
@@ -601,7 +608,7 @@
        S4: NEUROSCIENCE
     ═══════════════════════════════════════════════════ */
     .s-science {
-      background: #342f09;
+      background: #2c2807;
       position: relative; overflow: hidden;
     }
     .s-science .inner {
@@ -761,21 +768,22 @@
       align-items: flex-end;
       overflow: visible;
     }
+    .about-img { height: 100%; }
     .about-img-stack {
       position: relative;
-      width: 100%; height: 460px;
+      width: 100%; height: 100%; min-height: 520px;
     }
     .about-img-back {
       position: absolute;
       right: -24px; top: 0;
-      width: 76%; height: 80%;
+      width: 76%; height: 84%;
       object-fit: cover; object-position: center;
       border-radius: 3px;
     }
     .about-img-front {
       position: absolute;
       left: 0; bottom: 0;
-      width: 76%; height: 82%;
+      width: 76%; height: 86%;
       object-fit: cover; object-position: top center;
       border-radius: 3px;
     }
@@ -922,7 +930,7 @@
        S10: COMMON PATTERNS
     ═══════════════════════════════════════════════════ */
     .s-tags {
-      background: #A88457;
+      background: #ac906d;
       position: relative;
       padding: 100px 0 120px;
       overflow: hidden;
@@ -932,7 +940,7 @@
     }
     .tags-hd {
       position: absolute;
-      left: 52px; top: 50%;
+      left: 52px; top: 44%;
       transform: translateY(-50%);
       writing-mode: vertical-rl;
       text-orientation: mixed;
@@ -974,7 +982,7 @@
     /* ═══════════════════════════════════════════════════
        S11: BOOK
     ═══════════════════════════════════════════════════ */
-    .s-book { background: var(--bg-2); }
+    .s-book { background: #EBE7CD; }
     .book-grid {
       display: grid;
       grid-template-columns: 1fr 280px 1fr;
@@ -985,9 +993,15 @@
     .book-left .body p + p { margin-top: 20px; }
     .book-img-wrap { display: flex; justify-content: center; }
     .book-img-wrap img {
-      width: 100%; max-width: 338px;
+      width: 100%; max-width: 473px;
       filter: drop-shadow(0 24px 56px rgba(28,20,9,0.28));
       mix-blend-mode: multiply;
+    }
+    .book-btn-wrap .btn-clarity-glass {
+      display: block; text-align: center;
+    }
+    .clarity-glass .btn-cream {
+      color: rgba(28,20,9,0.82);
     }
     .book-right { padding-left: 12px; }
     .book-right .body { max-width: 46ch; }
@@ -1225,11 +1239,11 @@
         <div class="hero-3col">
 
           <div class="hero-side hero-side-l gs-up" data-delay="0.6">
-            From where you were,<br>to who you are
+            PROGRAM YOUR REALITY
           </div>
 
           <div class="hero-center">
-            <p class="hero-eyebrow gs-up" data-delay="0.2">PROGRAM YOUR REALITY</p>
+            <p class="hero-eyebrow gs-up" data-delay="0.2">From where you were, to who you are</p>
             <h1 class="hero-h1 gs-up" data-delay="0.38"><em>alive</em> <span class="hero-again">again</span></h1>
             <div class="gs-up" data-delay="0.56">
               <a href="https://calendly.com/lara" class="btn btn-cream">Book a Clarity Call</a>
@@ -1237,7 +1251,7 @@
           </div>
 
           <div class="hero-side hero-side-r gs-up" data-delay="0.6">
-            by Lara Yap.
+            by Lara Yap
           </div>
 
         </div>
@@ -1253,10 +1267,10 @@
   <!-- ── S2: WHO THIS IS FOR ───────────────────────────── -->
   <section class="s-who" id="who">
     <div class="who-inner">
-      <h2 class="h2 gs-up">You know you're meant for more.</h2>
+      <h2 class="h2 gs-up">You know you're meant for more</h2>
       <div class="body gs-up">
         <p>That feeling has been deep within you.</p>
-        <p>You've invested in the right things. The self-help books gave you frameworks. The podcasts kept you going, for a while. A retreat gave you the peace you've never felt before. And you believed those changes would hold.</p>
+        <p>You've invested in the right things. The self-help books gave you frameworks. The podcasts kept you going, for a while. A retreat gave you the peace you have not felt before. And you believed those changes would hold.</p>
         <p>Then real life resumed. And the old patterns resumed with it. Same triggers, same loops, as though nothing had shifted at all. Part of you began to wonder if this is just who you are.</p>
       </div>
       <span class="who-close gs-up">If this resonates, you are in the right place.</span>
@@ -1278,9 +1292,8 @@
 
     <div class="realign-post-row">
       <div class="realign-post gs-up">
-        <p>Align mind and body with your goal</p>
+        <p>Align mind and body with your goals</p>
         <p>Bypass conscious resistance</p>
-        <p>Unlock creative solutions</p>
         <p>Improve relationships</p>
         <p>Improve health and well-being</p>
         <p>Greater sense of happiness and freedom</p>
@@ -1298,9 +1311,10 @@
     <div class="philosophy-inner">
       <span class="eyebrow-lt gs-up">The Philosophy</span>
       <div class="body gs-up">
-        <p>Everything you've tried but hasn't worked targeted the conscious mind. The thinking. The goal-setting. The frameworks.</p>
-        <p>But the unconscious mind runs 95% of how you actually operate. Quietly. On programming shaped by what you absorbed before you developed conscious awareness.</p>
-        <p>The Realign works at that layer. We find where the pattern was wired, update it at the root, and let your mind, body, and goals finally move as one.</p>
+        <p>Everything you've tried targeted the conscious mind. The reflection. The goal setting.</p>
+        <p>But the unconscious mind runs 95% of how you operate, built on programming absorbed before your conscious awareness even developed. It controls what you notice, filtering perception before it ever reaches your awareness. What it lets through becomes what you call reality. That reality shapes your decisions. Those decisions build the life you're living.</p>
+        <p>Like having two heads on one body. It wants one thing, you want another, and they are constantly in conflict or in alignment. In alignment, things flow. In conflict, you set an intention tonight and override it tomorrow morning. You doubt yourself, feeling hopeless. And you wonder why you're not happy.</p>
+        <p>The Realign works at that layer to bring both parts into agreement. We find where the pattern was wired, update it at the root, and let your mind and body finally move toward the same thing.</p>
       </div>
     </div>
   </section>
@@ -1309,7 +1323,7 @@
   <section class="s-science sec-lg tex" id="science">
     <div class="inner">
       <span class="eyebrow gs-up">The Neuroscience</span>
-      <h2 class="h2 h2-light gs-up">How your mind actually works.</h2>
+      <h2 class="h2 h2-light gs-up">How your mind actually works</h2>
       <div class="science-stats gs-up">
         <div class="science-stat">
           <span class="science-stat-role">Conscious</span>
@@ -1381,14 +1395,14 @@
           <div class="card-icon">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
           </div>
-          <span class="card-label">Feel present in your own life</span>
+          <span class="card-label">Unlock creative solutions</span>
         </div>
 
         <div class="card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
           </div>
-          <span class="card-label">Live on your own terms</span>
+          <span class="card-label">Freedom to live on your own terms</span>
         </div>
 
         <div class="card">
@@ -1402,14 +1416,14 @@
           <div class="card-icon">
             <svg viewBox="0 0 24 24"><path d="M12 22V12"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><circle cx="12" cy="5" r="3"/></svg>
           </div>
-          <span class="card-label">Align mind and body with your goals</span>
+          <span class="card-label">Self confidence and empowerment</span>
         </div>
 
         <div class="card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <span class="card-label">Accelerate your self-evolution</span>
+          <span class="card-label">Accelerated self evolution</span>
         </div>
 
       </div>
@@ -1431,7 +1445,7 @@
         <div class="body gs-up">
           <p>I built and ran an agency for five years as its founder. The kind of work that makes people say, "you must love what you do." I smiled and kept going. But underneath the performance, something in me had gone flat.</p>
           <p>When that chapter closed, I spent a year doing my own inner work. To give myself a real reset and find what I genuinely wanted.</p>
-          <p>The decision was real. What followed was months of watching myself try and slip right back. Eventually I understood the issue was never clarity or motivation. The old code was still running. When I started working at that layer, things began to align.</p>
+          <p>The decision was real. What followed was months of watching myself try and slip right back. Eventually I understood the issue was never clarity or motivation. The old code was still running. When I started working at that layer, the internal friction dissolved, and naturally, my action and energy clicked into alignment.</p>
           <p>A lot of people I see now are in that same place. Mid-transition, pivoting careers, wondering if they have what it takes. Clearing what's been resisting it from the inside started to feel like the most honest thing I could offer.</p>
         </div>
         <span class="about-sig gs-up">Lara Yap, IHA Certified Hypnotherapist</span>
@@ -1517,12 +1531,12 @@
     <img class="clarity-bg" src="./Website FINAL Images/5.png" alt="" role="presentation" loading="lazy">
     <div class="clarity-glass">
       <span class="eyebrow gs-up">Free &nbsp;·&nbsp; 20 Minutes</span>
-      <h2 class="h2 h2-light gs-up">Your clarity starts here.</h2>
+      <h2 class="h2 h2-light gs-up">Your clarity starts here</h2>
       <div class="body body-light gs-up">
         <p>A free 20-minute safe space for honest conversation and clarity, before you decide if The Realign is right for you.</p>
       </div>
       <div class="gs-up" style="margin-top:52px;">
-        <a href="https://calendly.com/lara" class="btn btn-cream">Book a Free Clarity Call</a>
+        <a href="https://calendly.com/lara" class="btn btn-cream">Claim your clarity</a>
       </div>
     </div>
   </section>
@@ -1553,7 +1567,7 @@
             <p>Drawn from science, philosophy, and ancient wisdom. Non-religious. For the ones who were always meant to know.</p>
           </div>
           <div class="book-btn-wrap">
-            <a href="https://amazon.com/Death-Old-World" class="btn-clarity-glass">Get the Book</a>
+            <a href="https://amazon.com/Death-Old-World" class="btn-clarity-glass">I AM</a>
           </div>
         </div>
 
@@ -1576,8 +1590,8 @@
         </button>
         <div class="faq-body"><div class="faq-body-inner">
           <p>Therapy processes what happened. Coaching teaches you frameworks. The Realign changes how your unconscious mind runs the pattern itself.</p>
-          <p>Your conscious mind is maybe 5% of how you actually operate. The other 95% is running on programming: beliefs, neural pathways, emotional associations you absorbed growing up. Most of that happened before you had language to question it.</p>
-          <p>When you try to change through willpower alone, you're using that 5% to fight the other 95%. The Realign accesses the unconscious layer directly. We find where the pattern got wired, and we change it there.</p>
+          <p>Your conscious mind is maybe 5% of how you actually operate. The other 95% is running on programming: beliefs, neural pathways, emotional associations you absorbed growing up.</p>
+          <p>When you try to change through willpower alone, you're using that 5% to fight the other 95%. The Realign accesses the unconscious layer directly. We find where the pattern got wired and dissolve it.</p>
         </div></div>
       </div>
 
@@ -1589,7 +1603,7 @@
         <div class="faq-body"><div class="faq-body-inner">
           <p>We start with a conversation about the pattern you want to shift. I listen for the root belief underneath it.</p>
           <p>Then you get comfortable. I guide you into a focused, relaxed state. Your conscious mind is calm. Your unconscious mind is listening.</p>
-          <p>We work with the original belief or memory that wired the pattern, reframe it, and from that new understanding, the pattern naturally releases. You're conscious the entire time. You remember everything. You leave with tools to keep working with the shift on your own.</p>
+          <p>We work with the original belief or memory that wired the pattern, reframe it, and from that new understanding, the pattern naturally releases. You're conscious the entire time. You leave with tools to keep working with the shift on your own.</p>
         </div></div>
       </div>
 
@@ -1600,7 +1614,7 @@
         </button>
         <div class="faq-body"><div class="faq-body-inner">
           <p>Not necessarily. We work with the belief or pattern, not the story. You don't need to describe your whole history or relive anything.</p>
-          <p>If you're carrying something very recent or very heavy, the Clarity Call is where we assess whether this is the right time, or if you need something else first.</p>
+          <p>If you're carrying something very recent or very heavy, the Clarity Call is where we assess whether this is the right time, or if you need other resources.</p>
         </div></div>
       </div>
 
@@ -1623,6 +1637,7 @@
         <div class="faq-body"><div class="faq-body-inner">
           <p>Hypnotherapy is based on neuroscience: how neural pathways form, how memory works, how belief shapes the brain. It's measurable. It's studied.</p>
           <p>The spiritual part is real. When you access your unconscious mind, you're reconnecting with a part of you that's been there the whole time: the part that knows what aliveness actually feels like. That's spiritual.</p>
+          <p>This work is not religious and does not conflict with any faith. It doesn't ask you to believe anything new. Whatever framework you hold, The Realign works within it, not against it.</p>
         </div></div>
       </div>
 
