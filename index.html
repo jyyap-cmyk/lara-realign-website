@@ -621,7 +621,7 @@
       max-width: 900px; margin: 0 auto; padding: 0 48px;
     }
     .s-science .eyebrow { color: rgba(167,185,198,0.8); text-align: center; margin-bottom: 12px; }
-    .s-science .h2 { text-align: center; color: rgba(238,231,221,0.92); }
+    .s-science .h2 { text-align: center; color: rgba(238,231,221,0.92); margin-bottom: 14px; }
     .science-stats {
       display: grid;
       grid-template-columns: 1fr 1px 1fr;
@@ -667,8 +667,8 @@
     }
     .science-outro {
       font-family: var(--f-bn); font-style: italic; font-weight: 400;
-      font-size: clamp(20px, 2.2vw, 28px); line-height: 1.45;
-      color: rgba(238,231,221,0.82); max-width: 560px;
+      font-size: clamp(13px, 1.5vw, 20px); line-height: 1.5;
+      color: rgba(238,231,221,0.82); max-width: 720px;
       margin: 0 auto; text-align: center;
     }
 
@@ -821,14 +821,20 @@
       scrollbar-width: none; -ms-overflow-style: none;
     }
     .testi-grid::-webkit-scrollbar { display: none; }
-    .testi-scroll-hint {
-      display: flex; align-items: center; gap: 6px;
-      justify-content: flex-end;
-      color: rgba(238,231,221,0.38);
-      font-family: var(--f-now); font-size: 9px; font-weight: 300;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      margin-bottom: 16px;
+    .testi-carousel-wrap {
+      display: flex; align-items: center; gap: 16px;
     }
+    .testi-arrow {
+      flex-shrink: 0;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(238,231,221,0.08);
+      border: 1px solid rgba(238,231,221,0.18);
+      border-radius: 50%;
+      color: rgba(238,231,221,0.9);
+      cursor: pointer; transition: background 0.2s;
+    }
+    .testi-arrow:hover { background: rgba(238,231,221,0.16); }
     .testi-card { flex: 0 0 340px; scroll-snap-align: start; }
     .testi-card {
       background: rgba(255,255,255,0.06);
@@ -1016,7 +1022,7 @@
     .book-left .body p + p { margin-top: 20px; }
     .book-img-wrap { display: flex; justify-content: center; }
     .book-img-wrap img {
-      width: 100%; max-width: 580px;
+      width: 100%; max-width: 754px;
       filter: drop-shadow(0 24px 56px rgba(28,20,9,0.28));
       mix-blend-mode: multiply;
     }
@@ -1330,9 +1336,9 @@
       <span class="eyebrow-lt gs-up">The Philosophy</span>
       <div class="body gs-up">
         <p>Your unconscious mind runs 95% of how you operate, built on programming absorbed before your conscious awareness developed.</p>
-        <p>Everything you've tried but not worked targeted the conscious mind: the reflection, the goal setting. Change through conscious effort alone is possible, it's just working against the current the whole way.</p>
-        <p>Just like having two heads on one body. It wants one thing, you want another, and they are constantly in alignment or in conflict. In alignment, things flow. In conflict, you set an intention tonight and override it tomorrow morning. You doubt yourself, feeling hopeless. And you wonder why you're not happy.</p>
-        <p>The Realign works at that layer to bring both parts into agreement. We find where the pattern was wired, update it at the root, and let your mind and body finally move as one.</p>
+        <p>Everything you've tried targeted the conscious mind. The reflection. The goal setting. Change through conscious effort alone is possible, it's just working against the current the whole way.</p>
+        <p>Just like two heads on one body. One wants one thing, you want another.</p>
+        <p>The Realign works to bring both parts into agreement. We find where the pattern was wired, update it at the root, and let your mind and body finally move as one.</p>
       </div>
     </div>
   </section>
@@ -1342,7 +1348,7 @@
     <div class="inner">
       <span class="eyebrow gs-up">The Neuroscience</span>
       <h2 class="h2 h2-light gs-up">How your mind actually works</h2>
-      <p class="science-intro gs-up">The unconscious mind controls what you notice, filtering perception before it reaches your awareness.</p>
+      <p class="science-intro gs-up">The unconscious mind controls what you notice,<br>filtering perception before it reaches your awareness.</p>
       <div class="science-stats gs-up">
         <div class="science-stat">
           <span class="science-stat-role">Conscious</span>
@@ -1358,7 +1364,7 @@
           <span class="science-stat-unit">bits per second</span>
         </div>
       </div>
-      <p class="science-outro gs-up">What it lets through becomes what you call reality. That reality shapes your decisions. Those decisions build the life you're living.</p>
+      <p class="science-outro gs-up">What it lets through becomes what you call reality. That reality<br>shapes your decisions. Those decisions build the life you're living.</p>
     </div>
   </section>
 
@@ -1496,11 +1502,11 @@
         <span class="eyebrow-sm">Clients</span>
         <h2 class="h2 h2-light">In their own words</h2>
       </div>
-      <div class="testi-scroll-hint" aria-hidden="true">
-        <span class="testi-scroll-label">Scroll</span>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="testi-grid">
+      <div class="testi-carousel-wrap">
+        <button class="testi-arrow testi-arrow-prev" aria-label="Previous">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="testi-grid">
         <div class="testi-card">
           <span class="testi-mark" aria-hidden="true">"</span>
           <p class="testi-q">Placeholder for a real client quote. Something specific and honest, in their own voice, about what actually shifted for them.</p>
@@ -1531,6 +1537,10 @@
           <p class="testi-q">Placeholder for a sixth quote. The kind of thing you only say after something has genuinely shifted, not just moved.</p>
           <span class="testi-name">Name &ensp;·&ensp; Role</span>
         </div>
+      </div>
+        <button class="testi-arrow testi-arrow-next" aria-label="Next">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
       </div>
     </div>
   </section>
@@ -2095,6 +2105,72 @@
         }
       });
     });
+
+    // Testimonials infinite scroll
+    (function() {
+      const grid = document.querySelector('.testi-grid');
+      const origCards = Array.from(grid.querySelectorAll('.testi-card'));
+      const total = origCards.length;
+
+      // Append clones at end, then prepend in correct order (reverse insert = forward order)
+      origCards.forEach(c => grid.appendChild(c.cloneNode(true)));
+      origCards.slice().reverse().forEach(c => grid.insertBefore(c.cloneNode(true), grid.firstChild));
+
+      const allCards = Array.from(grid.querySelectorAll('.testi-card'));
+      const gap = 22;
+
+      function cardWidth() {
+        return allCards[0].offsetWidth + gap;
+      }
+
+      // Start scrolled to the middle set
+      function init() {
+        grid.scrollLeft = cardWidth() * total;
+      }
+      init();
+      window.addEventListener('resize', init);
+
+      function getScrollLeft(idx) {
+        return allCards[idx].offsetLeft;
+      }
+
+      let isJumping = false;
+      grid.addEventListener('scroll', function() {
+        if (isJumping) return;
+        const cw = cardWidth();
+        const sl = grid.scrollLeft;
+        // If we've scrolled into the prepended clone set, jump to real end
+        if (sl < cw * 0.5) {
+          isJumping = true;
+          grid.scrollLeft = sl + cw * total;
+          isJumping = false;
+        }
+        // If we've scrolled past the appended clone set, jump to real start
+        if (sl > cw * (total * 2 - 0.5)) {
+          isJumping = true;
+          grid.scrollLeft = sl - cw * total;
+          isJumping = false;
+        }
+      }, { passive: true });
+
+      let currentIdx = total; // start at middle set index
+
+      function goTo(idx, smooth) {
+        currentIdx = idx;
+        grid.scrollTo({ left: allCards[idx].offsetLeft, behavior: smooth ? 'smooth' : 'instant' });
+      }
+
+      document.querySelector('.testi-arrow-prev').addEventListener('click', function() {
+        const cw = cardWidth();
+        const nearest = Math.round(grid.scrollLeft / cw);
+        goTo(nearest - 1, true);
+      });
+      document.querySelector('.testi-arrow-next').addEventListener('click', function() {
+        const cw = cardWidth();
+        const nearest = Math.round(grid.scrollLeft / cw);
+        goTo(nearest + 1, true);
+      });
+    })();
   </script>
 
 </body>
