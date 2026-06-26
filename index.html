@@ -275,10 +275,12 @@
     }
     .btn-clarity-glass {
       display: inline-flex; align-items: center; gap: 8px;
-      background: transparent;
+      background:
+        linear-gradient(rgba(255,255,255,0) 0%, rgba(255,255,255,0) 100%) padding-box,
+        linear-gradient(135deg, rgba(28,20,9,0.28) 0%, rgba(28,20,9,0) 100%) border-box;
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(28,20,9,0.30);
+      border: 1px solid transparent;
       border-radius: 100px;
       padding: 10px 32px;
       font-family: var(--f-body); font-size: 13px; font-style: italic;
@@ -436,20 +438,20 @@
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      width: 100%; padding: 0 52px; gap: 32px;
+      width: 100%; padding: 0 52px; gap: 20px;
     }
     .hero-side {
       font-family: var(--f-body); font-style: italic;
-      font-weight: 400; font-size: clamp(14px, 1.5vw, 19px); line-height: 1.75;
+      font-weight: 400; font-size: clamp(12px, 1.35vw, 17px); line-height: 1.75;
       color: rgba(238,231,221,0.52); letter-spacing: 0.01em;
     }
     .hero-side-l {
       font-family: var(--f-bn); font-style: italic;
-      font-size: clamp(15px, 1.7vw, 21px);
+      font-size: clamp(13px, 1.5vw, 19px);
       letter-spacing: 0.01em; line-height: 1.4;
     }
     .hero-side-r { text-align: right; }
-    .hero-cta { margin-top: 52px; text-align: center; }
+    .hero-cta { margin-top: 44px; text-align: center; }
     .hero-h1 {
       font-family: var(--f-now); font-weight: 100;
       font-size: clamp(57px, 7.9vw, 110px);
@@ -460,7 +462,7 @@
     .hero-h1 em {
       font-style: italic; font-family: var(--f-bn);
       font-weight: 400; letter-spacing: -0.01em;
-      font-size: 0.82em; vertical-align: -0.06em;
+      font-size: 0.90em; vertical-align: -0.06em;
     }
     .hero-again { font-size: 0.8em; }
     .hero-scroll {
@@ -595,17 +597,17 @@
     }
     .philosophy-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(238,231,221,0.82) 0%, rgba(238,231,221,0.72) 100%);
+      background: linear-gradient(135deg, rgba(238,231,221,0.58) 0%, rgba(238,231,221,0.48) 100%);
     }
     .philosophy-inner {
       position: relative; z-index: 2;
-      max-width: 720px; margin: 0 auto;
+      max-width: 900px; margin: 0 auto;
       padding: 80px 48px;
       text-align: center;
     }
     .philosophy-inner .eyebrow-lt { margin-bottom: 20px; color: rgba(44,37,29,0.55); }
     .philosophy-inner .h2 { color: #2c251d; margin-bottom: 36px; }
-    .philosophy-inner .body { color: #2c251d; max-width: 56ch; margin: 0 auto; }
+    .philosophy-inner .body { color: #2c251d; max-width: 72ch; margin: 0 auto; }
     .philosophy-inner .body p + p { margin-top: 20px; }
 
     /* ═══════════════════════════════════════════════════
@@ -798,7 +800,7 @@
     /* ═══════════════════════════════════════════════════
        S7: TESTIMONIALS
     ═══════════════════════════════════════════════════ */
-    .s-testi { background: var(--dark); position: relative; overflow: hidden; }
+    .s-testi { background: var(--dark); position: relative; overflow: clip; }
     .testi-bg {
       position: absolute; top: -15%; left: 0; right: 0;
       width: 100%; height: 130%;
@@ -946,7 +948,7 @@
        S10: COMMON PATTERNS
     ═══════════════════════════════════════════════════ */
     .s-tags {
-      background: #cec1ab;
+      background: #F2F0EF;
       position: relative;
       overflow: hidden;
       min-height: 130vh;
@@ -956,7 +958,7 @@
     .tags-hd {
       position: relative;
       z-index: 2;
-      padding: 40px 56px 0;
+      padding: 40px 56px 56px;
       text-align: left;
     }
     .tags-hd .eyebrow-sm { display: block; margin-bottom: 10px; letter-spacing: 0.3em; font-size: 11px; color: rgba(28,20,9,0.55); }
@@ -992,7 +994,7 @@
     /* ═══════════════════════════════════════════════════
        S11: BOOK
     ═══════════════════════════════════════════════════ */
-    .s-book { background: #cec6a5; }
+    .s-book { background: #F4E4B8; }
     .book-grid {
       display: grid;
       grid-template-columns: 1fr 280px 1fr;
@@ -1279,13 +1281,12 @@
         <p>You've invested in the right things. The self-help books gave you frameworks. The podcasts kept you going, for a while. A retreat gave you the peace you have not felt before. And you believed those changes would hold.</p>
         <p>Then real life resumed. And the old patterns resumed with it. Same triggers, same loops, as though nothing had shifted at all. Part of you began to wonder if this is just who you are.</p>
       </div>
-      <span class="who-close gs-up">If this resonates, you are in the right place.</span>
     </div>
   </section>
 
   <!-- ── S3a: THE REALIGN (mega-type) ──────────────────── -->
   <section class="s-realign" id="realign">
-    <img class="realign-bg" src="./Website FINAL Images/1.png" alt="" role="presentation" loading="lazy">
+    <img class="realign-bg" src="./Website FINAL Images/1 LATEST.png" alt="" role="presentation" loading="lazy">
 
     <div class="realign-pre-row">
       <p class="realign-pre gs-up">Meet the part of you that has answers.</p>
@@ -1317,9 +1318,9 @@
     <div class="philosophy-inner">
       <span class="eyebrow-lt gs-up">The Philosophy</span>
       <div class="body gs-up">
-        <p>Everything you've tried targeted the conscious mind. The reflection. The goal setting. Change through conscious effort alone is possible, it's just working against the current the whole way.</p>
         <p>Your unconscious mind runs 95% of how you operate, built on programming absorbed before your conscious awareness developed.</p>
-        <p>Like having two heads on one body. It wants one thing, you want another, and they are constantly in conflict or in alignment. In alignment, things flow. In conflict, you set an intention tonight and override it tomorrow morning. You doubt yourself, feeling hopeless. And you wonder why you're not happy.</p>
+        <p>Everything you've tried but not worked targeted the conscious mind: the reflection, the goal setting. Change through conscious effort alone is possible, it's just working against the current the whole way.</p>
+        <p>Just like having two heads on one body. It wants one thing, you want another, and they are constantly in alignment or in conflict. In alignment, things flow. In conflict, you set an intention tonight and override it tomorrow morning. You doubt yourself, feeling hopeless. And you wonder why you're not happy.</p>
         <p>The Realign works at that layer to bring both parts into agreement. We find where the pattern was wired, update it at the root, and let your mind and body finally move as one.</p>
       </div>
     </div>
@@ -1525,24 +1526,24 @@
       <h2 class="h2">What Brings People Here</h2>
     </div>
     <div class="tags-canvas" id="tagsCanvas" aria-label="Topics people work on">
-      <span class="tw tw-it"    data-depth="0.9"  style="left:28%;top:2%">Self-worth</span>
-      <span class="tw tw-thin"  data-depth="1.1"  style="left:52%;top:1%">Procrastination</span>
-      <span class="tw tw-bd"    data-depth="1.0"  style="left:38%;top:10%">Perfectionism</span>
-      <span class="tw"           data-depth="1.2"  style="left:62%;top:8%">Imposter syndrome</span>
-      <span class="tw tw-it"    data-depth="0.95" style="left:14%;top:20%">Self-sabotage</span>
-      <span class="tw tw-bd-it" data-depth="1.1"  style="left:44%;top:22%">Chronic overthinking</span>
-      <span class="tw tw-thin"  data-depth="1.15" style="left:68%;top:18%">Fear of failure</span>
+      <span class="tw tw-it"    data-depth="0.9"  style="left:28%;top:6%">Self-worth</span>
+      <span class="tw tw-thin"  data-depth="1.1"  style="left:52%;top:4%">Procrastination</span>
+      <span class="tw tw-bd"    data-depth="1.0"  style="left:38%;top:14%">Perfectionism</span>
+      <span class="tw"           data-depth="1.2"  style="left:62%;top:12%">Imposter syndrome</span>
+      <span class="tw tw-it"    data-depth="0.95" style="left:14%;top:22%">Self-sabotage</span>
+      <span class="tw tw-bd-it" data-depth="1.1"  style="left:44%;top:24%">Chronic overthinking</span>
+      <span class="tw tw-thin"  data-depth="1.15" style="left:68%;top:20%">Fear of failure</span>
       <span class="tw"           data-depth="0.9"  style="left:12%;top:34%">Fear of visibility</span>
       <span class="tw tw-it"    data-depth="1.05" style="left:40%;top:36%">People-pleasing</span>
       <span class="tw tw-bd"    data-depth="1.2"  style="left:62%;top:32%">Burnout</span>
-      <span class="tw tw-thin"  data-depth="0.92" style="left:22%;top:48%">Career transitions</span>
-      <span class="tw tw-it"    data-depth="1.1"  style="left:50%;top:50%">Finding purpose</span>
-      <span class="tw"           data-depth="0.88" style="left:16%;top:62%">Feeling disconnected</span>
-      <span class="tw tw-bd-it" data-depth="1.1"  style="left:44%;top:64%">Inner conflict</span>
-      <span class="tw tw-thin"  data-depth="1.2"  style="left:66%;top:56%">Limiting beliefs</span>
-      <span class="tw tw-it"    data-depth="0.92" style="left:26%;top:74%">Relationship patterns</span>
-      <span class="tw tw-bd"    data-depth="1.15" style="left:54%;top:76%">Emotional eating</span>
-      <span class="tw"           data-depth="1.1"  style="left:72%;top:70%">Sleep issues</span>
+      <span class="tw tw-thin"  data-depth="0.92" style="left:22%;top:46%">Career transitions</span>
+      <span class="tw tw-it"    data-depth="1.1"  style="left:50%;top:48%">Finding purpose</span>
+      <span class="tw"           data-depth="0.88" style="left:16%;top:58%">Feeling disconnected</span>
+      <span class="tw tw-bd-it" data-depth="1.1"  style="left:44%;top:60%">Inner conflict</span>
+      <span class="tw tw-thin"  data-depth="1.2"  style="left:66%;top:54%">Limiting beliefs</span>
+      <span class="tw tw-it"    data-depth="0.92" style="left:26%;top:70%">Relationship patterns</span>
+      <span class="tw tw-bd"    data-depth="1.15" style="left:54%;top:72%">Emotional eating</span>
+      <span class="tw"           data-depth="1.1"  style="left:70%;top:66%">Sleep issues</span>
     </div>
   </section>
 
@@ -1577,7 +1578,7 @@
         </div>
 
         <div class="book-img-wrap gs-up">
-          <img src="./Website FINAL Images/Book.png"
+          <img src="./Website FINAL Images/Book NEW.png"
             alt="Death of the Old World by Althaia The Present"
             loading="lazy" width="300" height="450">
         </div>
