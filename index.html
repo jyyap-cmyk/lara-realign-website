@@ -118,17 +118,10 @@
       display: flex; align-items: center; justify-content: center;
       flex-direction: column; gap: 20px;
     }
-    .loader-name {
-      font-family: var(--f-bn); font-weight: 400; font-style: normal;
-      font-size: 13px; letter-spacing: 0.22em;
-      color: rgba(238,231,221,0.82);
+    .loader-sparkle {
+      animation: loaderSpin 1.4s linear infinite;
     }
-    .loader-bar {
-      width: 0; height: 1px;
-      background: var(--sienna);
-      animation: loaderGrow 0.7s var(--ease) forwards 0.15s;
-    }
-    @keyframes loaderGrow { to { width: 80px; } }
+    @keyframes loaderSpin { to { transform: rotate(360deg); } }
 
     /* ─── TYPOGRAPHY UTILITIES ───────────────────────── */
     .eyebrow {
@@ -373,6 +366,7 @@
     .lang-toggle:hover { color: rgba(238,231,221,0.95); border-color: rgba(238,231,221,0.55); }
     .nav--light .lang-toggle { color: rgba(28,20,9,0.65); border-color: rgba(28,20,9,0.25); }
     .nav--light .lang-toggle:hover { color: rgba(28,20,9,0.9); border-color: rgba(28,20,9,0.5); }
+    .nav-right { display: flex; align-items: center; gap: 28px; }
 
     .mob-nav {
       position: fixed; inset: 60px 0 0 0;
@@ -474,7 +468,7 @@
       font-weight: 400; letter-spacing: -0.01em;
       font-size: 0.90em; vertical-align: -0.06em;
     }
-    .hero-again { font-size: 0.8em; }
+    .hero-again { font-size: 0.8em; font-family: var(--f-bn); font-style: normal; font-weight: 400; }
     .hero-scroll {
       position: absolute; bottom: 36px; left: 50%;
       transform: translateX(-50%);
@@ -1246,22 +1240,28 @@
 
   <!-- loader -->
   <div id="loader" aria-hidden="true">
-    <span class="loader-name">The Present</span>
-    <div class="loader-bar"></div>
+    <div class="loader-sparkle">
+      <svg width="52" height="52" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14,1 L15.7,11.3 L26,14 L15.7,16.7 L14,27 L12.3,16.7 L2,14 L12.3,11.3 Z" fill="#A7B9C6" opacity="0.85"/>
+        <circle cx="14" cy="14" r="2.2" fill="#A7B9C6"/>
+      </svg>
+    </div>
   </div>
 
   <!-- ── NAV ──────────────────────────────────────────── -->
   <nav class="nav" id="nav" role="navigation" aria-label="Main" style="background:transparent">
     <div class="nav-logo" data-i18n="nav-logo">Lara Yap <span>·</span> Mind Aligner</div>
-    <ul class="nav-links" role="list">
-      <li><a href="#about" data-i18n="nav-about">About</a></li>
-      <li><a href="#faq" data-i18n="nav-faq">FAQ</a></li>
-      <li><a href="#book" data-i18n="nav-book">Book</a></li>
-    </ul>
-    <button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
-    <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-right">
+      <ul class="nav-links" role="list">
+        <li><a href="#about" data-i18n="nav-about">About</a></li>
+        <li><a href="#faq" data-i18n="nav-faq">FAQ</a></li>
+        <li><a href="#book" data-i18n="nav-book">Book</a></li>
+      </ul>
+      <button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
+      <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <div class="mob-nav" id="mobNav" aria-hidden="true">
@@ -1468,6 +1468,35 @@
     </div>
   </section>
 
+  <!-- ── S10: COMMON PATTERNS ──────────────────────────── -->
+  <section class="s-tags tex" id="concerns">
+    <div class="tags-hd gs-up">
+      <span class="eyebrow-sm" data-i18n="tags-eyebrow">Common Patterns</span>
+      <h2 class="h2" data-i18n="tags-h2">What Brings People Here</h2>
+    </div>
+    <div class="tags-canvas" id="tagsCanvas" aria-label="Topics people work on">
+      <span class="tw tw-it"    data-depth="0.9"  style="left:28%;top:6%"  data-i18n="tw-selfworth">Self-worth</span>
+      <span class="tw tw-thin"  data-depth="1.1"  style="left:52%;top:4%"  data-i18n="tw-procrastination">Procrastination</span>
+      <span class="tw tw-bd"    data-depth="1.0"  style="left:38%;top:14%" data-i18n="tw-perfectionism">Perfectionism</span>
+      <span class="tw"           data-depth="1.2"  style="left:62%;top:12%" data-i18n="tw-imposter">Imposter syndrome</span>
+      <span class="tw tw-it"    data-depth="0.95" style="left:14%;top:22%" data-i18n="tw-sabotage">Self-sabotage</span>
+      <span class="tw tw-bd-it" data-depth="1.1"  style="left:44%;top:24%" data-i18n="tw-overthinking">Chronic overthinking</span>
+      <span class="tw tw-thin"  data-depth="1.15" style="left:68%;top:20%" data-i18n="tw-failure">Fear of failure</span>
+      <span class="tw"           data-depth="0.9"  style="left:12%;top:34%" data-i18n="tw-visibility">Fear of visibility</span>
+      <span class="tw tw-it"    data-depth="1.05" style="left:40%;top:36%" data-i18n="tw-pleasing">People-pleasing</span>
+      <span class="tw tw-bd"    data-depth="1.2"  style="left:62%;top:32%" data-i18n="tw-burnout">Burnout</span>
+      <span class="tw tw-thin"  data-depth="0.92" style="left:22%;top:46%" data-i18n="tw-career">Career transitions</span>
+      <span class="tw tw-it"    data-depth="1.1"  style="left:50%;top:48%" data-i18n="tw-purpose">Finding purpose</span>
+      <span class="tw"           data-depth="0.88" style="left:16%;top:58%" data-i18n="tw-disconnected">Feeling disconnected</span>
+      <span class="tw tw-bd-it" data-depth="1.1"  style="left:44%;top:60%" data-i18n="tw-conflict">Inner conflict</span>
+      <span class="tw tw-thin"  data-depth="1.2"  style="left:66%;top:54%" data-i18n="tw-limiting">Limiting beliefs</span>
+      <span class="tw tw-it"    data-depth="0.92" style="left:26%;top:70%" data-i18n="tw-relationship">Relationship patterns</span>
+      <span class="tw tw-bd"    data-depth="1.15" style="left:54%;top:72%" data-i18n="tw-eating">Emotional eating</span>
+      <span class="tw"           data-depth="1.1"  style="left:70%;top:66%" data-i18n="tw-sleep">Sleep issues</span>
+      <span class="tw tw-bd"    data-depth="1.0"  style="left:36%;top:80%" data-i18n="tw-weight">Weight management</span>
+    </div>
+  </section>
+
   <!-- ── S6: ABOUT LARA ────────────────────────────────── -->
   <section class="s-about sec-lg tex" id="about">
 
@@ -1558,36 +1587,6 @@
     </div>
   </section>
 
-  <!-- ── S10: COMMON PATTERNS ──────────────────────────── -->
-  <section class="s-tags tex" id="concerns">
-    <div class="tags-hd gs-up">
-      <span class="eyebrow-sm" data-i18n="tags-eyebrow">Common Patterns</span>
-      <h2 class="h2" data-i18n="tags-h2">What Brings People Here</h2>
-    </div>
-    <div class="tags-canvas" id="tagsCanvas" aria-label="Topics people work on">
-      <span class="tw tw-it"    data-depth="0.9"  style="left:28%;top:6%"  data-i18n="tw-selfworth">Self-worth</span>
-      <span class="tw tw-thin"  data-depth="1.1"  style="left:52%;top:4%"  data-i18n="tw-procrastination">Procrastination</span>
-      <span class="tw tw-bd"    data-depth="1.0"  style="left:38%;top:14%" data-i18n="tw-perfectionism">Perfectionism</span>
-      <span class="tw"           data-depth="1.2"  style="left:62%;top:12%" data-i18n="tw-imposter">Imposter syndrome</span>
-      <span class="tw tw-it"    data-depth="0.95" style="left:14%;top:22%" data-i18n="tw-sabotage">Self-sabotage</span>
-      <span class="tw tw-bd-it" data-depth="1.1"  style="left:44%;top:24%" data-i18n="tw-overthinking">Chronic overthinking</span>
-      <span class="tw tw-thin"  data-depth="1.15" style="left:68%;top:20%" data-i18n="tw-failure">Fear of failure</span>
-      <span class="tw"           data-depth="0.9"  style="left:12%;top:34%" data-i18n="tw-visibility">Fear of visibility</span>
-      <span class="tw tw-it"    data-depth="1.05" style="left:40%;top:36%" data-i18n="tw-pleasing">People-pleasing</span>
-      <span class="tw tw-bd"    data-depth="1.2"  style="left:62%;top:32%" data-i18n="tw-burnout">Burnout</span>
-      <span class="tw tw-thin"  data-depth="0.92" style="left:22%;top:46%" data-i18n="tw-career">Career transitions</span>
-      <span class="tw tw-it"    data-depth="1.1"  style="left:50%;top:48%" data-i18n="tw-purpose">Finding purpose</span>
-      <span class="tw"           data-depth="0.88" style="left:16%;top:58%" data-i18n="tw-disconnected">Feeling disconnected</span>
-      <span class="tw tw-bd-it" data-depth="1.1"  style="left:44%;top:60%" data-i18n="tw-conflict">Inner conflict</span>
-      <span class="tw tw-thin"  data-depth="1.2"  style="left:66%;top:54%" data-i18n="tw-limiting">Limiting beliefs</span>
-      <span class="tw tw-it"    data-depth="0.92" style="left:26%;top:70%" data-i18n="tw-relationship">Relationship patterns</span>
-      <span class="tw tw-bd"    data-depth="1.15" style="left:54%;top:72%" data-i18n="tw-eating">Emotional eating</span>
-      <span class="tw"           data-depth="1.1"  style="left:70%;top:66%" data-i18n="tw-sleep">Sleep issues</span>
-      <span class="tw tw-bd"    data-depth="1.0"  style="left:36%;top:80%" data-i18n="tw-weight">Weight management</span>
-    </div>
-  </section>
-
-
   <!-- ── S9: CLARITY CALL ──────────────────────────────── -->
   <section class="s-clarity sec-lg" id="clarity">
     <img class="clarity-bg" src="./Website FINAL Images/5.png" alt="" role="presentation" loading="lazy">
@@ -1629,7 +1628,7 @@
             <p data-i18n="book-p4">Drawn from science, philosophy, and ancient wisdom. Non-religious. For the ones who were always meant to know.</p>
           </div>
           <div class="book-btn-wrap">
-            <a href="https://amazon.com/Death-Old-World" class="btn-clarity-glass" data-i18n="book-btn">I AM</a>
+            <a href="https://amazon.com/Death-Old-World" class="btn-clarity-glass" data-i18n="book-btn">Take me there</a>
           </div>
         </div>
 
@@ -1795,8 +1794,8 @@
       document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
 
       (function step() {
-        cx += (mx - cx) * 0.13;
-        cy += (my - cy) * 0.13;
+        cx += (mx - cx) * 0.25;
+        cy += (my - cy) * 0.25;
         cur.style.left = cx + 'px';
         cur.style.top  = cy + 'px';
         requestAnimationFrame(step);
@@ -2026,6 +2025,20 @@
       /* Section reveal for all .gs-up elements */
       gsap.utils.toArray('.gs-up').forEach(el => {
         if (el.closest('.hero')) return;
+        if (el.classList.contains('body')) {
+          const paras = Array.from(el.querySelectorAll('p'));
+          if (paras.length > 0) {
+            gsap.set(el, { opacity: 1, y: 0 });
+            gsap.fromTo(paras,
+              { y: 26, opacity: 0 },
+              {
+                y: 0, opacity: 1, duration: 0.9, ease: 'power3.out', stagger: 0.16,
+                scrollTrigger: { trigger: el, start: 'top 86%', toggleActions: 'play none none none' }
+              }
+            );
+            return;
+          }
+        }
         gsap.fromTo(el,
           { y: 30, opacity: 0 },
           {
@@ -2078,6 +2091,22 @@
           trigger: '.science-stats',
           start: 'top 78%'
         }
+      });
+
+      /* Science stat number counters */
+      document.querySelectorAll('.science-stat-n').forEach(el => {
+        const raw = el.textContent.trim();
+        const isM = raw.includes('M');
+        const target = parseInt(raw);
+        const obj = { val: 0 };
+        el.textContent = '0' + (isM ? 'M' : '');
+        gsap.to(obj, {
+          val: target,
+          duration: isM ? 1.8 : 1.3,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 80%', toggleActions: 'play none none none' },
+          onUpdate: () => { el.textContent = Math.round(obj.val) + (isM ? 'M' : ''); }
+        });
       });
 
       /* Quote lines scale-in */
@@ -2188,7 +2217,7 @@
         'book-p2': "Most books answer one question. This one follows them all the way down: why reality is not what it appears, how your inner world shapes your outer one, what time and death are, and what you are capable of when you understand how consciousness works.",
         'book-p3': 'After 11 years of researching consciousness and the psychology of the mind, I wrote the book my younger self wished had existed.',
         'book-p4': 'Drawn from science, philosophy, and ancient wisdom. Non-religious. For the ones who were always meant to know.',
-        'book-btn': 'I AM',
+        'book-btn': 'Take me there',
         'faq-eyebrow': 'Questions', 'faq-h2': 'Frequently Asked',
         'faq-q1': 'How is The Realign different from therapy or coaching? <span class="faq-icon" aria-hidden="true">+</span>',
         'faq-q2': 'What actually happens in a session? <span class="faq-icon" aria-hidden="true">+</span>',
@@ -2268,7 +2297,7 @@
         'book-p2': '大多数书回答一个问题。而这本书追随所有问题一路向下：现实为何不是表面的那样，你的内心世界如何塑造外部世界，时间与死亡是什么，以及当你理解意识如何运作时，你所能做到的一切。',
         'book-p3': '经过11年对意识与心理学的研究，我写下了那本年轻时的自己渴望拥有的书。',
         'book-p4': '源自科学、哲学与古老智慧。非宗教性。为那些本就注定要知晓的人而写。',
-        'book-btn': '我是',
+        'book-btn': '带我去那里',
         'faq-eyebrow': '常见问题', 'faq-h2': '常被问到的',
         'faq-q1': 'Realign 与心理治疗或教练有何不同？<span class="faq-icon" aria-hidden="true">+</span>',
         'faq-q2': '一次疗程中实际会发生什么？<span class="faq-icon" aria-hidden="true">+</span>',
