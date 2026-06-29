@@ -468,7 +468,7 @@
       font-weight: 400; letter-spacing: -0.01em;
       font-size: 0.90em; vertical-align: -0.06em;
     }
-    .hero-again { font-size: 0.8em; font-family: var(--f-bn); font-style: normal; font-weight: 400; }
+    .hero-again { font-family: var(--f-bn); font-style: normal; font-weight: 400; }
     .hero-scroll {
       position: absolute; bottom: 36px; left: 50%;
       transform: translateX(-50%);
@@ -2096,10 +2096,10 @@
       /* Science stat number counters */
       const counterEase = t => {
         if (t <= 0.30) return (t / 0.30) * 0.9125;
-        if (t <= 0.44) return 0.9125 + ((t - 0.30) / 0.14) * 0.025;
-        if (t <= 0.61) return 0.9375 + ((t - 0.44) / 0.17) * 0.025;
-        if (t <= 0.85) return 0.9625 + ((t - 0.61) / 0.24) * 0.025;
-        return 0.9875 + ((t - 0.85) / 0.15) * 0.0125;
+        if (t <= 0.41) return 0.9125 + ((t - 0.30) / 0.11) * 0.025;
+        if (t <= 0.545) return 0.9375 + ((t - 0.41) / 0.135) * 0.025;
+        if (t <= 0.735) return 0.9625 + ((t - 0.545) / 0.19) * 0.025;
+        return 0.9875 + ((t - 0.735) / 0.265) * 0.0125;
       };
       document.querySelectorAll('.science-stat-n').forEach(el => {
         const raw = el.textContent.trim();
@@ -2110,7 +2110,7 @@
         gsap.to(obj, {
           val: target,
           duration: isM ? 2.6 : 2.0,
-          delay: isM ? 1.0 : 0,
+          delay: isM ? 0.1 : 0,
           ease: counterEase,
           scrollTrigger: { trigger: el, start: 'top 80%', toggleActions: 'play none none none' },
           onUpdate: () => { el.textContent = Math.round(obj.val) + (isM ? 'M' : ''); }
