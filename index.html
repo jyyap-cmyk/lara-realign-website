@@ -114,12 +114,26 @@
     /* ─── PAGE LOADER ────────────────────────────────── */
     #loader {
       position: fixed; inset: 0; z-index: 99999;
-      background: var(--dark);
+      background: #F4E4B8;
       display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 20px;
+      flex-direction: column; gap: 24px;
+      cursor: pointer;
+      transition: opacity 0.7s ease;
+    }
+    .loader-portal {
+      width: 76px; height: 96px;
+      border: 1.5px solid rgba(28,20,9,0.2);
+      border-radius: 48px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(28,20,9,0.025);
     }
     .loader-sparkle {
-      animation: loaderSpin 1.4s linear infinite;
+      animation: loaderSpin 5s linear infinite;
+    }
+    .loader-label {
+      font-family: var(--f-now); font-weight: 300;
+      font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(28,20,9,0.48);
     }
     @keyframes loaderSpin { to { transform: rotate(360deg); } }
 
@@ -1239,13 +1253,16 @@
   </div>
 
   <!-- loader -->
-  <div id="loader" aria-hidden="true">
-    <div class="loader-sparkle">
-      <svg width="52" height="52" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14,1 L15.7,11.3 L26,14 L15.7,16.7 L14,27 L12.3,16.7 L2,14 L12.3,11.3 Z" fill="#A7B9C6" opacity="0.85"/>
-        <circle cx="14" cy="14" r="2.2" fill="#A7B9C6"/>
-      </svg>
+  <div id="loader" role="button" aria-label="Enter site">
+    <div class="loader-portal">
+      <div class="loader-sparkle">
+        <svg width="34" height="34" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14,1 L15.7,11.3 L26,14 L15.7,16.7 L14,27 L12.3,16.7 L2,14 L12.3,11.3 Z" fill="rgba(28,20,9,0.45)"/>
+          <circle cx="14" cy="14" r="2" fill="rgba(28,20,9,0.45)"/>
+        </svg>
+      </div>
     </div>
+    <span class="loader-label">The Present</span>
   </div>
 
   <!-- ── NAV ──────────────────────────────────────────── -->
@@ -1268,7 +1285,7 @@
     <a href="#who"    onclick="closeMob()" data-i18n="nav-about">About</a>
     <a href="#faq"    onclick="closeMob()" data-i18n="nav-faq">FAQ</a>
     <a href="#book"   onclick="closeMob()" data-i18n="nav-book">Book</a>
-    <a href="https://calendly.com/lara" class="mob-cta" data-i18n="cta-clarity">Book a Clarity Call</a>
+    <a href="https://calendly.com/larayapjy/30min" class="mob-cta" data-i18n="cta-clarity">Book a Clarity Call</a>
   </div>
 
   <!-- ── HERO ─────────────────────────────────────────── -->
@@ -1291,7 +1308,7 @@
           </div>
 
           <div class="hero-cta gs-up" data-delay="0.56">
-            <a href="https://calendly.com/lara" class="btn btn-cream" data-i18n="cta-clarity">Book a Clarity Call</a>
+            <a href="https://calendly.com/larayapjy/30min" class="btn btn-cream" data-i18n="cta-clarity">Book a Clarity Call</a>
           </div>
       </div>
 
@@ -1517,7 +1534,7 @@
         </div>
         <span class="about-sig gs-up" data-i18n="about-sig">Lara Yap, IHA Certified Hypnotherapist</span>
         <div class="gs-up" style="margin-top:32px;">
-          <a href="https://calendly.com/lara" class="link-arrow" data-i18n="cta-clarity-arrow">
+          <a href="https://calendly.com/larayapjy/30min" class="link-arrow" data-i18n="cta-clarity-arrow">
             Book a Clarity Call
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -1597,7 +1614,7 @@
         <p data-i18n="clarity-p">A free 20-minute safe space for honest conversation and clarity, before you decide if The Realign is right for you.</p>
       </div>
       <div class="gs-up" style="margin-top:52px;">
-        <a href="https://calendly.com/lara" class="btn btn-cream" data-i18n="clarity-cta">Claim your clarity</a>
+        <a href="https://calendly.com/larayapjy/30min" class="btn btn-cream" data-i18n="clarity-cta">Claim your clarity</a>
       </div>
     </div>
   </section>
@@ -1628,7 +1645,7 @@
             <p data-i18n="book-p4">Drawn from science, philosophy, and ancient wisdom. Non-religious. For the ones who were always meant to know.</p>
           </div>
           <div class="book-btn-wrap">
-            <a href="https://amazon.com/Death-Old-World" class="btn-clarity-glass" data-i18n="book-btn">Take me there</a>
+            <a href="https://www.thepresent.club/shop/p/death-of-the-old-world-7-universal-truths-of-existence-ebook" class="btn-clarity-glass" data-i18n="book-btn">Take me there</a>
           </div>
         </div>
 
@@ -1749,16 +1766,16 @@
         <div>
           <p class="footer-col-label">Socials</p>
           <ul class="footer-links">
-            <li><a href="https://youtube.com/@thaiainfinite" target="_blank" rel="noopener">YouTube</a></li>
-            <li><a href="https://tiktok.com/@thaiainfinite" target="_blank" rel="noopener">TikTok</a></li>
-            <li><a href="https://instagram.com/thepresent" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://youtube.com/@mindaligner" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="https://vt.tiktok.com/ZSC5DomFe/" target="_blank" rel="noopener">TikTok</a></li>
+            <li><a href="https://www.instagram.com/thepresent.club" target="_blank" rel="noopener">Instagram</a></li>
           </ul>
         </div>
         <div>
           <p class="footer-col-label">Book</p>
           <ul class="footer-links">
-            <li><a href="https://calendly.com/lara">Clarity Call (Free)</a></li>
-            <li><a href="https://amazon.com/Death-Old-World">Get the Book</a></li>
+            <li><a href="https://calendly.com/larayapjy/30min">Clarity Call (Free)</a></li>
+            <li><a href="https://www.thepresent.club/shop/p/death-of-the-old-world-7-universal-truths-of-existence-ebook">Get the Book</a></li>
           </ul>
         </div>
       </div>
@@ -1775,14 +1792,16 @@
 
   <script>
     /* ─── LOADER ─────────────────────────────────────── */
-    window.addEventListener('load', () => {
+    (function () {
       const loader = document.getElementById('loader');
-      setTimeout(() => {
+      document.body.style.overflow = 'hidden';
+      const dismiss = () => {
         loader.style.opacity = '0';
-        loader.style.transition = 'opacity 0.6s ease';
-        setTimeout(() => { loader.style.display = 'none'; }, 700);
-      }, 500);
-    });
+        setTimeout(() => { loader.style.display = 'none'; document.body.style.overflow = ''; }, 700);
+      };
+      loader.addEventListener('click', dismiss);
+      loader.addEventListener('touchend', e => { e.preventDefault(); dismiss(); });
+    })();
 
     /* ─── CUSTOM CURSOR + RIPPLE ─────────────────────── */
     (function () {
