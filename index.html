@@ -121,14 +121,14 @@
       transition: opacity 0.7s ease;
     }
     .loader-portal {
-      width: 76px; height: 96px;
-      border: 1.5px solid rgba(146,171,187,0.55);
-      border-radius: 48px;
+      width: 56px; height: 84px;
+      border: 1.5px solid rgba(122,168,200,0.6);
+      border-radius: 36px;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(167,185,198,0.06);
+      background: rgba(122,168,200,0.05);
     }
     .loader-sparkle {
-      width: 34px; height: 34px;
+      width: 28px; height: 28px;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
       animation: loaderSpin 5s linear infinite;
@@ -137,7 +137,7 @@
     .loader-label {
       font-family: var(--f-now); font-weight: 300;
       font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
-      color: rgba(146,171,187,0.75);
+      color: rgba(122,168,200,0.8);
     }
     @keyframes loaderSpin { to { transform: rotate(360deg); } }
 
@@ -1261,8 +1261,8 @@
     <div class="loader-portal">
       <div class="loader-sparkle">
         <svg width="34" height="34" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14,1 L15.7,11.3 L26,14 L15.7,16.7 L14,27 L12.3,16.7 L2,14 L12.3,11.3 Z" fill="#A7B9C6"/>
-          <circle cx="14" cy="14" r="2" fill="#A7B9C6"/>
+          <path d="M14,1 L15.7,11.3 L26,14 L15.7,16.7 L14,27 L12.3,16.7 L2,14 L12.3,11.3 Z" fill="#7AA8C8"/>
+          <circle cx="14" cy="14" r="2" fill="#7AA8C8"/>
         </svg>
       </div>
     </div>
@@ -1573,32 +1573,32 @@
         <div class="testi-card">
           <span class="testi-mark" aria-hidden="true">"</span>
           <p class="testi-q">Placeholder for a real client quote. Something specific and honest, in their own voice, about what actually shifted for them.</p>
-          <span class="testi-name">Name &ensp;·&ensp; Role</span>
+          <span class="testi-name">Name</span>
         </div>
         <div class="testi-card">
           <span class="testi-mark" aria-hidden="true">"</span>
           <p class="testi-q">Placeholder for a second quote. The layout holds two to four sentences comfortably. Real quotes follow after early sessions.</p>
-          <span class="testi-name">Name &ensp;·&ensp; Role</span>
+          <span class="testi-name">Name</span>
         </div>
         <div class="testi-card">
           <span class="testi-mark" aria-hidden="true">"</span>
           <p class="testi-q">Placeholder for a third quote. Intentionally sized to feel personal and unhurried, not a wall of endorsements.</p>
-          <span class="testi-name">Name &ensp;·&ensp; Role</span>
+          <span class="testi-name">Name</span>
         </div>
         <div class="testi-card">
           <span class="testi-mark" aria-hidden="true">"</span>
           <p class="testi-q">Placeholder for a fourth quote. A moment of recognition, described in the client's own words, that feels real and unscripted.</p>
-          <span class="testi-name">Name &ensp;·&ensp; Role</span>
+          <span class="testi-name">Name</span>
         </div>
         <div class="testi-card">
           <span class="testi-mark" aria-hidden="true">"</span>
           <p class="testi-q">Placeholder for a fifth quote. Something about a specific feeling or behavior that changed, told from the inside out.</p>
-          <span class="testi-name">Name &ensp;·&ensp; Role</span>
+          <span class="testi-name">Name</span>
         </div>
         <div class="testi-card">
           <span class="testi-mark" aria-hidden="true">"</span>
           <p class="testi-q">Placeholder for a sixth quote. The kind of thing you only say after something has genuinely shifted, not just moved.</p>
-          <span class="testi-name">Name &ensp;·&ensp; Role</span>
+          <span class="testi-name">Name</span>
         </div>
       </div>
         <button class="testi-arrow testi-arrow-next" aria-label="Next">
@@ -2135,7 +2135,7 @@
         el.textContent = '0' + (isM ? 'M' : '');
         gsap.to(obj, {
           val: target,
-          duration: isM ? 2.6 : 2.0,
+          duration: isM ? 1.9 : 2.0,
           delay: isM ? 0.1 : 0,
           ease: counterEase,
           scrollTrigger: { trigger: el, start: 'top 80%', toggleActions: 'play none none none' },
