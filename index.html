@@ -7,7 +7,7 @@
   <meta name="description" content="The Realign — 1:1 subconscious repatterning with Lara Yap, IHA Certified Hypnotherapist. Book a free Clarity Call.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 
   <style>
     /* ─── LOCAL FONTS ─────────────────────────────────── */
@@ -135,7 +135,7 @@
     }
     .loader-sparkle svg { display: block; }
     .loader-label {
-      font-family: var(--f-now); font-weight: 300;
+      font-family: var(--f-bn); font-style: normal; font-weight: 400;
       font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
       color: rgba(122,168,200,0.8);
     }
@@ -377,14 +377,12 @@
       font-family: var(--f-now); font-size: 10px; font-weight: 300;
       letter-spacing: 0.15em; text-transform: uppercase;
       color: rgba(238,231,221,0.75);
-      background: none; border: 1px solid rgba(238,231,221,0.28);
-      border-radius: 100px; padding: 5px 13px;
-      cursor: pointer; transition: color 0.25s, border-color 0.25s;
+      background: none; border: none; padding: 0;
+      cursor: pointer; transition: color 0.25s;
     }
-    .lang-toggle:hover { color: rgba(238,231,221,0.95); border-color: rgba(238,231,221,0.55); }
-    .nav--light .lang-toggle { color: rgba(28,20,9,0.65); border-color: rgba(28,20,9,0.25); }
-    .nav--light .lang-toggle:hover { color: rgba(28,20,9,0.9); border-color: rgba(28,20,9,0.5); }
-    .nav-left { display: flex; align-items: center; gap: 16px; }
+    .lang-toggle:hover { color: rgba(238,231,221,0.95); }
+    .nav--light .lang-toggle { color: rgba(28,20,9,0.65); }
+    .nav--light .lang-toggle:hover { color: rgba(28,20,9,0.9); }
     .nav-right { display: flex; align-items: center; gap: 28px; }
     .nav-cta {
       font-family: var(--f-now); font-size: 10px; font-weight: 300;
@@ -392,7 +390,7 @@
       color: rgba(238,231,221,0.88);
       border: 1px solid rgba(238,231,221,0.3);
       border-radius: 100px; padding: 6px 16px;
-      text-decoration: none;
+      text-decoration: none; display: inline-flex; align-items: center;
       transition: color 0.25s, border-color 0.25s;
     }
     .nav-cta:hover { color: rgba(238,231,221,1); border-color: rgba(238,231,221,0.55); }
@@ -1254,6 +1252,23 @@
       }
       .gs-up, .gs-fade { opacity: 1; transform: none; }
     }
+
+    /* ─── CHINESE TYPOGRAPHY ─────────────────────────── */
+    html[lang="zh-CN"] {
+      --f-body: 'Poppins', 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    }
+    html[lang="zh-CN"] .h2,
+    html[lang="zh-CN"] .h3 {
+      font-family: 'Poppins', 'PingFang SC', 'Noto Sans SC', sans-serif;
+    }
+    html[lang="zh-CN"] .hero-eyebrow {
+      font-family: 'Poppins', 'PingFang SC', 'Noto Sans SC', sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.06em;
+      text-transform: none;
+      font-weight: 400;
+    }
+    html[lang="zh-CN"] .eyebrow { font-style: normal; }
   </style>
 </head>
 <body>
@@ -1285,10 +1300,7 @@
 
   <!-- ── NAV ──────────────────────────────────────────── -->
   <nav class="nav" id="nav" role="navigation" aria-label="Main" style="background:transparent">
-    <div class="nav-left">
-      <button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
-      <div class="nav-logo" data-i18n="nav-logo">Lara Yap <span>·</span> Mind Aligner</div>
-    </div>
+    <div class="nav-logo" data-i18n="nav-logo">Lara Yap <span>·</span> Mind Aligner</div>
     <div class="nav-right">
       <ul class="nav-links" role="list">
         <li><a href="#about" data-i18n="nav-about">About</a></li>
@@ -1296,6 +1308,7 @@
         <li><a href="#book" data-i18n="nav-book">Ebook</a></li>
       </ul>
       <a href="https://calendly.com/larayapjy/30min" class="nav-cta" data-i18n="nav-cta">Clarity Call</a>
+      <button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
       <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -1687,7 +1700,7 @@
           How is The Realign different from therapy or coaching?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
-        <div class="faq-body"><div class="faq-body-inner">
+        <div class="faq-body"><div class="faq-body-inner" data-i18n="faq-a1">
           <p>Therapy processes what happened. Coaching teaches you frameworks. The Realign changes how your unconscious mind runs the pattern itself.</p>
           <p>Your conscious mind is maybe 5% of how you actually operate. The other 95% is running on programming: beliefs, neural pathways, emotional associations you absorbed growing up.</p>
           <p>When you try to change through willpower alone, you're using that 5% to fight the other 95%. The Realign accesses the unconscious layer directly. We find where the pattern got wired and dissolve it.</p>
@@ -1699,7 +1712,7 @@
           What actually happens in a session?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
-        <div class="faq-body"><div class="faq-body-inner">
+        <div class="faq-body"><div class="faq-body-inner" data-i18n="faq-a2">
           <p>We start with a conversation about the pattern you want to shift. I listen for the root belief underneath it.</p>
           <p>Then you get comfortable. I guide you into a focused, relaxed state. Your conscious mind is calm. Your unconscious mind is listening.</p>
           <p>We work with the original belief or memory that wired the pattern, reframe it, and from that new understanding, the pattern naturally releases. You're conscious the entire time. You leave with tools to keep working with the shift on your own.</p>
@@ -1711,7 +1724,7 @@
           Do I have to talk about trauma or relive painful things?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
-        <div class="faq-body"><div class="faq-body-inner">
+        <div class="faq-body"><div class="faq-body-inner" data-i18n="faq-a3">
           <p>Not necessarily. We work with the belief or pattern, not the story. You don't need to describe your whole history or relive anything.</p>
           <p>If you're carrying something very recent or very heavy, the Clarity Call is where we assess whether this is the right time, or if you need other resources.</p>
         </div></div>
@@ -1722,7 +1735,7 @@
           How much does a session cost?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
-        <div class="faq-body"><div class="faq-body-inner">
+        <div class="faq-body"><div class="faq-body-inner" data-i18n="faq-a4">
           <p>A Clarity Call is free. That's where we figure out if this is right for you.</p>
           <p>A Realign session is RM300.</p>
         </div></div>
@@ -1733,7 +1746,7 @@
           Is this spiritual or scientific?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
-        <div class="faq-body"><div class="faq-body-inner">
+        <div class="faq-body"><div class="faq-body-inner" data-i18n="faq-a5">
           <p>Hypnotherapy is based on neuroscience: how neural pathways form, how memory works, how belief shapes the brain. It's measurable. It's studied.</p>
           <p>The spiritual part is real. When you access your unconscious mind, you're reconnecting with a part of you that's been there the whole time: the part that knows what aliveness actually feels like. That's spiritual.</p>
           <p>This work is not religious and does not conflict with any faith. It doesn't ask you to believe anything new. Whatever framework you hold, The Realign works within it, not against it.</p>
@@ -1745,7 +1758,7 @@
           Online or in-person?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
-        <div class="faq-body"><div class="faq-body-inner">
+        <div class="faq-body"><div class="faq-body-inner" data-i18n="faq-a6">
           <p>Sessions are available online for international clients. For those based in Kuala Lumpur, in-person is also an option.</p>
         </div></div>
       </div>
@@ -1755,7 +1768,7 @@
           What languages do you work in?
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
-        <div class="faq-body"><div class="faq-body-inner">
+        <div class="faq-body"><div class="faq-body-inner" data-i18n="faq-a7">
           <p>English and Chinese (Mandarin).</p>
         </div></div>
       </div>
@@ -2277,15 +2290,22 @@
         'faq-q5': 'Is this spiritual or scientific? <span class="faq-icon" aria-hidden="true">+</span>',
         'faq-q6': 'Online or in-person? <span class="faq-icon" aria-hidden="true">+</span>',
         'faq-q7': 'What languages do you work in? <span class="faq-icon" aria-hidden="true">+</span>',
+        'faq-a1': '<p>Therapy processes what happened. Coaching teaches you frameworks. The Realign changes how your unconscious mind runs the pattern itself.</p><p>Your conscious mind is maybe 5% of how you actually operate. The other 95% is running on programming: beliefs, neural pathways, emotional associations you absorbed growing up.</p><p>When you try to change through willpower alone, you\'re using that 5% to fight the other 95%. The Realign accesses the unconscious layer directly. We find where the pattern got wired and dissolve it.</p>',
+        'faq-a2': '<p>We start with a conversation about the pattern you want to shift. I listen for the root belief underneath it.</p><p>Then you get comfortable. I guide you into a focused, relaxed state. Your conscious mind is calm. Your unconscious mind is listening.</p><p>We work with the original belief or memory that wired the pattern, reframe it, and from that new understanding, the pattern naturally releases. You\'re conscious the entire time. You leave with tools to keep working with the shift on your own.</p>',
+        'faq-a3': '<p>Not necessarily. We work with the belief or pattern, not the story. You don\'t need to describe your whole history or relive anything.</p><p>If you\'re carrying something very recent or very heavy, the Clarity Call is where we assess whether this is the right time, or if you need other resources.</p>',
+        'faq-a4': '<p>A Clarity Call is free. That\'s where we figure out if this is right for you.</p><p>A Realign session is RM300.</p>',
+        'faq-a5': '<p>Hypnotherapy is based on neuroscience: how neural pathways form, how memory works, how belief shapes the brain. It\'s measurable. It\'s studied.</p><p>The spiritual part is real. When you access your unconscious mind, you\'re reconnecting with a part of you that\'s been there the whole time: the part that knows what aliveness actually feels like. That\'s spiritual.</p><p>This work is not religious and does not conflict with any faith. It doesn\'t ask you to believe anything new. Whatever framework you hold, The Realign works within it, not against it.</p>',
+        'faq-a6': '<p>Sessions are available online for international clients. For those based in Kuala Lumpur, in-person is also an option.</p>',
+        'faq-a7': '<p>English and Chinese (Mandarin).</p>',
         'footer-quote': 'The privilege of a lifetime is to become<br><em>who you truly are.</em>',
         'footer-cite': 'Carl Jung',
         'footer-tagline': 'Subconscious repatterning for people ready to stop running on old code.',
       },
       zh: {
         'nav-logo': 'Lara Yap <span>·</span> 心灵调谐师',
-        'nav-about': '关于', 'nav-faq': '常见问题', 'nav-book': '电子书', 'nav-cta': '预约澄清会谈',
-        'cta-clarity': '预约清晰通话',
-        'cta-clarity-arrow': '预约清晰通话 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>',
+        'nav-about': '关于', 'nav-faq': '常见问题', 'nav-book': '电子书', 'nav-cta': '免费初步心聊',
+        'cta-clarity': '免费初步心聊',
+        'cta-clarity-arrow': '免费初步心聊 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>',
         'hero-eyebrow': '从你曾经的模样，<br>到你本来的自己',
         'hero-side-l': '重塑你的现实',
         'hero-side-r': 'Lara Yap 著',
@@ -2327,7 +2347,7 @@
         'about-p3': '那个决定是真实的。随之而来的，是数月来不断尝试、又不断滑回原处的过程。最终我明白，问题从来不在于缺乏清晰或动力。旧的代码仍在运行。当我开始从那个层面工作，内在的阻力消融了，行动与能量自然而然地走向了协调。',
         'about-p4': '我现在接触的很多人都处于同样的境地。人生过渡期，转换跑道，不确定自己是否有那个能力。从内在清除阻力，开始成为我所能给予的最诚实的礼物。',
         'about-sig': 'Lara Yap，IHA 认证催眠治疗师',
-        'testi-eyebrow': '客户感言', 'testi-h2': '用他们自己的话',
+        'testi-eyebrow': '客户感言', 'testi-h2': '疗愈见证',
         'tags-eyebrow': '常见模式', 'tags-h2': '是什么带他们来到这里',
         'tw-selfworth': '自我价值', 'tw-procrastination': '拖延症',
         'tw-perfectionism': '完美主义', 'tw-imposter': '冒名顶替综合症',
@@ -2339,9 +2359,9 @@
         'tw-limiting': '限制性信念', 'tw-relationship': '关系模式',
         'tw-eating': '情绪性进食', 'tw-sleep': '睡眠问题', 'tw-weight': '体重管理',
         'clarity-eyebrow': '免费 &nbsp;·&nbsp; 20 分钟',
-        'clarity-h2': '你的清晰，从这里开始',
-        'clarity-p': '一个免费的20分钟安全空间，坦诚交流，找到清晰，再决定 Realign 是否适合你。',
-        'clarity-cta': '预约清晰通话',
+        'clarity-h2': '让思绪清晰，从这里开始',
+        'clarity-p': '一个免费的20分钟空间，坦诚交流，找到方向，再决定 Realign 是否适合你。',
+        'clarity-cta': '免费初步心聊',
         'book-eyebrow': '现实，简而言之',
         'book-h2': '旧世界的终结',
         'book-p1': '如果你一直在问那些周围没人能回答的存在主义问题，这本书是为你而写的。',
@@ -2357,6 +2377,13 @@
         'faq-q5': '这是灵性的还是科学的？<span class="faq-icon" aria-hidden="true">+</span>',
         'faq-q6': '线上还是面对面？<span class="faq-icon" aria-hidden="true">+</span>',
         'faq-q7': '你用哪些语言工作？<span class="faq-icon" aria-hidden="true">+</span>',
+        'faq-a1': '<p>心理治疗处理发生过的事。教练为你提供框架。Realign 直接改变潜意识运作模式本身。</p><p>你的意识思维，只占实际运作的大约5%。另外95%跑在一套程序上，那是你在成长过程中吸收的信念、神经通路与情绪连接。</p><p>靠意志力改变，是在用那5%对抗另外95%。Realign 直接进入潜意识层面，找到模式被写入的根源，将它溶解。</p>',
+        'faq-a2': '<p>我们先从对话开始，聊聊你想要调整的模式。我聆听，找出背后的核心信念。</p><p>然后你放松下来。我引导你进入一种专注而平静的状态，意识安静，潜意识开始聆听。</p><p>我们处理最初写入这个模式的信念或记忆，重新理解它。从新的理解出发，模式自然松动、释放。全程你都是清醒的。离开时，你带走继续自我工作的工具。</p>',
+        'faq-a3': '<p>不一定。我们处理的是信念或模式本身，而不是故事。你不需要描述整段经历，也不需要重历任何事。</p><p>如果你正承载着特别沉重或近期的创伤，心聊是我们共同评估时机是否合适、或是否需要其他支持的地方。</p>',
+        'faq-a4': '<p>初步心聊是免费的，那是我们确认是否适合彼此的空间。</p><p>一次 Realign 疗程的费用为 RM300。</p>',
+        'faq-a5': '<p>催眠疗法建立在神经科学上：神经通路如何形成，记忆如何运作，信念如何塑造大脑。它是可测量的，有研究支持的。</p><p>灵性的那一面是真实的。进入潜意识，是在重新连接那个一直在你身体里的部分，那个知道真正活着是什么感觉的部分。</p><p>这套工作不具宗教性，与任何信仰都不冲突。它不要求你相信任何新的东西。无论你持有什么样的人生框架，Realign 都在其中运作，而非与之对立。</p>',
+        'faq-a6': '<p>海外客户可以选择线上进行。身在吉隆坡的朋友，也欢迎面对面。</p>',
+        'faq-a7': '<p>中文（普通话）与英文。</p>',
         'footer-quote': '一生中最大的特权，是成为<br><em>真正的自己。</em>',
         'footer-cite': '卡尔·荣格',
         'footer-tagline': '潜意识重塑，为那些准备好摆脱旧有模式的人。',
