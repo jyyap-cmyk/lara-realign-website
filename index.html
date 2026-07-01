@@ -1257,18 +1257,52 @@
     html[lang="zh-CN"] {
       --f-body: 'Poppins', 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
     }
+    html[lang="zh-CN"] body { font-size: 18px; }
+    html[lang="zh-CN"] .body { font-size: 17px; }
     html[lang="zh-CN"] .h2,
     html[lang="zh-CN"] .h3 {
       font-family: 'Poppins', 'PingFang SC', 'Noto Sans SC', sans-serif;
+      font-size: clamp(28px, 3.5vw, 44px);
     }
     html[lang="zh-CN"] .hero-eyebrow {
       font-family: 'Poppins', 'PingFang SC', 'Noto Sans SC', sans-serif;
-      font-size: 15px;
+      font-size: 17px;
       letter-spacing: 0.06em;
       text-transform: none;
       font-weight: 400;
     }
-    html[lang="zh-CN"] .eyebrow { font-style: normal; }
+    html[lang="zh-CN"] .eyebrow {
+      font-style: normal;
+      font-size: 18px;
+      letter-spacing: 0.04em;
+    }
+    html[lang="zh-CN"] .eyebrow-sm,
+    html[lang="zh-CN"] .eyebrow-lt {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+    }
+    /* Nav: larger + less spaced for Chinese legibility */
+    html[lang="zh-CN"] .nav-logo {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      font-weight: 400;
+      color: rgba(238,231,221,0.95);
+    }
+    html[lang="zh-CN"] .nav-links a {
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      font-weight: 400;
+      color: rgba(238,231,221,0.9);
+    }
+    html[lang="zh-CN"] .nav-cta {
+      font-size: 11.5px;
+      letter-spacing: 0.08em;
+      font-weight: 400;
+    }
+    html[lang="zh-CN"] .lang-toggle {
+      font-size: 11.5px;
+      font-weight: 400;
+    }
   </style>
 </head>
 <body>
@@ -2306,7 +2340,7 @@
         'nav-about': '关于', 'nav-faq': '常见问题', 'nav-book': '电子书', 'nav-cta': '免费初步心聊',
         'cta-clarity': '免费初步心聊',
         'cta-clarity-arrow': '免费初步心聊 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>',
-        'hero-eyebrow': '从你曾经的模样，<br>到你本来的自己',
+        'hero-eyebrow': '从被定义的人生，<br>回到最初的自己',
         'hero-side-l': '重塑你的现实',
         'hero-side-r': 'Lara Yap 著',
         'who-h2': '你知道，自己本应不止于此',
@@ -2377,8 +2411,8 @@
         'faq-q5': '这是灵性的还是科学的？<span class="faq-icon" aria-hidden="true">+</span>',
         'faq-q6': '线上还是面对面？<span class="faq-icon" aria-hidden="true">+</span>',
         'faq-q7': '你用哪些语言工作？<span class="faq-icon" aria-hidden="true">+</span>',
-        'faq-a1': '<p>心理治疗处理发生过的事。教练为你提供框架。Realign 直接改变潜意识运作模式本身。</p><p>你的意识思维，只占实际运作的大约5%。另外95%跑在一套程序上，那是你在成长过程中吸收的信念、神经通路与情绪连接。</p><p>靠意志力改变，是在用那5%对抗另外95%。Realign 直接进入潜意识层面，找到模式被写入的根源，将它溶解。</p>',
-        'faq-a2': '<p>我们先从对话开始，聊聊你想要调整的模式。我聆听，找出背后的核心信念。</p><p>然后你放松下来。我引导你进入一种专注而平静的状态，意识安静，潜意识开始聆听。</p><p>我们处理最初写入这个模式的信念或记忆，重新理解它。从新的理解出发，模式自然松动、释放。全程你都是清醒的。离开时，你带走继续自我工作的工具。</p>',
+        'faq-a1': '<p>心理治疗处理发生过的事。教练为你提供框架。Realign 直接改变潜意识运作模式本身。</p><p>你的意识思维，只占实际运作的大约5%。另外95%跑在一套程序上，那是你在成长过程中吸收的信念、神经通路与情绪连接。</p><p>靠意志力改变，是在用那5%对抗另外95%。Realign 直接进入潜意识层面，找到模式被写入的根源，将它化解。</p>',
+        'faq-a2': '<p>我们先从对话开始，聊聊你想要调整的模式。我聆听，找出背后的核心信念。</p><p>然后你放松下来。我引导你进入一种专注而平静的状态，意识安静，潜意识开始聆听。</p><p>我们处理最初写入这个模式的信念或记忆，重新理解它。从新的理解出发，模式自然松动、释放。全程你都是清醒的。离开时，你会获得一套在家继续深化这份改变的方法。</p>',
         'faq-a3': '<p>不一定。我们处理的是信念或模式本身，而不是故事。你不需要描述整段经历，也不需要重历任何事。</p><p>如果你正承载着特别沉重或近期的创伤，心聊是我们共同评估时机是否合适、或是否需要其他支持的地方。</p>',
         'faq-a4': '<p>初步心聊是免费的，那是我们确认是否适合彼此的空间。</p><p>一次 Realign 疗程的费用为 RM300。</p>',
         'faq-a5': '<p>催眠疗法建立在神经科学上：神经通路如何形成，记忆如何运作，信念如何塑造大脑。它是可测量的，有研究支持的。</p><p>灵性的那一面是真实的。进入潜意识，是在重新连接那个一直在你身体里的部分，那个知道真正活着是什么感觉的部分。</p><p>这套工作不具宗教性，与任何信仰都不冲突。它不要求你相信任何新的东西。无论你持有什么样的人生框架，Realign 都在其中运作，而非与之对立。</p>',
