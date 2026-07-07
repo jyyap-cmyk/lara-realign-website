@@ -55,7 +55,7 @@
             "name": "Free Clarity Call",
             "price": "0",
             "priceCurrency": "MYR",
-            "description": "Free 20-minute consultation to assess whether The Realign is right for you."
+            "description": "Free 30-minute consultation to assess whether The Realign is right for you."
           },
           {
             "@type": "Offer",
@@ -137,12 +137,12 @@
       line-height: 1.85;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
-      cursor: auto;
+      cursor: none;
     }
     @media (hover: none) { body { cursor: auto; } }
     img { display: block; max-width: 100%; height: auto; }
     a { text-decoration: none; color: inherit; }
-    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    button { font-family: inherit; cursor: none; border: none; background: none; }
     @media (hover: none) { button { cursor: auto; } }
 
     /* ─── GRAIN OVERLAY ──────────────────────────────── */
@@ -163,7 +163,7 @@
       transform: translate(-50%, -50%);
       display: none;
     }
-    @media (hover: hover) { #cursor { display: none; } }
+    @media (hover: hover) { #cursor { display: block; } }
 
     /* ─── CURSOR RIPPLE ──────────────────────────────── */
     .c-ripple {
@@ -429,7 +429,7 @@
     .nav--light .nav-links a { color: rgba(28,20,9,0.62); }
     .nav-burger {
       display: none; flex-direction: column; gap: 5px;
-      padding: 8px; background: none; border: none; cursor: pointer;
+      padding: 8px; background: none; border: none; cursor: none;
     }
     .nav-burger span {
       display: block; width: 22px; height: 1px;
@@ -905,6 +905,31 @@
       object-fit: cover; object-position: top center;
       border-radius: 3px;
     }
+    .about-creds {
+      max-width: 1120px; margin: 96px auto 0; padding: 52px 48px 0;
+      border-top: 1px solid var(--line);
+    }
+    .about-creds-label {
+      font-family: var(--f-body); font-style: italic;
+      font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sienna); display: block; margin-bottom: 26px;
+    }
+    .about-creds-list {
+      list-style: none; display: flex; flex-wrap: wrap;
+      gap: 18px 0;
+    }
+    .about-creds-list li {
+      font-family: var(--f-now); font-weight: 300;
+      font-size: clamp(15px, 1.5vw, 21px); letter-spacing: 0.005em;
+      color: var(--dark); padding: 0 32px;
+      border-left: 1px solid var(--line);
+    }
+    .about-creds-list li:first-child { padding-left: 0; border-left: none; }
+    @media (max-width: 767px) {
+      .about-creds { padding: 40px 24px 0; margin-top: 64px; }
+      .about-creds-list { flex-direction: column; gap: 14px; }
+      .about-creds-list li { padding: 0; border-left: none; }
+    }
 
     /* ═══════════════════════════════════════════════════
        S7: TESTIMONIALS
@@ -1162,7 +1187,7 @@
       display: flex; justify-content: space-between; align-items: center; gap: 20px;
       font-family: var(--f-body); font-weight: 400;
       font-size: 16px; line-height: 1.45; color: rgba(238,231,221,0.78);
-      transition: color 0.2s ease; cursor: pointer;
+      transition: color 0.2s ease; cursor: none;
     }
     .faq-q:hover { color: rgba(238,231,221,0.96); }
     .faq-icon {
@@ -1696,6 +1721,16 @@
       </div>
     </div>
 
+    <div class="about-creds gs-up">
+      <span class="about-creds-label">Credentials</span>
+      <ul class="about-creds-list">
+        <li>IHA Certified Hypnotherapist</li>
+        <li>Mindscaping Practitioner</li>
+        <li>BSc Psychology</li>
+        <li>MSc Marketing</li>
+      </ul>
+    </div>
+
   </section>
 
 
@@ -1756,10 +1791,10 @@
   <section class="s-clarity sec-lg" id="clarity">
     <img class="clarity-bg" src="./Website FINAL Images/5.png" alt="" role="presentation" loading="lazy">
     <div class="clarity-glass">
-      <span class="eyebrow gs-up" data-i18n="clarity-eyebrow">Free &nbsp;·&nbsp; 20 Minutes</span>
+      <span class="eyebrow gs-up" data-i18n="clarity-eyebrow">Free &nbsp;·&nbsp; 30 Minutes</span>
       <h2 class="h2 h2-light gs-up" data-i18n="clarity-h2">Your clarity starts here</h2>
       <div class="body body-light gs-up">
-        <p data-i18n="clarity-p">A free 20-minute safe space for honest conversation and clarity, before you decide if The Realign is right for you.</p>
+        <p data-i18n="clarity-p">A free 30-minute safe space for honest conversation and clarity, before you decide if The Realign is right for you.</p>
       </div>
       <div class="gs-up" style="margin-top:52px;">
         <a href="https://calendly.com/larayapjy/30min" class="btn btn-cream" data-i18n="clarity-cta">Claim your clarity</a>
@@ -2385,9 +2420,9 @@
         'tw-disconnected': 'Feeling disconnected', 'tw-conflict': 'Inner conflict',
         'tw-limiting': 'Limiting beliefs', 'tw-relationship': 'Relationship patterns',
         'tw-eating': 'Emotional eating', 'tw-sleep': 'Sleep issues', 'tw-weight': 'Weight management',
-        'clarity-eyebrow': 'Free &nbsp;·&nbsp; 20 Minutes',
+        'clarity-eyebrow': 'Free &nbsp;·&nbsp; 30 Minutes',
         'clarity-h2': 'Your clarity starts here',
-        'clarity-p': 'A free 20-minute safe space for honest conversation and clarity, before you decide if The Realign is right for you.',
+        'clarity-p': 'A free 30-minute safe space for honest conversation and clarity, before you decide if The Realign is right for you.',
         'clarity-cta': 'Claim your clarity',
         'book-eyebrow': 'Reality, simplified',
         'book-h2': 'Death of the Old World',
@@ -2472,9 +2507,9 @@
         'tw-disconnected': '内心疏离感', 'tw-conflict': '内在冲突',
         'tw-limiting': '限制性信念', 'tw-relationship': '关系模式',
         'tw-eating': '情绪性进食', 'tw-sleep': '睡眠问题', 'tw-weight': '体重管理',
-        'clarity-eyebrow': '免费 &nbsp;·&nbsp; 20 分钟',
+        'clarity-eyebrow': '免费 &nbsp;·&nbsp; 30 分钟',
         'clarity-h2': '让思绪清晰，从这里开始',
-        'clarity-p': '一个免费的20分钟空间，坦诚交流，找到方向，再决定 Realign 是否适合你。',
+        'clarity-p': '一个免费的30分钟空间，坦诚交流，找到方向，再决定 Realign 是否适合你。',
         'clarity-cta': '免费初步心聊',
         'book-eyebrow': '现实，简而言之',
         'book-h2': '旧世界的终结',
