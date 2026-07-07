@@ -137,19 +137,19 @@
       line-height: 1.85;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
-      cursor: none;
+      cursor: auto;
     }
     @media (hover: none) { body { cursor: auto; } }
     img { display: block; max-width: 100%; height: auto; }
     a { text-decoration: none; color: inherit; }
-    button { font-family: inherit; cursor: none; border: none; background: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
     @media (hover: none) { button { cursor: auto; } }
 
     /* ─── GRAIN OVERLAY ──────────────────────────────── */
     .grain {
       position: fixed; inset: 0; z-index: 9998;
       pointer-events: none;
-      opacity: 0.038;
+      opacity: 0.055;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       background-size: 200px;
     }
@@ -163,7 +163,7 @@
       transform: translate(-50%, -50%);
       display: none;
     }
-    @media (hover: hover) { #cursor { display: block; } }
+    @media (hover: hover) { #cursor { display: none; } }
 
     /* ─── CURSOR RIPPLE ──────────────────────────────── */
     .c-ripple {
@@ -239,11 +239,11 @@
     .h2 {
       font-family: var(--f-now);
       font-weight: 300;
-      font-size: clamp(26px, 3.2vw, 38px);
-      line-height: 1.18;
-      letter-spacing: -0.02em;
+      font-size: clamp(31px, 4.3vw, 58px);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
       color: var(--dark);
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
     .h2-light { color: rgba(238,231,221,0.94); }
     .body {
@@ -265,8 +265,8 @@
       letter-spacing: 0.01em;
     }
     .max-w { max-width: 1120px; margin: 0 auto; padding: 0 48px; }
-    .sec { padding: 96px 0; }
-    .sec-lg { padding: 120px 0; }
+    .sec { padding: 128px 0; }
+    .sec-lg { padding: 160px 0; }
 
     /* ─── BUTTONS ────────────────────────────────────── */
     .btn {
@@ -410,17 +410,17 @@
     }
     .nav-logo {
       font-family: var(--f-now); font-weight: 300;
-      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase;
       color: rgba(238,231,221,0.88);
       transition: color 0.35s ease;
     }
-    .nav-logo span { opacity: 0.45; margin: 0 8px; }
+    .nav-logo span { opacity: 0.45; margin: 0 7px; }
     .nav-links {
-      display: flex; gap: 36px; list-style: none; align-items: center;
+      display: flex; gap: 30px; list-style: none; align-items: center;
     }
     .nav-links a {
-      font-family: var(--f-now); font-size: 10.5px; font-weight: 300;
-      letter-spacing: 0.22em; text-transform: uppercase;
+      font-family: var(--f-now); font-size: 9px; font-weight: 300;
+      letter-spacing: 0.16em; text-transform: uppercase;
       color: rgba(238,231,221,0.75);
       transition: color 0.35s ease, opacity 0.2s;
     }
@@ -429,7 +429,7 @@
     .nav--light .nav-links a { color: rgba(28,20,9,0.62); }
     .nav-burger {
       display: none; flex-direction: column; gap: 5px;
-      padding: 8px; background: none; border: none; cursor: none;
+      padding: 8px; background: none; border: none; cursor: pointer;
     }
     .nav-burger span {
       display: block; width: 22px; height: 1px;
@@ -509,16 +509,18 @@
       position: absolute; top: -15%; left: 0; right: 0;
       width: 100%; height: 130%;
       object-fit: cover; object-position: center center;
-      filter: saturate(0.88) brightness(0.95);
+      filter: saturate(0.92) brightness(0.9) sepia(0.2) contrast(1.03);
       will-change: transform;
     }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to bottom,
-        rgba(0,0,0,0.38) 0%,
-        rgba(0,0,0,0.10) 40%,
-        rgba(0,0,0,0.32) 100%
-      );
+      background:
+        radial-gradient(80% 62% at 50% 44%, rgba(20,14,6,0.50) 0%, rgba(20,14,6,0.16) 58%, rgba(20,14,6,0) 78%),
+        linear-gradient(to bottom,
+          rgba(20,14,6,0.44) 0%,
+          rgba(20,14,6,0.20) 45%,
+          rgba(20,14,6,0.50) 100%
+        );
     }
     .hero-inner {
       position: relative; z-index: 2;
@@ -597,10 +599,14 @@
     }
     .who-inner {
       position: relative; z-index: 2;
-      max-width: 680px; margin: 0 auto; padding: 80px 48px;
+      max-width: 960px; margin: 0 auto; padding: 80px 48px;
       text-align: center;
     }
-    .who-inner .h2 { color: var(--dark); font-family: var(--f-bn); font-style: italic; }
+    .who-inner .h2 {
+      color: var(--dark); font-family: var(--f-bn); font-style: italic;
+      font-size: clamp(40px, 5.9vw, 88px); line-height: 1.04;
+      letter-spacing: -0.01em; margin-bottom: 44px;
+    }
     .who-inner .body { color: rgba(28,20,16,0.72); max-width: 62ch; margin: 0 auto; }
     .who-inner .body p + p { margin-top: 22px; }
     .who-close {
@@ -649,15 +655,15 @@
     }
     .realign-the {
       font-family: var(--f-now); font-weight: 100;
-      font-size: 8.8vw;
-      line-height: 0.92; letter-spacing: -0.02em;
+      font-size: 10.8vw;
+      line-height: 0.9; letter-spacing: -0.03em;
       color: rgba(238,231,221,0.94);
       display: block;
     }
     .realign-name {
       font-family: var(--f-bn); font-weight: 400; font-style: italic;
-      font-size: 8.8vw;
-      line-height: 0.92; letter-spacing: -0.02em;
+      font-size: 10.8vw;
+      line-height: 0.88; letter-spacing: -0.03em;
       color: rgba(238,231,221,0.94);
       display: block;
     }
@@ -1156,7 +1162,7 @@
       display: flex; justify-content: space-between; align-items: center; gap: 20px;
       font-family: var(--f-body); font-weight: 400;
       font-size: 16px; line-height: 1.45; color: rgba(238,231,221,0.78);
-      transition: color 0.2s ease; cursor: none;
+      transition: color 0.2s ease; cursor: pointer;
     }
     .faq-q:hover { color: rgba(238,231,221,0.96); }
     .faq-icon {
@@ -1431,7 +1437,7 @@
   <!-- ── HERO ─────────────────────────────────────────── -->
   <section class="hero tex" id="hero">
     <div class="hero-frame">
-      <img class="hero-img" src="./Website FINAL Images/Hero.jpg" alt="" role="presentation" fetchpriority="high">
+      <img class="hero-img" src="./Website Images/pexels-alex-shuper-545353468-34070596.jpg" alt="" role="presentation" fetchpriority="high">
       <div class="hero-overlay" aria-hidden="true"></div>
 
       <div class="hero-inner">
