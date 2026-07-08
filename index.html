@@ -494,24 +494,22 @@
     /* ═══════════════════════════════════════════════════
        HERO
     ═══════════════════════════════════════════════════ */
+    /* Scroll-expansion hero: aura circle grows to fullscreen (The Realign),
+       then dissolves to The Philosophy. Driven by .hero height + rAF. */
     .hero {
       position: relative;
-      height: 100dvh; min-height: 620px;
-      background: #F4E4B8;
-      padding: 20px 20px 0;
-      box-sizing: border-box;
+      height: 320vh;
+      background: var(--dark);
     }
-    .hero-frame {
-      position: relative;
-      width: 100%; height: 100%;
-      border-radius: 20px;
+    .hero-pin {
+      position: sticky; top: 0;
+      height: 100dvh; min-height: 620px;
       overflow: hidden;
       background: var(--dark);
-      display: flex; align-items: center; justify-content: center;
     }
     .hero-img {
-      position: absolute; top: -15%; left: 0; right: 0;
-      width: 100%; height: 130%;
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
       object-fit: cover; object-position: center center;
       filter: saturate(0.92) brightness(0.9) sepia(0.2) contrast(1.03);
       will-change: transform;
@@ -526,53 +524,77 @@
           rgba(20,14,6,0.50) 100%
         );
     }
-    .hero-inner {
-      position: relative; z-index: 2;
-      width: 100%;
-      display: flex; flex-direction: column; align-items: center;
+    .aura-wrap {
+      position: absolute; left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      width: 42vmin; height: 42vmin;
+      border-radius: 50%;
+      overflow: hidden;
+      z-index: 2;
+      box-shadow: 0 30px 120px rgba(15,11,7,0.4);
+      will-change: width, height, border-radius;
     }
+    .aura-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+    }
+    .hero-inner {
+      position: absolute; inset: 0; z-index: 3;
+      pointer-events: none;
+    }
+    .hero-inner a { pointer-events: auto; }
     .hero-eyebrow {
+      position: absolute; top: 16%; left: 0; right: 0;
       font-family: var(--f-now); font-weight: 300; font-size: 10px;
       letter-spacing: 0.28em; text-transform: uppercase;
-      color: rgba(167,185,198,0.72);
-      margin-bottom: 28px; display: block;
+      color: rgba(238,231,221,0.72);
       text-align: center;
     }
-    .hero-3col {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      width: 100%; padding: 0 52px; gap: 20px;
-    }
-    .hero-side {
-      font-family: var(--f-body); font-style: italic;
-      font-weight: 400; font-size: clamp(12px, 1.35vw, 17px); line-height: 1.75;
-      color: rgba(238,231,221,0.52); letter-spacing: 0.01em;
-    }
-    .hero-side-l {
-      font-family: var(--f-bn); font-style: italic;
-      font-size: clamp(13px, 1.5vw, 19px);
-      letter-spacing: 0.01em; line-height: 1.4;
-    }
-    .hero-side-r { text-align: right; }
-    .hero-cta { margin-top: 44px; text-align: center; }
-    .hero-h1 {
+    .hero-w-l, .hero-w-r {
+      position: absolute; top: 50%; left: 50%;
       font-family: var(--f-now); font-weight: 100;
       font-size: clamp(57px, 7.9vw, 110px);
       line-height: 1.0; letter-spacing: -0.03em;
-      color: #EEE7DD; margin-bottom: 0;
-      white-space: nowrap; text-align: center;
+      color: #EEE7DD; white-space: nowrap;
+      will-change: transform, opacity;
     }
-    .hero-h1 em {
+    span.hero-w-l { transform: translate(calc(-50% - 15vw), -50%); }
+    span.hero-w-r { transform: translate(calc(-50% + 15vw), -50%); }
+    .hero-w-l em {
       font-style: italic; font-family: var(--f-bn);
       font-weight: 400; letter-spacing: -0.01em;
-      font-size: 0.90em; vertical-align: -0.06em;
+      font-size: 0.90em;
     }
-    .hero-again { font-family: var(--f-bn); font-style: normal; font-weight: 400; vertical-align: -0.06em; }
+    .hero-w-r { font-family: var(--f-bn); font-weight: 400; }
+    .hero-cta {
+      position: absolute; bottom: 20%; left: 0; right: 0;
+      text-align: center;
+    }
+    .hero-byline {
+      position: absolute; bottom: 13.5%; left: 0; right: 0;
+      font-family: var(--f-bn); font-style: italic;
+      font-size: clamp(13px, 1.5vw, 17px);
+      color: rgba(238,231,221,0.52); letter-spacing: 0.01em;
+      white-space: nowrap; text-align: center;
+    }
+    /* The Realign state (fades in once the aura fills the screen) */
+    .hero-realign {
+      position: absolute; inset: 0; z-index: 4;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      opacity: 0; pointer-events: none;
+      will-change: opacity, transform;
+    }
+    .hero-veil {
+      position: absolute; inset: 0; z-index: 6;
+      background: var(--bg);
+      opacity: 0; pointer-events: none;
+    }
     .hero-scroll {
       position: absolute; bottom: 36px; left: 50%;
       transform: translateX(-50%);
-      z-index: 2; display: flex;
+      z-index: 5; display: flex;
       flex-direction: column; align-items: center; gap: 10px;
       opacity: 0; animation: fadeIn 1s ease forwards 1.4s;
     }
@@ -685,38 +707,28 @@
     .realign-post p { margin: 0; }
 
     /* ═══════════════════════════════════════════════════
-       S3b: THE PHILOSOPHY (bg image)
+       S3b: THE PHILOSOPHY (clean editorial, Portal-style)
     ═══════════════════════════════════════════════════ */
     .s-philosophy {
       position: relative;
-      overflow: hidden;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: var(--dark);
-    }
-    .philosophy-bg {
-      position: absolute; top: -15%; left: 0; right: 0;
-      width: 100%; height: 130%;
-      object-fit: cover; object-position: center;
-      filter: saturate(0.88) brightness(0.96);
-      will-change: transform;
-    }
-    .philosophy-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(238,231,221,0.58) 0%, rgba(238,231,221,0.48) 100%);
+      background: var(--bg);
     }
     .philosophy-inner {
-      position: relative; z-index: 2;
-      max-width: 720px; margin: 0 auto;
-      padding: 80px 48px;
-      text-align: justify;
+      max-width: 880px; margin: 0 auto;
+      padding: clamp(140px, 16vw, 220px) 48px;
+      text-align: left;
     }
-    .philosophy-inner .eyebrow-lt { margin-bottom: 20px; color: rgba(44,37,29,0.55); text-align: center; }
-    .philosophy-inner .h2 { color: var(--dark); margin-bottom: 36px; text-align: center; }
-    .philosophy-inner .body { color: var(--dark); max-width: 60ch; margin: 0 auto; }
-    .philosophy-inner .body p + p { margin-top: 20px; }
+    .philosophy-inner .eyebrow-sm { margin-bottom: 30px; }
+    .philosophy-inner .body { color: var(--text-2); max-width: 62ch; }
+    .philosophy-inner .body p + p { margin-top: 22px; }
+    .philosophy-inner .body p:first-child {
+      font-family: var(--f-bn); font-weight: 400;
+      font-size: clamp(27px, 3.6vw, 44px);
+      line-height: 1.22; letter-spacing: 0.005em;
+      color: var(--dark);
+      max-width: 24ch;
+      margin-bottom: 44px;
+    }
 
     /* ═══════════════════════════════════════════════════
        S4: NEUROSCIENCE
@@ -787,67 +799,42 @@
     ═══════════════════════════════════════════════════ */
     .s-benefits {
       position: relative;
-      overflow: hidden;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: var(--dark);
-    }
-    .benefits-bg {
-      position: absolute; top: -15%; left: 0; right: 0;
-      width: 100%; height: 130%;
-      object-fit: cover; object-position: center center;
-      filter: saturate(0.82) brightness(0.93);
-      will-change: transform;
-    }
-    .benefits-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(28,20,9,0.18) 0%, rgba(28,20,9,0.34) 100%);
+      background: var(--bg);
     }
     .benefits-inner {
-      position: relative; z-index: 2;
-      max-width: 1120px; margin: 0 auto; padding: 80px 48px;
+      max-width: 880px; margin: 0 auto;
+      padding: clamp(120px, 14vw, 190px) 48px;
     }
-    .s-benefits .hd { text-align: center; margin-bottom: 56px; }
-    .s-benefits .hd .eyebrow-lt { margin-bottom: 10px; }
-    .s-benefits .hd .h2 { color: rgba(238,231,221,0.94); margin-bottom: 0; }
+    .s-benefits .hd { text-align: left; margin-bottom: 64px; }
+    .s-benefits .hd .eyebrow-lt { margin-bottom: 14px; color: var(--sienna); }
+    .s-benefits .hd .h2 { color: var(--dark); margin-bottom: 0; }
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px 56px;
     }
     .card {
-      background: rgba(238,231,221,0.08);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(238,231,221,0.16);
-      box-shadow: 0 2px 16px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.1);
-      border-radius: 18px;
-      padding: 28px 18px 24px;
-      display: flex; flex-direction: column;
-      align-items: flex-start; gap: 14px;
-      transition: border-color 0.28s ease, box-shadow 0.28s ease, transform 0.28s var(--ease);
+      display: flex; flex-direction: row;
+      align-items: center; gap: 18px;
+      transition: transform 0.28s var(--ease);
     }
-    .card:hover {
-      border-color: rgba(206,178,152,0.35);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
-      transform: translateY(-3px);
-    }
+    .card:hover { transform: translateX(4px); }
     .card-icon {
-      width: 36px; height: 36px;
+      width: 46px; height: 46px;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
+      background: rgba(159,108,82,0.1);
+      border-radius: 50%;
     }
     .card-icon svg {
-      width: 18px; height: 18px;
-      stroke: var(--blue-m); stroke-width: 1.5;
+      width: 19px; height: 19px;
+      stroke: var(--sienna); stroke-width: 1.5;
       fill: none; stroke-linecap: round; stroke-linejoin: round;
-      opacity: 0.75;
+      opacity: 0.9;
     }
     .card-label {
-      font-family: var(--f-body); font-size: 14px;
-      font-weight: 400; line-height: 1.55; color: rgba(238,231,221,0.72);
+      font-family: var(--f-body); font-size: 15.5px;
+      font-weight: 400; line-height: 1.55; color: var(--text-2);
     }
 
     /* ═══════════════════════════════════════════════════
@@ -1066,35 +1053,29 @@
     ═══════════════════════════════════════════════════ */
     .s-clarity {
       position: relative;
-      overflow: hidden;
-      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: var(--dark);
-    }
-    .clarity-bg {
-      position: absolute; top: -15%; left: 0; right: 0;
-      width: 100%; height: 130%;
-      object-fit: cover; object-position: center;
-      opacity: 0.92;
-      will-change: transform;
+      background: var(--bg);
+      padding: clamp(100px, 12vw, 160px) 24px;
     }
     .clarity-glass {
-      position: relative; z-index: 2;
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 24px;
-      padding: 72px 80px;
-      max-width: 680px;
+      position: relative;
+      background: #FCFAF6;
+      border: 1px solid rgba(28,20,9,0.06);
+      border-radius: 28px;
+      padding: 88px 80px;
+      max-width: 720px;
       margin: 0 auto;
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.06) inset,
-        0 24px 80px rgba(0,0,0,0.22);
+      box-shadow: 0 30px 90px rgba(28,20,9,0.1);
     }
+    .clarity-glass .btn-cream {
+      background: var(--dark);
+      color: rgba(238,231,221,0.94) !important;
+      box-shadow: 0 10px 30px rgba(28,20,9,0.22);
+    }
+    .clarity-glass .btn-cream:hover { background: #31241b; }
 
     /* ═══════════════════════════════════════════════════
        S10: COMMON PATTERNS
@@ -1175,36 +1156,36 @@
     /* ═══════════════════════════════════════════════════
        FAQ
     ═══════════════════════════════════════════════════ */
-    .s-faq { background: var(--dark); }
+    .s-faq { background: var(--bg); }
     .s-faq .inner-faq {
       max-width: 720px; margin: 0 auto; padding: 0 48px;
     }
-    .s-faq .hd { text-align: center; margin-bottom: 56px; }
-    .s-faq .hd .eyebrow-sm { color: rgba(167,185,198,0.6); }
-    .s-faq .hd .h2 { color: rgba(238,231,221,0.9); margin-bottom: 0; }
-    .faq-item { border-top: 1px solid rgba(255,255,255,0.0); }
-    .faq-item + .faq-item { border-top: 1px solid rgba(255,255,255,0.06); }
-    .faq-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.0); }
+    .s-faq .hd { text-align: left; margin-bottom: 56px; }
+    .s-faq .hd .eyebrow-sm { color: var(--sienna); }
+    .s-faq .hd .h2 { color: var(--dark); margin-bottom: 0; }
+    .faq-item { border-top: 1px solid rgba(28,20,9,0.0); }
+    .faq-item + .faq-item { border-top: 1px solid rgba(28,20,9,0.09); }
+    .faq-item:last-child { border-bottom: 1px solid rgba(28,20,9,0.0); }
     .faq-q {
       width: 100%; background: none; border: none; text-align: left;
       padding: 26px 0;
       display: flex; justify-content: space-between; align-items: center; gap: 20px;
       font-family: var(--f-body); font-weight: 400;
-      font-size: 16px; line-height: 1.45; color: rgba(238,231,221,0.78);
+      font-size: 16px; line-height: 1.45; color: rgba(28,20,9,0.8);
       transition: color 0.2s ease; cursor: none;
     }
-    .faq-q:hover { color: rgba(238,231,221,0.96); }
+    .faq-q:hover { color: rgba(28,20,9,1); }
     .faq-icon {
       flex-shrink: 0; width: 22px; height: 22px;
-      border: 1px solid rgba(255,255,255,0.12); border-radius: 50%;
+      border: 1px solid rgba(28,20,9,0.16); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      color: var(--blue-m); font-size: 14px; font-weight: 300;
+      color: var(--sienna); font-size: 14px; font-weight: 300;
       font-family: var(--f-body);
       transition: all 0.28s var(--ease);
     }
     .faq-item.open .faq-icon {
-      background: rgba(167,185,198,0.18); border-color: rgba(167,185,198,0.3);
-      color: var(--blue-m); transform: rotate(45deg);
+      background: rgba(159,108,82,0.12); border-color: rgba(159,108,82,0.3);
+      color: var(--sienna); transform: rotate(45deg);
     }
     .faq-body {
       max-height: 0; overflow: hidden;
@@ -1217,7 +1198,7 @@
     .faq-body-inner {
       padding: 0 0 28px;
       font-family: var(--f-body); font-weight: 400;
-      font-size: 15px; line-height: 1.88; color: rgba(238,231,221,0.52);
+      font-size: 15px; line-height: 1.88; color: rgba(28,20,9,0.58);
     }
     .faq-body-inner p + p { margin-top: 16px; }
 
@@ -1457,37 +1438,68 @@
   </div>
 
   <!-- ── HERO ─────────────────────────────────────────── -->
-  <section class="hero tex" id="hero">
-    <div class="hero-frame">
+  <!-- ── HERO: scroll-expansion into THE REALIGN ───────── -->
+  <section class="hero" id="hero">
+    <div class="hero-pin tex">
       <img class="hero-img" src="./Website Images/pexels-alex-shuper-545353468-34070596.jpg" alt="" role="presentation" fetchpriority="high">
       <div class="hero-overlay" aria-hidden="true"></div>
 
-      <div class="hero-inner">
-          <p class="hero-eyebrow gs-up" data-delay="0.2" data-i18n="hero-eyebrow">From where you were,<br>to who you are</p>
-
-          <div class="hero-3col">
-            <div class="hero-side hero-side-l gs-up" data-delay="0.6" data-i18n="hero-side-l">
-              Program your reality
-            </div>
-            <h1 class="hero-h1 gs-up" data-delay="0.38"><em>alive</em> <span class="hero-again">again</span></h1>
-            <div class="hero-side hero-side-r gs-up" data-delay="0.6" data-i18n="hero-side-r">
-              by Lara Yap
-            </div>
-          </div>
-
-          <div class="hero-cta gs-up" data-delay="0.56">
-            <a href="https://calendly.com/larayapjy/30min" class="btn btn-cream" data-i18n="cta-clarity">Book a Clarity Call</a>
-          </div>
+      <div class="aura-wrap" aria-hidden="true">
+        <img src="./Website FINAL Images/1 LATEST.png" alt="">
       </div>
 
-      <div class="hero-scroll" aria-hidden="true">
+      <div class="hero-inner">
+        <p class="hero-eyebrow hero-fade-ui gs-up" data-delay="0.2" data-i18n="hero-eyebrow">From where you were,<br>to who you are</p>
+        <h1 class="hero-title" aria-label="alive again">
+          <span class="hero-w-l gs-up" data-delay="0.38"><em>alive</em></span>
+          <span class="hero-w-r gs-up" data-delay="0.38">again</span>
+        </h1>
+        <div class="hero-cta hero-fade-ui gs-up" data-delay="0.56">
+          <a href="https://calendly.com/larayapjy/30min" class="btn btn-cream" data-i18n="cta-clarity">Book a Clarity Call</a>
+        </div>
+        <div class="hero-byline hero-fade-ui gs-up" data-delay="0.6">
+          <span data-i18n="hero-side-l">Program your reality</span>
+          <span> &nbsp;·&nbsp; </span>
+          <span data-i18n="hero-side-r">by Lara Yap</span>
+        </div>
+      </div>
+
+      <div class="hero-realign" id="realign">
+        <p class="realign-pre" data-i18n="realign-pre">Meet the part of you that has answers.</p>
+        <span class="realign-the">THE</span>
+        <span class="realign-name">REALIGN</span>
+        <div class="realign-post" style="margin-top:18px;">
+          <p data-i18n="realign-b1">Align mind and body with your goals</p>
+          <p data-i18n="realign-b2">Bypass conscious resistance</p>
+          <p data-i18n="realign-b3">Improve relationships</p>
+          <p data-i18n="realign-b4">Improve health and well-being</p>
+          <p data-i18n="realign-b5">Greater sense of happiness and freedom</p>
+        </div>
+      </div>
+
+      <div class="hero-veil" aria-hidden="true"></div>
+
+      <div class="hero-scroll hero-fade-ui" aria-hidden="true">
         <span class="hero-scroll-lbl">Scroll</span>
         <div class="hero-scroll-line"></div>
       </div>
     </div>
   </section>
 
-  <!-- ── S2: WHO THIS IS FOR ───────────────────────────── -->
+  <!-- ── THE PHILOSOPHY (clean editorial) ──────────────── -->
+  <section class="s-philosophy" id="realign-b">
+    <div class="philosophy-inner">
+      <span class="eyebrow-sm gs-up" data-i18n="philo-eyebrow">The Philosophy</span>
+      <div class="body gs-up">
+        <p data-i18n="philo-p1">Your unconscious mind runs 95% of how you operate, built on programming absorbed before your conscious awareness developed.</p>
+        <p data-i18n="philo-p2">Everything you've tried targeted the conscious mind. The reflection. The goal setting. Change through conscious effort alone is possible, it's just working against the current the whole way.</p>
+        <p data-i18n="philo-p3">Just like two heads on one body. One wants one thing, you want another.</p>
+        <p data-i18n="philo-p4">The Realign works to bring both parts into agreement. We find where the pattern was wired, update it at the root, and let your mind and body finally move as one.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHO THIS IS FOR ───────────────────────────────── -->
   <section class="s-who" id="who">
     <div class="who-inner">
       <h2 class="h2 gs-up" data-i18n="who-h2">You know you're meant for more</h2>
@@ -1495,48 +1507,6 @@
         <p data-i18n="who-p1">That feeling has been deep within you.</p>
         <p data-i18n="who-p2">You've invested in the right things. The self-help books gave you frameworks. The podcasts kept you going, for a while. A retreat gave you the peace you have not felt before. And you believed those changes would hold.</p>
         <p data-i18n="who-p3">Then real life resumed. And the old patterns resumed with it. Same triggers, same loops, as though nothing had shifted at all. Part of you began to wonder if this is just who you are.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── S3a: THE REALIGN (mega-type) ──────────────────── -->
-  <section class="s-realign curve-top" id="realign">
-    <img class="realign-bg" src="./Website FINAL Images/1 LATEST.png" alt="" role="presentation" loading="lazy">
-
-    <div class="realign-pre-row">
-      <p class="realign-pre gs-up" data-i18n="realign-pre">Meet the part of you that has answers.</p>
-    </div>
-
-    <div class="realign-mega-block">
-      <span class="realign-the gs-up">THE</span>
-      <span class="realign-name gs-up">REALIGN</span>
-    </div>
-
-    <div class="realign-post-row">
-      <div class="realign-post gs-up">
-        <p data-i18n="realign-b1">Align mind and body with your goals</p>
-        <p data-i18n="realign-b2">Bypass conscious resistance</p>
-        <p data-i18n="realign-b3">Improve relationships</p>
-        <p data-i18n="realign-b4">Improve health and well-being</p>
-        <p data-i18n="realign-b5">Greater sense of happiness and freedom</p>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ── S3b: THE PHILOSOPHY ───────────────────────────── -->
-  <section class="s-philosophy" id="realign-b">
-    <img class="philosophy-bg parallax-img"
-      src="./Website FINAL Images/2.png"
-      alt="" role="presentation" loading="lazy">
-    <div class="philosophy-overlay" aria-hidden="true"></div>
-    <div class="philosophy-inner">
-      <span class="eyebrow-lt gs-up" data-i18n="philo-eyebrow">The Philosophy</span>
-      <div class="body gs-up">
-        <p data-i18n="philo-p1">Your unconscious mind runs 95% of how you operate, built on programming absorbed before your conscious awareness developed.</p>
-        <p data-i18n="philo-p2">Everything you've tried targeted the conscious mind. The reflection. The goal setting. Change through conscious effort alone is possible, it's just working against the current the whole way.</p>
-        <p data-i18n="philo-p3">Just like two heads on one body. One wants one thing, you want another.</p>
-        <p data-i18n="philo-p4">The Realign works to bring both parts into agreement. We find where the pattern was wired, update it at the root, and let your mind and body finally move as one.</p>
       </div>
     </div>
   </section>
@@ -1568,10 +1538,6 @@
 
   <!-- ── S5: THE SESSION — WHAT YOU GET ───────────────── -->
   <section class="s-benefits sec-lg" id="benefits">
-    <img class="benefits-bg parallax-img"
-      src="./Website FINAL Images/3.png"
-      alt="" role="presentation" loading="lazy">
-    <div class="benefits-overlay" aria-hidden="true"></div>
     <div class="benefits-inner">
       <div class="hd gs-up">
         <span class="eyebrow-lt" data-i18n="sess-eyebrow">The Session</span>
@@ -1786,7 +1752,6 @@
 
   <!-- ── S9: CLARITY CALL ──────────────────────────────── -->
   <section class="s-clarity sec-lg curve-top" id="clarity">
-    <img class="clarity-bg" src="./Website FINAL Images/5.png" alt="" role="presentation" loading="lazy">
     <div class="clarity-glass">
       <span class="eyebrow gs-up" data-i18n="clarity-eyebrow">Free &nbsp;·&nbsp; 30 Minutes</span>
       <h2 class="h2 h2-light gs-up" data-i18n="clarity-h2">Your clarity starts here</h2>
@@ -2088,7 +2053,7 @@
 
     /* ─── NAV ────────────────────────────────────────── */
     const nav = document.getElementById('nav');
-    const lightSections = ['who', 'about', 'concerns'];
+    const lightSections = ['who', 'realign-b', 'benefits', 'about', 'concerns', 'clarity', 'book', 'faq'];
     function updateNavColor() {
       nav.classList.toggle('scrolled', window.scrollY > 60);
       const atY = 50;
@@ -2181,96 +2146,76 @@
       obs.observe(canvas);
     })();
 
+    /* ─── SCROLL-EXPANSION HERO ──────────────────────────
+       Maps scroll progress through the tall .hero wrapper:
+       aura circle expands to fullscreen (becomes THE REALIGN),
+       title words split apart, then a cream veil dissolves
+       into The Philosophy. */
+    (function () {
+      const hero = document.querySelector('.hero');
+      const pin = document.querySelector('.hero-pin');
+      if (!hero || !pin) return;
+      const aura = pin.querySelector('.aura-wrap');
+      const wl = pin.querySelector('.hero-w-l');
+      const wr = pin.querySelector('.hero-w-r');
+      const ui = pin.querySelectorAll('.hero-fade-ui');
+      const re = pin.querySelector('.hero-realign');
+      const veil = pin.querySelector('.hero-veil');
+      const bg = pin.querySelector('.hero-img');
+      const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+      const seg = (p, a, b) => clamp((p - a) / (b - a), 0, 1);
+      const ease = t => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      let lastP = -1;
+      function frame() {
+        const r = hero.getBoundingClientRect();
+        const total = r.height - innerHeight;
+        const p = total > 0 ? clamp(-r.top / total, 0, 1) : 0;
+        if (p !== lastP && (p > 0.001 || lastP > 0.001)) {
+          lastP = p;
+          const ex = ease(seg(p, 0, 0.62));
+          const vw = innerWidth, vh = innerHeight;
+          const d = Math.min(vw, vh) * 0.42;
+          aura.style.width = (d + (vw - d) * ex) + 'px';
+          aura.style.height = (d + (vh - d) * ex) + 'px';
+          aura.style.borderRadius = (50 * (1 - seg(p, 0.3, 0.6))) + '%';
+          const sep = 15 + 33 * ex;
+          wl.style.transform = 'translate(calc(-50% - ' + sep + 'vw), -50%)';
+          wr.style.transform = 'translate(calc(-50% + ' + sep + 'vw), -50%)';
+          if (p > 0.001) {
+            const wop = 1 - seg(p, 0.12, 0.42);
+            wl.style.opacity = wop; wr.style.opacity = wop;
+            const uop = 1 - seg(p, 0, 0.16);
+            ui.forEach(el => el.style.opacity = uop);
+          }
+          bg.style.transform = 'scale(' + (1 + 0.08 * ex) + ')';
+          re.style.opacity = seg(p, 0.64, 0.82);
+          re.style.transform = 'translateY(' + (26 * (1 - seg(p, 0.64, 0.88))) + 'px)';
+          veil.style.opacity = seg(p, 0.9, 1);
+        } else {
+          lastP = p;
+        }
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    })();
+
     /* ─── GSAP ANIMATIONS ────────────────────────────── */
     document.addEventListener('DOMContentLoaded', () => {
       if (typeof gsap === 'undefined') return;
 
       gsap.registerPlugin(ScrollTrigger);
 
-      /* Hero image parallax — fromTo so image is always centered, never exposes body bg */
-      gsap.fromTo('.hero-img',
-        { yPercent: -8 },
-        {
-          yPercent: 8,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '.hero-frame',
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true
-          }
-        }
-      );
-
-      /* Philosophy bg parallax */
-      gsap.fromTo('.philosophy-bg',
-        { yPercent: -8 },
-        {
-          yPercent: 8,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '.s-philosophy',
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true
-          }
-        }
-      );
-
-      /* Benefits bg parallax */
-      gsap.fromTo('.benefits-bg',
-        { yPercent: -8 },
-        {
-          yPercent: 8,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '.s-benefits',
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true
-          }
-        }
-      );
-
-      /* Testi bg parallax */
-      gsap.fromTo('.testi-bg',
-        { yPercent: -8 },
-        {
-          yPercent: 8,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '.s-testi',
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true
-          }
-        }
-      );
-
-      /* Clarity bg parallax */
-      gsap.fromTo('.clarity-bg',
-        { yPercent: -8 },
-        {
-          yPercent: 8,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '.s-clarity',
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true
-          }
-        }
-      );
-
-      /* Hero entrance animations */
+      /* Hero entrance animations (words animate opacity only —
+         their transform is owned by the expansion engine) */
       document.querySelectorAll('.hero [data-delay]').forEach(el => {
+        const isWord = el.classList.contains('hero-w-l') || el.classList.contains('hero-w-r');
         gsap.fromTo(el,
-          { y: 24, opacity: 0 },
-          {
-            y: 0, opacity: 1, duration: 1.1,
+          isWord ? { opacity: 0 } : { y: 24, opacity: 0 },
+          Object.assign(isWord ? {} : { y: 0 }, {
+            opacity: 1, duration: 1.1,
             ease: 'power3.out',
             delay: parseFloat(el.dataset.delay || '0')
-          }
+          })
         );
       });
 
@@ -2305,22 +2250,6 @@
           }
         );
       });
-
-      /* Realign mega-type stagger */
-      gsap.fromTo(['.realign-the', '.realign-name'],
-        { y: '110%', opacity: 0 },
-        {
-          y: '0%', opacity: 1,
-          duration: 1.2,
-          ease: 'power4.out',
-          stagger: 0.08,
-          scrollTrigger: {
-            trigger: '.realign-mega-block',
-            start: 'top 82%',
-            toggleActions: 'play none none none'
-          }
-        }
-      );
 
       /* Cards stagger */
       if (document.querySelector('.cards-grid')) {
