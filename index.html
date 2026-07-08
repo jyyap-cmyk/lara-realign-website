@@ -175,35 +175,31 @@
       transform: translate(-50%, -50%);
     }
 
-    /* ─── PAGE LOADER ────────────────────────────────── */
+    /* ─── PAGE LOADER (spiral induction) ─────────────── */
     #loader {
       position: fixed; inset: 0; z-index: 99999;
-      background: #F4E4B8;
+      background: #0f0b07;
       display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 24px;
-      cursor: pointer;
-      transition: opacity 0.7s ease;
+      cursor: none;
+      transition: opacity 0.8s ease;
+      overflow: hidden;
     }
-    .loader-portal {
-      width: 56px; height: 84px;
-      border: 1.5px solid rgba(122,168,200,0.6);
-      border-radius: 36px;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(122,168,200,0.05);
+    #loaderSpiral {
+      display: block;
+      width: min(74vmin, 600px); height: min(74vmin, 600px);
     }
-    .loader-sparkle {
-      width: 28px; height: 28px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      animation: loaderSpin 5s linear infinite;
+    .loader-enter {
+      position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%);
+      font-family: 'Libre Baskerville', Georgia, serif; font-weight: 400;
+      font-size: 12px; letter-spacing: 0.44em; text-transform: uppercase;
+      color: rgba(238,231,221,0.7);
+      opacity: 0; animation: loaderEnterIn 1.1s ease forwards 1.7s;
+      pointer-events: none;
     }
-    .loader-sparkle svg { display: block; }
-    .loader-label {
-      font-family: 'Libre Baskerville', Georgia, serif; font-style: normal; font-weight: 400;
-      font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase;
-      color: rgba(122,168,200,0.8);
+    @keyframes loaderEnterIn {
+      from { opacity: 0; letter-spacing: 0.72em; }
+      to   { opacity: 0.7; letter-spacing: 0.44em; }
     }
-    @keyframes loaderSpin { to { transform: rotate(360deg); } }
 
     /* ─── TYPOGRAPHY UTILITIES ───────────────────────── */
     .eyebrow {
@@ -267,6 +263,14 @@
     .max-w { max-width: 1120px; margin: 0 auto; padding: 0 48px; }
     .sec { padding: 128px 0; }
     .sec-lg { padding: 160px 0; }
+
+    /* soft curved section seams (revealed at colour changes) */
+    .curve-top {
+      border-top-left-radius: clamp(40px, 5.5vw, 88px);
+      border-top-right-radius: clamp(40px, 5.5vw, 88px);
+      margin-top: clamp(-88px, -5.5vw, -40px);
+      position: relative; z-index: 2;
+    }
 
     /* ─── BUTTONS ────────────────────────────────────── */
     .btn {
@@ -849,7 +853,7 @@
     /* ═══════════════════════════════════════════════════
        S6: ABOUT LARA
     ═══════════════════════════════════════════════════ */
-    .s-about { background: #F4E4B8; padding-top: 88px; }
+    .s-about { background: #F4E4B8; padding-top: 88px; padding-bottom: clamp(104px, 8vw, 148px); }
     .about-quote-band {
       padding: 60px 0; margin-bottom: 88px;
     }
@@ -1423,16 +1427,9 @@
   </div>
 
   <!-- loader -->
-  <div id="loader" role="button" aria-label="Enter site">
-    <div class="loader-portal">
-      <div class="loader-sparkle">
-        <svg width="34" height="34" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14,1 L15.7,11.3 L26,14 L15.7,16.7 L14,27 L12.3,16.7 L2,14 L12.3,11.3 Z" fill="#7AA8C8"/>
-          <circle cx="14" cy="14" r="2" fill="#7AA8C8"/>
-        </svg>
-      </div>
-    </div>
-    <span class="loader-label">The Present</span>
+  <div id="loader" role="button" aria-label="Enter site" tabindex="0">
+    <canvas id="loaderSpiral" aria-hidden="true"></canvas>
+    <span class="loader-enter">Enter</span>
   </div>
 
   <!-- ── NAV ──────────────────────────────────────────── -->
@@ -1503,7 +1500,7 @@
   </section>
 
   <!-- ── S3a: THE REALIGN (mega-type) ──────────────────── -->
-  <section class="s-realign" id="realign">
+  <section class="s-realign curve-top" id="realign">
     <img class="realign-bg" src="./Website FINAL Images/1 LATEST.png" alt="" role="presentation" loading="lazy">
 
     <div class="realign-pre-row">
@@ -1657,7 +1654,7 @@
   </section>
 
   <!-- ── S10: COMMON PATTERNS ──────────────────────────── -->
-  <section class="s-tags tex" id="concerns">
+  <section class="s-tags tex curve-top" id="concerns">
     <div class="tags-hd gs-up">
       <span class="eyebrow-sm" data-i18n="tags-eyebrow">Common Patterns</span>
       <h2 class="h2" data-i18n="tags-h2">What Brings People Here</h2>
@@ -1788,7 +1785,7 @@
   END SHOW_TESTIMONIALS -->
 
   <!-- ── S9: CLARITY CALL ──────────────────────────────── -->
-  <section class="s-clarity sec-lg" id="clarity">
+  <section class="s-clarity sec-lg curve-top" id="clarity">
     <img class="clarity-bg" src="./Website FINAL Images/5.png" alt="" role="presentation" loading="lazy">
     <div class="clarity-glass">
       <span class="eyebrow gs-up" data-i18n="clarity-eyebrow">Free &nbsp;·&nbsp; 30 Minutes</span>
@@ -1803,7 +1800,7 @@
   </section>
 
   <!-- ── S11: BOOK ─────────────────────────────────────── -->
-  <section class="s-book sec-lg" id="book">
+  <section class="s-book sec-lg curve-top" id="book">
     <div class="max-w">
       <div class="book-grid">
 
@@ -1837,7 +1834,7 @@
   </section>
 
   <!-- ── FAQ ──────────────────────────────────────────── -->
-  <section class="s-faq sec-lg" id="faq">
+  <section class="s-faq sec-lg curve-top" id="faq">
     <div class="s-faq inner-faq">
       <div class="hd gs-up">
         <span class="eyebrow-sm" data-i18n="faq-eyebrow">Questions</span>
@@ -1986,7 +1983,57 @@
       };
       loader.addEventListener('click', dismiss);
       loader.addEventListener('touchend', e => { e.preventDefault(); dismiss(); });
-      setTimeout(dismiss, 2800);
+    })();
+
+    /* ─── LOADER SPIRAL (phyllotaxis induction) ──────── */
+    (function () {
+      const cv = document.getElementById('loaderSpiral');
+      const ld = document.getElementById('loader');
+      if (!cv || !ld) return;
+      const ctx = cv.getContext('2d');
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      let W, H, cx, cy, R;
+      function size() {
+        const s = cv.getBoundingClientRect();
+        W = cv.width = Math.max(1, Math.round(s.width * dpr));
+        H = cv.height = Math.max(1, Math.round(s.height * dpr));
+        cx = W / 2; cy = H / 2; R = Math.min(W, H) / 2;
+      }
+      size();
+      window.addEventListener('resize', size);
+      const N = 620;
+      const GOLD = Math.PI * (3 - Math.sqrt(5));
+      let t = 0, raf;
+      function frame() {
+        const cs = getComputedStyle(ld);
+        if (cs.opacity === '0' || cs.display === 'none') { cancelAnimationFrame(raf); return; }
+        ctx.clearRect(0, 0, W, H);
+        t += 0.0016;
+        const breathe = 0.94 + 0.06 * Math.sin(t * 2.2);
+        const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, R);
+        g.addColorStop(0, 'rgba(233,196,120,0.09)');
+        g.addColorStop(0.55, 'rgba(233,196,120,0.028)');
+        g.addColorStop(1, 'rgba(15,11,7,0)');
+        ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+        for (let i = 0; i < N; i++) {
+          const a = i * GOLD + t;
+          const rr = R * 0.92 * Math.sqrt(i / N) * breathe;
+          const x = cx + rr * Math.cos(a);
+          const y = cy + rr * Math.sin(a);
+          const f = i / N;
+          const dot = (0.6 + f * 2.6) * dpr;
+          const cr = Math.round(233 + 5 * f);
+          const cg = Math.round(196 + 35 * f);
+          const cb = Math.round(120 + 101 * f);
+          const op = Math.max(0.14, 0.4 + 0.5 * (1 - Math.abs(f - 0.5) * 1.25));
+          ctx.beginPath();
+          ctx.fillStyle = 'rgba(' + cr + ',' + cg + ',' + cb + ',' + op + ')';
+          ctx.arc(x, y, dot, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        raf = requestAnimationFrame(frame);
+      }
+      frame();
     })();
 
     /* ─── CUSTOM CURSOR + RIPPLE ─────────────────────── */
