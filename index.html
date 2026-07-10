@@ -156,7 +156,7 @@
 
     /* ─── CUSTOM CURSOR ──────────────────────────────── */
     #cursor {
-      position: fixed; z-index: 9999;
+      position: fixed; z-index: 100001; /* above the loader (99999) */
       pointer-events: none;
       width: 28px; height: 28px;
       top: 0; left: 0;
@@ -171,7 +171,7 @@
       border-radius: 50%;
       border: 1.5px solid rgba(167,185,198,0.55);
       pointer-events: none;
-      z-index: 9997;
+      z-index: 100000; /* above the loader (99999) */
       transform: translate(-50%, -50%);
     }
 
@@ -194,7 +194,7 @@
       z-index: 2;
       background: none; border: 0; padding: 16px 28px;
       font-family: 'Libre Baskerville', Georgia, serif; font-weight: 400;
-      font-size: clamp(17px, 2.2vw, 24px);
+      font-size: clamp(9px, 1.1vw, 12px);
       letter-spacing: 0.22em; text-transform: uppercase;
       color: rgba(238,231,221,0.92);
       cursor: none;
@@ -1957,9 +1957,11 @@
         loader.style.opacity = '0';
         setTimeout(() => { loader.style.display = 'none'; }, 700);
       };
-      /* only the centred title enters the site — not the backdrop */
-      trigger.addEventListener('click', dismiss);
-      trigger.addEventListener('touchend', e => { e.preventDefault(); dismiss(); });
+      loader.addEventListener('click', dismiss);
+      loader.addEventListener('touchend', e => { e.preventDefault(); dismiss(); });
+      trigger.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); dismiss(); }
+      });
     })();
 
     /* ─── LOADER SPIRAL (GSAP vortex — forms, then disperses) ── */
@@ -1977,8 +1979,7 @@
       const NUM_STARS = 5000;
       const TRAIL_LENGTH = 80;
       const BG = '#0f0b07';
-      const GOLD = '233,196,120';   /* #E9C478 */
-      const CREAM = '238,231,221';  /* #EEE7DD */
+      const WHITE = '255,255,255';
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       let size = 0;
@@ -2044,7 +2045,8 @@
         const sw = 400 * sizeFactor / depth;
         ctx.beginPath();
         ctx.fillStyle = 'rgba(' + rgb + ',' + alpha + ')';
-        ctx.arc(x, y, Math.max(sw / 2, 0.5), 0, Math.PI * 2);
+        /* capped so dots stay fine star-dust even as the camera closes in */
+        ctx.arc(x, y, Math.min(Math.max(sw / 2, 0.35), 0.9), 0, Math.PI * 2);
         ctx.fill();
       }
 
@@ -2065,8 +2067,7 @@
           0.3 * s.spiralLocation
         );
         s.strokeWeightFactor = Math.pow(rand(), 2.0);
-        /* warm palette: mostly candlelit cream, a third gold */
-        s.rgb = rand() < 0.34 ? GOLD : CREAM;
+        s.rgb = WHITE;
         return s;
       }
 
@@ -2144,7 +2145,7 @@
             i % 2 === 0
           );
           ctx.beginPath();
-          ctx.fillStyle = 'rgba(' + GOLD + ',0.95)';
+          ctx.fillStyle = 'rgba(' + WHITE + ',0.95)';
           ctx.arc(rot.x, rot.y, Math.max(sw / 2, 0.1), 0, Math.PI * 2);
           ctx.fill();
         }
@@ -2153,7 +2154,7 @@
       function drawStartDot() {
         if (state.time <= CHANGE_EVENT_TIME) return;
         const dy = CAMERA_Z * START_DOT_Y / VIEW_ZOOM;
-        projectDot(0, dy, CAMERA_TRAVEL, 2.5, GOLD, 1);
+        projectDot(0, dy, CAMERA_TRAVEL, 2.5, WHITE, 1);
       }
 
       function render() {
