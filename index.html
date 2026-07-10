@@ -690,6 +690,12 @@
       font-family: var(--f-body); font-style: italic;
       font-size: 15px; letter-spacing: 0.04em;
       color: rgba(238,231,221,0.58);
+      margin-bottom: clamp(32px, 5vh, 56px);
+    }
+    .realign-post p {
+      opacity: 0;
+      transform: translateY(18px);
+      will-change: opacity, transform;
     }
     .realign-mega-block {
       overflow: hidden;
@@ -851,20 +857,15 @@
       opacity: 0.9;
       transition: stroke 0.35s ease, opacity 0.35s ease, filter 0.35s ease;
     }
-    /* icons light up like glowing buttons on hover */
+    /* icons light up softly on hover (no outer glow) */
     .card:hover .card-icon {
-      background: rgba(233,196,120,0.55);
-      box-shadow:
-        0 0 0 1px rgba(233,196,120,0.65),
-        0 0 18px 4px rgba(233,196,120,0.55),
-        0 0 42px 10px rgba(233,196,120,0.3),
-        inset 0 1px 2px rgba(255,248,224,0.9);
-      transform: scale(1.08);
+      background: rgba(233,196,120,0.5);
+      box-shadow: inset 0 1px 2px rgba(255,248,224,0.9);
+      transform: scale(1.04);
     }
     .card:hover .card-icon svg {
       stroke: #7A4E2E;
       opacity: 1;
-      filter: drop-shadow(0 0 4px rgba(255,240,200,0.9));
     }
     .card-label {
       font-family: var(--f-body); font-size: 15.5px;
@@ -1092,7 +1093,7 @@
       justify-content: center;
       text-align: center;
       background: #F4E4B8;
-      padding: clamp(56px, 6vw, 80px) 24px;
+      padding: clamp(120px, 13vw, 180px) 24px;
     }
     .clarity-glass {
       position: relative;
@@ -1101,19 +1102,23 @@
       -webkit-backdrop-filter: blur(22px) saturate(1.1);
       border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 28px;
-      padding: 64px 64px;
-      max-width: 720px;
+      padding: 56px 96px;
+      max-width: 1040px; width: 100%;
       margin: 0 auto;
       box-shadow:
         0 30px 90px rgba(28,20,9,0.12),
         inset 0 1px 0 rgba(255,255,255,0.7);
     }
     .clarity-glass .btn-cream {
-      background: var(--dark);
-      color: rgba(238,231,221,0.94) !important;
-      box-shadow: 0 10px 30px rgba(28,20,9,0.22);
+      background: rgba(255, 252, 245, 0.75);
+      color: rgba(28,20,9,0.85) !important;
+      border: 1px solid rgba(28,20,9,0.12);
+      box-shadow: 0 10px 30px rgba(28,20,9,0.1), inset 0 1px 0 rgba(255,255,255,0.9);
     }
-    .clarity-glass .btn-cream:hover { background: #31241b; }
+    .clarity-glass .btn-cream:hover {
+      background: rgba(255, 252, 245, 0.95);
+      border-color: rgba(28,20,9,0.2);
+    }
 
     /* ═══════════════════════════════════════════════════
        S10: COMMON PATTERNS
@@ -1194,36 +1199,36 @@
     /* ═══════════════════════════════════════════════════
        FAQ
     ═══════════════════════════════════════════════════ */
-    .s-faq { background: #F4E4B8; }
+    .s-faq { background: var(--dark); }
     .s-faq .inner-faq {
       max-width: 720px; margin: 0 auto; padding: 0 48px;
     }
     .s-faq .hd { text-align: left; margin-bottom: 32px; }
-    .s-faq .hd .eyebrow-sm { color: var(--sienna); }
-    .s-faq .hd .h2 { color: var(--dark); margin-bottom: 0; }
-    .faq-item { border-top: 1px solid rgba(28,20,9,0.0); }
-    .faq-item + .faq-item { border-top: 1px solid rgba(28,20,9,0.09); }
-    .faq-item:last-child { border-bottom: 1px solid rgba(28,20,9,0.0); }
+    .s-faq .hd .eyebrow-sm { color: var(--tan); }
+    .s-faq .hd .h2 { color: rgba(238,231,221,0.92); margin-bottom: 0; }
+    .faq-item { border-top: 1px solid rgba(255,255,255,0.0); }
+    .faq-item + .faq-item { border-top: 1px solid rgba(255,255,255,0.07); }
+    .faq-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.0); }
     .faq-q {
       width: 100%; background: none; border: none; text-align: left;
       padding: 26px 0;
       display: flex; justify-content: space-between; align-items: center; gap: 20px;
       font-family: var(--f-body); font-weight: 400;
-      font-size: 16px; line-height: 1.45; color: rgba(28,20,9,0.8);
+      font-size: 16px; line-height: 1.45; color: rgba(238,231,221,0.8);
       transition: color 0.2s ease; cursor: none;
     }
-    .faq-q:hover { color: rgba(28,20,9,1); }
+    .faq-q:hover { color: rgba(238,231,221,1); }
     .faq-icon {
       flex-shrink: 0; width: 22px; height: 22px;
-      border: 1px solid rgba(28,20,9,0.16); border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      color: var(--sienna); font-size: 14px; font-weight: 300;
+      color: var(--tan); font-size: 14px; font-weight: 300;
       font-family: var(--f-body);
       transition: all 0.28s var(--ease);
     }
     .faq-item.open .faq-icon {
-      background: rgba(159,108,82,0.12); border-color: rgba(159,108,82,0.3);
-      color: var(--sienna); transform: rotate(45deg);
+      background: rgba(206,178,152,0.16); border-color: rgba(206,178,152,0.35);
+      color: var(--tan); transform: rotate(45deg);
     }
     .faq-body {
       max-height: 0; overflow: hidden;
@@ -1236,7 +1241,7 @@
     .faq-body-inner {
       padding: 0 0 28px;
       font-family: var(--f-body); font-weight: 400;
-      font-size: 15px; line-height: 1.88; color: rgba(28,20,9,0.58);
+      font-size: 15px; line-height: 1.88; color: rgba(238,231,221,0.55);
     }
     .faq-body-inner p + p { margin-top: 16px; }
 
@@ -1483,7 +1488,7 @@
       <div class="hero-overlay" aria-hidden="true"></div>
 
       <div class="aura-wrap" aria-hidden="true">
-        <video src="./Website FINAL Images/realign-bg-720.mp4" autoplay muted loop playsinline preload="auto" poster="./Website FINAL Images/1 LATEST.png"></video>
+        <video src="./Website FINAL Images/realign-bg-v2.mp4" autoplay muted loop playsinline preload="auto" poster="./Website FINAL Images/1 LATEST.png"></video>
       </div>
 
       <div class="hero-inner">
@@ -1506,12 +1511,10 @@
         <p class="realign-pre" data-i18n="realign-pre">Meet the part of you that has answers.</p>
         <span class="realign-the">THE</span>
         <span class="realign-name">REALIGN</span>
-        <div class="realign-post" style="margin-top:18px;">
-          <p data-i18n="realign-b1">Align mind and body with your goals</p>
-          <p data-i18n="realign-b2">Bypass conscious resistance</p>
-          <p data-i18n="realign-b3">Improve relationships</p>
-          <p data-i18n="realign-b4">Improve health and well-being</p>
-          <p data-i18n="realign-b5">Greater sense of happiness and freedom</p>
+        <div class="realign-post" style="margin-top:26px;">
+          <p data-i18n="realign-b1">Bypass conscious resistance</p>
+          <p data-i18n="realign-b2">Align mind and body with your goals</p>
+          <p data-i18n="realign-b3">Obtain happiness and true freedom</p>
         </div>
       </div>
 
@@ -1528,7 +1531,7 @@
       <span class="eyebrow-sm gs-up" data-i18n="philo-eyebrow">The Philosophy</span>
       <div class="body gs-up">
         <p data-i18n="philo-p1">Your unconscious mind runs 95% of how you operate, built on programming absorbed before your conscious awareness developed.</p>
-        <p data-i18n="philo-p2">Everything you've tried targeted the conscious mind. The reflection. The goal setting. Change through conscious effort alone is possible, it's just working against the current the whole way.</p>
+        <p data-i18n="philo-p2">Everything you've tried that didn't work targeted the conscious mind. The reflection. The goal setting. Change through conscious effort alone is possible, it's just working against the current the whole way.</p>
         <p data-i18n="philo-p3">Just like two heads on one body. One wants one thing, you want another.</p>
         <p data-i18n="philo-p4">The Realign works to bring both parts into agreement. We find where the pattern was wired, update it at the root, and let your mind and body finally move as one.</p>
       </div>
@@ -1574,8 +1577,8 @@
   <section class="s-benefits sec-lg" id="benefits">
     <div class="benefits-inner">
       <div class="hd gs-up">
-        <span class="eyebrow-lt" data-i18n="sess-eyebrow">The Session</span>
-        <h2 class="h2 h2-light" data-i18n="sess-h2">What You Get</h2>
+        <span class="eyebrow-lt" data-i18n="sess-eyebrow">Lasting Transformation</span>
+        <h2 class="h2 h2-light" data-i18n="sess-h2">How The Realign can help you</h2>
       </div>
       <div class="cards-grid">
 
@@ -1836,7 +1839,7 @@
     <div class="s-faq inner-faq">
       <div class="hd gs-up">
         <span class="eyebrow-sm" data-i18n="faq-eyebrow">Questions</span>
-        <h2 class="h2" data-i18n="faq-h2">Frequently Asked</h2>
+        <h2 class="h2" data-i18n="faq-h2">FAQs</h2>
       </div>
 
       <div class="faq-item">
@@ -2361,6 +2364,7 @@
       const wr = pin.querySelector('.hero-w-r');
       const ui = pin.querySelectorAll('.hero-fade-ui');
       const re = pin.querySelector('.hero-realign');
+      const reLines = Array.from(pin.querySelectorAll('.realign-post p'));
       const ov = pin.querySelector('.hero-overlay');
       const bg = pin.querySelector('.hero-img');
       const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
@@ -2402,6 +2406,13 @@
           bg.style.transform = 'scale(' + (1 + 0.08 * ex) + ')';
           re.style.opacity = seg(p, 0.64, 0.82);
           re.style.transform = 'translateY(' + (26 * (1 - seg(p, 0.64, 0.88))) + 'px)';
+          /* benefit lines fade-slide up one by one */
+          reLines.forEach((ln, i) => {
+            const a = 0.72 + i * 0.07;
+            const lp = seg(p, a, a + 0.07);
+            ln.style.opacity = lp;
+            ln.style.transform = 'translateY(' + (18 * (1 - lp)) + 'px)';
+          });
         }
         requestAnimationFrame(frame);
       }
@@ -2561,14 +2572,12 @@
         'who-p2': "You've invested in the right things. The self-help books gave you frameworks. The podcasts kept you going, for a while. A retreat gave you the peace you have not felt before. And you believed those changes would hold.",
         'who-p3': "Then real life resumed. And the old patterns resumed with it. Same triggers, same loops, as though nothing had shifted at all. Part of you began to wonder if this is just who you are.",
         'realign-pre': 'Meet the part of you that has answers.',
-        'realign-b1': 'Align mind and body with your goals',
-        'realign-b2': 'Bypass conscious resistance',
-        'realign-b3': 'Improve relationships',
-        'realign-b4': 'Improve health and well-being',
-        'realign-b5': 'Greater sense of happiness and freedom',
+        'realign-b1': 'Bypass conscious resistance',
+        'realign-b2': 'Align mind and body with your goals',
+        'realign-b3': 'Obtain happiness and true freedom',
         'philo-eyebrow': 'The Philosophy',
         'philo-p1': 'Your unconscious mind runs 95% of how you operate, built on programming absorbed before your conscious awareness developed.',
-        'philo-p2': "Everything you've tried targeted the conscious mind. The reflection. The goal setting. Change through conscious effort alone is possible, it's just working against the current the whole way.",
+        'philo-p2': "Everything you've tried that didn't work targeted the conscious mind. The reflection. The goal setting. Change through conscious effort alone is possible, it's just working against the current the whole way.",
         'philo-p3': 'Just like two heads on one body. One wants one thing, you want another.',
         'philo-p4': 'The Realign works to bring both parts into agreement. We find where the pattern was wired, update it at the root, and let your mind and body finally move as one.',
         'sci-eyebrow': 'The Neuroscience',
@@ -2577,7 +2586,7 @@
         'sci-conscious': 'Conscious', 'sci-unconscious': 'Unconscious',
         'sci-info-proc': 'Information Processing', 'sci-bits': 'bits per second',
         'sci-outro': 'What it lets through becomes what you call <em>reality</em>. That <em>reality</em> shapes your <em>decisions</em>. Those decisions build the <em>life</em> you\'re living.',
-        'sess-eyebrow': 'The Session', 'sess-h2': 'What You Get',
+        'sess-eyebrow': 'Lasting Transformation', 'sess-h2': 'How The Realign can help you',
         'card-1': 'Uncover the patterns holding you back',
         'card-2': 'Clarity on the next chapter',
         'card-3': 'Feel like yourself again',
@@ -2616,7 +2625,7 @@
         'book-p3': 'After 11 years of researching consciousness and the psychology of the mind, I wrote the book my younger self wished had existed.',
         'book-p4': 'Drawn from science, philosophy, and ancient wisdom. Non-religious. For the ones who were always meant to know.',
         'book-btn': 'Take me there',
-        'faq-eyebrow': 'Questions', 'faq-h2': 'Frequently Asked',
+        'faq-eyebrow': 'Questions', 'faq-h2': 'FAQs',
         'faq-q1': 'How is The Realign different from therapy or coaching? <span class="faq-icon" aria-hidden="true">+</span>',
         'faq-q2': 'What actually happens in a session? <span class="faq-icon" aria-hidden="true">+</span>',
         'faq-q3': 'Do I have to talk about trauma or relive painful things? <span class="faq-icon" aria-hidden="true">+</span>',
@@ -2648,14 +2657,12 @@
         'who-p2': '你做了该做的事。自我成长书籍给了你框架。播客一时间让你保持动力。静修带来了前所未有的平静。你相信那些改变会延续。',
         'who-p3': '然而现实重启了。旧模式也随之而来。同样的触发，同样的循环，仿佛什么都没有发生。你开始怀疑，也许这就是真实的你。',
         'realign-pre': '遇见那个拥有答案的自己。',
-        'realign-b1': '让身心与你的目标对齐',
-        'realign-b2': '突破意识层面的阻力',
-        'realign-b3': '改善人际关系',
-        'realign-b4': '提升健康与幸福感',
-        'realign-b5': '更深的幸福感与自由感',
+        'realign-b1': '突破意识层面的阻力',
+        'realign-b2': '让身心与你的目标对齐',
+        'realign-b3': '获得幸福与真正的自由',
         'philo-eyebrow': '核心理念',
         'philo-p1': '你95%的运作方式由潜意识主导，建立在意识形成之前所吸收的编程之上。',
-        'philo-p2': '你曾尝试的一切都针对意识层面。那些反思。那些目标设定。仅靠意识努力改变是可能的，只是一路都在逆流而上。',
+        'philo-p2': '那些你尝试过却没有奏效的方法，针对的都是意识层面。那些反思。那些目标设定。仅靠意识努力改变是可能的，只是一路都在逆流而上。',
         'philo-p3': '就像一个身体长了两个头。一个想要一件事，而你想要的是另一件事。',
         'philo-p4': 'Realign 致力于让两个部分达成一致。我们找到模式被植入的根源，在那里更新它，让你的身心终于能够同向而行。',
         'sci-eyebrow': '神经科学依据',
@@ -2664,7 +2671,7 @@
         'sci-conscious': '意识', 'sci-unconscious': '潜意识',
         'sci-info-proc': '信息处理', 'sci-bits': '比特/秒',
         'sci-outro': '它所允许通过的，成了你所称的<em>现实</em>。那个<em>现实</em><br>塑造了你的<em>决定</em>。那些决定构建了你所过的<em>生活</em>。',
-        'sess-eyebrow': '疗程内容', 'sess-h2': '你将获得的',
+        'sess-eyebrow': '持久的转变', 'sess-h2': 'The Realign 如何帮助你',
         'card-1': '揭开阻碍你前进的模式',
         'card-2': '对下一个人生篇章的清晰认知',
         'card-3': '重新感受真实的自己',
@@ -2703,7 +2710,7 @@
         'book-p3': '经过11年对意识与心理学的研究，我写下了那本年轻时的自己渴望拥有的书。',
         'book-p4': '源自科学、哲学与古老智慧。非宗教性。为那些本就注定要知晓的人而写。',
         'book-btn': '带我去那里',
-        'faq-eyebrow': '常见问题', 'faq-h2': '常被问到的',
+        'faq-eyebrow': '常见问题', 'faq-h2': 'FAQs',
         'faq-q1': 'Realign 与心理治疗或教练有何不同？<span class="faq-icon" aria-hidden="true">+</span>',
         'faq-q2': '一次疗程中实际会发生什么？<span class="faq-icon" aria-hidden="true">+</span>',
         'faq-q3': '我需要谈及创伤或重历痛苦的经历吗？<span class="faq-icon" aria-hidden="true">+</span>',
