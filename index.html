@@ -555,7 +555,7 @@
       mask-image: radial-gradient(ellipse closest-side, #000 62%, transparent 100%);
       will-change: width, height;
     }
-    .aura-wrap img {
+    .aura-wrap img, .aura-wrap video {
       width: 100%; height: 100%;
       object-fit: cover; object-position: center;
     }
@@ -842,12 +842,29 @@
       flex-shrink: 0;
       background: rgba(159,108,82,0.1);
       border-radius: 50%;
+      transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease), transform 0.35s var(--ease);
     }
     .card-icon svg {
       width: 19px; height: 19px;
       stroke: var(--sienna); stroke-width: 1.5;
       fill: none; stroke-linecap: round; stroke-linejoin: round;
       opacity: 0.9;
+      transition: stroke 0.35s ease, opacity 0.35s ease, filter 0.35s ease;
+    }
+    /* icons light up like glowing buttons on hover */
+    .card:hover .card-icon {
+      background: rgba(233,196,120,0.55);
+      box-shadow:
+        0 0 0 1px rgba(233,196,120,0.65),
+        0 0 18px 4px rgba(233,196,120,0.55),
+        0 0 42px 10px rgba(233,196,120,0.3),
+        inset 0 1px 2px rgba(255,248,224,0.9);
+      transform: scale(1.08);
+    }
+    .card:hover .card-icon svg {
+      stroke: #7A4E2E;
+      opacity: 1;
+      filter: drop-shadow(0 0 4px rgba(255,240,200,0.9));
     }
     .card-label {
       font-family: var(--f-body); font-size: 15.5px;
@@ -919,17 +936,17 @@
     }
     .about-creds-label {
       font-family: var(--f-body); font-style: italic;
-      font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--sienna); display: block; margin-bottom: 26px;
+      font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sienna); display: block; margin-bottom: 20px;
     }
     .about-creds-list {
       list-style: none; display: flex; flex-wrap: wrap;
-      gap: 18px 0;
+      gap: 14px 0;
     }
     .about-creds-list li {
       font-family: var(--f-now); font-weight: 300;
-      font-size: clamp(15px, 1.5vw, 21px); letter-spacing: 0.005em;
-      color: var(--dark); padding: 0 32px;
+      font-size: clamp(12px, 1.1vw, 15px); letter-spacing: 0.02em;
+      color: var(--dark); padding: 0 26px;
       border-left: 1px solid var(--line);
     }
     .about-creds-list li:first-child { padding-left: 0; border-left: none; }
@@ -1079,13 +1096,17 @@
     }
     .clarity-glass {
       position: relative;
-      background: #FCFAF6;
-      border: 1px solid rgba(28,20,9,0.06);
+      background: rgba(255, 252, 245, 0.32);
+      backdrop-filter: blur(22px) saturate(1.1);
+      -webkit-backdrop-filter: blur(22px) saturate(1.1);
+      border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 28px;
       padding: 64px 64px;
       max-width: 720px;
       margin: 0 auto;
-      box-shadow: 0 30px 90px rgba(28,20,9,0.1);
+      box-shadow:
+        0 30px 90px rgba(28,20,9,0.12),
+        inset 0 1px 0 rgba(255,255,255,0.7);
     }
     .clarity-glass .btn-cream {
       background: var(--dark);
@@ -1462,7 +1483,7 @@
       <div class="hero-overlay" aria-hidden="true"></div>
 
       <div class="aura-wrap" aria-hidden="true">
-        <img src="./Website FINAL Images/1 LATEST.png" alt="">
+        <video src="./Website FINAL Images/realign-bg-720.mp4" autoplay muted loop playsinline preload="auto" poster="./Website FINAL Images/1 LATEST.png"></video>
       </div>
 
       <div class="hero-inner">
@@ -1529,8 +1550,6 @@
   <!-- ── S4: NEUROSCIENCE ─────────────────────────────── -->
   <section class="s-science sec-lg tex" id="science">
     <div class="inner">
-      <span class="eyebrow gs-up" data-i18n="sci-eyebrow">The Neuroscience</span>
-      <h2 class="h2 h2-light gs-up" data-i18n="sci-h2">How your mind actually works</h2>
       <p class="science-intro gs-up" data-i18n="sci-intro">The unconscious mind controls what you notice,<br>filtering perception before it reaches your awareness.</p>
       <div class="science-stats gs-up">
         <div class="science-stat">
@@ -1705,7 +1724,6 @@
         <li>IHA Certified Hypnotherapist</li>
         <li>Mindscaping Practitioner</li>
         <li>BSc Psychology</li>
-        <li>MSc Marketing</li>
       </ul>
     </div>
 
@@ -2364,8 +2382,12 @@
           const d = Math.min(vw, vh) * 0.15;
           aura.style.width = (d + (vw * 1.28 - d) * ex) + 'px';
           aura.style.height = (d + (vh * 1.28 - d) * ex) + 'px';
-          const solid = 62 + 38 * seg(p, 0.5, 0.78);
-          const m = 'radial-gradient(ellipse closest-side, #000 ' + solid + '%, transparent 100%)';
+          /* feathered ellipse grows past the corners so the realign
+             state is truly full-bleed (no cut-off edges) */
+          const grow = seg(p, 0.45, 0.8);
+          const rr = 50 + 110 * grow;
+          const solid = 62 + 30 * grow;
+          const m = 'radial-gradient(ellipse ' + rr + '% ' + rr + '% at 50% 50%, #000 ' + solid + '%, transparent 100%)';
           aura.style.webkitMaskImage = m; aura.style.maskImage = m;
           const sep = 12 + 36 * ex;
           wl.style.transform = 'translate(calc(-50% - ' + sep + 'vw), -50%)';
