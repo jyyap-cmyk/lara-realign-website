@@ -332,6 +332,43 @@
       transform: translateY(-2px);
       box-shadow: 0 10px 32px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.28);
     }
+    /* liquid bronze metal (warm take on the liquid-metal button) */
+    .btn-metal {
+      position: relative;
+      color: #2A1C10;
+      background: linear-gradient(115deg,
+        #D9B077 0%, #F3E0B4 16%, #C1904F 36%, #EED7A2 52%,
+        #B07F42 70%, #F0DCAE 88%, #D9B077 100%);
+      background-size: 230% 100%;
+      animation: metalFlow 7s ease-in-out infinite;
+      border: none;
+      box-shadow:
+        inset 0 1px 1px rgba(255,248,224,0.9),
+        inset 0 -2px 6px rgba(90,58,20,0.32),
+        0 8px 26px rgba(90,58,20,0.28);
+      overflow: hidden;
+    }
+    .btn-metal::before {
+      content: ''; position: absolute; left: 50%; top: 50%;
+      width: 340%; aspect-ratio: 1; border-radius: 50%;
+      background: conic-gradient(
+        rgba(255,248,222,0) 0deg, rgba(255,248,222,0.85) 40deg,
+        rgba(255,248,222,0) 110deg, rgba(120,80,35,0.35) 200deg,
+        rgba(255,248,222,0) 300deg);
+      transform: translate(-50%, -50%) rotate(0deg);
+      animation: metalSpin 4.5s linear infinite;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+    .btn-metal:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        inset 0 1px 1px rgba(255,248,224,0.9),
+        inset 0 -2px 6px rgba(90,58,20,0.32),
+        0 14px 36px rgba(90,58,20,0.42);
+    }
+    @keyframes metalFlow { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+    @keyframes metalSpin { to { transform: translate(-50%, -50%) rotate(360deg); } }
     .btn-outline {
       background: rgba(238,231,221,0.1);
       backdrop-filter: blur(10px);
@@ -539,12 +576,12 @@
     .aura-wrap {
       position: absolute; left: 50%; top: 50%;
       transform: translate(-50%, -50%);
-      width: 42vmin; height: 42vmin;
-      border-radius: 50%;
+      width: 15vmin; height: 15vmin;
       overflow: hidden;
       z-index: 2;
-      box-shadow: 0 30px 120px rgba(15,11,7,0.4);
-      will-change: width, height, border-radius;
+      -webkit-mask-image: radial-gradient(ellipse closest-side, #000 62%, transparent 100%);
+      mask-image: radial-gradient(ellipse closest-side, #000 62%, transparent 100%);
+      will-change: width, height;
     }
     .aura-wrap img {
       width: 100%; height: 100%;
@@ -600,7 +637,7 @@
     }
     .hero-veil {
       position: absolute; inset: 0; z-index: 6;
-      background: var(--bg);
+      background: #F4E4B8;
       opacity: 0; pointer-events: none;
     }
     .hero-scroll {
@@ -723,7 +760,7 @@
     ═══════════════════════════════════════════════════ */
     .s-philosophy {
       position: relative;
-      background: var(--bg);
+      background: #F4E4B8;
     }
     .philosophy-inner {
       max-width: 880px; margin: 0 auto;
@@ -746,15 +783,15 @@
        S4: NEUROSCIENCE
     ═══════════════════════════════════════════════════ */
     .s-science {
-      background: #1A1700;
+      background: #F4E4B8;
       position: relative; overflow: hidden;
     }
     .s-science .inner {
       position: relative; z-index: 1;
       max-width: 900px; margin: 0 auto; padding: 0 48px;
     }
-    .s-science .eyebrow { color: rgba(167,185,198,0.8); text-align: center; margin-bottom: 12px; }
-    .s-science .h2 { text-align: center; color: rgba(238,231,221,0.92); margin-bottom: 14px; }
+    .s-science .eyebrow { color: var(--sienna); text-align: center; margin-bottom: 12px; }
+    .s-science .h2 { text-align: center; color: var(--dark); margin-bottom: 14px; }
     .science-stats {
       display: grid;
       grid-template-columns: 1fr 1px 1fr;
@@ -765,43 +802,43 @@
     .science-stat-role {
       font-family: var(--f-body); font-weight: 400; font-style: italic;
       font-size: 16px; letter-spacing: 0.04em;
-      color: rgba(238,231,221,0.5);
+      color: rgba(28,20,9,0.6);
       display: block; margin-bottom: 4px;
     }
     .science-stat-category {
       font-family: var(--f-body); font-weight: 400;
       font-size: 10px; letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--blue-m); opacity: 0.75;
+      color: var(--sienna); opacity: 0.85;
       display: block; margin-bottom: 18px;
     }
     .science-stat-n {
       font-family: var(--f-now); font-weight: 100;
       font-size: clamp(52px, 7.5vw, 88px);
       line-height: 1; letter-spacing: -0.03em;
-      color: var(--blue-m); display: block; margin-bottom: 12px;
+      color: var(--sienna); display: block; margin-bottom: 12px;
     }
     .science-stat-unit {
       font-family: var(--f-body); font-weight: 400;
       font-size: 11px; letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(238,231,221,0.38);
+      color: rgba(28,20,9,0.45);
       display: block;
     }
     .science-divider {
       width: 1px; height: 90px;
-      background: rgba(255,255,255,0.1);
+      background: rgba(28,20,9,0.15);
       margin: 0 auto;
     }
     .science-intro {
       font-family: var(--f-body); font-size: 16px; font-weight: 400;
-      line-height: 1.7; color: rgba(238,231,221,0.72);
+      line-height: 1.7; color: var(--text-2);
       max-width: 520px; margin: 0 auto 52px; text-align: center;
     }
     .science-outro {
       font-family: var(--f-bn); font-style: normal; font-weight: 400;
       font-size: clamp(13px, 1.5vw, 20px); line-height: 1.5;
-      color: rgba(238,231,221,0.82); max-width: 720px;
+      color: rgba(28,20,9,0.85); max-width: 720px;
       margin: 0 auto; text-align: center;
     }
     .science-outro em { font-style: italic; }
@@ -811,7 +848,7 @@
     ═══════════════════════════════════════════════════ */
     .s-benefits {
       position: relative;
-      background: var(--bg);
+      background: #F4E4B8;
     }
     .benefits-inner {
       max-width: 880px; margin: 0 auto;
@@ -899,14 +936,14 @@
       right: -24px; top: 0;
       width: 76%; height: 84%;
       object-fit: cover; object-position: center;
-      border-radius: 3px;
+      border-radius: 22px;
     }
     .about-img-front {
       position: absolute;
       left: 0; bottom: 0;
       width: 76%; height: 86%;
       object-fit: cover; object-position: top center;
-      border-radius: 3px;
+      border-radius: 22px;
     }
     .about-creds {
       max-width: 1120px; margin: 96px auto 0; padding: 52px 48px 0;
@@ -1069,7 +1106,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: var(--bg);
+      background: #F4E4B8;
       padding: clamp(100px, 12vw, 160px) 24px;
     }
     .clarity-glass {
@@ -1168,7 +1205,7 @@
     /* ═══════════════════════════════════════════════════
        FAQ
     ═══════════════════════════════════════════════════ */
-    .s-faq { background: var(--bg); }
+    .s-faq { background: #F4E4B8; }
     .s-faq .inner-faq {
       max-width: 720px; margin: 0 auto; padding: 0 48px;
     }
@@ -1467,7 +1504,7 @@
           <span class="hero-w-r gs-up" data-delay="0.38">again</span>
         </h1>
         <div class="hero-cta hero-fade-ui gs-up" data-delay="0.56">
-          <a href="https://calendly.com/larayapjy/30min" class="btn btn-cream" data-i18n="cta-clarity">Book a Clarity Call</a>
+          <a href="https://calendly.com/larayapjy/30min" class="btn btn-metal" data-i18n="cta-clarity">Book a Clarity Call</a>
         </div>
         <div class="hero-byline hero-fade-ui gs-up" data-delay="0.6">
           <span data-i18n="hero-side-l">Program your reality</span>
@@ -1771,7 +1808,7 @@
         <p data-i18n="clarity-p">A free 30-minute safe space for honest conversation and clarity, before you decide if The Realign is right for you.</p>
       </div>
       <div class="gs-up" style="margin-top:52px;">
-        <a href="https://calendly.com/larayapjy/30min" class="btn btn-cream" data-i18n="clarity-cta">Claim your clarity</a>
+        <a href="https://calendly.com/larayapjy/30min" class="btn btn-metal" data-i18n="clarity-cta">Claim your clarity</a>
       </div>
     </div>
   </section>
@@ -2353,11 +2390,13 @@
           lastP = p;
           const ex = ease(seg(p, 0, 0.62));
           const vw = innerWidth, vh = innerHeight;
-          const d = Math.min(vw, vh) * 0.42;
-          aura.style.width = (d + (vw - d) * ex) + 'px';
-          aura.style.height = (d + (vh - d) * ex) + 'px';
-          aura.style.borderRadius = (50 * (1 - seg(p, 0.3, 0.6))) + '%';
-          const sep = 15 + 33 * ex;
+          const d = Math.min(vw, vh) * 0.15;
+          aura.style.width = (d + (vw * 1.28 - d) * ex) + 'px';
+          aura.style.height = (d + (vh * 1.28 - d) * ex) + 'px';
+          const solid = 62 + 38 * seg(p, 0.5, 0.78);
+          const m = 'radial-gradient(ellipse closest-side, #000 ' + solid + '%, transparent 100%)';
+          aura.style.webkitMaskImage = m; aura.style.maskImage = m;
+          const sep = 12 + 36 * ex;
           wl.style.transform = 'translate(calc(-50% - ' + sep + 'vw), -50%)';
           wr.style.transform = 'translate(calc(-50% + ' + sep + 'vw), -50%)';
           if (p > 0.001) {
@@ -2369,7 +2408,7 @@
           bg.style.transform = 'scale(' + (1 + 0.08 * ex) + ')';
           re.style.opacity = seg(p, 0.64, 0.82);
           re.style.transform = 'translateY(' + (26 * (1 - seg(p, 0.64, 0.88))) + 'px)';
-          veil.style.opacity = seg(p, 0.9, 1);
+          veil.style.opacity = seg(p, 0.965, 1);
         } else {
           lastP = p;
         }
