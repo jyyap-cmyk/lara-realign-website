@@ -191,11 +191,13 @@
     .loader-title {
       position: absolute; left: 50%; top: 50%;
       transform: translate(-50%, -50%);
+      text-align: center;
       z-index: 2;
       background: none; border: 0; padding: 16px 28px;
       font-family: 'Libre Baskerville', Georgia, serif; font-weight: 400;
       font-size: clamp(9px, 1.1vw, 12px);
-      letter-spacing: 0.22em; text-transform: uppercase;
+      letter-spacing: 0.22em; text-indent: 0.22em; /* offset trailing letter-space so glyphs sit dead-centre */
+      text-transform: uppercase;
       color: rgba(238,231,221,0.92);
       cursor: none;
       animation: loaderPulse 2.6s ease-in-out infinite;
@@ -1974,7 +1976,7 @@
       const CHANGE_EVENT_TIME = 0.32;
       const CAMERA_Z = -400;
       const CAMERA_TRAVEL = 3400;
-      const START_DOT_Y = 28;
+      const START_DOT_Y = 0; /* spiral origin locked to page centre */
       const VIEW_ZOOM = 100;
       const NUM_STARS = 5000;
       const TRAIL_LENGTH = 80;
