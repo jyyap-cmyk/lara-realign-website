@@ -245,11 +245,11 @@
       display: block;
     }
     .h2 {
-      font-family: var(--f-now);
-      font-weight: 300;
-      font-size: clamp(31px, 4.3vw, 58px);
-      line-height: 1.08;
-      letter-spacing: -0.03em;
+      font-family: var(--f-bn);
+      font-weight: 400;
+      font-size: clamp(27px, 3.6vw, 44px);
+      line-height: 1.22;
+      letter-spacing: 0.005em;
       color: var(--dark);
       margin-bottom: 32px;
     }
@@ -521,13 +521,6 @@
     }
     /* static seam: the imagery blends into the page colour at the
        bottom edge (design divider, not scroll-driven) */
-    .hero-pin::after {
-      content: '';
-      position: absolute; left: 0; right: 0; bottom: 0;
-      height: 24vh; z-index: 5;
-      background: linear-gradient(to bottom, rgba(244,228,184,0) 0%, #F4E4B8 92%);
-      pointer-events: none;
-    }
     .hero-img {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
@@ -806,14 +799,14 @@
     }
     .science-intro {
       font-family: var(--f-body); font-size: 16px; font-weight: 400;
-      line-height: 1.7; color: var(--text-2);
-      max-width: 520px; margin: 0 auto 52px; text-align: center;
+      line-height: 1.85; color: var(--text-2);
+      max-width: 62ch; margin: 0 0 52px; text-align: left;
     }
     .science-outro {
       font-family: var(--f-bn); font-style: normal; font-weight: 400;
-      font-size: clamp(13px, 1.5vw, 20px); line-height: 1.5;
-      color: rgba(28,20,9,0.85); max-width: 720px;
-      margin: 0 auto; text-align: center;
+      font-size: clamp(17px, 1.95vw, 26px); line-height: 1.5;
+      color: rgba(28,20,9,0.85); max-width: 780px;
+      margin: 88px auto 0; text-align: center;
     }
     .science-outro em { font-style: italic; }
 
@@ -1093,7 +1086,7 @@
       justify-content: center;
       text-align: center;
       background: #F4E4B8;
-      padding: clamp(120px, 13vw, 180px) 24px;
+      padding: clamp(120px, 13vw, 180px) clamp(24px, 4vw, 56px);
     }
     .clarity-glass {
       position: relative;
@@ -1102,8 +1095,8 @@
       -webkit-backdrop-filter: blur(22px) saturate(1.1);
       border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 28px;
-      padding: 56px 96px;
-      max-width: 1040px; width: 100%;
+      padding: clamp(96px, 12vw, 168px) clamp(48px, 7vw, 112px);
+      max-width: none; width: 100%;
       margin: 0 auto;
       box-shadow:
         0 30px 90px rgba(28,20,9,0.12),
@@ -1137,8 +1130,8 @@
       padding: 32px 56px 24px;
       text-align: left;
     }
-    .tags-hd .eyebrow-sm { display: block; margin-bottom: 10px; letter-spacing: 0.3em; font-size: 11px; color: rgba(28,20,9,0.55); }
-    .tags-hd .h2 { font-size: clamp(22px, 2.4vw, 32px); color: rgba(28,20,9,0.82); }
+    .tags-hd .eyebrow-sm { display: block; margin-bottom: 14px; letter-spacing: 0.28em; font-size: 11px; color: var(--sienna); }
+    .tags-hd .h2 { color: var(--dark); }
     .tags-canvas {
       position: relative;
       flex: 1;
@@ -1170,7 +1163,7 @@
     /* ═══════════════════════════════════════════════════
        S11: BOOK
     ═══════════════════════════════════════════════════ */
-    .s-book { background: #F4E4B8; }
+    .s-book { background: #F4E4B8; padding-bottom: clamp(120px, 14vw, 200px); }
     .book-grid {
       display: grid;
       grid-template-columns: 1fr 280px 1fr;
@@ -1553,7 +1546,7 @@
   <!-- ── S4: NEUROSCIENCE ─────────────────────────────── -->
   <section class="s-science sec-lg tex" id="science">
     <div class="inner">
-      <p class="science-intro gs-up" data-i18n="sci-intro">The unconscious mind controls what you notice,<br>filtering perception before it reaches your awareness.</p>
+      <p class="science-intro gs-up" data-i18n="sci-intro">The unconscious mind controls what you notice, filtering perception before it reaches your awareness.</p>
       <div class="science-stats gs-up">
         <div class="science-stat">
           <span class="science-stat-role" data-i18n="sci-conscious">Conscious</span>
@@ -2406,12 +2399,13 @@
           bg.style.transform = 'scale(' + (1 + 0.08 * ex) + ')';
           re.style.opacity = seg(p, 0.64, 0.82);
           re.style.transform = 'translateY(' + (26 * (1 - seg(p, 0.64, 0.88))) + 'px)';
-          /* benefit lines fade-slide up one by one */
+          /* benefit lines fade-slide up one by one, slower with a
+             noticeable pause between each */
           reLines.forEach((ln, i) => {
-            const a = 0.72 + i * 0.07;
-            const lp = seg(p, a, a + 0.07);
+            const a = 0.60 + i * 0.13;
+            const lp = seg(p, a, a + 0.06);
             ln.style.opacity = lp;
-            ln.style.transform = 'translateY(' + (18 * (1 - lp)) + 'px)';
+            ln.style.transform = 'translateY(' + (20 * (1 - lp)) + 'px)';
           });
         }
         requestAnimationFrame(frame);
@@ -2582,7 +2576,7 @@
         'philo-p4': 'The Realign works to bring both parts into agreement. We find where the pattern was wired, update it at the root, and let your mind and body finally move as one.',
         'sci-eyebrow': 'The Neuroscience',
         'sci-h2': 'How your mind actually works',
-        'sci-intro': 'The unconscious mind controls what you notice,<br>filtering perception before it reaches your awareness.',
+        'sci-intro': 'The unconscious mind controls what you notice, filtering perception before it reaches your awareness.',
         'sci-conscious': 'Conscious', 'sci-unconscious': 'Unconscious',
         'sci-info-proc': 'Information Processing', 'sci-bits': 'bits per second',
         'sci-outro': 'What it lets through becomes what you call <em>reality</em>. That <em>reality</em> shapes your <em>decisions</em>. Those decisions build the <em>life</em> you\'re living.',
@@ -2667,7 +2661,7 @@
         'philo-p4': 'Realign 致力于让两个部分达成一致。我们找到模式被植入的根源，在那里更新它，让你的身心终于能够同向而行。',
         'sci-eyebrow': '神经科学依据',
         'sci-h2': '你的大脑究竟如何运作',
-        'sci-intro': '潜意识掌控着你所注意的一切，<br>在感知到达意识之前便已完成过滤。',
+        'sci-intro': '潜意识掌控着你所注意的一切，在感知到达意识之前便已完成过滤。',
         'sci-conscious': '意识', 'sci-unconscious': '潜意识',
         'sci-info-proc': '信息处理', 'sci-bits': '比特/秒',
         'sci-outro': '它所允许通过的，成了你所称的<em>现实</em>。那个<em>现实</em><br>塑造了你的<em>决定</em>。那些决定构建了你所过的<em>生活</em>。',
@@ -2815,6 +2809,32 @@
         const nearest = Math.round(grid.scrollLeft / cw);
         goTo(nearest + 1, true);
       });
+    })();
+  </script>
+
+  <script>
+    /* ─── SCROLL STACKING: book -> FAQ -> footer ─────────
+       Each section pins while the next slides up over it.
+       Tall sections pin at (100vh - height) so their full
+       content shows before being covered. */
+    (function () {
+      const foot = document.querySelector('.footer');
+      const items = [document.getElementById('book'), document.getElementById('faq'), foot].filter(Boolean);
+      if (items.length < 2) return;
+      function layout() {
+        const vh = window.innerHeight;
+        items.forEach((s, i) => {
+          s.style.position = 'sticky';
+          const h = s.offsetHeight;
+          s.style.top = (h > vh ? vh - h : 0) + 'px';
+          s.style.zIndex = 10 + i;
+        });
+      }
+      layout();
+      window.addEventListener('resize', layout);
+      window.addEventListener('load', layout);
+      setTimeout(layout, 600);
+      setTimeout(layout, 1800);
     })();
   </script>
 
