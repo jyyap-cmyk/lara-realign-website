@@ -822,6 +822,34 @@
     .science-outro em { font-style: italic; }
 
     /* ═══════════════════════════════════════════════════
+       FLOW: WebGL wave-distortion band
+    ═══════════════════════════════════════════════════ */
+    .s-shader {
+      position: relative;
+      height: 100vh; min-height: 560px;
+      background: #0f0b07;
+      overflow: hidden;
+    }
+    #flowCanvas {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; display: block;
+    }
+    .shader-inner {
+      position: relative; z-index: 2; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 0 24px;
+      pointer-events: none;
+    }
+    .s-shader .eyebrow-lt { color: rgba(255,255,255,0.62); margin-bottom: 22px; }
+    .shader-line {
+      font-family: var(--f-bn); font-style: italic; font-weight: 400;
+      font-size: clamp(30px, 4.4vw, 60px); line-height: 1.18;
+      letter-spacing: 0.005em; color: rgba(255,252,245,0.97);
+      text-shadow: 0 2px 40px rgba(0,0,0,0.45);
+    }
+
+    /* ═══════════════════════════════════════════════════
        S5: THE SESSION — WHAT YOU GET
     ═══════════════════════════════════════════════════ */
     .s-benefits {
@@ -1573,6 +1601,15 @@
         </div>
       </div>
       <p class="science-outro gs-up" data-i18n="sci-outro">What your unconscious lets through becomes what you call <em>reality</em>.<br>That reality shapes your <em>decisions</em>.<br>Those decisions build the <em>life</em> you're living.</p>
+    </div>
+  </section>
+
+  <!-- ── FLOW: WebGL wave-distortion band ──────────────── -->
+  <section class="s-shader" id="flow">
+    <canvas id="flowCanvas" aria-hidden="true"></canvas>
+    <div class="shader-inner">
+      <span class="eyebrow-lt" data-i18n="flow-eyebrow">The unconscious</span>
+      <p class="shader-line" data-i18n="flow-line">Real change happens<br>beneath the surface.</p>
     </div>
   </section>
 
@@ -2566,6 +2603,7 @@
         'realign-b1': 'Bypass conscious resistance',
         'realign-b2': 'Align mind and body with your goals',
         'realign-b3': 'Obtain happiness and true freedom',
+        'flow-eyebrow': 'The unconscious', 'flow-line': 'Real change happens<br>beneath the surface.',
         'philo-eyebrow': 'The Philosophy',
         'philo-p1': 'Your unconscious mind runs 95% of how you operate, built on programming absorbed before your conscious awareness developed.',
         'philo-p2': "Everything you've tried that didn't work targeted the conscious mind. The reflection. The goal setting. Change through conscious effort alone is possible, it's just working against the current the whole way.",
@@ -2651,6 +2689,7 @@
         'realign-b1': '突破意识层面的阻力',
         'realign-b2': '让身心与你的目标对齐',
         'realign-b3': '获得幸福与真正的自由',
+        'flow-eyebrow': '潜意识', 'flow-line': '真正的改变，<br>发生在意识的深处。',
         'philo-eyebrow': '核心理念',
         'philo-p1': '你95%的运作方式由潜意识主导，建立在意识形成之前所吸收的编程之上。',
         'philo-p2': '那些你尝试过却没有奏效的方法，针对的都是意识层面。那些反思。那些目标设定。仅靠意识努力改变是可能的，只是一路都在逆流而上。',
@@ -2829,6 +2868,68 @@
       window.addEventListener('load', layout);
       setTimeout(layout, 600);
       setTimeout(layout, 1800);
+    })();
+  </script>
+
+  <script>
+    /* ─── FLOW: WebGL flowing wave-distortion + sheen ──── */
+    (function () {
+      const cv = document.getElementById('flowCanvas');
+      const sec = document.getElementById('flow');
+      if (!cv || !sec) return;
+      const gl = cv.getContext('webgl', { antialias: true, alpha: false })
+             || cv.getContext('experimental-webgl');
+      if (!gl) { sec.style.background = 'radial-gradient(120% 90% at 50% 60%, #3a2d1a, #0f0b07)'; return; }
+      const VS = 'attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }';
+      const FS = [
+        'precision highp float;',
+        'uniform vec2 u_res; uniform float u_time;',
+        'vec3 pal(float t){ return vec3(0.5) + vec3(0.5)*cos(6.28318*(vec3(1.0)*t + vec3(0.05,0.35,0.62))); }',
+        'void main(){',
+        '  vec2 uv = (gl_FragCoord.xy - 0.5*u_res) / u_res.y;',
+        '  float t = u_time * 0.12;',
+        '  vec2 q = uv * 2.2;',
+        '  for(int i=0;i<5;i++){ float fi=float(i);',
+        '    q += 0.55*vec2(sin(q.y*1.4 + t + fi*1.3), cos(q.x*1.4 - t*0.9 + fi*1.1)); }',
+        '  float w = sin(q.x*0.6 + q.y*0.5 + t*1.6)*0.5 + 0.5;',
+        '  vec3 col = pal(w*0.9 + t*0.08);',
+        '  float sheen = pow(max(0.0, sin(q.x*0.7 - q.y*0.5 + t*2.0)), 8.0);',
+        '  col += sheen*0.7;',
+        '  float vig = smoothstep(1.45, 0.12, length(uv));',
+        '  col = mix(vec3(0.055,0.045,0.03), col, vig);',
+        '  gl_FragColor = vec4(col, 1.0);',
+        '}'
+      ].join('\n');
+      function sh(type, src){ const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; }
+      const prog = gl.createProgram();
+      gl.attachShader(prog, sh(gl.VERTEX_SHADER, VS));
+      gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, FS));
+      gl.linkProgram(prog); gl.useProgram(prog);
+      const buf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+      const loc = gl.getAttribLocation(prog, 'p');
+      gl.enableVertexAttribArray(loc);
+      gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+      const uRes = gl.getUniformLocation(prog, 'u_res');
+      const uTime = gl.getUniformLocation(prog, 'u_time');
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+      function size(){ const w = Math.round(cv.clientWidth*dpr), h = Math.round(cv.clientHeight*dpr);
+        if (cv.width !== w || cv.height !== h){ cv.width = w; cv.height = h; gl.viewport(0,0,w,h); } }
+      const start = performance.now();
+      let raf = 0, visible = false;
+      function draw(){ size(); gl.uniform2f(uRes, cv.width, cv.height);
+        gl.uniform1f(uTime, (performance.now()-start)/1000);
+        gl.drawArrays(gl.TRIANGLES, 0, 3);
+        raf = requestAnimationFrame(draw); }
+      /* only run while the band is on screen */
+      const io = new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if (e.isIntersecting && !visible){ visible = true; raf = requestAnimationFrame(draw); }
+          else if (!e.isIntersecting && visible){ visible = false; cancelAnimationFrame(raf); }
+        });
+      }, { threshold: 0.01 });
+      io.observe(sec);
     })();
   </script>
 
