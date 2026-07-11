@@ -427,7 +427,7 @@
     .nav-logo {
       font-family: var(--f-now); font-weight: 300;
       font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase;
-      color: rgba(238,231,221,0.88);
+      color: rgba(255,255,255,0.98);
       transition: color 0.35s ease;
     }
     .nav-logo span { opacity: 0.45; margin: 0 7px; }
@@ -437,7 +437,7 @@
     .nav-links a {
       font-family: var(--f-now); font-size: 9px; font-weight: 300;
       letter-spacing: 0.16em; text-transform: uppercase;
-      color: rgba(238,231,221,0.75);
+      color: rgba(255,255,255,0.95);
       transition: color 0.35s ease, opacity 0.2s;
     }
     .nav-links a:hover { opacity: 0.7; }
@@ -456,7 +456,7 @@
     .lang-toggle {
       font-family: var(--f-now); font-size: 10px; font-weight: 300;
       letter-spacing: 0.15em; text-transform: uppercase;
-      color: rgba(238,231,221,0.75);
+      color: rgba(255,255,255,0.95);
       background: none; border: none; padding: 0;
       cursor: pointer; transition: color 0.25s;
     }
@@ -467,8 +467,8 @@
     .nav-cta {
       font-family: var(--f-now); font-size: 10px; font-weight: 300;
       letter-spacing: 0.15em; text-transform: uppercase;
-      color: rgba(238,231,221,0.88);
-      border: 1px solid rgba(238,231,221,0.3);
+      color: rgba(255,255,255,0.98);
+      border: 1px solid rgba(255,255,255,0.5);
       border-radius: 100px; padding: 6px 16px;
       text-decoration: none; display: inline-flex; align-items: center;
       transition: color 0.25s, border-color 0.25s;
@@ -552,6 +552,14 @@
       width: 100%; height: 100%;
       object-fit: cover; object-position: center;
     }
+    /* static seam: only the bottom edge of the imagery dissolves into
+       the page colour (blends video bottom into the next section) */
+    .hero-seam {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      height: 26vh; z-index: 2;
+      background: linear-gradient(to bottom, rgba(251,245,223,0) 0%, #FBF5DF 94%);
+      pointer-events: none;
+    }
     .hero-inner {
       position: absolute; inset: 0; z-index: 3;
       pointer-events: none;
@@ -561,7 +569,7 @@
       position: absolute; top: 16%; left: 0; right: 0;
       font-family: var(--f-now); font-weight: 300; font-size: 10px;
       letter-spacing: 0.28em; text-transform: uppercase;
-      color: rgba(238,231,221,0.72);
+      color: rgba(255,255,255,0.95);
       text-align: center;
     }
     .hero-w-l, .hero-w-r {
@@ -588,7 +596,7 @@
       position: absolute; bottom: 13.5%; left: 0; right: 0;
       font-family: var(--f-bn); font-style: italic;
       font-size: clamp(13px, 1.5vw, 17px);
-      color: rgba(238,231,221,0.52); letter-spacing: 0.01em;
+      color: rgba(255,255,255,0.9); letter-spacing: 0.01em;
       white-space: nowrap; text-align: center;
     }
     /* The Realign state (fades in once the aura fills the screen) */
@@ -610,7 +618,7 @@
     .hero-scroll-lbl {
       font-family: var(--f-now); font-size: 9px; font-weight: 300;
       letter-spacing: 0.32em; text-transform: uppercase;
-      color: rgba(238,231,221,0.32);
+      color: rgba(255,255,255,0.82);
     }
     .hero-scroll-line {
       width: 1px; height: 40px;
@@ -761,11 +769,13 @@
     .s-science .h2 { text-align: center; color: var(--dark); margin-bottom: 14px; }
     .science-stats {
       display: grid;
-      grid-template-columns: 1fr 1px 1fr;
+      grid-template-columns: auto 1px auto;
+      justify-content: start;
       gap: 0; margin: 32px 0 36px;
       align-items: center;
     }
-    .science-stat { text-align: center; padding: 0 48px; }
+    .science-stat { text-align: left; padding: 0 64px; }
+    .science-stat:first-child { padding-left: 0; }
     .science-stat-role {
       font-family: var(--f-body); font-weight: 400; font-style: italic;
       font-size: 16px; letter-spacing: 0.04em;
@@ -798,15 +808,16 @@
       margin: 0 auto;
     }
     .science-intro {
-      font-family: var(--f-body); font-size: 17px; font-weight: 600;
-      line-height: 1.7; color: var(--dark);
-      max-width: 52ch; margin: 0 0 28px; text-align: left;
+      font-family: var(--f-now); font-weight: 300;
+      font-size: clamp(19px, 2vw, 27px); line-height: 1.4;
+      letter-spacing: -0.01em; color: var(--dark);
+      max-width: 24ch; margin: 0 0 44px; text-align: left;
     }
     .science-outro {
       font-family: var(--f-bn); font-style: normal; font-weight: 400;
-      font-size: clamp(23px, 2.7vw, 36px); line-height: 1.42;
-      color: rgba(28,20,9,0.88); max-width: 900px;
-      margin: 96px auto 0; text-align: center;
+      font-size: clamp(17px, 2vw, 27px); line-height: 1.45;
+      color: rgba(28,20,9,0.88); max-width: 720px;
+      margin: 72px auto 0; text-align: center;
     }
     .science-outro em { font-style: italic; }
 
@@ -850,11 +861,11 @@
       opacity: 0.9;
       transition: stroke 0.35s ease, opacity 0.35s ease, filter 0.35s ease;
     }
-    /* icons light up softly on hover (no outer glow) */
+    /* icons light up on hover, a touch brighter */
     .card:hover .card-icon {
-      background: rgba(233,196,120,0.5);
-      box-shadow: inset 0 1px 2px rgba(255,248,224,0.9);
-      transform: scale(1.04);
+      background: rgba(233,196,120,0.62);
+      box-shadow: 0 0 14px 2px rgba(233,196,120,0.4), inset 0 1px 2px rgba(255,248,224,0.95);
+      transform: scale(1.05);
     }
     .card:hover .card-icon svg {
       stroke: #7A4E2E;
@@ -868,7 +879,7 @@
     /* ═══════════════════════════════════════════════════
        S6: ABOUT LARA
     ═══════════════════════════════════════════════════ */
-    .s-about { background: #FBF5DF; padding-top: 40px; padding-bottom: clamp(56px, 5vw, 72px); }
+    .s-about { background: #FBF5DF; padding-top: 40px; padding-bottom: clamp(112px, 11vw, 176px); }
     .about-quote-band {
       padding: 28px 0; margin-bottom: 40px;
     }
@@ -1082,6 +1093,7 @@
     .s-clarity {
       position: relative;
       overflow: hidden;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1160,7 +1172,7 @@
     /* ═══════════════════════════════════════════════════
        S11: BOOK
     ═══════════════════════════════════════════════════ */
-    .s-book { background: #FBF5DF; padding-bottom: clamp(120px, 14vw, 200px); }
+    .s-book { background: #FBF5DF; min-height: 100vh; display: flex; align-items: center; padding-bottom: clamp(120px, 14vw, 200px); }
     .book-grid {
       display: grid;
       grid-template-columns: 1fr 280px 1fr;
@@ -1480,6 +1492,7 @@
       <div class="aura-wrap" aria-hidden="true">
         <video src="./Website FINAL Images/realign-bg-v2.mp4" autoplay muted loop playsinline preload="auto" poster="./Website FINAL Images/1 LATEST.png"></video>
       </div>
+      <div class="hero-seam" aria-hidden="true"></div>
 
       <div class="hero-inner">
         <p class="hero-eyebrow hero-fade-ui gs-up" data-delay="0.2" data-i18n="hero-eyebrow">From where you were,<br>to who you are</p>
@@ -1498,7 +1511,7 @@
       </div>
 
       <div class="hero-realign" id="realign">
-        <p class="realign-pre" data-i18n="realign-pre">Meet the part of you that has answers.</p>
+        <p class="realign-pre" data-i18n="realign-pre">Life, by your design.</p>
         <span class="realign-the">THE</span>
         <span class="realign-name">REALIGN</span>
         <div class="realign-post" style="margin-top:26px;">
@@ -1649,8 +1662,8 @@
   <!-- ── S10: COMMON PATTERNS ──────────────────────────── -->
   <section class="s-tags tex curve-top" id="concerns">
     <div class="tags-hd gs-up">
-      <span class="eyebrow-sm" data-i18n="tags-eyebrow">Common Patterns</span>
-      <h2 class="h2" data-i18n="tags-h2">What Brings People Here</h2>
+      <span class="eyebrow-sm" data-i18n="tags-eyebrow">What I help you work through</span>
+      <h2 class="h2" data-i18n="tags-h2">None of this is who you are</h2>
     </div>
     <div class="tags-canvas" id="tagsCanvas" aria-label="Topics people work on">
       <span class="tw tw-it"    data-depth="0.9"  style="left:28%;top:6%"  data-i18n="tw-selfworth">Self-worth</span>
@@ -1826,7 +1839,7 @@
   </section>
 
   <!-- ── FAQ ──────────────────────────────────────────── -->
-  <section class="s-faq sec-lg curve-top" id="faq">
+  <section class="s-faq sec-lg" id="faq">
     <div class="s-faq inner-faq">
       <div class="hd gs-up">
         <span class="eyebrow-sm" data-i18n="faq-eyebrow">Questions</span>
@@ -2391,24 +2404,17 @@
             el.style.visibility = uop <= 0.01 ? 'hidden' : '';
           });
           bg.style.transform = 'scale(' + (1 + 0.08 * ex) + ')';
-          /* beat 1: THE REALIGN + "Meet the part of you..." appear */
-          const endFade = seg(p, 0.94, 1.0);
-          re.style.opacity = seg(p, 0.52, 0.68) * (1 - endFade);
-          re.style.transform = 'translateY(' + (24 * (1 - seg(p, 0.52, 0.72))) + 'px)';
-          /* beats 2-4: the three lines fade-slide up one per scroll,
-             each with a clear pause before the next */
+          /* beat 1: THE REALIGN + top line fully arrive and settle */
+          re.style.opacity = seg(p, 0.50, 0.60);
+          re.style.transform = 'translateY(' + (24 * (1 - seg(p, 0.50, 0.60))) + 'px)';
+          /* beats 2-4: each line fully appears and settles (solid, in
+             place) before the next one begins */
           reLines.forEach((ln, i) => {
-            const a = 0.70 + i * 0.085;
-            const lp = seg(p, a, a + 0.045);
-            ln.style.opacity = lp * (1 - endFade);
+            const a = 0.66 + i * 0.10;
+            const lp = seg(p, a, a + 0.05);
+            ln.style.opacity = lp;
             ln.style.transform = 'translateY(' + (20 * (1 - lp)) + 'px)';
           });
-          /* end only: video dissolves into the page colour, so the
-             realign shows full-screen first, then melts into philosophy */
-          const imgOp = 1 - endFade;
-          aura.style.opacity = imgOp;
-          bg.style.opacity = imgOp;
-          ov.style.opacity = imgOp;
         }
         requestAnimationFrame(frame);
       }
@@ -2556,7 +2562,7 @@
         'who-p1': 'That feeling has been deep within you.',
         'who-p2': "You've invested in the right things. The self-help books gave you frameworks. The podcasts kept you going, for a while. A retreat gave you the peace you have not felt before. And you believed those changes would hold.",
         'who-p3': "Then real life resumed. And the old patterns resumed with it. Same triggers, same loops, as though nothing had shifted at all. Part of you began to wonder if this is just who you are.",
-        'realign-pre': 'Meet the part of you that has answers.',
+        'realign-pre': 'Life, by your design.',
         'realign-b1': 'Bypass conscious resistance',
         'realign-b2': 'Align mind and body with your goals',
         'realign-b3': 'Obtain happiness and true freedom',
@@ -2589,7 +2595,7 @@
         'about-p4': "A lot of people I see now are in that same place. Mid-transition, pivoting careers, wondering if they have what it takes. Clearing what's been resisting it from the inside started to feel like the most honest thing I could offer.",
         'about-sig': 'Lara Yap, Mind Aligner',
         'testi-eyebrow': 'Clients', 'testi-h2': 'In their own words',
-        'tags-eyebrow': 'Common Patterns', 'tags-h2': 'What Brings People Here',
+        'tags-eyebrow': 'What I help you work through', 'tags-h2': 'None of this is who you are',
         'tw-selfworth': 'Self-worth', 'tw-procrastination': 'Procrastination',
         'tw-perfectionism': 'Perfectionism', 'tw-imposter': 'Imposter syndrome',
         'tw-sabotage': 'Self-sabotage', 'tw-overthinking': 'Chronic overthinking',
@@ -2641,7 +2647,7 @@
         'who-p1': '那种感觉，一直深藏在你心里。',
         'who-p2': '你做了该做的事。自我成长书籍给了你框架。播客一时间让你保持动力。静修带来了前所未有的平静。你相信那些改变会延续。',
         'who-p3': '然而现实重启了。旧模式也随之而来。同样的触发，同样的循环，仿佛什么都没有发生。你开始怀疑，也许这就是真实的你。',
-        'realign-pre': '遇见那个拥有答案的自己。',
+        'realign-pre': '生活，由你设计。',
         'realign-b1': '突破意识层面的阻力',
         'realign-b2': '让身心与你的目标对齐',
         'realign-b3': '获得幸福与真正的自由',
@@ -2674,7 +2680,7 @@
         'about-p4': '我现在接触的很多人都处于同样的境地。人生过渡期，转换跑道，不确定自己是否有那个能力。从内在清除阻力，开始成为我所能给予的最诚实的礼物。',
         'about-sig': 'Lara Yap，Mind Aligner',
         'testi-eyebrow': '客户感言', 'testi-h2': '疗愈见证',
-        'tags-eyebrow': '常见模式', 'tags-h2': '是什么带他们来到这里',
+        'tags-eyebrow': '我帮你梳理的', 'tags-h2': '这些都不是真正的你',
         'tw-selfworth': '自我价值', 'tw-procrastination': '拖延症',
         'tw-perfectionism': '完美主义', 'tw-imposter': '冒名顶替综合症',
         'tw-sabotage': '自我破坏', 'tw-overthinking': '长期过度思虑',
