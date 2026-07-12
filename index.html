@@ -515,7 +515,7 @@
     }
     .hero-pin {
       position: sticky; top: 0;
-      height: 100dvh; min-height: 620px;
+      height: 124vh; min-height: 620px;
       overflow: hidden;
       background: #FBF5DF;
     }
@@ -539,7 +539,7 @@
         );
     }
     .aura-wrap {
-      position: absolute; left: 50%; top: 50%;
+      position: absolute; left: 50%; top: 50vh;
       transform: translate(-50%, -50%);
       width: 3vmin; height: 3vmin;
       overflow: hidden;
@@ -554,15 +554,18 @@
     }
     /* static seam: only the bottom edge of the imagery dissolves into
        the page colour (blends video bottom into the next section) */
+    /* static seam: lives in the bottom 24vh of the (taller than screen)
+       pin, so it sits BELOW the fold during the full-screen realign and
+       is only revealed as you scroll out into The Philosophy. Never
+       animated. */
     .hero-seam {
       position: absolute; left: 0; right: 0; bottom: 0;
-      height: 26vh; z-index: 2;
-      background: linear-gradient(to bottom, rgba(251,245,223,0) 0%, #FBF5DF 94%);
+      height: 24vh; z-index: 2;
+      background: linear-gradient(to bottom, rgba(251,245,223,0) 0%, #FBF5DF 88%);
       pointer-events: none;
-      opacity: 0;
     }
     .hero-inner {
-      position: absolute; inset: 0; z-index: 3;
+      position: absolute; top: 0; left: 0; right: 0; height: 100vh; z-index: 3;
       pointer-events: none;
     }
     .hero-inner a { pointer-events: auto; }
@@ -602,7 +605,7 @@
     }
     /* The Realign state (fades in once the aura fills the screen) */
     .hero-realign {
-      position: absolute; inset: 0; z-index: 4;
+      position: absolute; top: 0; left: 0; right: 0; height: 100vh; z-index: 4;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       text-align: center;
@@ -610,7 +613,7 @@
       will-change: opacity, transform;
     }
     .hero-scroll {
-      position: absolute; bottom: 36px; left: 50%;
+      position: absolute; bottom: calc(24vh + 30px); left: 50%;
       transform: translateX(-50%);
       z-index: 7; display: flex;
       flex-direction: column; align-items: center; gap: 10px;
@@ -1687,7 +1690,6 @@
       <span class="tw"           data-depth="1.1"  style="left:70%;top:66%" data-i18n="tw-sleep">Restless mind</span>
       <span class="tw tw-bd"    data-depth="1.0"  style="left:36%;top:80%" data-i18n="tw-weight">Body image</span>
       <span class="tw tw-thin"  data-depth="1.1"  style="left:80%;top:42%" data-i18n="tw-adhd">ADHD</span>
-      <span class="tw tw-it"    data-depth="0.95" style="left:20%;top:86%" data-i18n="tw-sadness">Sadness</span>
     </div>
   </section>
 
@@ -1855,7 +1857,7 @@
           <span class="faq-icon" aria-hidden="true">+</span>
         </button>
         <div class="faq-body"><div class="faq-body-inner" data-i18n="faq-a1">
-          <p>Counselling processes what happened. Coaching teaches you frameworks. The Realign changes how your unconscious mind runs the pattern itself.</p>
+          <p>Counselling works with your conscious mind, giving you space to talk things through and understand them. Coaching teaches you frameworks. The Realign works at the unconscious level, where the pattern actually runs.</p>
           <p>Your conscious mind is maybe 5% of how you actually operate. The other 95% is running on programming: beliefs, neural pathways, emotional associations you absorbed growing up.</p>
           <p>When you try to change through willpower alone, you're using that 5% to fight the other 95%. The Realign accesses the unconscious layer directly. We find where the pattern got wired and dissolve it.</p>
         </div></div>
@@ -2408,8 +2410,6 @@
             el.style.visibility = uop <= 0.01 ? 'hidden' : '';
           });
           bg.style.transform = 'scale(' + (1 + 0.08 * ex) + ')';
-          /* bottom seam only appears once you scroll in (never on arrival) */
-          if (seam) seam.style.opacity = seg(p, 0.50, 0.62);
           /* beat 1: THE REALIGN + top line fully arrive and settle */
           re.style.opacity = seg(p, 0.50, 0.60);
           re.style.transform = 'translateY(' + (24 * (1 - seg(p, 0.50, 0.60))) + 'px)';
@@ -2611,7 +2611,7 @@
         'tw-disconnected': 'Feeling disconnected', 'tw-conflict': 'Inner conflict',
         'tw-limiting': 'Limiting beliefs', 'tw-relationship': 'Relationship patterns',
         'tw-eating': 'Emotional eating', 'tw-sleep': 'Restless mind', 'tw-weight': 'Body image',
-        'tw-adhd': 'ADHD', 'tw-sadness': 'Sadness',
+        'tw-adhd': 'ADHD',
         'clarity-eyebrow': 'Free &nbsp;·&nbsp; 30 Minutes',
         'clarity-h2': 'Your clarity starts here',
         'clarity-p': 'A free 30-minute safe space for honest conversation and clarity, before you decide if The Realign is right for you.',
@@ -2631,7 +2631,7 @@
         'faq-q5': 'Is this spiritual or scientific? <span class="faq-icon" aria-hidden="true">+</span>',
         'faq-q6': 'Online or in-person? <span class="faq-icon" aria-hidden="true">+</span>',
         'faq-q7': 'What languages do you work in? <span class="faq-icon" aria-hidden="true">+</span>',
-        'faq-a1': '<p>Counselling processes what happened. Coaching teaches you frameworks. The Realign changes how your unconscious mind runs the pattern itself.</p><p>Your conscious mind is maybe 5% of how you actually operate. The other 95% is running on programming: beliefs, neural pathways, emotional associations you absorbed growing up.</p><p>When you try to change through willpower alone, you\'re using that 5% to fight the other 95%. The Realign accesses the unconscious layer directly. We find where the pattern got wired and dissolve it.</p>',
+        'faq-a1': '<p>Counselling works with your conscious mind, giving you space to talk things through and understand them. Coaching teaches you frameworks. The Realign works at the unconscious level, where the pattern actually runs.</p><p>Your conscious mind is maybe 5% of how you actually operate. The other 95% is running on programming: beliefs, neural pathways, emotional associations you absorbed growing up.</p><p>When you try to change through willpower alone, you\'re using that 5% to fight the other 95%. The Realign accesses the unconscious layer directly. We find where the pattern got wired and dissolve it.</p>',
         'faq-a2': '<p>We start with a conversation about the pattern you want to shift. I listen for the root belief underneath it.</p><p>Then you get comfortable. I guide you into a focused, relaxed state. Your conscious mind is calm. Your unconscious mind is listening.</p><p>We work with the original belief or memory that wired the pattern, reframe it, and from that new understanding, the pattern naturally releases. You\'re conscious the entire time. You leave with tools to keep working with the shift on your own.</p>',
         'faq-a3': '<p>Not necessarily. We work with the belief or pattern, not the story. You don\'t need to describe your whole history or relive anything.</p><p>If you\'re carrying something very recent or very heavy, the Clarity Call is where we assess whether this is the right time, or if you need other resources.</p>',
         'faq-a4': '<p>A Clarity Call is free. That\'s where we figure out if this is right for you.</p><p>A Realign session is RM300.</p>',
@@ -2697,7 +2697,7 @@
         'tw-disconnected': '内心疏离感', 'tw-conflict': '内在冲突',
         'tw-limiting': '限制性信念', 'tw-relationship': '关系模式',
         'tw-eating': '情绪性进食', 'tw-sleep': '思绪不宁', 'tw-weight': '身体形象',
-        'tw-adhd': 'ADHD', 'tw-sadness': '悲伤',
+        'tw-adhd': 'ADHD',
         'clarity-eyebrow': '免费 &nbsp;·&nbsp; 30 分钟',
         'clarity-h2': '让思绪清晰，从这里开始',
         'clarity-p': '一个免费的30分钟空间，坦诚交流，找到方向，再决定 Realign 是否适合你。',
@@ -2717,7 +2717,7 @@
         'faq-q5': '这是灵性的还是科学的？<span class="faq-icon" aria-hidden="true">+</span>',
         'faq-q6': '线上还是面对面？<span class="faq-icon" aria-hidden="true">+</span>',
         'faq-q7': '你用哪些语言工作？<span class="faq-icon" aria-hidden="true">+</span>',
-        'faq-a1': '<p>心理咨询处理发生过的事。教练为你提供框架。Realign 直接改变潜意识运作模式本身。</p><p>你的意识思维，只占实际运作的大约5%。另外95%跑在一套程序上，那是你在成长过程中吸收的信念、神经通路与情绪连接。</p><p>靠意志力改变，是在用那5%对抗另外95%。Realign 直接进入潜意识层面，找到模式被写入的根源，将它化解。</p>',
+        'faq-a1': '<p>心理咨询在意识层面工作，给你空间把事情谈开、理清。教练为你提供框架。Realign 在潜意识层面工作，也就是模式真正运行的地方。</p><p>你的意识思维，只占实际运作的大约5%。另外95%跑在一套程序上，那是你在成长过程中吸收的信念、神经通路与情绪连接。</p><p>靠意志力改变，是在用那5%对抗另外95%。Realign 直接进入潜意识层面，找到模式被写入的根源，将它化解。</p>',
         'faq-a2': '<p>我们先从对话开始，聊聊你想要调整的模式。我聆听，找出背后的核心信念。</p><p>然后你放松下来。我引导你进入一种专注而平静的状态，意识安静，潜意识开始聆听。</p><p>我们处理最初写入这个模式的信念或记忆，重新理解它。从新的理解出发，模式自然松动、释放。全程你都是清醒的。离开时，你会获得一套在家继续深化这份改变的方法。</p>',
         'faq-a3': '<p>不一定。我们处理的是信念或模式本身，而不是故事。你不需要描述整段经历，也不需要重历任何事。</p><p>如果你正承载着特别沉重或近期的创伤，心聊是我们共同评估时机是否合适、或是否需要其他支持的地方。</p>',
         'faq-a4': '<p>初步心聊是免费的，那是我们确认是否适合彼此的空间。</p><p>一次 Realign 疗程的费用为 RM300。</p>',
