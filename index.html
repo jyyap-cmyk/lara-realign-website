@@ -510,7 +510,7 @@
        then dissolves to The Philosophy. Driven by .hero height + rAF. */
     .hero {
       position: relative;
-      height: 460vh;
+      height: 600vh;
       background: var(--dark);
     }
     .hero-pin {
@@ -559,6 +559,7 @@
       height: 26vh; z-index: 2;
       background: linear-gradient(to bottom, rgba(251,245,223,0) 0%, #FBF5DF 94%);
       pointer-events: none;
+      opacity: 0;
     }
     .hero-inner {
       position: absolute; inset: 0; z-index: 3;
@@ -809,45 +810,17 @@
     }
     .science-intro {
       font-family: var(--f-now); font-weight: 300;
-      font-size: clamp(19px, 2vw, 27px); line-height: 1.4;
+      font-size: clamp(17px, 1.8vw, 24px); line-height: 1.4;
       letter-spacing: -0.01em; color: var(--dark);
-      max-width: 24ch; margin: 0 0 44px; text-align: left;
+      max-width: 40ch; margin: 0 0 44px; text-align: left;
     }
     .science-outro {
       font-family: var(--f-bn); font-style: normal; font-weight: 400;
       font-size: clamp(17px, 2vw, 27px); line-height: 1.45;
       color: rgba(28,20,9,0.88); max-width: 720px;
-      margin: 72px auto 0; text-align: center;
+      margin: 128px auto 0; text-align: center;
     }
     .science-outro em { font-style: italic; }
-
-    /* ═══════════════════════════════════════════════════
-       FLOW: WebGL wave-distortion band
-    ═══════════════════════════════════════════════════ */
-    .s-shader {
-      position: relative;
-      height: 100vh; min-height: 560px;
-      background: #0f0b07;
-      overflow: hidden;
-    }
-    #flowCanvas {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%; display: block;
-    }
-    .shader-inner {
-      position: relative; z-index: 2; height: 100%;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center; padding: 0 24px;
-      pointer-events: none;
-    }
-    .s-shader .eyebrow-lt { color: rgba(255,255,255,0.62); margin-bottom: 22px; }
-    .shader-line {
-      font-family: var(--f-bn); font-style: italic; font-weight: 400;
-      font-size: clamp(30px, 4.4vw, 60px); line-height: 1.18;
-      letter-spacing: 0.005em; color: rgba(255,252,245,0.97);
-      text-shadow: 0 2px 40px rgba(0,0,0,0.45);
-    }
 
     /* ═══════════════════════════════════════════════════
        S5: THE SESSION — WHAT YOU GET
@@ -907,7 +880,7 @@
     /* ═══════════════════════════════════════════════════
        S6: ABOUT LARA
     ═══════════════════════════════════════════════════ */
-    .s-about { background: #FBF5DF; padding-top: 40px; padding-bottom: clamp(112px, 11vw, 176px); }
+    .s-about { background: #FBF5DF; padding-top: 40px; padding-bottom: clamp(180px, 18vw, 280px); }
     .about-quote-band {
       padding: 28px 0; margin-bottom: 40px;
     }
@@ -1163,8 +1136,8 @@
     .tags-hd {
       position: relative;
       z-index: 2;
-      max-width: 880px; margin: 0 auto;
-      padding: clamp(64px, 7vw, 96px) 48px 32px;
+      width: 100%; box-sizing: border-box;
+      padding: clamp(64px, 7vw, 96px) max(48px, calc(50% - 392px)) 32px;
       text-align: left;
     }
     .tags-hd .eyebrow-sm { display: block; margin-bottom: 14px; letter-spacing: 0.28em; font-size: 11px; color: var(--sienna); }
@@ -1584,7 +1557,7 @@
   <!-- ── S4: NEUROSCIENCE ─────────────────────────────── -->
   <section class="s-science sec-lg tex" id="science">
     <div class="inner">
-      <p class="science-intro gs-up" data-i18n="sci-intro">What you notice is only what remains after your unconscious mind has filtered everything your senses take in.</p>
+      <p class="science-intro gs-up" data-i18n="sci-intro">What you notice is only what your unconscious mind lets through.</p>
       <div class="science-stats gs-up">
         <div class="science-stat">
           <span class="science-stat-role" data-i18n="sci-conscious">Conscious</span>
@@ -1601,15 +1574,6 @@
         </div>
       </div>
       <p class="science-outro gs-up" data-i18n="sci-outro">What your unconscious lets through becomes what you call <em>reality</em>.<br>That reality shapes your <em>decisions</em>.<br>Those decisions build the <em>life</em> you're living.</p>
-    </div>
-  </section>
-
-  <!-- ── FLOW: WebGL wave-distortion band ──────────────── -->
-  <section class="s-shader" id="flow">
-    <canvas id="flowCanvas" aria-hidden="true"></canvas>
-    <div class="shader-inner">
-      <span class="eyebrow-lt" data-i18n="flow-eyebrow">The unconscious</span>
-      <p class="shader-line" data-i18n="flow-line">Real change happens<br>beneath the surface.</p>
     </div>
   </section>
 
@@ -1699,7 +1663,7 @@
   <!-- ── S10: COMMON PATTERNS ──────────────────────────── -->
   <section class="s-tags tex curve-top" id="concerns">
     <div class="tags-hd gs-up">
-      <span class="eyebrow-sm" data-i18n="tags-eyebrow">What I help you work through</span>
+      <span class="eyebrow-sm" data-i18n="tags-eyebrow">Free from the patterns</span>
       <h2 class="h2" data-i18n="tags-h2">None of this is who you are</h2>
     </div>
     <div class="tags-canvas" id="tagsCanvas" aria-label="Topics people work on">
@@ -1842,7 +1806,7 @@
   </section>
 
   <!-- ── S11: BOOK ─────────────────────────────────────── -->
-  <section class="s-book sec-lg curve-top" id="book">
+  <section class="s-book sec-lg" id="book">
     <div class="max-w">
       <div class="book-grid">
 
@@ -2408,6 +2372,7 @@
       const reLines = Array.from(pin.querySelectorAll('.realign-post p'));
       const ov = pin.querySelector('.hero-overlay');
       const bg = pin.querySelector('.hero-img');
+      const seam = pin.querySelector('.hero-seam');
       const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
       const seg = (p, a, b) => clamp((p - a) / (b - a), 0, 1);
       const ease = t => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
@@ -2441,6 +2406,8 @@
             el.style.visibility = uop <= 0.01 ? 'hidden' : '';
           });
           bg.style.transform = 'scale(' + (1 + 0.08 * ex) + ')';
+          /* bottom seam only appears once you scroll in (never on arrival) */
+          if (seam) seam.style.opacity = seg(p, 0.55, 0.85);
           /* beat 1: THE REALIGN + top line fully arrive and settle */
           re.style.opacity = seg(p, 0.50, 0.60);
           re.style.transform = 'translateY(' + (24 * (1 - seg(p, 0.50, 0.60))) + 'px)';
@@ -2603,7 +2570,6 @@
         'realign-b1': 'Bypass conscious resistance',
         'realign-b2': 'Align mind and body with your goals',
         'realign-b3': 'Obtain happiness and true freedom',
-        'flow-eyebrow': 'The unconscious', 'flow-line': 'Real change happens<br>beneath the surface.',
         'philo-eyebrow': 'The Philosophy',
         'philo-p1': 'Your unconscious mind runs 95% of how you operate, built on programming absorbed before your conscious awareness developed.',
         'philo-p2': "Everything you've tried that didn't work targeted the conscious mind. The reflection. The goal setting. Change through conscious effort alone is possible, it's just working against the current the whole way.",
@@ -2611,7 +2577,7 @@
         'philo-p4': 'The Realign works to bring both parts into agreement. We find where the pattern was wired, update it at the root, and let your mind and body finally move as one.',
         'sci-eyebrow': 'The Neuroscience',
         'sci-h2': 'How your mind actually works',
-        'sci-intro': 'What you notice is only what remains after your unconscious mind has filtered everything your senses take in.',
+        'sci-intro': 'What you notice is only what your unconscious mind lets through.',
         'sci-conscious': 'Conscious', 'sci-unconscious': 'Unconscious',
         'sci-info-proc': 'Information Processing', 'sci-bits': 'bits per second',
         'sci-outro': 'What your unconscious lets through becomes what you call <em>reality</em>.<br>That reality shapes your <em>decisions</em>.<br>Those decisions build the <em>life</em> you\'re living.',
@@ -2633,7 +2599,7 @@
         'about-p4': "A lot of people I see now are in that same place. Mid-transition, pivoting careers, wondering if they have what it takes. Clearing what's been resisting it from the inside started to feel like the most honest thing I could offer.",
         'about-sig': 'Lara Yap, Mind Aligner',
         'testi-eyebrow': 'Clients', 'testi-h2': 'In their own words',
-        'tags-eyebrow': 'What I help you work through', 'tags-h2': 'None of this is who you are',
+        'tags-eyebrow': 'Free from the patterns', 'tags-h2': 'None of this is who you are',
         'tw-selfworth': 'Self-worth', 'tw-procrastination': 'Procrastination',
         'tw-perfectionism': 'Perfectionism', 'tw-imposter': 'Imposter syndrome',
         'tw-sabotage': 'Self-sabotage', 'tw-overthinking': 'Chronic overthinking',
@@ -2689,7 +2655,6 @@
         'realign-b1': '突破意识层面的阻力',
         'realign-b2': '让身心与你的目标对齐',
         'realign-b3': '获得幸福与真正的自由',
-        'flow-eyebrow': '潜意识', 'flow-line': '真正的改变，<br>发生在意识的深处。',
         'philo-eyebrow': '核心理念',
         'philo-p1': '你95%的运作方式由潜意识主导，建立在意识形成之前所吸收的编程之上。',
         'philo-p2': '那些你尝试过却没有奏效的方法，针对的都是意识层面。那些反思。那些目标设定。仅靠意识努力改变是可能的，只是一路都在逆流而上。',
@@ -2697,7 +2662,7 @@
         'philo-p4': 'Realign 致力于让两个部分达成一致。我们找到模式被植入的根源，在那里更新它，让你的身心终于能够同向而行。',
         'sci-eyebrow': '神经科学依据',
         'sci-h2': '你的大脑究竟如何运作',
-        'sci-intro': '你所注意到的，只是潜意识过滤掉你感官接收的一切之后，所剩下的部分。',
+        'sci-intro': '你所注意到的，只是潜意识允许通过的那一部分。',
         'sci-conscious': '意识', 'sci-unconscious': '潜意识',
         'sci-info-proc': '信息处理', 'sci-bits': '比特/秒',
         'sci-outro': '你的潜意识允许通过的，成了你所称的<em>现实</em>。<br>那个现实塑造了你的<em>决定</em>。<br>那些决定构建了你所过的<em>生活</em>。',
@@ -2719,7 +2684,7 @@
         'about-p4': '我现在接触的很多人都处于同样的境地。人生过渡期，转换跑道，不确定自己是否有那个能力。从内在清除阻力，开始成为我所能给予的最诚实的礼物。',
         'about-sig': 'Lara Yap，Mind Aligner',
         'testi-eyebrow': '客户感言', 'testi-h2': '疗愈见证',
-        'tags-eyebrow': '我帮你梳理的', 'tags-h2': '这些都不是真正的你',
+        'tags-eyebrow': '摆脱这些模式', 'tags-h2': '这些都不是真正的你',
         'tw-selfworth': '自我价值', 'tw-procrastination': '拖延症',
         'tw-perfectionism': '完美主义', 'tw-imposter': '冒名顶替综合症',
         'tw-sabotage': '自我破坏', 'tw-overthinking': '长期过度思虑',
@@ -2856,12 +2821,20 @@
     (function () {
       const about = document.getElementById('about');
       if (!about) return;
+      /* everything after About must layer ABOVE the pinned About,
+         or it disappears behind it (that was the FAQ/footer bug) */
+      ['clarity', 'book', 'faq'].forEach(function (id) {
+        const el = document.getElementById(id);
+        if (el) { el.style.position = 'relative'; el.style.zIndex = '2'; }
+      });
+      const foot = document.querySelector('.footer');
+      if (foot) { foot.style.position = 'relative'; foot.style.zIndex = '2'; }
       function layout() {
         const vh = window.innerHeight;
         const h = about.offsetHeight;
         about.style.position = 'sticky';
         about.style.top = (h > vh ? vh - h : 0) + 'px';
-        about.style.zIndex = '1';
+        about.style.zIndex = '0';
       }
       layout();
       window.addEventListener('resize', layout);
@@ -2871,67 +2844,6 @@
     })();
   </script>
 
-  <script>
-    /* ─── FLOW: WebGL flowing wave-distortion + sheen ──── */
-    (function () {
-      const cv = document.getElementById('flowCanvas');
-      const sec = document.getElementById('flow');
-      if (!cv || !sec) return;
-      const gl = cv.getContext('webgl', { antialias: true, alpha: false })
-             || cv.getContext('experimental-webgl');
-      if (!gl) { sec.style.background = 'radial-gradient(120% 90% at 50% 60%, #3a2d1a, #0f0b07)'; return; }
-      const VS = 'attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }';
-      const FS = [
-        'precision highp float;',
-        'uniform vec2 u_res; uniform float u_time;',
-        'vec3 pal(float t){ return vec3(0.5) + vec3(0.5)*cos(6.28318*(vec3(1.0)*t + vec3(0.05,0.35,0.62))); }',
-        'void main(){',
-        '  vec2 uv = (gl_FragCoord.xy - 0.5*u_res) / u_res.y;',
-        '  float t = u_time * 0.12;',
-        '  vec2 q = uv * 2.2;',
-        '  for(int i=0;i<5;i++){ float fi=float(i);',
-        '    q += 0.55*vec2(sin(q.y*1.4 + t + fi*1.3), cos(q.x*1.4 - t*0.9 + fi*1.1)); }',
-        '  float w = sin(q.x*0.6 + q.y*0.5 + t*1.6)*0.5 + 0.5;',
-        '  vec3 col = pal(w*0.9 + t*0.08);',
-        '  float sheen = pow(max(0.0, sin(q.x*0.7 - q.y*0.5 + t*2.0)), 8.0);',
-        '  col += sheen*0.7;',
-        '  float vig = smoothstep(1.45, 0.12, length(uv));',
-        '  col = mix(vec3(0.055,0.045,0.03), col, vig);',
-        '  gl_FragColor = vec4(col, 1.0);',
-        '}'
-      ].join('\n');
-      function sh(type, src){ const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; }
-      const prog = gl.createProgram();
-      gl.attachShader(prog, sh(gl.VERTEX_SHADER, VS));
-      gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, FS));
-      gl.linkProgram(prog); gl.useProgram(prog);
-      const buf = gl.createBuffer();
-      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
-      const loc = gl.getAttribLocation(prog, 'p');
-      gl.enableVertexAttribArray(loc);
-      gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-      const uRes = gl.getUniformLocation(prog, 'u_res');
-      const uTime = gl.getUniformLocation(prog, 'u_time');
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.75);
-      function size(){ const w = Math.round(cv.clientWidth*dpr), h = Math.round(cv.clientHeight*dpr);
-        if (cv.width !== w || cv.height !== h){ cv.width = w; cv.height = h; gl.viewport(0,0,w,h); } }
-      const start = performance.now();
-      let raf = 0, visible = false;
-      function draw(){ size(); gl.uniform2f(uRes, cv.width, cv.height);
-        gl.uniform1f(uTime, (performance.now()-start)/1000);
-        gl.drawArrays(gl.TRIANGLES, 0, 3);
-        raf = requestAnimationFrame(draw); }
-      /* only run while the band is on screen */
-      const io = new IntersectionObserver(function(es){
-        es.forEach(function(e){
-          if (e.isIntersecting && !visible){ visible = true; raf = requestAnimationFrame(draw); }
-          else if (!e.isIntersecting && visible){ visible = false; cancelAnimationFrame(raf); }
-        });
-      }, { threshold: 0.01 });
-      io.observe(sec);
-    })();
-  </script>
 
 </body>
 </html>
