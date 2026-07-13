@@ -1559,7 +1559,7 @@
         <div class="realign-post" style="margin-top:26px;">
           <p data-i18n="realign-b1">Bypass conscious resistance</p>
           <p data-i18n="realign-b2">Align mind and body with your goals</p>
-          <p data-i18n="realign-b3">Obtain happiness and true freedom</p>
+          <p data-i18n="realign-b3">Experience true freedom</p>
         </div>
       </div>
 
@@ -1972,7 +1972,7 @@
   </section>
 
   <!-- ── FOOTER ─────────────────────────────────────────── -->
-  <footer class="footer" role="contentinfo">
+  <footer class="footer" id="site-footer" role="contentinfo">
     <div class="max-w">
       <div class="footer-quote">
         <p class="footer-quote-text" data-i18n="footer-quote">The privilege of a lifetime is to become<br><em>who you truly are.</em></p>
@@ -2309,18 +2309,28 @@
        curved seams, so we pick the LAST one in DOM order that crosses the
        nav line: that is the section actually painted at the top. */
     const lightSections = ['who', 'realign-b', 'science', 'benefits', 'concerns', 'about'];
-    const navSections = ['hero', 'realign-b', 'who', 'science', 'benefits', 'concerns', 'about', 'testimonials', 'clarity', 'book', 'faq'];
-    function updateNavColor() {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-      const atY = 60;
-      let topmost = null;
+    const navSections = ['hero', 'realign-b', 'who', 'science', 'benefits', 'concerns', 'about', 'testimonials', 'clarity', 'book', 'faq', 'site-footer'];
+    function topSectionAt(y) {
+      let top = null;
       navSections.forEach(id => {
         const el = document.getElementById(id);
         if (!el || el.offsetParent === null) return; // skip hidden sections
         const r = el.getBoundingClientRect();
-        if (r.top <= atY && r.bottom > atY) topmost = id;
+        if (r.top <= y && r.bottom > y) top = id;
       });
-      nav.classList.toggle('nav--light', topmost !== null && lightSections.includes(topmost));
+      return top;
+    }
+    function updateNavColor() {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+      const topId = topSectionAt(60);
+      nav.classList.toggle('nav--light', topId !== null && lightSections.includes(topId));
+      /* the body background shows through the iOS bottom safe area; keep it
+         matched to whichever section sits at the bottom of the viewport so
+         no dark strip appears under the cream sections */
+      const botId = topSectionAt(window.innerHeight - 2);
+      if (botId !== null) {
+        document.body.style.backgroundColor = lightSections.includes(botId) ? '#FBF5DF' : '#1c1410';
+      }
     }
     window.addEventListener('scroll', updateNavColor, { passive: true });
     updateNavColor();
@@ -2706,7 +2716,7 @@
         'realign-pre': 'Life, by your design.',
         'realign-b1': 'Bypass conscious resistance',
         'realign-b2': 'Align mind and body with your goals',
-        'realign-b3': 'Obtain happiness and true freedom',
+        'realign-b3': 'Experience true freedom',
         'philo-eyebrow': 'The Philosophy',
         'philo-p1': 'Your unconscious mind runs 95% of how you operate, built on programming absorbed before your conscious awareness developed.',
         'philo-p2': "Everything you've tried that didn't work targeted the conscious mind. The reflection. The goal setting. Change through conscious effort alone is possible, it's just working against the current the whole way.",
@@ -2792,7 +2802,7 @@
         'realign-pre': '生活，由你设计。',
         'realign-b1': '突破意识层面的阻力',
         'realign-b2': '让身心与你的目标对齐',
-        'realign-b3': '获得幸福与真正的自由',
+        'realign-b3': '体验真正的自由',
         'philo-eyebrow': '核心理念',
         'philo-p1': '你95%的运作方式由潜意识主导，建立在意识形成之前所吸收的编程之上。',
         'philo-p2': '那些你尝试过却没有奏效的方法，针对的都是意识层面。那些反思。那些目标设定。仅靠意识努力改变是可能的，只是一路都在逆流而上。',
