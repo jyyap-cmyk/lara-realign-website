@@ -464,18 +464,50 @@
     .nav--light .lang-toggle { color: rgba(28,20,9,0.65); }
     .nav--light .lang-toggle:hover { color: rgba(28,20,9,0.9); }
     .nav-right { display: flex; align-items: center; gap: 28px; }
+    /* frosted-cream glass pill, same language as the hero button */
     .nav-cta {
+      position: relative;
       font-family: var(--f-now); font-size: 10px; font-weight: 300;
       letter-spacing: 0.15em; text-transform: uppercase;
-      color: rgba(255,255,255,0.98);
-      border: 1px solid rgba(255,255,255,0.5);
-      border-radius: 100px; padding: 6px 16px;
+      color: rgba(238,231,221,0.96);
+      border: none;
+      background: rgba(238,231,221,0.14);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.20);
+      border-radius: 100px; padding: 7px 18px;
       text-decoration: none; display: inline-flex; align-items: center;
-      transition: color 0.25s, border-color 0.25s;
+      transition: background 0.28s var(--ease), transform 0.28s var(--ease), box-shadow 0.28s var(--ease), color 0.25s;
     }
-    .nav-cta:hover { color: rgba(238,231,221,1); border-color: rgba(238,231,221,0.55); }
-    .nav--light .nav-cta { color: rgba(28,20,9,0.75); border-color: rgba(28,20,9,0.25); }
-    .nav--light .nav-cta:hover { color: rgba(28,20,9,0.95); border-color: rgba(28,20,9,0.5); }
+    .nav-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(238,231,221,0.65) 0%, rgba(238,231,221,0.0) 55%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .nav-cta:hover {
+      background: rgba(238,231,221,0.26);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.28);
+    }
+    /* on light sections, invert to a dark frosted glass so it stays visible */
+    .nav--light .nav-cta {
+      color: rgba(28,20,9,0.82);
+      background: rgba(28,20,9,0.05);
+      box-shadow: 0 4px 18px rgba(28,20,9,0.08), inset 0 1px 0 rgba(255,255,255,0.35);
+    }
+    .nav--light .nav-cta::before {
+      background: linear-gradient(135deg, rgba(28,20,9,0.32) 0%, rgba(28,20,9,0.0) 55%);
+    }
+    .nav--light .nav-cta:hover {
+      color: rgba(28,20,9,0.95);
+      background: rgba(28,20,9,0.09);
+    }
     @media (max-width: 1023px) { .nav-cta { display: none; } }
 
     .mob-nav {
@@ -604,11 +636,12 @@
     }
     .hero-w-r { font-family: var(--f-bn); font-weight: 400; }
     .hero-cta {
-      position: absolute; bottom: 20%; left: 0; right: 0;
+      position: absolute; bottom: 18%; left: 0; right: 0;
       text-align: center;
     }
+    /* byline sits ABOVE the button, as a lead-in under the title */
     .hero-byline {
-      position: absolute; bottom: 15%; left: 0; right: 0;
+      position: absolute; bottom: 29%; left: 0; right: 0;
       font-family: var(--f-bn); font-style: italic;
       font-size: clamp(13px, 1.5vw, 17px);
       color: rgba(255,255,255,0.9); letter-spacing: 0.01em;
@@ -1116,25 +1149,23 @@
       background: var(--dark);
       padding: clamp(72px, 8vw, 120px) 24px;
     }
-    .clarity-bg {
+    /* animated WebGL light-beam field (chromatic) on the espresso base */
+    .clarity-shader {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
-      object-fit: cover; object-position: center;
+      display: block; z-index: 1;
     }
-    .clarity-glass {
-      position: relative; z-index: 2;
-      background: rgba(255, 252, 245, 0.22);
-      backdrop-filter: blur(24px) saturate(1.1);
-      -webkit-backdrop-filter: blur(24px) saturate(1.1);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      border-radius: 28px;
-      padding: 64px 64px;
-      max-width: 720px; width: 100%;
-      margin: 0 auto;
-      box-shadow:
-        0 30px 90px rgba(28,20,9,0.22),
-        inset 0 1px 0 rgba(255,255,255,0.6);
+    /* soft dark scrim keeps the centred copy legible over the beams */
+    .clarity-scrim {
+      position: absolute; inset: 0; z-index: 2; pointer-events: none;
+      background: radial-gradient(ellipse 72% 62% at 50% 50%,
+        rgba(18,12,8,0.66) 0%, rgba(18,12,8,0.30) 46%, rgba(18,12,8,0) 78%);
     }
+    .clarity-content {
+      position: relative; z-index: 3;
+      max-width: 640px; width: 100%; margin: 0 auto;
+    }
+    .clarity-content .eyebrow { color: rgba(206,178,152,0.92); }
 
     /* ═══════════════════════════════════════════════════
        S10: COMMON PATTERNS
@@ -1180,34 +1211,27 @@
     .tw-bd { font-weight: 500; }
     .tw-bd-it { font-weight: 500; font-style: italic; }
     .tw-thin { opacity: 0.42; }
-    .clarity-glass .eyebrow { color: rgba(28,20,9,0.55); }
-    .clarity-glass .h2 { color: rgba(28,20,9,0.9); }
-    .clarity-glass .body { color: rgba(28,20,9,0.68); }
-
     /* ═══════════════════════════════════════════════════
-       S11: BOOK
+       S11: BOOK  (dark, continues the clarity / faq / footer run)
     ═══════════════════════════════════════════════════ */
-    .s-book { background: #FBF5DF; min-height: 100vh; display: flex; align-items: center; padding-bottom: clamp(120px, 14vw, 200px); }
+    .s-book { background: var(--dark); min-height: 100vh; display: flex; align-items: center; padding-bottom: clamp(120px, 14vw, 200px); }
     .book-grid {
       display: grid;
       grid-template-columns: 1fr 280px 1fr;
       gap: 64px; align-items: center;
     }
+    .s-book .eyebrow { color: rgba(206,178,152,0.9); }
+    .s-book .h2 { color: rgba(238,231,221,0.94); }
+    .s-book .body { color: rgba(238,231,221,0.70); }
     .book-left { padding-right: 12px; }
     .book-left .body { max-width: 46ch; }
     .book-left .body p + p { margin-top: 20px; }
     .book-img-wrap { display: flex; justify-content: center; }
     .book-img-wrap img {
       width: 100%; max-width: 754px;
-      filter: drop-shadow(0 24px 56px rgba(28,20,9,0.28));
-      mix-blend-mode: multiply;
+      filter: drop-shadow(0 30px 64px rgba(0,0,0,0.6));
     }
-    .book-btn-wrap .btn-clarity-glass {
-      display: block; text-align: center;
-    }
-    .clarity-glass .btn-cream {
-      color: rgba(28,20,9,0.82);
-    }
+    .book-btn-wrap .btn-cream { display: inline-flex; text-align: center; }
     .book-right { padding-left: 12px; }
     .book-right .body { max-width: 46ch; }
     .book-right .body p + p { margin-top: 20px; }
@@ -1807,15 +1831,16 @@
 
   <!-- ── S9: CLARITY CALL ──────────────────────────────── -->
   <section class="s-clarity sec-lg curve-top" id="clarity">
-    <img class="clarity-bg" src="./Website FINAL Images/2.png" alt="" role="presentation" loading="lazy">
-    <div class="clarity-glass">
+    <canvas class="clarity-shader" aria-hidden="true"></canvas>
+    <div class="clarity-scrim" aria-hidden="true"></div>
+    <div class="clarity-content">
       <span class="eyebrow gs-up" data-i18n="clarity-eyebrow">Free &nbsp;·&nbsp; 30 Minutes</span>
       <h2 class="h2 h2-light gs-up" data-i18n="clarity-h2">Your clarity starts here</h2>
       <div class="body body-light gs-up">
         <p data-i18n="clarity-p">A free 30-minute safe space for honest conversation and clarity, before you decide if The Realign is right for you.</p>
       </div>
       <div class="gs-up" style="margin-top:52px;">
-        <a href="https://calendly.com/larayapjy/30min" class="btn-clarity-glass" data-i18n="clarity-cta">Claim your clarity</a>
+        <a href="https://calendly.com/larayapjy/30min" class="btn btn-cream" data-i18n="clarity-cta">Claim your clarity</a>
       </div>
     </div>
   </section>
@@ -1846,7 +1871,7 @@
             <p data-i18n="book-p4">Drawn from science, philosophy, and ancient wisdom. Non-religious. For the ones who were always meant to know.</p>
           </div>
           <div class="book-btn-wrap">
-            <a href="https://www.thepresent.club/shop/p/death-of-the-old-world-7-universal-truths-of-existence-ebook" class="btn-clarity-glass" data-i18n="book-btn">Take me there</a>
+            <a href="https://www.thepresent.club/shop/p/death-of-the-old-world-7-universal-truths-of-existence-ebook" class="btn btn-cream" data-i18n="book-btn">Take me there</a>
           </div>
         </div>
 
@@ -2440,6 +2465,86 @@
         requestAnimationFrame(frame);
       }
       requestAnimationFrame(frame);
+    })();
+
+    /* ─── CLARITY: chromatic light-beam WebGL shader ─────
+       Ported from the reference (three.js) to lean raw WebGL.
+       Beams glow additively over the espresso base colour; only
+       runs while the section is on screen. */
+    (function () {
+      const canvas = document.querySelector('.clarity-shader');
+      if (!canvas) return;
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      if (!gl) return;
+      const vsSrc = 'attribute vec2 position; void main(){ gl_Position = vec4(position, 0.0, 1.0); }';
+      const fsSrc = [
+        'precision highp float;',
+        'uniform vec2 resolution;',
+        'uniform float time;',
+        'uniform float xScale;',
+        'uniform float yScale;',
+        'uniform float distortion;',
+        'uniform vec3 base;',
+        'void main() {',
+        '  vec2 p = (gl_FragCoord.xy * 2.0 - resolution) / min(resolution.x, resolution.y);',
+        '  float d = length(p) * distortion;',
+        '  float rx = p.x * (1.0 + d);',
+        '  float gx = p.x;',
+        '  float bx = p.x * (1.0 - d);',
+        '  float r = 0.05 / abs(p.y + sin((rx + time) * xScale) * yScale);',
+        '  float g = 0.05 / abs(p.y + sin((gx + time) * xScale) * yScale);',
+        '  float b = 0.05 / abs(p.y + sin((bx + time) * xScale) * yScale);',
+        '  gl_FragColor = vec4(base + vec3(r, g, b), 1.0);',
+        '}'
+      ].join('\n');
+      function compile(type, src) {
+        const s = gl.createShader(type);
+        gl.shaderSource(s, src); gl.compileShader(s);
+        return s;
+      }
+      const prog = gl.createProgram();
+      gl.attachShader(prog, compile(gl.VERTEX_SHADER, vsSrc));
+      gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, fsSrc));
+      gl.linkProgram(prog); gl.useProgram(prog);
+      const buf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+        -1,-1, 1,-1, -1,1, 1,-1, -1,1, 1,1
+      ]), gl.STATIC_DRAW);
+      const loc = gl.getAttribLocation(prog, 'position');
+      gl.enableVertexAttribArray(loc);
+      gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+      const uRes = gl.getUniformLocation(prog, 'resolution');
+      const uTime = gl.getUniformLocation(prog, 'time');
+      gl.uniform1f(gl.getUniformLocation(prog, 'xScale'), 1.0);
+      gl.uniform1f(gl.getUniformLocation(prog, 'yScale'), 0.5);
+      gl.uniform1f(gl.getUniformLocation(prog, 'distortion'), 0.05);
+      /* espresso base = --dark #1c1410 */
+      gl.uniform3f(gl.getUniformLocation(prog, 'base'), 0.110, 0.078, 0.063);
+      let time = 0, raf = null;
+      function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const w = Math.round(canvas.clientWidth * dpr);
+        const h = Math.round(canvas.clientHeight * dpr);
+        if (canvas.width !== w || canvas.height !== h) {
+          canvas.width = w; canvas.height = h;
+        }
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        gl.uniform2f(uRes, canvas.width, canvas.height);
+      }
+      function frame() {
+        time += 0.01;
+        gl.uniform1f(uTime, time);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+        raf = requestAnimationFrame(frame);
+      }
+      function start() { if (raf) return; resize(); frame(); }
+      function stop() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+      window.addEventListener('resize', function () { if (raf) resize(); });
+      const io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { e.isIntersecting ? start() : stop(); });
+      }, { threshold: 0.01 });
+      io.observe(document.querySelector('.s-clarity'));
     })();
 
     /* ─── GSAP ANIMATIONS ────────────────────────────── */
