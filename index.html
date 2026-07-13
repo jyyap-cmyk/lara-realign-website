@@ -560,8 +560,19 @@
        animated. */
     .hero-seam {
       position: absolute; left: 0; right: 0; bottom: 0;
-      height: 24vh; z-index: 2;
-      background: linear-gradient(to bottom, rgba(251,245,223,0) 0%, #FBF5DF 88%);
+      height: 26vh; z-index: 2;
+      /* ease-in fade: held transparent at the top (no onset line), then
+         builds on an accelerating curve and lands on solid cream before
+         the pin bottom, so the imagery dissolves with no visible edge */
+      background: linear-gradient(to bottom,
+        rgba(251,245,223,0)    0%,
+        rgba(251,245,223,0)    14%,
+        rgba(251,245,223,0.05) 30%,
+        rgba(251,245,223,0.16) 45%,
+        rgba(251,245,223,0.38) 60%,
+        rgba(251,245,223,0.66) 74%,
+        rgba(251,245,223,0.90) 87%,
+        #FBF5DF                95%);
       pointer-events: none;
     }
     .hero-inner {
@@ -1680,15 +1691,15 @@
       <span class="tw"           data-depth="0.9"  style="left:12%;top:34%" data-i18n="tw-visibility">Fear of visibility</span>
       <span class="tw tw-it"    data-depth="1.05" style="left:40%;top:36%" data-i18n="tw-pleasing">People-pleasing</span>
       <span class="tw tw-bd"    data-depth="1.2"  style="left:62%;top:32%" data-i18n="tw-burnout">Burnout</span>
-      <span class="tw tw-thin"  data-depth="0.92" style="left:22%;top:46%" data-i18n="tw-career">Career transitions</span>
-      <span class="tw tw-it"    data-depth="1.1"  style="left:50%;top:48%" data-i18n="tw-purpose">Finding purpose</span>
+      <span class="tw tw-thin"  data-depth="0.92" style="left:22%;top:46%" data-i18n="tw-career">Feeling stuck</span>
+      <span class="tw tw-it"    data-depth="1.1"  style="left:50%;top:48%" data-i18n="tw-purpose">Lack of direction</span>
       <span class="tw"           data-depth="0.88" style="left:16%;top:58%" data-i18n="tw-disconnected">Feeling disconnected</span>
       <span class="tw tw-bd-it" data-depth="1.1"  style="left:44%;top:60%" data-i18n="tw-conflict">Inner conflict</span>
       <span class="tw tw-thin"  data-depth="1.2"  style="left:66%;top:54%" data-i18n="tw-limiting">Limiting beliefs</span>
       <span class="tw tw-it"    data-depth="0.92" style="left:26%;top:70%" data-i18n="tw-relationship">Relationship patterns</span>
       <span class="tw tw-bd"    data-depth="1.15" style="left:54%;top:72%" data-i18n="tw-eating">Emotional eating</span>
       <span class="tw"           data-depth="1.1"  style="left:70%;top:66%" data-i18n="tw-sleep">Restless mind</span>
-      <span class="tw tw-bd"    data-depth="1.0"  style="left:36%;top:80%" data-i18n="tw-weight">Body image</span>
+      <span class="tw tw-bd"    data-depth="1.0"  style="left:36%;top:80%" data-i18n="tw-weight">Body insecurity</span>
       <span class="tw tw-thin"  data-depth="1.1"  style="left:80%;top:42%" data-i18n="tw-adhd">ADHD</span>
     </div>
   </section>
@@ -2470,9 +2481,12 @@
 
       /* Cards stagger */
       if (document.querySelector('.cards-grid')) {
+        /* stagger by ROW (both columns rise together) so a paired row
+           never reads as skewed mid-animation */
         gsap.from('.card', {
-          y: 26, opacity: 0, stagger: 0.06, duration: 0.85,
+          y: 26, opacity: 0, duration: 0.85,
           ease: 'power2.out',
+          stagger: { each: 0.09, grid: 'auto', axis: 'y', from: 'start' },
           scrollTrigger: {
             trigger: '.cards-grid',
             start: 'top 80%',
@@ -2607,10 +2621,10 @@
         'tw-sabotage': 'Self-sabotage', 'tw-overthinking': 'Chronic overthinking',
         'tw-failure': 'Fear of failure', 'tw-visibility': 'Fear of visibility',
         'tw-pleasing': 'People-pleasing', 'tw-burnout': 'Burnout',
-        'tw-career': 'Career transitions', 'tw-purpose': 'Finding purpose',
+        'tw-career': 'Feeling stuck', 'tw-purpose': 'Lack of direction',
         'tw-disconnected': 'Feeling disconnected', 'tw-conflict': 'Inner conflict',
         'tw-limiting': 'Limiting beliefs', 'tw-relationship': 'Relationship patterns',
-        'tw-eating': 'Emotional eating', 'tw-sleep': 'Restless mind', 'tw-weight': 'Body image',
+        'tw-eating': 'Emotional eating', 'tw-sleep': 'Restless mind', 'tw-weight': 'Body insecurity',
         'tw-adhd': 'ADHD',
         'clarity-eyebrow': 'Free &nbsp;·&nbsp; 30 Minutes',
         'clarity-h2': 'Your clarity starts here',
@@ -2693,10 +2707,10 @@
         'tw-sabotage': '自我破坏', 'tw-overthinking': '长期过度思虑',
         'tw-failure': '对失败的恐惧', 'tw-visibility': '对被看见的恐惧',
         'tw-pleasing': '讨好他人', 'tw-burnout': '职业倦怠',
-        'tw-career': '职业转换', 'tw-purpose': '寻找人生目的',
+        'tw-career': '停滞不前', 'tw-purpose': '迷失方向',
         'tw-disconnected': '内心疏离感', 'tw-conflict': '内在冲突',
         'tw-limiting': '限制性信念', 'tw-relationship': '关系模式',
-        'tw-eating': '情绪性进食', 'tw-sleep': '思绪不宁', 'tw-weight': '身体形象',
+        'tw-eating': '情绪性进食', 'tw-sleep': '思绪不宁', 'tw-weight': '身材焦虑',
         'tw-adhd': 'ADHD',
         'clarity-eyebrow': '免费 &nbsp;·&nbsp; 30 分钟',
         'clarity-h2': '让思绪清晰，从这里开始',
