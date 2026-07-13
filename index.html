@@ -2491,10 +2491,13 @@
         '  float rx = p.x * (1.0 + d);',
         '  float gx = p.x;',
         '  float bx = p.x * (1.0 - d);',
-        '  float r = 0.05 / abs(p.y + sin((rx + time) * xScale) * yScale);',
-        '  float g = 0.05 / abs(p.y + sin((gx + time) * xScale) * yScale);',
-        '  float b = 0.05 / abs(p.y + sin((bx + time) * xScale) * yScale);',
-        '  gl_FragColor = vec4(base + vec3(r, g, b), 1.0);',
+        '  float py = p.y + 0.24;',
+        '  float r = 0.05 / abs(py + sin((rx + time) * xScale) * yScale);',
+        '  float g = 0.05 / abs(py + sin((gx + time) * xScale) * yScale);',
+        '  float b = 0.05 / abs(py + sin((bx + time) * xScale) * yScale);',
+        '  /* beams render exactly as the reference where bright; dark areas',
+        '     floor to the espresso base so they match the book section */',
+        '  gl_FragColor = vec4(max(vec3(r, g, b), base), 1.0);',
         '}'
       ].join('\n');
       function compile(type, src) {
