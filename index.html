@@ -197,7 +197,6 @@
       font-family: 'Libre Baskerville', Georgia, serif; font-weight: 400;
       font-size: clamp(9px, 1.1vw, 12px);
       letter-spacing: 0.22em; text-indent: 0.22em; /* offset trailing letter-space so glyphs sit dead-centre */
-      text-transform: uppercase;
       color: rgba(238,231,221,0.92);
       cursor: none;
       animation: loaderPulse 2.6s ease-in-out infinite;
@@ -547,7 +546,7 @@
     }
     .hero-pin {
       position: sticky; top: 0;
-      height: 100svh; min-height: 620px;
+      height: 100vh; height: 100lvh; min-height: 620px;
       overflow: hidden;
       background: #FBF5DF;
     }
@@ -715,7 +714,7 @@
       position: relative;
       overflow: hidden;
       padding: 100px 0 80px;
-      min-height: 100vh;
+      min-height: 100vh; min-height: 100lvh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -1610,7 +1609,7 @@
         <div class="science-stat">
           <span class="science-stat-role" data-i18n="sci-unconscious">Unconscious</span>
           <span class="science-stat-category" data-i18n="sci-info-proc">Information Processing</span>
-          <span class="science-stat-n">11M</span>
+          <span class="science-stat-n">11 M</span>
           <span class="science-stat-unit" data-i18n="sci-bits">bits per second</span>
         </div>
       </div>
@@ -2304,7 +2303,7 @@
 
     /* ─── NAV ────────────────────────────────────────── */
     const nav = document.getElementById('nav');
-    const lightSections = ['who', 'realign-b', 'benefits', 'about', 'concerns', 'clarity', 'book', 'faq'];
+    const lightSections = ['who', 'realign-b', 'benefits', 'about', 'concerns'];
     function updateNavColor() {
       nav.classList.toggle('scrolled', window.scrollY > 60);
       const atY = 50;
@@ -2633,14 +2632,14 @@
         const isM = raw.includes('M');
         const target = parseInt(raw);
         const obj = { val: 0 };
-        el.textContent = '0' + (isM ? 'M' : '');
+        el.textContent = '0' + (isM ? ' M' : '');
         gsap.to(obj, {
           val: target,
           duration: isM ? 2.4 : 2.0,
           delay: isM ? 0.1 : 0,
           ease: counterEase,
           scrollTrigger: { trigger: el, start: 'top 80%', toggleActions: 'play none none none' },
-          onUpdate: () => { el.textContent = Math.round(obj.val) + (isM ? 'M' : ''); }
+          onUpdate: () => { el.textContent = Math.round(obj.val) + (isM ? ' M' : ''); }
         });
       });
 
