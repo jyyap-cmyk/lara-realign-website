@@ -547,7 +547,7 @@
     }
     .hero-pin {
       position: sticky; top: 0;
-      height: 124vh; min-height: 620px;
+      height: 100svh; min-height: 620px;
       overflow: hidden;
       background: #FBF5DF;
     }
@@ -608,7 +608,7 @@
       pointer-events: none;
     }
     .hero-inner {
-      position: absolute; top: 0; left: 0; right: 0; height: 100vh; z-index: 3;
+      position: absolute; top: 0; left: 0; right: 0; height: 100%; z-index: 3;
       pointer-events: none;
     }
     .hero-inner a { pointer-events: auto; }
@@ -649,7 +649,7 @@
     }
     /* The Realign state (fades in once the aura fills the screen) */
     .hero-realign {
-      position: absolute; top: 0; left: 0; right: 0; height: 100vh; z-index: 4;
+      position: absolute; top: 0; left: 0; right: 0; height: 100%; z-index: 4;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       text-align: center;
@@ -1387,12 +1387,15 @@
       .max-w, .about-quote-inner, .about-main { padding: 0 24px; }
 
       .about-pullquote { font-size: 20px; }
-      .cards-grid { grid-template-columns: repeat(2,1fr); }
+      .cards-grid { grid-template-columns: 1fr; }
+      .benefits-inner { padding: clamp(48px, 7vw, 96px) 24px; }
       .book-grid { grid-template-columns: 1fr; }
       .book-img-wrap { grid-column: 1; grid-row: auto; }
       .testi-card { flex: 0 0 80vw; }
       .science-stats { grid-template-columns: 1fr; gap: 36px; }
       .science-divider { display: none; }
+      .science-stat { text-align: left; padding: 0 !important; }
+      .science-stat:last-child { padding-left: 0 !important; }
 
       .s-science .inner { padding: 0 24px; }
       .footer { padding: 56px 24px 36px; }
@@ -1595,7 +1598,7 @@
   <!-- ── S4: NEUROSCIENCE ─────────────────────────────── -->
   <section class="s-science sec-lg tex" id="science">
     <div class="inner">
-      <p class="science-intro gs-up" data-i18n="sci-intro">What you notice is only what your unconscious mind lets through.</p>
+      <p class="science-intro gs-up" data-i18n="sci-intro">What you notice is just a filtered slice of everything your senses take in.</p>
       <div class="science-stats gs-up">
         <div class="science-stat">
           <span class="science-stat-role" data-i18n="sci-conscious">Conscious</span>
@@ -1607,7 +1610,7 @@
         <div class="science-stat">
           <span class="science-stat-role" data-i18n="sci-unconscious">Unconscious</span>
           <span class="science-stat-category" data-i18n="sci-info-proc">Information Processing</span>
-          <span class="science-stat-n">40M</span>
+          <span class="science-stat-n">11M</span>
           <span class="science-stat-unit" data-i18n="sci-bits">bits per second</span>
         </div>
       </div>
@@ -2633,7 +2636,7 @@
         el.textContent = '0' + (isM ? 'M' : '');
         gsap.to(obj, {
           val: target,
-          duration: isM ? 1.9 : 2.0,
+          duration: isM ? 2.4 : 2.0,
           delay: isM ? 0.1 : 0,
           ease: counterEase,
           scrollTrigger: { trigger: el, start: 'top 80%', toggleActions: 'play none none none' },
@@ -2705,7 +2708,7 @@
         'philo-p4': 'The Realign works to bring both parts into agreement. We find where the pattern was wired, update it at the root, and let your mind and body finally move as one.',
         'sci-eyebrow': 'The Neuroscience',
         'sci-h2': 'How your mind actually works',
-        'sci-intro': 'What you notice is only what your unconscious mind lets through.',
+        'sci-intro': 'What you notice is just a filtered slice of everything your senses take in.',
         'sci-conscious': 'Conscious', 'sci-unconscious': 'Unconscious',
         'sci-info-proc': 'Information Processing', 'sci-bits': 'bits per second',
         'sci-outro': 'What your unconscious lets through becomes what you call <em>reality</em>.<br>That reality shapes your <em>decisions</em>.<br>Those decisions build the <em>life</em> you\'re living.',
