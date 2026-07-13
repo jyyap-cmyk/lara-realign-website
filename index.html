@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <link rel="icon" href="./Website%20FINAL%20Images/logo-2-red.png" type="image/png">
   <title>Lara Yap, Mind Aligner | Live out your best self</title>
   <meta name="description" content="Therapy and subconscious work to programme your reality and step into true freedom. Free Clarity Call.">
@@ -197,6 +197,7 @@
       font-family: 'Libre Baskerville', Georgia, serif; font-weight: 400;
       font-size: clamp(9px, 1.1vw, 12px);
       letter-spacing: 0.22em; text-indent: 0.22em; /* offset trailing letter-space so glyphs sit dead-centre */
+      text-transform: uppercase;
       color: rgba(238,231,221,0.92);
       cursor: none;
       animation: loaderPulse 2.6s ease-in-out infinite;
@@ -546,7 +547,7 @@
     }
     .hero-pin {
       position: sticky; top: 0;
-      height: 100vh; height: 100lvh; min-height: 620px;
+      height: 124vh; height: 124dvh; min-height: 620px;
       overflow: hidden;
       background: #FBF5DF;
     }
@@ -607,7 +608,7 @@
       pointer-events: none;
     }
     .hero-inner {
-      position: absolute; top: 0; left: 0; right: 0; height: 100%; z-index: 3;
+      position: absolute; top: 0; left: 0; right: 0; height: 100vh; height: 100dvh; z-index: 3;
       pointer-events: none;
     }
     .hero-inner a { pointer-events: auto; }
@@ -648,7 +649,7 @@
     }
     /* The Realign state (fades in once the aura fills the screen) */
     .hero-realign {
-      position: absolute; top: 0; left: 0; right: 0; height: 100%; z-index: 4;
+      position: absolute; top: 0; left: 0; right: 0; height: 100vh; height: 100dvh; z-index: 4;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       text-align: center;
@@ -714,7 +715,7 @@
       position: relative;
       overflow: hidden;
       padding: 100px 0 80px;
-      min-height: 100vh; min-height: 100lvh;
+      min-height: 100vh; min-height: 100dvh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -2303,17 +2304,23 @@
 
     /* ─── NAV ────────────────────────────────────────── */
     const nav = document.getElementById('nav');
-    const lightSections = ['who', 'realign-b', 'benefits', 'about', 'concerns'];
+    /* light (cream) sections need dark nav text; every other section is
+       dark and keeps the default light nav. Sections overlap via the
+       curved seams, so we pick the LAST one in DOM order that crosses the
+       nav line: that is the section actually painted at the top. */
+    const lightSections = ['who', 'realign-b', 'science', 'benefits', 'concerns', 'about'];
+    const navSections = ['hero', 'realign-b', 'who', 'science', 'benefits', 'concerns', 'about', 'testimonials', 'clarity', 'book', 'faq'];
     function updateNavColor() {
       nav.classList.toggle('scrolled', window.scrollY > 60);
-      const atY = 50;
-      const isLight = lightSections.some(id => {
+      const atY = 60;
+      let topmost = null;
+      navSections.forEach(id => {
         const el = document.getElementById(id);
-        if (!el) return false;
+        if (!el || el.offsetParent === null) return; // skip hidden sections
         const r = el.getBoundingClientRect();
-        return r.top <= atY && r.bottom > atY;
+        if (r.top <= atY && r.bottom > atY) topmost = id;
       });
-      nav.classList.toggle('nav--light', isLight);
+      nav.classList.toggle('nav--light', topmost !== null && lightSections.includes(topmost));
     }
     window.addEventListener('scroll', updateNavColor, { passive: true });
     updateNavColor();
