@@ -11,6 +11,9 @@
 <meta property="og:url" content="https://larayap.vercel.app/book.html">
 <meta property="og:image" content="https://larayap.vercel.app/Book/Death%20of%20the%20Old%20World%20Ebook.png">
 
+<!-- intro plays once per browsing session, across both pages -->
+<script>try{if(sessionStorage.getItem('tp_intro')==='1')document.documentElement.classList.add('intro-seen');}catch(e){}</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -57,6 +60,45 @@ a{color:inherit;text-decoration:none}
 ul{list-style:none}
 button{font:inherit;color:inherit;background:none;border:none;cursor:none}
 @media (hover: none){button{cursor:auto}}
+
+/* ─── PAGE LOADER (spiral induction) ─────────────── */
+html.intro-seen #loader { display: none !important; }
+#loader {
+  position: fixed; inset: 0; z-index: 99999;
+  background: #1D0D07;
+  display: flex; align-items: center; justify-content: center;
+  cursor: none;
+  transition: opacity 0.8s ease;
+  overflow: hidden;
+}
+#loaderSpiral {
+  display: block;
+  position: absolute; inset: 0;
+}
+.loader-title {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  background: none; border: 0; padding: 16px 28px;
+  font-family: 'Libre Baskerville', Georgia, serif; font-weight: 400;
+  font-size: clamp(9px, 1.1vw, 12px);
+  letter-spacing: 0.22em; text-indent: 0.22em; /* offset trailing letter-space so glyphs sit dead-centre */
+  text-transform: uppercase;
+  color: rgba(238,231,221,0.92);
+  cursor: none;
+  animation: loaderPulse 2.6s ease-in-out infinite;
+  transition: letter-spacing 0.7s ease, color 0.7s ease;
+}
+.loader-title:hover, .loader-title:focus-visible {
+  letter-spacing: 0.3em;
+  color: #E9C478;
+  outline: none;
+}
+@keyframes loaderPulse {
+  0%, 100% { opacity: 1; }
+  50%  { opacity: 0.55; }
+}
 
 /* ══ CUSTOM CURSOR, same as index.html ═══════════════════ */
 #cursor{position:fixed;z-index:100001;pointer-events:none;width:28px;height:28px;
@@ -309,6 +351,11 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
 </head>
 <body>
 
+<div id="loader">
+  <canvas id="loaderSpiral" aria-hidden="true"></canvas>
+  <button class="loader-title" id="loaderTitle" aria-label="Enter site">The Present</button>
+</div>
+
 <div id="cursor" aria-hidden="true">
   <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
     <path d="M14,1 L15.7,11.3 L26,14 L15.7,16.7 L14,27 L12.3,16.7 L2,14 L12.3,11.3 Z"
@@ -408,7 +455,7 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
                 <button type="submit" class="btn btn-ink cap-btn">Send me the book</button>
               </div>
             </form>
-            <p class="cap-note">No spam. Enter your email and grab the manual to your new world.</p>
+            <p class="cap-note">No spam, just the manual to your new world.</p>
           </div>
           <div class="row-success" style="display:none">
             <p class="cap-success">Check your inbox, the book is on its way. If it is not there in a few minutes, look in Promotions or spam.</p>
@@ -647,6 +694,247 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
 
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script>
+/* ─── LOADER ─────────────────────────────────────── */
+(function () {
+  const loader = document.getElementById('loader');
+  const trigger = document.getElementById('loaderTitle');
+  if (document.documentElement.classList.contains('intro-seen')) {
+if (loader) loader.remove();
+return;
+  }
+  let dismissed = false;
+  const dismiss = () => {
+if (dismissed) return;
+dismissed = true;
+try { sessionStorage.setItem('tp_intro', '1'); } catch (e) {}
+loader.style.opacity = '0';
+setTimeout(() => { loader.style.display = 'none'; }, 700);
+  };
+  loader.addEventListener('click', dismiss);
+  loader.addEventListener('touchend', e => { e.preventDefault(); dismiss(); });
+  trigger.addEventListener('keydown', e => {
+if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); dismiss(); }
+  });
+})();
+
+/* ─── LOADER SPIRAL (GSAP vortex — forms, then disperses) ── */
+(function () {
+  const cv = document.getElementById('loaderSpiral');
+  const ld = document.getElementById('loader');
+  if (!cv || !ld || typeof gsap === 'undefined') return;
+  if (document.documentElement.classList.contains('intro-seen')) return;
+  const ctx = cv.getContext('2d');
+
+  const CHANGE_EVENT_TIME = 0.32;
+  const CAMERA_Z = -400;
+  const CAMERA_TRAVEL = 3400;
+  const START_DOT_Y = 0; /* spiral origin locked to page centre */
+  const VIEW_ZOOM = 100;
+  const NUM_STARS = 5000;
+  const TRAIL_LENGTH = 80;
+  const BG = '#1D0D07';
+  const WHITE = '255,255,255';
+
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  let size = 0;
+  function resize() {
+size = Math.max(window.innerWidth, window.innerHeight);
+cv.width = size * dpr;
+cv.height = size * dpr;
+cv.style.width = window.innerWidth + 'px';
+cv.style.height = window.innerHeight + 'px';
+ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const constrain = (v, mn, mx) => Math.min(Math.max(v, mn), mx);
+  const map = (v, a1, b1, a2, b2) => a2 + (b2 - a2) * ((v - a1) / (b1 - a1));
+  const lerp = (a, b, t) => a * (1 - t) + b * t;
+  function ease(p, g) {
+return p < 0.5
+  ? 0.5 * Math.pow(2 * p, g)
+  : 1 - 0.5 * Math.pow(2 * (1 - p), g);
+  }
+  function easeOutElastic(x) {
+const c4 = (2 * Math.PI) / 4.5;
+if (x <= 0) return 0;
+if (x >= 1) return 1;
+return Math.pow(2, -8 * x) * Math.sin((x * 8 - 0.75) * c4) + 1;
+  }
+
+  /* the spiral the dots condense onto: 6 turns, sqrt radius */
+  function spiralPath(p) {
+p = constrain(1.2 * p, 0, 1);
+p = ease(p, 1.8);
+const theta = 2 * Math.PI * 6 * Math.sqrt(p);
+const r = 170 * Math.sqrt(p);
+return { x: r * Math.cos(theta), y: r * Math.sin(theta) + START_DOT_Y };
+  }
+
+  function rotateAround(v1, v2, p, cw) {
+const mx = (v1.x + v2.x) / 2, my = (v1.y + v2.y) / 2;
+const dx = v1.x - mx, dy = v1.y - my;
+const angle = Math.atan2(dy, dx);
+const o = cw ? -1 : 1;
+const r = Math.sqrt(dx * dx + dy * dy);
+const bounce = Math.sin(p * Math.PI) * 0.05 * (1 - p);
+const e = easeOutElastic(p);
+return {
+  x: mx + r * (1 + bounce) * Math.cos(angle + o * Math.PI * e),
+  y: my + r * (1 + bounce) * Math.sin(angle + o * Math.PI * e)
+};
+  }
+
+  const state = { time: 0 };
+
+  /* project a 3D point through the travelling camera and draw it */
+  function projectDot(px, py, pz, sizeFactor, rgb, alpha) {
+const t2 = constrain(map(state.time, CHANGE_EVENT_TIME, 1, 0, 1), 0, 1);
+const camZ = CAMERA_Z + ease(Math.pow(t2, 1.2), 1.8) * CAMERA_TRAVEL;
+if (pz <= camZ) return;
+const depth = pz - camZ;
+const x = VIEW_ZOOM * px / depth;
+const y = VIEW_ZOOM * py / depth;
+const sw = 400 * sizeFactor / depth;
+ctx.beginPath();
+ctx.fillStyle = 'rgba(' + rgb + ',' + alpha + ')';
+/* capped so dots stay fine star-dust even as the camera closes in */
+ctx.arc(x, y, Math.min(Math.max(sw / 2, 0.35), 0.9), 0, Math.PI * 2);
+ctx.fill();
+  }
+
+  /* one particle seeded onto the spiral, with a 3-phase scatter */
+  function makeStar(rand) {
+const s = {};
+s.angle = rand() * Math.PI * 2;
+s.distance = 30 * rand() + 15;
+s.rotationDirection = rand() > 0.5 ? 1 : -1;
+s.expansionRate = 1.2 + rand() * 0.8;
+s.finalScale = 0.7 + rand() * 0.6;
+s.dx = s.distance * Math.cos(s.angle);
+s.dy = s.distance * Math.sin(s.angle);
+s.spiralLocation = (1 - Math.pow(1 - rand(), 3.0)) / 1.3;
+s.z = lerp(
+  CAMERA_Z * 0.5 + rand() * (CAMERA_TRAVEL + CAMERA_Z - CAMERA_Z * 0.5),
+  CAMERA_TRAVEL / 2,
+  0.3 * s.spiralLocation
+);
+s.strokeWeightFactor = Math.pow(rand(), 2.0);
+s.rgb = WHITE;
+return s;
+  }
+
+  /* deterministic layout (seeded LCG), same star field every visit */
+  const stars = [];
+  let seed = 1234;
+  const seededRand = () => {
+seed = (seed * 9301 + 49297) % 233280;
+return seed / 233280;
+  };
+  for (let i = 0; i < NUM_STARS; i++) stars.push(makeStar(seededRand));
+
+  function renderStar(s, p) {
+const sp = spiralPath(s.spiralLocation);
+const q = p - s.spiralLocation;
+if (q <= 0) return;
+const dp = constrain(4 * q, 0, 1);
+
+/* blended easing: soft start, elastic finish */
+let easing;
+if (dp < 0.3) {
+  easing = lerp(dp, dp * dp, dp / 0.3);
+} else if (dp < 0.7) {
+  easing = lerp(dp * dp, easeOutElastic(dp), (dp - 0.3) / 0.4);
+} else {
+  easing = easeOutElastic(dp);
+}
+
+let sx, sy;
+if (dp < 0.3) {
+  /* phase 1: straight drift off the spiral */
+  sx = lerp(sp.x, sp.x + s.dx * 0.3, easing / 0.3);
+  sy = lerp(sp.y, sp.y + s.dy * 0.3, easing / 0.3);
+} else if (dp < 0.7) {
+  /* phase 2: curved sweep */
+  const mp = (dp - 0.3) / 0.4;
+  const curve = Math.sin(mp * Math.PI) * s.rotationDirection * 1.5;
+  const bx = sp.x + s.dx * 0.3, by = sp.y + s.dy * 0.3;
+  const tx = sp.x + s.dx * 0.7, ty = sp.y + s.dy * 0.7;
+  sx = lerp(bx, tx, mp) + (-s.dy * 0.4 * curve) * mp;
+  sy = lerp(by, ty, mp) + (s.dx * 0.4 * curve) * mp;
+} else {
+  /* phase 3: spiral scatter outward */
+  const fp = (dp - 0.7) / 0.3;
+  const bx = sp.x + s.dx * 0.7, by = sp.y + s.dy * 0.7;
+  const targetDist = s.distance * s.expansionRate * 1.5;
+  const sa = s.angle + 1.2 * s.rotationDirection * fp * Math.PI;
+  sx = lerp(bx, sp.x + targetDist * Math.cos(sa), fp);
+  sy = lerp(by, sp.y + targetDist * Math.sin(sa), fp);
+}
+
+/* swell slightly mid-flight, settle to final scale */
+let sizeMult;
+if (dp < 0.6) {
+  sizeMult = 1.0 + dp * 0.2;
+} else {
+  const t = (dp - 0.6) / 0.4;
+  sizeMult = 1.2 * (1 - t) + s.finalScale * t;
+}
+
+const vx = (s.z - CAMERA_Z) * sx / VIEW_ZOOM;
+const vy = (s.z - CAMERA_Z) * sy / VIEW_ZOOM;
+projectDot(vx, vy, s.z, 8.5 * s.strokeWeightFactor * sizeMult, s.rgb, 0.92);
+  }
+
+  function drawTrail(t1) {
+for (let i = 0; i < TRAIL_LENGTH; i++) {
+  const f = map(i, 0, TRAIL_LENGTH, 1.1, 0.1);
+  const sw = (1.3 * (1 - t1) + 3.0 * Math.sin(Math.PI * t1)) * f;
+  const pos = spiralPath(t1 - 0.00015 * i);
+  const rot = rotateAround(
+pos,
+{ x: pos.x + 5, y: pos.y + 5 },
+Math.sin(state.time * Math.PI * 2) * 0.5 + 0.5,
+i % 2 === 0
+  );
+  ctx.beginPath();
+  ctx.fillStyle = 'rgba(' + WHITE + ',0.95)';
+  ctx.arc(rot.x, rot.y, Math.max(sw / 2, 0.1), 0, Math.PI * 2);
+  ctx.fill();
+}
+  }
+
+  function drawStartDot() {
+if (state.time <= CHANGE_EVENT_TIME) return;
+const dy = CAMERA_Z * START_DOT_Y / VIEW_ZOOM;
+projectDot(0, dy, CAMERA_TRAVEL, 2.5, WHITE, 1);
+  }
+
+  function render() {
+if (ld.style.display === 'none') { tween.kill(); return; }
+ctx.fillStyle = BG;
+ctx.fillRect(0, 0, size, size);
+ctx.save();
+ctx.translate(size / 2, size / 2);
+const t1 = constrain(map(state.time, 0, CHANGE_EVENT_TIME + 0.25, 0, 1), 0, 1);
+const t2 = constrain(map(state.time, CHANGE_EVENT_TIME, 1, 0, 1), 0, 1);
+ctx.rotate(-Math.PI * ease(t2, 2.7));
+drawTrail(t1);
+for (let i = 0; i < stars.length; i++) renderStar(stars[i], t1);
+drawStartDot();
+ctx.restore();
+  }
+
+  const tween = gsap.to(state, {
+time: 1, duration: 15, repeat: -1, ease: 'none', onUpdate: render
+  });
+  render();
+})();
+</script>
 
 <script>
 /* gallery */
