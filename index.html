@@ -931,7 +931,7 @@
     /* ═══════════════════════════════════════════════════
        S6: ABOUT LARA
     ═══════════════════════════════════════════════════ */
-    .s-about { background: #FBF5DF; padding-top: 40px; padding-bottom: clamp(180px, 18vw, 280px); }
+    .s-about { background: #FBF5DF; padding-top: 40px; padding-bottom: clamp(300px, 27vw, 440px); }
     .about-quote-band {
       padding: 28px 0; margin-bottom: 40px;
     }
@@ -1994,7 +1994,7 @@
                   <button type="submit" class="btn btn-cream book-signup-btn" data-i18n="book-btn">Send me the book</button>
                 </div>
               </form>
-              <p class="book-signup-note" data-i18n="book-form-note">One email. The book arrives straight away.</p>
+              <p class="book-signup-note" data-i18n="book-form-note">Instant access. Start reading in seconds.</p>
             </div>
             <div class="row-success" style="display:none">
               <p class="book-signup-success" data-i18n="book-form-success">Check your inbox, the book is on its way. If it is not there in a few minutes, look in Promotions or spam.</p>
@@ -2742,15 +2742,18 @@
             return;
           }
         }
+        /* the credentials sit right before the Clarity section rises over
+           them, so they arrive earlier and settle faster than the rest */
+        const quick = el.classList.contains('about-creds');
         gsap.fromTo(el,
           { y: 30, opacity: 0 },
           {
             y: 0, opacity: 1,
-            duration: 2.0,
+            duration: quick ? 1.0 : 2.0,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: el,
-              start: 'top 86%',
+              start: quick ? 'top 96%' : 'top 86%',
               toggleActions: 'play none none none'
             }
           }
@@ -2917,7 +2920,7 @@
         'book-btn': 'Send me the book',
         'book-more': 'Read more about the book',
         'book-form-lead': 'The full book, free.',
-        'book-form-note': 'One email. The book arrives straight away.',
+        'book-form-note': 'Instant access. Start reading in seconds.',
         'book-form-success': 'Check your inbox, the book is on its way. If it is not there in a few minutes, look in Promotions or spam.',
         'faq-eyebrow': 'Questions', 'faq-h2': 'FAQs',
         'faq-q1': 'How is The Realign different from counselling or coaching? <span class="faq-icon" aria-hidden="true">+</span>',
@@ -3007,7 +3010,7 @@
         'book-btn': '把书寄给我',
         'book-more': '了解更多关于这本书',
         'book-form-lead': '全书免费。',
-        'book-form-note': '一封邮件，书立即送达。',
+        'book-form-note': '即时获取，几秒内开始阅读。',
         'book-form-success': '请查看您的收件箱，书正在寄来的路上。若几分钟内没有收到，请查看promotions或垃圾邮件。',
         'faq-eyebrow': '常见问题', 'faq-h2': 'FAQs',
         'faq-q1': 'Realign 与心理咨询或教练有何不同？<span class="faq-icon" aria-hidden="true">+</span>',

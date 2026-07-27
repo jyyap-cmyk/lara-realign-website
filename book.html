@@ -227,7 +227,13 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
 .cols-728{width:62.618%;margin:0 auto;display:grid;grid-template-columns:45% 45%;
   justify-content:space-between}
 .cols-728 li{font-size:16px;line-height:1.7;margin-bottom:14px;
-  padding-left:1.6em;text-indent:-1.6em}
+  padding-left:1.6em;text-indent:-1.6em;
+  opacity:0;transform:translateY(14px);
+  transition:opacity .7s var(--ease), transform .7s var(--ease)}
+.cols-728.in li{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .cols-728 li{opacity:1;transform:none;transition:none}
+}
 
 /* ══ THE SEVEN TRUTHS ════════════════════════════════════ */
 .s-truths{padding-top:9.312cqw;padding-bottom:6.2cqw}
@@ -278,8 +284,8 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
   margin-right:calc(50% - 50vw);margin-top:0;margin-bottom:2cqw;
   min-height:clamp(500px,52vw,760px);display:grid;place-items:center;
   text-align:center;overflow:hidden;border-radius:0 0 22px 22px}
-.s-support img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  object-position:center 43%}
+.s-support img{position:absolute;left:0;right:0;top:-9%;width:100%;height:118%;
+  object-fit:cover;object-position:center 43%;will-change:transform}
 .s-support::after{content:'';position:absolute;inset:0;
   background:radial-gradient(ellipse at 50% 42%, rgba(244,242,235,0.30) 0%,
     rgba(244,242,235,0.62) 46%, rgba(244,242,235,0.86) 100%)}
@@ -643,7 +649,7 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
 
     <!-- ══ SUPPORT THE WORK ════════════════════════════ -->
     <section class="s-support">
-      <img src="./Website FINAL Images/IMG_9441 2.JPG" alt="" loading="lazy">
+      <img src="./Website FINAL Images/Spark.jpg" alt="" loading="lazy">
       <div class="support-inner">
         <p class="support-line">Keep the Spark Alive</p>
         <p class="support-sub">This book is gifted openly, because knowledge this fundamental belongs to everyone who seeks to know. If it helped you, a small donation keeps this work going.</p>
@@ -981,6 +987,43 @@ time: 1, duration: 15, repeat: -1, ease: 'none', onUpdate: render
     }
   });
 })();
+/* the two columns rise a line at a time, in step with each other */
+(function(){
+  var wrap=document.querySelector('.cols-728');
+  if(!wrap) return;
+  wrap.querySelectorAll('ul').forEach(function(ul){
+    ul.querySelectorAll('li').forEach(function(li,i){
+      li.style.transitionDelay=(i*0.11)+'s';
+    });
+  });
+  if(!('IntersectionObserver' in window)){ wrap.classList.add('in'); return; }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){ wrap.classList.add('in'); io.disconnect(); }
+    });
+  },{threshold:0.25});
+  io.observe(wrap);
+})();
+
+/* the donation photograph drifts against the scroll */
+(function(){
+  var sec=document.querySelector('.s-support'), img=sec&&sec.querySelector('img');
+  if(!sec||!img) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var raf=null;
+  function upd(){
+    raf=null;
+    var r=sec.getBoundingClientRect();
+    if(r.bottom<-200||r.top>innerHeight+200) return;
+    var mid=r.top+r.height/2, centre=innerHeight/2;
+    var p=Math.max(-1,Math.min(1,(mid-centre)/(centre+r.height/2)));
+    img.style.transform='translate3d(0,'+(p*-7).toFixed(2)+'%,0)';
+  }
+  addEventListener('scroll',function(){ if(!raf) raf=requestAnimationFrame(upd); },{passive:true});
+  addEventListener('resize',function(){ if(!raf) raf=requestAnimationFrame(upd); });
+  upd();
+})();
+
 /* FAQ: slide the answer open */
 (function(){
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
