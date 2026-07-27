@@ -73,7 +73,7 @@ button{font:inherit;cursor:none}
 .band::after{content:'';position:absolute;inset:0;
   background:radial-gradient(ellipse at 50% 42%, rgba(244,242,235,0.32) 0%,
     rgba(244,242,235,0.62) 46%, rgba(244,242,235,0.88) 100%)}
-.band-inner{position:relative;z-index:2;padding:118px 5vw 44px;max-width:min(88vw,780px)}
+.band-inner{position:relative;z-index:2;padding:118px 5vw 44px;max-width:min(88vw,780px);width:100%}
 h1{font-family:var(--f-bn);font-style:italic;font-weight:400;
   font-size:clamp(32px,4.3vw,58px);line-height:1.12;margin-bottom:18px;
   text-shadow:0 1px 26px rgba(244,242,235,0.9)}
@@ -116,6 +116,22 @@ footer{padding:40px 0 56px;text-align:center}
   .routes{grid-template-columns:1fr}
   .band-inner{padding:104px 24px 34px}
 }
+@media (max-width: 620px){
+  /* the band fills the phone screen, so it reads as an arrival */
+  .band{min-height:100vh;min-height:100svh;border-radius:0 0 22px 22px}
+  .band-inner{padding:96px 22px 56px}
+  h1{font-size:clamp(30px,9vw,42px)}
+  .lede{font-size:15px;line-height:1.75}
+  /* the nav was wrapping "Mind Aligner" under "Lara Yap" */
+  .nav{padding:0 20px;height:64px}
+  .nav-logo{font-size:8.5px;letter-spacing:0.12em;white-space:nowrap}
+  .nav-logo .sub{display:none}
+  .nav-logo .dot{display:none}
+  .nav-links{gap:16px}
+  .nav-links a{font-size:8.5px;letter-spacing:0.12em;white-space:nowrap}
+  .nav-links li{gap:6px}
+  .tp-mark{width:6px;height:6px}
+}
 </style>
 </head>
 <body>
@@ -129,7 +145,7 @@ footer{padding:40px 0 56px;text-align:center}
 </div>
 
 <nav class="nav" role="navigation" aria-label="Main">
-  <div class="nav-logo">Lara Yap <span>·</span> Mind Aligner</div>
+  <div class="nav-logo">Lara Yap <span class="dot">·</span> <span class="sub">Mind Aligner</span></div>
   <ul class="nav-links" role="list">
     <li><svg class="tp-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 C12.6 7.4 16.6 11.4 24 12 C16.6 12.6 12.6 16.6 12 24 C11.4 16.6 7.4 12.6 0 12 C7.4 11.4 11.4 7.4 12 0 Z"/></svg><a href="/book.html">The Book</a></li>
     <li><svg class="tp-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 C12.6 7.4 16.6 11.4 24 12 C16.6 12.6 12.6 16.6 12 24 C11.4 16.6 7.4 12.6 0 12 C7.4 11.4 11.4 7.4 12 0 Z"/></svg><a href="/">The Realign</a></li>

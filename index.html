@@ -2170,6 +2170,19 @@
       });
     })();
 
+
+    /* safety net: a loader that cannot be dismissed traps the visitor on a
+       page whose whole job is a signup, so it clears itself either way */
+    (function(){
+      var l=document.getElementById('loader'); if(!l) return;
+      setTimeout(function(){
+        if(!l.isConnected || l.style.display==='none' || l.style.opacity==='0') return;
+        try{ sessionStorage.setItem('tp_intro','1'); }catch(e){}
+        l.style.opacity='0';
+        setTimeout(function(){ l.style.display='none'; },700);
+      }, 6000);
+    })();
+    
     /* ─── LOADER SPIRAL (GSAP vortex — forms, then disperses) ── */
     (function () {
       const cv = document.getElementById('loaderSpiral');

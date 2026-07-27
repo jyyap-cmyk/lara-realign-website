@@ -350,6 +350,11 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
   .arrow{width:20px;height:20px}
   .footer-grid{grid-template-columns:1fr;gap:34px}
 }
+@media (max-width: 620px){
+  .nav{padding:0 20px;height:64px}
+  .nav-logo{font-size:8.5px;letter-spacing:0.12em;white-space:nowrap}
+  .nav-logo .sub, .nav-logo .dot{display:none}
+}
 @media (max-width: 1023px){
   .nav{padding:0 28px}
   .nav-links,.nav-cta{display:none}
@@ -374,7 +379,7 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
 
 <!-- ══ NAV ═══════════════════════════════════════════════ -->
 <nav class="nav" role="navigation" aria-label="Main">
-  <div class="nav-logo">Lara Yap <span>·</span> Mind Aligner</div>
+  <div class="nav-logo">Lara Yap <span class="dot">·</span> <span class="sub">Mind Aligner</span></div>
   <div class="nav-right">
     <ul class="nav-links" role="list">
       <li><a href="/#realign">The Realign</a></li>
@@ -726,6 +731,19 @@ setTimeout(() => { loader.style.display = 'none'; }, 700);
   trigger.addEventListener('keydown', e => {
 if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); dismiss(); }
   });
+})();
+
+
+/* safety net: a loader that cannot be dismissed traps the visitor on a
+   page whose whole job is a signup, so it clears itself either way */
+(function(){
+  var l=document.getElementById('loader'); if(!l) return;
+  setTimeout(function(){
+    if(!l.isConnected || l.style.display==='none' || l.style.opacity==='0') return;
+    try{ sessionStorage.setItem('tp_intro','1'); }catch(e){}
+    l.style.opacity='0';
+    setTimeout(function(){ l.style.display='none'; },700);
+  }, 6000);
 })();
 
 /* ─── LOADER SPIRAL (GSAP vortex — forms, then disperses) ── */
