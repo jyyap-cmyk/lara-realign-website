@@ -161,6 +161,9 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
 .cap-input{flex:1 1 55%;min-width:0;font-family:var(--f-read);font-size:13px;
   color:var(--ink);background:rgba(255,255,255,0.7);border:1px solid var(--rule);
   border-radius:100px;padding:14px 24px;line-height:1.4}
+.capture-mid{margin:5.2cqw auto 0;text-align:center}
+.capture-mid .cap-row{justify-content:center}
+.capture-mid .cap-input{flex:0 1 300px;text-align:center}
 .cap-input::placeholder{color:rgba(94,24,3,0.45)}
 .cap-input:focus{outline:none;border-color:var(--ink)}
 /* the site's button: Lora italic, 13px, 0.12em, 100px pill */
@@ -199,7 +202,7 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
 .cell p{font-size:1.0093cqw;line-height:1.62;margin:0}
 
 /* ══ LETTING THE OLD WORLD DIE (sand band) ═══════════════ */
-.s-meta{padding-top:7.6cqw;padding-bottom:8.4cqw;background:var(--sand);
+.s-meta{padding-top:7.6cqw;padding-bottom:9.6cqw;background:var(--sand);
   border-radius:22px;margin:2cqw 0 0;
   width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
 .s-meta-inner{max-width:1162.6px;margin:0 auto}
@@ -211,7 +214,7 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
 .copy-967 blockquote{margin-left:4.137%;width:91.727%;font-style:italic}
 
 /* ══ FAQ ═════════════════════════════════════════════════ */
-.s-faq{padding-top:11.415cqw;padding-bottom:9cqw}
+.s-faq{padding-top:9.4cqw;padding-bottom:0}
 .faq-720{width:61.929%;margin:0 auto}
 .faq details{border-bottom:1px solid var(--rule)}
 .faq details:first-of-type{border-top:1px solid var(--rule)}
@@ -244,7 +247,7 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
   text-shadow:0 1px 18px rgba(244,242,235,0.95)}
 
 /* ══ FOOTER, index.html's footer on this paper ═══════════ */
-.footer{border-top:1px solid var(--rule);padding:72px 0 44px;margin-top:2cqw}
+.footer{padding:72px 0 44px;margin-top:2cqw}
 .footer-quote{padding-bottom:56px;border-bottom:1px solid var(--rule);
   margin-bottom:52px;max-width:520px}
 .footer-quote-text{font-family:var(--f-body);font-weight:400;
@@ -320,7 +323,6 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
   <div class="nav-right">
     <ul class="nav-links" role="list">
       <li><a href="/#realign">The Realign</a></li>
-      <li><a href="/#about">About</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <a href="https://calendly.com/larayapjy/30min" class="nav-cta">Clarity Call</a>
@@ -331,7 +333,6 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
 </nav>
 <div class="mob-nav" id="mobNav" aria-hidden="true">
   <a href="/#realign">The Realign</a>
-  <a href="/#about">About</a>
   <a href="#faq">FAQ</a>
   <a href="https://calendly.com/larayapjy/30min">Book a Clarity Call</a>
 </div>
@@ -525,25 +526,29 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
         <p>Your old world has to dissolve before you can step into the vacuum of infinite possibilities. The loop belonged to your past. The exit belongs to you. Once you step through, you reclaim your power, as the architect, writer, creator of your own story.</p>
       </div>
     </div>
-   </div>
-  </section>
 
-  <div class="pad">
-
-    <!-- ══ SUPPORT THE WORK ════════════════════════════ -->
-    <section class="s-support">
-      <img src="./Website FINAL Images/IMG_9441 2.JPG" alt="" loading="lazy">
-      <div class="support-inner">
-        <p class="support-line">Keep the Spark Alive</p>
-        <p class="support-sub">This book is free, on a mission to awaken the power within us all. If it helped you, a small donation keeps this work going.</p>
-        <a class="btn btn-ink" href="https://buy.stripe.com/8x2bJ1ffnejk1Tg7Kx38402" target="_blank" rel="noopener">
-          Give what feels right
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+      <div id="mlb2-44160109b" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-44160109 capture capture-mid">
+        <div class="row-form">
+          <p class="capture-lead">The full book, free.</p>
+          <form class="ml-block-form"
+                action="https://assets.mailerlite.com/jsonp/1930411/forms/194111055899657286/subscribe"
+                data-code="" method="post" target="_blank">
+            <div class="cap-row">
+              <input aria-label="Email" aria-required="true" type="email" required
+                     class="cap-input" name="fields[email]" placeholder="Email" autocomplete="email">
+              <input type="hidden" name="ml-submit" value="1">
+              <input type="hidden" name="anticsrf" value="true">
+              <button type="submit" class="btn btn-ink cap-btn">Send me the book</button>
+            </div>
+          </form>
+          <p class="cap-note">One email. The book arrives straight away.</p>
+        </div>
+        <div class="row-success" style="display:none">
+          <p class="cap-success">Check your inbox, the book is on its way. If it is not there in a few minutes, look in Promotions or spam.</p>
+        </div>
       </div>
-    </section>
 
-    <!-- ══ FAQ ═════════════════════════════════════════ -->
+    <!-- ══ FAQ (inside the sand band) ══════════════════ -->
     <section class="s-faq" id="faq">
       <div class="faq-720">
         <h2>FAQs</h2>
@@ -578,9 +583,26 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
           </details>
           <details>
             <summary>Can I share it with someone?</summary>
-            <div class="faq-a body"><p>Please do. Knowledge was never meant to be kept. If someone comes to mind while you're reading, send it to them, and let it keep travelling from there.</p><p>If the book gave you something and you would like to support the work, there is a way to do that just above.</p></div>
+            <div class="faq-a body"><p>Please do. Knowledge was never meant to be kept. If someone comes to mind while you're reading, send it to them, and let it keep travelling from there.</p><p>If the book gave you something and you would like to support the work, there is a way to do that just below.</p></div>
           </details>
         </div>
+      </div>
+    </section>
+   </div>
+  </section>
+
+  <div class="pad">
+
+    <!-- ══ SUPPORT THE WORK ════════════════════════════ -->
+    <section class="s-support">
+      <img src="./Website FINAL Images/IMG_9441 2.JPG" alt="" loading="lazy">
+      <div class="support-inner">
+        <p class="support-line">Keep the Spark Alive</p>
+        <p class="support-sub">This book is free, on a mission to awaken the power within us all. If it helped you, a small donation keeps this work going.</p>
+        <a class="btn btn-ink" href="https://buy.stripe.com/8x2bJ1ffnejk1Tg7Kx38402" target="_blank" rel="noopener">
+          Give what feels right
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </section>
 
@@ -599,8 +621,7 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
           <p class="footer-col-label">Navigate</p>
           <ul class="footer-links">
             <li><a href="/#realign">The Realign</a></li>
-            <li><a href="/#about">About</a></li>
-            <li><a href="#faq">FAQ</a></li>
+                  <li><a href="#faq">FAQ</a></li>
             <li><a href="#get">Book</a></li>
           </ul>
         </div>
