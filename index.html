@@ -931,7 +931,7 @@
     /* ═══════════════════════════════════════════════════
        S6: ABOUT LARA
     ═══════════════════════════════════════════════════ */
-    .s-about { background: #FBF5DF; padding-top: 40px; padding-bottom: clamp(300px, 27vw, 440px); }
+    .s-about { background: #FBF5DF; padding-top: 40px; padding-bottom: clamp(260px, 22vw, 360px); }
     .about-quote-band {
       padding: 28px 0; margin-bottom: 40px;
     }
@@ -1338,6 +1338,9 @@
     }
     @media (max-width: 560px) {
       .book-signup-row { flex-direction: column; }
+      /* in a column, flex-basis sizes the HEIGHT, so it has to be reset
+         or the field inflates to 200px tall */
+      .book-signup-input { flex: 0 0 auto; width: 100%; }
       .book-signup-btn { width: 100%; }
     }
 

@@ -229,7 +229,7 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
 .cols-728 li{font-size:16px;line-height:1.7;margin-bottom:14px;
   padding-left:1.6em;text-indent:-1.6em;
   opacity:0;transform:translateY(14px);
-  transition:opacity .7s var(--ease), transform .7s var(--ease)}
+  transition:opacity .9s var(--ease), transform .9s var(--ease)}
 .cols-728.in li{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){
   .cols-728 li{opacity:1;transform:none;transition:none}
@@ -993,7 +993,7 @@ time: 1, duration: 15, repeat: -1, ease: 'none', onUpdate: render
   if(!wrap) return;
   wrap.querySelectorAll('ul').forEach(function(ul){
     ul.querySelectorAll('li').forEach(function(li,i){
-      li.style.transitionDelay=(i*0.11)+'s';
+      li.style.transitionDelay=(i*0.13)+'s';
     });
   });
   if(!('IntersectionObserver' in window)){ wrap.classList.add('in'); return; }
@@ -1001,7 +1001,7 @@ time: 1, duration: 15, repeat: -1, ease: 'none', onUpdate: render
     es.forEach(function(e){
       if(e.isIntersecting){ wrap.classList.add('in'); io.disconnect(); }
     });
-  },{threshold:0.25});
+  },{threshold:0.15, rootMargin:'0px 0px -16% 0px'});
   io.observe(wrap);
 })();
 
