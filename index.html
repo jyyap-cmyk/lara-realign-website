@@ -2566,11 +2566,11 @@
       const seg = (p, a, b) => clamp((p - a) / (b - a), 0, 1);
       const ease = t => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
       let entranceKilled = false, scrolled = false;
-      /* entrance: "alive" fades up first, "again" follows a beat later.
-         The words' opacity is recomputed every frame by the scroll map
-         below, so the entrance is a multiplier rather than a transition. */
+      /* entrance: both words fade in together on load. Their opacity is
+         recomputed every frame by the scroll map below, so the entrance
+         is a multiplier rather than a transition. */
       let introStart = 0;
-      const INTRO_DUR = 1500, INTRO_GAP = 520;
+      const INTRO_DUR = 1500;
       const smooth = t => t * t * (3 - 2 * t);
       const introAt = (now, offset) =>
         introStart ? smooth(clamp((now - introStart - offset) / INTRO_DUR, 0, 1)) : 0;
@@ -2607,8 +2607,9 @@
           wl.style.transform = 'translate(calc(-50% - ' + sep + 'vw), -50%)';
           wr.style.transform = 'translate(calc(-50% + ' + sep + 'vw), -50%)';
           const wop = 1 - seg(p, 0.12, 0.42);
-          wl.style.opacity = wop * introAt(introNow, 0);
-          wr.style.opacity = wop * introAt(introNow, INTRO_GAP);
+          const intro = introAt(introNow, 0);
+          wl.style.opacity = wop * intro;
+          wr.style.opacity = wop * intro;
           const uop = 1 - seg(p, 0, 0.16);
           ui.forEach(el => {
             el.style.opacity = uop;
