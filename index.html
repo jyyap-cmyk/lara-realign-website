@@ -1018,7 +1018,11 @@
       content: '';
       position: absolute; inset: 0;
       border-radius: inherit; padding: 1px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.0) 58%);
+      background: linear-gradient(135deg,
+        rgba(255,255,255,0.92) 0%,
+        rgba(255,255,255,0.20) 30%,
+        rgba(28,20,9,0.05) 62%,
+        rgba(28,20,9,0.22) 100%);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -2562,7 +2566,22 @@
       const seg = (p, a, b) => clamp((p - a) / (b - a), 0, 1);
       const ease = t => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
       let entranceKilled = false, scrolled = false;
+      /* entrance: "alive" fades up first, "again" follows a beat later.
+         The words' opacity is recomputed every frame by the scroll map
+         below, so the entrance is a multiplier rather than a transition. */
+      let introStart = 0;
+      const INTRO_DUR = 1500, INTRO_GAP = 520;
+      const smooth = t => t * t * (3 - 2 * t);
+      const introAt = (now, offset) =>
+        introStart ? smooth(clamp((now - introStart - offset) / INTRO_DUR, 0, 1)) : 0;
+      function loaderGone() {
+        const l = document.getElementById('loader');
+        return !l || l.style.display === 'none' ||
+               document.documentElement.classList.contains('intro-seen');
+      }
       function frame() {
+        if (!introStart && loaderGone()) introStart = performance.now();
+        const introNow = performance.now();
         const r = hero.getBoundingClientRect();
         const total = r.height - innerHeight;
         const p = total > 0 ? clamp(-r.top / total, 0, 1) : 0;
@@ -2588,7 +2607,8 @@
           wl.style.transform = 'translate(calc(-50% - ' + sep + 'vw), -50%)';
           wr.style.transform = 'translate(calc(-50% + ' + sep + 'vw), -50%)';
           const wop = 1 - seg(p, 0.12, 0.42);
-          wl.style.opacity = wop; wr.style.opacity = wop;
+          wl.style.opacity = wop * introAt(introNow, 0);
+          wr.style.opacity = wop * introAt(introNow, INTRO_GAP);
           const uop = 1 - seg(p, 0, 0.16);
           ui.forEach(el => {
             el.style.opacity = uop;

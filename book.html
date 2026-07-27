@@ -217,12 +217,7 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
 .btn-ink{background:var(--ink);color:var(--paper);
   box-shadow:0 4px 20px rgba(94,24,3,0.18)}
 .btn-ink:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(94,24,3,0.26)}
-/* the capture submit is text only; the field beside it carries the shape */
-.cap-btn{flex:0 0 auto;background:none;border:none;box-shadow:none;
-  font-family:var(--f-body);font-style:italic;font-size:13px;letter-spacing:0.12em;
-  color:rgba(94,24,3,0.66);padding:14px 14px;border-radius:0;
-  transition:color .28s var(--ease)}
-.cap-btn:hover{color:var(--ink);transform:none;box-shadow:none}
+.cap-btn{flex:0 0 auto}
 .cap-note{font-size:12px;opacity:0.6;margin-top:12px}
 .cap-success{font-family:var(--f-bn);font-style:italic;font-size:22px;line-height:1.45}
 
@@ -276,7 +271,7 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
 .faq summary::before{content:'';position:absolute;right:11.5px;top:24.5px;
   width:1px;height:12px;background:var(--ink);transition:opacity .25s ease}
 .faq details[open] summary::before{opacity:0}
-.faq-a{padding:0 40px 22px 0}
+.faq-a{padding:0 40px 22px 0;overflow:hidden}
 
 /* ══ SUPPORT THE WORK ════════════════════════════════════ */
 .s-support{position:relative;width:100vw;margin-left:calc(50% - 50vw);
@@ -459,7 +454,7 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
                        class="cap-input" name="fields[email]" placeholder="Email" autocomplete="email">
                 <input type="hidden" name="ml-submit" value="1">
                 <input type="hidden" name="anticsrf" value="true">
-                <button type="submit" class="cap-btn">Begin reading</button>
+                <button type="submit" class="btn btn-ink cap-btn">Begin reading</button>
               </div>
             </form>
             <p class="cap-note">Instant access. Start reading in seconds.</p>
@@ -592,7 +587,7 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
                      class="cap-input" name="fields[email]" placeholder="Email" autocomplete="email">
               <input type="hidden" name="ml-submit" value="1">
               <input type="hidden" name="anticsrf" value="true">
-              <button type="submit" class="cap-btn">Begin reading</button>
+              <button type="submit" class="btn btn-ink cap-btn">Begin reading</button>
             </div>
           </form>
         </div>
@@ -984,6 +979,22 @@ time: 1, duration: 15, repeat: -1, ease: 'none', onUpdate: render
       document.body.appendChild(r);
       setTimeout(function(el){return function(){el.remove();};}(r),1400);
     }
+  });
+})();
+/* FAQ: slide the answer open */
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.faq details').forEach(function(d){
+    var body = d.querySelector('.faq-a');
+    if(!body) return;
+    d.addEventListener('toggle', function(){
+      if(!d.open || reduce || !body.animate) return;
+      var h = body.scrollHeight;
+      body.animate(
+        [{height:'0px', opacity:0}, {height:h+'px', opacity:1}],
+        {duration:380, easing:'cubic-bezier(0.25, 1, 0.5, 1)'}
+      );
+    });
   });
 })();
 /* mobile menu */
