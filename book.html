@@ -230,7 +230,7 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
   padding-left:1.6em;text-indent:-1.6em;
   opacity:0;transform:translateY(14px);
   transition:opacity .9s var(--ease), transform .9s var(--ease)}
-.cols-728.in li{opacity:1;transform:none}
+.cols-728 ul.in li{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){
   .cols-728 li{opacity:1;transform:none;transition:none}
 }
@@ -989,20 +989,43 @@ time: 1, duration: 15, repeat: -1, ease: 'none', onUpdate: render
 })();
 /* the two columns rise a line at a time, in step with each other */
 (function(){
-  var wrap=document.querySelector('.cols-728');
-  if(!wrap) return;
-  wrap.querySelectorAll('ul').forEach(function(ul){
+  var lists=document.querySelectorAll('.cols-728 ul');
+  if(!lists.length) return;
+  lists.forEach(function(ul){
     ul.querySelectorAll('li').forEach(function(li,i){
       li.style.transitionDelay=(i*0.13)+'s';
     });
   });
-  if(!('IntersectionObserver' in window)){ wrap.classList.add('in'); return; }
+  if(!('IntersectionObserver' in window)){
+    lists.forEach(function(ul){ ul.classList.add('in'); });
+    return;
+  }
+  /* observed per column, not as one block: side by side on desktop they
+     still fire together, and stacked on mobile each waits its turn */
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){
-      if(e.isIntersecting){ wrap.classList.add('in'); io.disconnect(); }
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
     });
   },{threshold:0.15, rootMargin:'0px 0px -16% 0px'});
-  io.observe(wrap);
+  lists.forEach(function(ul){ io.observe(ul); });
+})();
+
+/* MailerLite only wires up the first embedded form on a page, so the
+   second one hands its address to the first and lets that one submit.
+   The success handler targets the shared class, so both flip together. */
+(function(){
+  var mid=document.querySelector('#mlb2-44160109b form');
+  var top=document.querySelector('#mlb2-44160109 form');
+  if(!mid||!top) return;
+  mid.addEventListener('submit',function(e){
+    e.preventDefault();
+    var from=mid.querySelector('input[type=email]');
+    var to=top.querySelector('input[type=email]');
+    var go=top.querySelector('button[type=submit]');
+    if(!from||!to||!go||!from.value) return;
+    to.value=from.value;
+    go.click();
+  });
 })();
 
 /* the donation photograph drifts against the scroll */
