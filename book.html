@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Death of the Old World | 7 Universal Truths of Existence | Lara Yap</title>
-<meta name="description" content="Death of the Old World: 7 Universal Truths of Existence. The full book, free. Eleven years of research into consciousness, drawn from science, philosophy, and ancient wisdom.">
+<meta name="description" content="Death of the Old World: 7 Universal Truths of Existence. The full book, free. Drawing from quantum physics, neuroscience, ancient wisdom, and consciousness research.">
 <meta property="og:title" content="Death of the Old World | 7 Universal Truths of Existence">
 <meta property="og:description" content="The full book, free. Eleven years of questions, gathered into seven truths.">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://larayap.vercel.app/book.html">
+<meta property="og:image" content="https://larayap.vercel.app/Book/Death%20of%20the%20Old%20World%20Ebook.png">
 <meta name="robots" content="index, follow">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,263 +18,277 @@
 
 <style>
   /* ─── LOCAL FONTS (same files as index.html) ───────── */
-  @font-face {
-    font-family: 'Now'; font-weight: 100; font-style: normal; font-display: swap;
-    src: url("./now OTF/Now-Thin.otf") format('opentype');
-  }
-  @font-face {
-    font-family: 'Now'; font-weight: 300; font-style: normal; font-display: swap;
-    src: url("./now OTF/Now-Light.otf") format('opentype');
-  }
-  @font-face {
-    font-family: 'Now'; font-weight: 400; font-style: normal; font-display: swap;
-    src: url("./now OTF/Now-Regular.otf") format('opentype');
-  }
-  @font-face {
-    font-family: 'BN'; font-weight: 400; font-style: italic; font-display: swap;
-    src: url("./Behind the nineties OTF/ITALIC/Behind-The-Nineties-It.otf") format('opentype');
-  }
-  @font-face {
-    font-family: 'BN'; font-weight: 400; font-style: normal; font-display: swap;
-    src: url("./Behind the nineties OTF/UPRIGHT/Behind-The-Nineties-Rg.otf") format('opentype');
-  }
+  @font-face { font-family:'Now'; font-weight:100; font-style:normal; font-display:swap;
+    src:url("./now OTF/Now-Thin.otf") format('opentype'); }
+  @font-face { font-family:'Now'; font-weight:300; font-style:normal; font-display:swap;
+    src:url("./now OTF/Now-Light.otf") format('opentype'); }
+  @font-face { font-family:'Now'; font-weight:400; font-style:normal; font-display:swap;
+    src:url("./now OTF/Now-Regular.otf") format('opentype'); }
+  @font-face { font-family:'BN'; font-weight:400; font-style:italic; font-display:swap;
+    src:url("./Behind the nineties OTF/ITALIC/Behind-The-Nineties-It.otf") format('opentype'); }
+  @font-face { font-family:'BN'; font-weight:400; font-style:normal; font-display:swap;
+    src:url("./Behind the nineties OTF/UPRIGHT/Behind-The-Nineties-Rg.otf") format('opentype'); }
 
   /* ─── TOKENS (mirrored from index.html) ────────────── */
   :root {
-    --bg:      #EEE7DD;
-    --tan:     #CEB298;
-    --sienna:  #9F6C52;
-    --dark:    #1c1410;
-    --cream:   #EEE7DD;
-    --f-now:   'Now', system-ui, sans-serif;
-    --f-body:  'Lora', Georgia, serif;
-    --f-bn:    'BN', Georgia, serif;
-    --ease:    cubic-bezier(0.25, 1, 0.5, 1);
-
-    --c-90: rgba(238,231,221,0.92);
+    --tan:    #CEB298;
+    --sienna: #9F6C52;
+    --dark:   #1c1410;
+    --f-body: 'Lora', Georgia, serif;
+    --f-bn:   'BN', Georgia, serif;
+    --ease:   cubic-bezier(0.25, 1, 0.5, 1);
+    --c-92: rgba(238,231,221,0.92);
     --c-70: rgba(238,231,221,0.70);
     --c-50: rgba(238,231,221,0.50);
     --c-30: rgba(238,231,221,0.30);
+    --hair: rgba(238,231,221,0.10);
   }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; background: var(--dark); }
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; background:var(--dark); }
   body {
-    background: var(--dark);
-    color: var(--c-70);
-    font-family: var(--f-body);
-    font-size: 16px;
-    line-height: 1.85;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    background:var(--dark); color:var(--c-70);
+    font-family:var(--f-body); font-size:16px; line-height:1.85;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
   }
-  img { max-width: 100%; display: block; }
-  a { color: inherit; text-decoration: none; }
-  ul { list-style: none; }
+  img { max-width:100%; display:block; }
+  a { color:inherit; text-decoration:none; }
+  ul { list-style:none; }
 
-  /* Grain, identical to the main site */
   .grain {
-    position: fixed; inset: 0; z-index: 9998; pointer-events: none;
-    opacity: 0.085;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 200px;
+    position:fixed; inset:0; z-index:9998; pointer-events:none; opacity:0.085;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:200px;
   }
 
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
-  .sec { padding: clamp(72px, 9vw, 128px) 0; }
+  .wrap { max-width:1120px; margin:0 auto; padding:0 32px; }
+  .narrow { max-width:64ch; }
+  .sec { padding:clamp(68px, 8vw, 116px) 0; }
+  .rule { border-top:1px solid var(--hair); }
 
   /* ─── TOP BAR ──────────────────────────────────────── */
   .topbar {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(28,20,9,0.72);
-    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(238,231,221,0.08);
-    padding: 16px 0;
+    position:sticky; top:0; z-index:50;
+    background:rgba(28,20,9,0.72);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(238,231,221,0.08); padding:16px 0;
   }
-  .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .topbar-inner { display:flex; align-items:center; justify-content:space-between; gap:20px; }
   .topbar a {
-    font-family: 'Poppins', sans-serif; font-size: 11px;
-    letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--c-50); transition: color 0.28s var(--ease);
+    font-family:'Poppins', sans-serif; font-size:11px; letter-spacing:0.16em;
+    text-transform:uppercase; color:var(--c-50); transition:color 0.28s var(--ease);
   }
-  .topbar a:hover { color: var(--c-90); }
-  .topbar .brand { color: var(--c-70); }
+  .topbar a:hover { color:var(--c-92); }
+  .topbar .brand { color:var(--c-70); }
 
-  /* ─── HERO ─────────────────────────────────────────── */
-  .hero { padding: clamp(56px, 7vw, 96px) 0 clamp(64px, 8vw, 110px); }
-  .hero-grid {
-    display: grid; grid-template-columns: 300px 1fr;
-    gap: clamp(40px, 6vw, 88px); align-items: center;
-  }
-  .hero-cover img { filter: drop-shadow(0 30px 64px rgba(0,0,0,0.6)); }
+  /* ─── TYPE ─────────────────────────────────────────── */
   .eyebrow {
-    font-family: var(--f-body); font-style: italic;
-    font-size: 15px; letter-spacing: 0.04em;
-    color: var(--sienna); display: block; margin-bottom: 16px;
+    font-family:var(--f-body); font-style:italic; font-size:15px;
+    letter-spacing:0.04em; color:var(--sienna); display:block; margin-bottom:16px;
   }
   h1 {
-    font-family: var(--f-bn); font-style: italic; font-weight: 400;
-    font-size: clamp(34px, 5.4vw, 60px); line-height: 1.14;
-    letter-spacing: 0.005em; color: var(--c-90);
-    margin-bottom: 14px;
+    font-family:var(--f-bn); font-style:italic; font-weight:400;
+    font-size:clamp(34px, 5.2vw, 58px); line-height:1.14;
+    color:var(--c-92); margin-bottom:14px;
+  }
+  h2 {
+    font-family:var(--f-bn); font-style:italic; font-weight:400;
+    font-size:clamp(26px, 3.3vw, 39px); line-height:1.24;
+    color:var(--c-92); margin-bottom:30px;
   }
   .subtitle {
-    font-family: 'Poppins', sans-serif; font-weight: 300;
-    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--tan); margin-bottom: 30px;
+    font-family:'Poppins', sans-serif; font-weight:300; font-size:12px;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--tan); margin-bottom:30px;
   }
-  .lede { max-width: 48ch; }
-  .lede p + p { margin-top: 18px; }
+  .label {
+    font-family:'Poppins', sans-serif; font-weight:400; font-size:11px;
+    letter-spacing:0.18em; text-transform:uppercase; color:var(--tan); margin-bottom:22px;
+  }
+  p + p { margin-top:18px; }
+
+  /* ─── HERO ─────────────────────────────────────────── */
+  .hero { padding:clamp(52px, 6vw, 88px) 0 clamp(60px, 7vw, 100px); }
+  .hero-grid { display:grid; grid-template-columns:330px 1fr; gap:clamp(40px, 6vw, 84px); align-items:center; }
+  .hero-cover img { border-radius:2px; filter:drop-shadow(0 30px 64px rgba(0,0,0,0.62)); }
 
   /* ─── SIGNUP ───────────────────────────────────────── */
-  .signup { margin-top: 38px; max-width: 470px; }
+  .signup { margin-top:36px; max-width:470px; }
   .signup-lead {
-    font-family: var(--f-bn); font-style: italic;
-    font-size: clamp(19px, 2vw, 24px); line-height: 1.45;
-    color: var(--c-90); margin-bottom: 18px;
+    font-family:var(--f-bn); font-style:italic;
+    font-size:clamp(19px, 2vw, 24px); line-height:1.45;
+    color:var(--c-92); margin-bottom:18px;
   }
-  .signup-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .signup-row { display:flex; flex-wrap:wrap; gap:10px; }
   .signup-input {
-    flex: 1 1 200px; min-width: 0;
-    font-family: var(--f-body); font-size: 13px;
-    letter-spacing: 0.04em; line-height: 1.6;
-    color: var(--c-90);
-    background: rgba(238,231,221,0.08);
-    border: 1px solid rgba(238,231,221,0.22);
-    border-radius: 100px; padding: 13px 22px;
-    transition: all 0.28s var(--ease);
-    -webkit-appearance: none; appearance: none;
+    flex:1 1 200px; min-width:0;
+    font-family:var(--f-body); font-size:13px; letter-spacing:0.04em; line-height:1.6;
+    color:var(--c-92); background:rgba(238,231,221,0.08);
+    border:1px solid rgba(238,231,221,0.22); border-radius:100px; padding:13px 22px;
+    transition:all 0.28s var(--ease); -webkit-appearance:none; appearance:none;
   }
-  .signup-input::placeholder { color: rgba(238,231,221,0.42); font-style: italic; }
+  .signup-input::placeholder { color:rgba(238,231,221,0.42); font-style:italic; }
   .signup-input:focus {
-    outline: none;
-    border-color: rgba(238,231,221,0.48);
-    background: rgba(238,231,221,0.13);
+    outline:none; border-color:rgba(238,231,221,0.48); background:rgba(238,231,221,0.13);
   }
   .btn-cream {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    font-family: var(--f-body); font-style: italic;
-    font-size: 13px; letter-spacing: 0.12em;
-    padding: 14px 36px; border-radius: 100px;
-    background: rgba(238,231,221,0.14);
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-    border: none; position: relative; cursor: pointer;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.20);
-    color: var(--c-90);
-    transition: all 0.28s var(--ease);
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    font-family:var(--f-body); font-style:italic; font-size:13px; letter-spacing:0.12em;
+    padding:14px 36px; border-radius:100px;
+    background:rgba(238,231,221,0.14);
+    backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+    border:none; position:relative; cursor:pointer; color:var(--c-92);
+    box-shadow:0 4px 24px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.20);
+    transition:all 0.28s var(--ease);
   }
   .btn-cream::before {
-    content: ''; position: absolute; inset: 0;
-    border-radius: inherit; padding: 1px;
-    background: linear-gradient(135deg, rgba(238,231,221,0.65) 0%, rgba(238,231,221,0.0) 55%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor; mask-composite: exclude;
-    pointer-events: none;
+    content:''; position:absolute; inset:0; border-radius:inherit; padding:1px;
+    background:linear-gradient(135deg, rgba(238,231,221,0.65) 0%, rgba(238,231,221,0) 55%);
+    -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none;
   }
   .btn-cream:hover {
-    background: rgba(238,231,221,0.26); transform: translateY(-2px);
-    box-shadow: 0 10px 32px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.28);
+    background:rgba(238,231,221,0.26); transform:translateY(-2px);
+    box-shadow:0 10px 32px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.28);
   }
   .signup-note {
-    font-family: var(--f-body); font-size: 11.5px;
-    letter-spacing: 0.04em; color: rgba(238,231,221,0.42);
-    margin-top: 14px;
+    font-family:var(--f-body); font-size:11.5px; letter-spacing:0.04em;
+    color:rgba(238,231,221,0.42); margin-top:14px;
   }
   .signup-success {
-    font-family: var(--f-bn); font-style: italic;
-    font-size: clamp(19px, 2vw, 24px); line-height: 1.5;
-    color: var(--c-90);
+    font-family:var(--f-bn); font-style:italic;
+    font-size:clamp(19px, 2vw, 24px); line-height:1.5; color:var(--c-92);
   }
 
-  /* ─── SECTION FURNITURE ────────────────────────────── */
-  .rule { border-top: 1px solid rgba(238,231,221,0.10); }
-  h2 {
-    font-family: var(--f-bn); font-style: italic; font-weight: 400;
-    font-size: clamp(26px, 3.4vw, 40px); line-height: 1.22;
-    color: var(--c-90); margin-bottom: 34px;
+  /* ─── LOOK INSIDE (was the Squarespace gallery) ────── */
+  .pages {
+    display:flex; gap:20px; overflow-x:auto; padding-bottom:18px;
+    scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
   }
-  .sec-intro { max-width: 56ch; margin-bottom: 52px; }
+  .pages::-webkit-scrollbar { height:3px; }
+  .pages::-webkit-scrollbar-track { background:rgba(238,231,221,0.06); }
+  .pages::-webkit-scrollbar-thumb { background:rgba(238,231,221,0.22); }
+  .page-shot {
+    flex:0 0 auto; width:clamp(190px, 24vw, 268px); scroll-snap-align:start;
+    border:1px solid rgba(238,231,221,0.14); border-radius:2px;
+    box-shadow:0 18px 46px rgba(0,0,0,0.5);
+  }
+  .pages-hint {
+    font-family:'Poppins', sans-serif; font-size:11px; letter-spacing:0.16em;
+    text-transform:uppercase; color:var(--c-30); margin-top:20px;
+  }
+
+  /* ─── BENEFITS + FOR/AGAINST LISTS ─────────────────── */
+  .list li { padding-left:26px; position:relative; margin-bottom:14px; line-height:1.72; }
+  .list li::before {
+    content:''; position:absolute; left:0; top:13px;
+    width:10px; height:1px; background:var(--sienna);
+  }
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px, 5vw, 68px); }
+  .mark-list li { padding-left:30px; position:relative; margin-bottom:14px; line-height:1.72; }
+  .mark-list li::before {
+    position:absolute; left:0; top:0; font-family:var(--f-body); font-size:14px;
+  }
+  .yes li::before { content:'✓'; color:var(--tan); }
+  .no  li::before { content:'✕'; color:rgba(238,231,221,0.30); }
+  .no li { color:var(--c-50); }
 
   /* ─── THE SEVEN TRUTHS ─────────────────────────────── */
-  .truths { display: grid; gap: 2px; }
   .truth {
-    display: grid; grid-template-columns: 88px 1fr;
-    gap: 28px; align-items: start;
-    padding: 26px 0;
-    border-top: 1px solid rgba(238,231,221,0.10);
+    display:grid; grid-template-columns:132px 1fr; gap:clamp(28px, 4vw, 56px);
+    align-items:center; padding:clamp(30px, 3.6vw, 46px) 0;
+    border-top:1px solid var(--hair);
   }
-  .truth:last-child { border-bottom: 1px solid rgba(238,231,221,0.10); }
+  .truth:last-of-type { border-bottom:1px solid var(--hair); }
+  .truth:nth-of-type(even) .truth-icon { order:2; }
+  .truth:nth-of-type(even) .truth-body { order:1; text-align:right; }
+  .truth:nth-of-type(even) { grid-template-columns:1fr 132px; }
+  .truth-icon {
+    width:118px; height:118px; border-radius:50%;
+    background:rgba(238,231,221,0.93);
+    display:grid; place-items:center; overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  }
+  .truth-icon img { width:196%; max-width:none; }
   .truth-num {
-    font-family: var(--f-bn); font-style: italic;
-    font-size: 26px; color: var(--sienna); line-height: 1.2;
+    font-family:'Poppins', sans-serif; font-size:11px; letter-spacing:0.2em;
+    text-transform:uppercase; color:var(--tan); margin-bottom:8px;
   }
   .truth-name {
-    font-family: var(--f-bn); font-style: italic;
-    font-size: clamp(20px, 2.2vw, 26px); color: var(--c-90);
-    line-height: 1.3; margin-bottom: 10px;
+    font-family:var(--f-bn); font-style:italic;
+    font-size:clamp(22px, 2.5vw, 30px); line-height:1.25;
+    color:var(--c-92); margin-bottom:12px;
   }
-  .truth-chapters {
-    font-family: var(--f-body); font-size: 14px;
-    line-height: 1.9; color: rgba(238,231,221,0.52);
-  }
+  .truth-body p { max-width:56ch; }
+  .truth:nth-of-type(even) .truth-body p { margin-left:auto; }
 
-  /* ─── FOR / NOT FOR ────────────────────────────────── */
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); }
-  .col-label {
-    font-family: 'Poppins', sans-serif; font-weight: 400;
-    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--tan); margin-bottom: 22px;
-  }
-  .list li {
-    padding-left: 24px; position: relative; margin-bottom: 14px;
-    line-height: 1.75;
-  }
-  .list li::before {
-    content: ''; position: absolute; left: 0; top: 13px;
-    width: 9px; height: 1px; background: var(--sienna);
-  }
+  /* ─── METAMORPHOSIS ────────────────────────────────── */
+  .meta-img { max-width:440px; margin:0 auto 48px; }
+  .meta-img img { border-radius:2px; box-shadow:0 26px 60px rgba(0,0,0,0.55); }
 
-  /* ─── QUOTE ────────────────────────────────────────── */
+  /* ─── TESTIMONIAL ──────────────────────────────────── */
   .quote {
-    font-family: var(--f-bn); font-style: italic;
-    font-size: clamp(24px, 3.4vw, 40px); line-height: 1.35;
-    color: var(--c-90); max-width: 20ch; margin: 0 auto;
-    text-align: center;
+    font-family:var(--f-bn); font-style:italic;
+    font-size:clamp(19px, 2.3vw, 27px); line-height:1.5;
+    color:var(--c-92); border-left:1px solid var(--sienna);
+    padding-left:clamp(22px, 3vw, 38px); max-width:40ch;
   }
   .quote-attr {
-    font-family: 'Poppins', sans-serif; font-size: 11px;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--c-30); text-align: center; margin-top: 28px;
+    font-family:'Poppins', sans-serif; font-size:11px; letter-spacing:0.18em;
+    text-transform:uppercase; color:var(--c-30);
+    margin-top:22px; padding-left:clamp(23px, 3vw, 39px);
   }
 
-  /* ─── CLOSING ──────────────────────────────────────── */
-  .closing { text-align: center; }
-  .closing h2 { margin-bottom: 22px; }
-  .closing p { max-width: 46ch; margin: 0 auto 34px; }
+  /* ─── FAQ ──────────────────────────────────────────── */
+  .faq details { border-top:1px solid var(--hair); }
+  .faq details:last-child { border-bottom:1px solid var(--hair); }
+  .faq summary {
+    list-style:none; cursor:pointer; padding:24px 44px 24px 0; position:relative;
+    font-family:'Libre Baskerville', Georgia, serif; font-size:15.5px; line-height:1.6;
+    color:var(--c-92); transition:color 0.28s var(--ease);
+  }
+  .faq summary::-webkit-details-marker { display:none; }
+  .faq summary:hover { color:#fff; }
+  .faq summary::after {
+    content:''; position:absolute; right:6px; top:34px;
+    width:11px; height:1px; background:var(--tan);
+    box-shadow:0 0 0 0 transparent;
+  }
+  .faq summary::before {
+    content:''; position:absolute; right:11px; top:29px;
+    width:1px; height:11px; background:var(--tan);
+    transition:transform 0.28s var(--ease), opacity 0.28s var(--ease);
+  }
+  .faq details[open] summary::before { transform:rotate(90deg); opacity:0; }
+  .faq-a { padding:0 44px 26px 0; max-width:70ch; }
 
-  /* ─── FOOTER ───────────────────────────────────────── */
-  footer { border-top: 1px solid rgba(238,231,221,0.10); padding: 48px 0 56px; }
-  .foot-inner { display: flex; flex-wrap: wrap; gap: 18px 34px; justify-content: space-between; align-items: center; }
-  .foot-links { display: flex; flex-wrap: wrap; gap: 26px; }
+  /* ─── CLOSING + FOOTER ─────────────────────────────── */
+  .closing { text-align:center; }
+  .closing p { max-width:46ch; margin:0 auto 34px; }
+  footer { border-top:1px solid var(--hair); padding:46px 0 56px; }
+  .foot-inner { display:flex; flex-wrap:wrap; gap:18px 34px; justify-content:space-between; align-items:center; }
+  .foot-links { display:flex; flex-wrap:wrap; gap:26px; }
   .foot-links a, .foot-copy {
-    font-family: var(--f-body); font-size: 12.5px;
-    letter-spacing: 0.05em; color: rgba(238,231,221,0.42);
-    transition: color 0.28s var(--ease);
+    font-family:var(--f-body); font-size:12.5px; letter-spacing:0.05em;
+    color:rgba(238,231,221,0.42); transition:color 0.28s var(--ease);
   }
-  .foot-links a:hover { color: var(--c-90); }
+  .foot-links a:hover { color:var(--c-92); }
 
   /* ─── RESPONSIVE ───────────────────────────────────── */
-  @media (max-width: 900px) {
-    .hero-grid { grid-template-columns: 1fr; justify-items: start; }
-    .hero-cover { max-width: 230px; }
-    .two-col { grid-template-columns: 1fr; }
+  @media (max-width:900px) {
+    .hero-grid { grid-template-columns:1fr; justify-items:start; }
+    .hero-cover { max-width:250px; }
+    .two-col { grid-template-columns:1fr; }
   }
-  @media (max-width: 560px) {
-    .wrap { padding: 0 24px; }
-    .signup-row { flex-direction: column; }
-    .signup-row .btn-cream { width: 100%; }
-    .truth { grid-template-columns: 1fr; gap: 8px; }
-    .truth-num { font-size: 20px; }
+  @media (max-width:640px) {
+    .wrap { padding:0 24px; }
+    .signup-row { flex-direction:column; }
+    .signup-row .btn-cream { width:100%; }
+    .truth,
+    .truth:nth-of-type(even) { grid-template-columns:1fr; gap:20px; }
+    .truth:nth-of-type(even) .truth-icon { order:0; }
+    .truth:nth-of-type(even) .truth-body { order:0; text-align:left; }
+    .truth:nth-of-type(even) .truth-body p { margin-left:0; }
+    .truth-icon { width:92px; height:92px; }
   }
 </style>
 </head>
@@ -291,22 +306,17 @@
 <!-- ── HERO ──────────────────────────────────────────── -->
 <section class="hero wrap" id="get">
   <div class="hero-grid">
-
     <div class="hero-cover">
-      <img src="./Website FINAL Images/Book NEW.png"
-           alt="Cover of Death of the Old World by Lara Yap, a red hardcover with butterfly wings"
-           width="300" height="450">
+      <img src="./Book/Death of the Old World Ebook.png"
+           alt="Death of the Old World, 7 Universal Truths of Existence, by Lara Yap"
+           width="1080" height="1350">
     </div>
-
     <div>
       <span class="eyebrow">Reality, simplified</span>
       <h1>Death of the Old World</h1>
       <p class="subtitle">7 Universal Truths of Existence</p>
-
-      <div class="lede">
-        <p>If you have been asking existential questions nobody around you can answer, this book was written for you.</p>
-        <p>Most books answer one question. This one follows them all the way down: why reality is not what it appears, how your inner world shapes your outer one, what time and death are, and what you are capable of when you understand how consciousness works.</p>
-      </div>
+      <p>Some questions don't have easy answers. Why am I here. Why does life feel like something I'm watching from behind glass. Why do I feel more lost the more I achieve.</p>
+      <p>This book was written for the person asking those questions.</p>
 
       <!-- MailerLite form CVXA32 -->
       <div id="mlb2-44160109" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-44160109 signup">
@@ -317,8 +327,7 @@
                 data-code="" method="post" target="_blank">
             <div class="signup-row">
               <input aria-label="Email" aria-required="true" type="email" required
-                     class="signup-input" name="fields[email]"
-                     placeholder="Email" autocomplete="email">
+                     class="signup-input" name="fields[email]" placeholder="Email" autocomplete="email">
               <input type="hidden" name="ml-submit" value="1">
               <input type="hidden" name="anticsrf" value="true">
               <button type="submit" class="btn-cream">Send me the book</button>
@@ -330,114 +339,218 @@
           <p class="signup-success">Check your inbox, the book is on its way. If it is not there in a few minutes, look in Promotions or spam.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ── WHAT IS INSIDE ────────────────────────────────── -->
+<!-- ── LOOK INSIDE ───────────────────────────────────── -->
 <section class="sec rule">
   <div class="wrap">
-    <h2>What is inside</h2>
-    <div class="sec-intro">
-      <p>Seven truths, each one built on the one before it. Every chapter is supported by cited research, so nothing here asks you to take it on faith.</p>
+    <p class="label">Look inside</p>
+    <div class="pages">
+      <img class="page-shot" src="./Book/Preface 1.png" alt="Preface, page one" loading="lazy" width="1078" height="1532">
+      <img class="page-shot" src="./Book/Preface 2.png" alt="Preface, page two" loading="lazy" width="1078" height="1532">
+      <img class="page-shot" src="./Book/Preface 3.png" alt="Preface, page three" loading="lazy" width="1078" height="1532">
+      <img class="page-shot" src="./Book/Preface 4.png" alt="Preface, page four" loading="lazy" width="1078" height="1532">
+      <img class="page-shot" src="./Book/TOC 1.png" alt="Table of contents, page one" loading="lazy" width="1078" height="1532">
+      <img class="page-shot" src="./Book/TOC 2.png" alt="Table of contents, page two" loading="lazy" width="1078" height="1532">
     </div>
-
-    <div class="truths">
-      <div class="truth">
-        <div class="truth-num">I</div>
-        <div>
-          <div class="truth-name">Duality</div>
-          <div class="truth-chapters">Reality in Two States · Polarity of Existence · The Duality Within · The Ego's Play · Breaking Free from Illusion</div>
-        </div>
-      </div>
-      <div class="truth">
-        <div class="truth-num">II</div>
-        <div>
-          <div class="truth-name">All is One</div>
-          <div class="truth-chapters">The Universe in a Particle · Divine Oneness · Infinite Love</div>
-        </div>
-      </div>
-      <div class="truth">
-        <div class="truth-num">III</div>
-        <div>
-          <div class="truth-name">Perceived Reality</div>
-          <div class="truth-chapters">The Multiverse We Live In · Lens of the Mind · The Cage is Open · The Untold Secret · Awakened vs Enlightened</div>
-        </div>
-      </div>
-      <div class="truth">
-        <div class="truth-num">IV</div>
-        <div>
-          <div class="truth-name">Law of Vibration</div>
-          <div class="truth-chapters">Human Energy Field · Scale of Consciousness · Quantum Leaping · Unresolved Emotions · Protect Your Light</div>
-        </div>
-      </div>
-      <div class="truth">
-        <div class="truth-num">V</div>
-        <div>
-          <div class="truth-name">Time is Relative</div>
-          <div class="truth-chapters">Rewriting the Past? · The Prison of Time · The Living Rhythm of Time · The Eternal Now · Divine Timing</div>
-        </div>
-      </div>
-      <div class="truth">
-        <div class="truth-num">VI</div>
-        <div>
-          <div class="truth-name">Destiny, Karma, and Free Will</div>
-          <div class="truth-chapters">The Part Already Written · Looking Karma in the Mirror · The Part You Write</div>
-        </div>
-      </div>
-      <div class="truth">
-        <div class="truth-num">VII</div>
-        <div>
-          <div class="truth-name">Layers of Being</div>
-          <div class="truth-chapters">When it all makes sense · The Death of Fear</div>
-        </div>
-      </div>
-    </div>
+    <p class="pages-hint">Scroll to read the preface and contents</p>
   </div>
 </section>
 
-<!-- ── QUOTE ─────────────────────────────────────────── -->
+<!-- ── WHAT IT IS ────────────────────────────────────── -->
 <section class="sec rule">
-  <div class="wrap">
-    <p class="quote">Science explains what we can measure. Ancient wisdom explains what we cannot yet.</p>
-    <p class="quote-attr">From the preface</p>
+  <div class="wrap narrow">
+    <h2>What this book is</h2>
+    <p><em>Death of the Old World</em> reveals 7 universal truths about how existence actually works, drawing from quantum physics, neuroscience, ancient wisdom, and consciousness research. It covers everything the big questions lead to: why reality is not what it appears, how your inner world shapes your outer one, what time and death actually are, and what you are capable of when you understand how consciousness works.</p>
+    <p>These truths have always existed across science and spirituality, separated by language and culture but pointing at the same thing. This book puts them together, in plain language, for the first time.</p>
+    <p>After 11 years of sitting with the questions nobody around me could answer, researching consciousness and the psychology of the mind, I wrote the book I wished had existed.</p>
   </div>
 </section>
 
-<!-- ── WHO IT IS FOR ─────────────────────────────────── -->
+<!-- ── WHAT YOU TAKE FROM IT ─────────────────────────── -->
+<section class="sec rule">
+  <div class="wrap narrow">
+    <h2>What you will take from it</h2>
+    <ul class="list">
+      <li>Understand why emotional pain exists and what it is actually asking of you</li>
+      <li>Break the repetitive patterns that keep pulling you back</li>
+      <li>Build emotional resilience and inner stability</li>
+      <li>Experience joy without needing external escapes</li>
+      <li>See how your vibration shapes what you attract into your life</li>
+      <li>Understand time, death, karma, and reality as they actually are</li>
+      <li>Stop feeling powerless inside your own life</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── NOT FOR EVERYONE ──────────────────────────────── -->
 <section class="sec rule">
   <div class="wrap">
-    <h2>Who this is for</h2>
+    <h2>This isn't for everyone</h2>
     <div class="two-col">
       <div>
-        <p class="col-label">Written for you if</p>
-        <ul class="list">
-          <li>You have been asking why you are here, and the answers around you stopped satisfying a long time ago.</li>
-          <li>You think in evidence. You want the research, not a request to simply believe.</li>
-          <li>From the outside things look fine, and something still feels unfinished.</li>
-          <li>You have read the self-help and found it worked on the surface only.</li>
+        <p class="label">For you if</p>
+        <ul class="mark-list yes">
+          <li>You ask "why am I here" more than you'd admit out loud</li>
+          <li>You're rational and need the science, not just belief</li>
+          <li>You sense there's a bigger picture you're missing</li>
+          <li>You're ready to grow beyond your current identity</li>
+          <li>Your life looks successful but feels hollow</li>
         </ul>
       </div>
       <div>
-        <p class="col-label">Probably not for you if</p>
-        <ul class="list">
-          <li>You want a quick fix or a five step morning routine.</li>
-          <li>You would rather not have your assumptions about reality touched.</li>
-          <li>You are looking for religion. This is not one, and it does not ask you to join anything.</li>
+        <p class="label">Not for you if</p>
+        <ul class="mark-list no">
+          <li>You accept what you were taught without asking why</li>
+          <li>You're looking for a quick mindset hack</li>
+          <li>You prefer comfort over confronting your patterns</li>
+          <li>You shut down at ideas outside the mainstream</li>
+          <li>You're looking for storytelling instead of fact-filled answers</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── WHY I WROTE IT ────────────────────────────────── -->
+<!-- ── THE SEVEN TRUTHS ──────────────────────────────── -->
 <section class="sec rule">
   <div class="wrap">
-    <h2>Why I wrote it</h2>
-    <div class="sec-intro">
-      <p>After 11 years of researching consciousness and the psychology of the mind, I wrote the book my younger self wished had existed.</p>
-      <p style="margin-top:18px">I have always been a rational thinker who loves science and maths, and I enjoy fitting the puzzle together until every piece has a place. So this is drawn from science, philosophy, and ancient wisdom, footnoted where it needs to be, and non religious throughout. It is for the ones who were always meant to know.</p>
+    <h2>The seven truths</h2>
+
+    <div class="truth">
+      <div class="truth-icon"><img src="./Book/7 Truths Icon/Truth I - Duality.png" alt="" loading="lazy"></div>
+      <div class="truth-body">
+        <p class="truth-num">Truth I</p>
+        <p class="truth-name">Duality</p>
+        <p>Why do you love someone and hate them at the same time? Find out what that tension is doing for you, and why fighting the darkness in you has been the wrong move all along.</p>
+      </div>
+    </div>
+
+    <div class="truth">
+      <div class="truth-icon"><img src="./Book/7 Truths Icon/Truth II - All is One.png" alt="" loading="lazy"></div>
+      <div class="truth-body">
+        <p class="truth-num">Truth II</p>
+        <p class="truth-name">All is One</p>
+        <p>Why do religions across every language and geography carry the same core message? This chapter explains what that means for your loneliness, your relationships, and how the world treats you.</p>
+      </div>
+    </div>
+
+    <div class="truth">
+      <div class="truth-icon"><img src="./Book/7 Truths Icon/Truth III - Perceived Reality.png" alt="" loading="lazy"></div>
+      <div class="truth-body">
+        <p class="truth-num">Truth III</p>
+        <p class="truth-name">Perceived Reality</p>
+        <p>Why can two people tell completely different stories of the same event? This chapter shows you exactly where the gap is, and how to use it to your advantage.</p>
+      </div>
+    </div>
+
+    <div class="truth">
+      <div class="truth-icon"><img src="./Book/7 Truths Icon/Truth IV - Law of Vibration.png" alt="" loading="lazy"></div>
+      <div class="truth-body">
+        <p class="truth-num">Truth IV</p>
+        <p class="truth-name">Law of Vibration</p>
+        <p>Why do you attract the same type of person, the same pattern, year after year? This chapter shows you how to shift the frequency and start manifesting the life you actually want.</p>
+      </div>
+    </div>
+
+    <div class="truth">
+      <div class="truth-icon"><img src="./Book/7 Truths Icon/Truth V - Time is Relative.png" alt="" loading="lazy"></div>
+      <div class="truth-body">
+        <p class="truth-num">Truth V</p>
+        <p class="truth-name">Time is Relative</p>
+        <p>Why can't you stop replaying the past, or worrying about a future that hasn't happened yet? Learn how to stop carrying that weight, and quantum leap from there.</p>
+      </div>
+    </div>
+
+    <div class="truth">
+      <div class="truth-icon"><img src="./Book/7 Truths Icon/Truth VI - Destiny, Karma, FreeWill.png" alt="" loading="lazy"></div>
+      <div class="truth-body">
+        <p class="truth-num">Truth VI</p>
+        <p class="truth-name">Destiny, Karma &amp; Free Will</p>
+        <p>Do you actually have free will, or is your life already written? This chapter shows you how to dissolve old karma and embrace your true freedom.</p>
+      </div>
+    </div>
+
+    <div class="truth">
+      <div class="truth-icon"><img src="./Book/7 Truths Icon/Truth VII - Layers of Consciousness.png" alt="" loading="lazy"></div>
+      <div class="truth-body">
+        <p class="truth-num">Truth VII</p>
+        <p class="truth-name">Layers of Being</p>
+        <p>What are you, beyond this body and this one lifetime? This chapter maps the path from a single awakening to full enlightenment. Once you see it clearly, your fears collapse.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── LETTING THE OLD WORLD DIE ─────────────────────── -->
+<section class="sec rule">
+  <div class="wrap">
+    <div class="meta-img">
+      <img src="./Book/Death of the Old World Ebook.png" alt="Death of the Old World" loading="lazy" width="1080" height="1350">
+    </div>
+    <div class="narrow" style="margin:0 auto">
+      <h2>What it means to let your old world die</h2>
+      <p>Letting your old world go is a process of death. Like metamorphosis, the caterpillar dissolves completely before it becomes a butterfly.</p>
+      <p>Your limiting beliefs were installed before you were old enough to question them. The fear running your decisions, the pattern you keep calling bad luck, the same fight, the same disappointment, the same person in different bodies. None of it is random. It's wired. Literally, biologically wired into you, repeating itself because your nervous system mistook familiar for safe a long time ago.</p>
+      <p>Your comfort zone was never about comfort. It's just the one place your unconscious mind gets to stay right and unchallenged, so it can continue to blame the world for a loop you've been running on autopilot. If you're observant enough you'll see it. You're running your parents' inherited programming, completing their unfinished lessons.</p>
+      <p>And this is where many choose to look away. The version of you who feels victimized by your circumstances and the version who built them are the same person.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIAL ───────────────────────────────────── -->
+<section class="sec rule">
+  <div class="wrap">
+    <blockquote class="quote">Felt like I woke up in a completely different room today. The weird daze, or should I say high, lasted for about two days. I'm looking at life from a higher lens and ngl it's disorienting. But this morning my mind finally settles down, I haven't felt this peace in years.</blockquote>
+    <p class="quote-attr">A reader</p>
+    <div class="narrow" style="margin-top:48px">
+      <p>The design of this game is perfect. Before you crack the code, you have to survive the question mark.</p>
+      <p>That initial disorientation is just the autopilot fighting to stay on. It knows what it is about to lose. What feels like falling apart is just the death of our old iterations.</p>
+      <p>Your old world has to dissolve before you can step into the vacuum of infinite possibilities. The loop belonged to your past. The exit belongs to you. Once you step through, you reclaim your power, as the architect, writer, creator of your own story.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ───────────────────────────────────────────── -->
+<section class="sec rule">
+  <div class="wrap">
+    <h2>Questions</h2>
+    <div class="faq">
+      <details>
+        <summary>Is this tied to one religion or belief system?</summary>
+        <div class="faq-a"><p>No. The book pulls from quantum physics, neuroscience, and philosophy across multiple traditions, Eastern and Western both. It connects dots that science and ancient thought have both been pointing at separately, no faith required.</p></div>
+      </details>
+      <details>
+        <summary>Do I need a background in science or spirituality to understand this?</summary>
+        <div class="faq-a"><p>No. The science is explained in plain language, no jargon, no equations. If you've ever wondered why things happen the way they do, that's the only prerequisite.</p></div>
+      </details>
+      <details>
+        <summary>What if I don't believe in things like karma or past lives?</summary>
+        <div class="faq-a"><p>You don't have to walk in believing anything. The book builds each idea from evidence first, belief second. Several chapters work even if you only accept the physics and leave the rest as a question mark.</p></div>
+      </details>
+      <details>
+        <summary>Am I too old to change?</summary>
+        <div class="faq-a"><p>No. Every present moment gives you the power to decide differently. Age has nothing to do with it.</p></div>
+      </details>
+      <details>
+        <summary>What if I'm scared of what I'll find out about myself?</summary>
+        <div class="faq-a"><p>That fear is common. Your brain is wired to protect you, and the familiar always feels safer than the unknown, even when the familiar is what's keeping you stuck. The discomfort means you're doing something right.</p></div>
+      </details>
+      <details>
+        <summary>Is this information dangerous?</summary>
+        <div class="faq-a"><p>No, but it could shift your whole reality. If you're happy where you are and not ready to know more, this isn't for you.</p></div>
+      </details>
+      <details>
+        <summary>What format do I get, and how do I read it?</summary>
+        <div class="faq-a"><p>A PDF. Enter your email above and it arrives straight away, with a download link you can save to any device and keep. If you would rather read it on Kindle or hold a paperback, both editions are on Amazon.</p></div>
+      </details>
+      <details>
+        <summary>Can I share it with someone?</summary>
+        <div class="faq-a"><p>Please do. If someone comes to mind while you're reading, send it to them.</p></div>
+      </details>
     </div>
   </div>
 </section>
@@ -459,7 +572,7 @@
       <a href="https://www.instagram.com/thepresent.club" target="_blank" rel="noopener">Instagram</a>
       <a href="https://youtube.com/@mindaligner" target="_blank" rel="noopener">YouTube</a>
     </div>
-    <p class="foot-copy">&copy; 2026 Lara Yap. All rights reserved.</p>
+    <p class="foot-copy">&copy; 2026 The Present Sdn Bhd. All rights reserved.</p>
   </div>
 </footer>
 
