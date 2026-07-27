@@ -2171,17 +2171,6 @@
     })();
 
 
-    /* safety net: a loader that cannot be dismissed traps the visitor on a
-       page whose whole job is a signup, so it clears itself either way */
-    (function(){
-      var l=document.getElementById('loader'); if(!l) return;
-      setTimeout(function(){
-        if(!l.isConnected || l.style.display==='none' || l.style.opacity==='0') return;
-        try{ sessionStorage.setItem('tp_intro','1'); }catch(e){}
-        l.style.opacity='0';
-        setTimeout(function(){ l.style.display='none'; },700);
-      }, 6000);
-    })();
     
     /* ─── LOADER SPIRAL (GSAP vortex — forms, then disperses) ── */
     (function () {
@@ -2586,7 +2575,7 @@
          recomputed every frame by the scroll map below, so the entrance
          is a multiplier rather than a transition. */
       let introStart = 0;
-      const INTRO_DUR = 1500;
+      const INTRO_DUR = 950;
       const smooth = t => t * t * (3 - 2 * t);
       const introAt = (now, offset) =>
         introStart ? smooth(clamp((now - introStart - offset) / INTRO_DUR, 0, 1)) : 0;
