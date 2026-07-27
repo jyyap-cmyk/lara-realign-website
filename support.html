@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Keep the Spark Alive | Lara Yap</title>
+<meta name="description" content="Death of the Old World is gifted openly. If it helped you, a small donation keeps the work going. Card from anywhere, or Touch 'n Go and DuitNow from Malaysia.">
+<meta name="robots" content="noindex, follow">
+
+<script>try{if(sessionStorage.getItem('tp_intro')==='1')document.documentElement.classList.add('intro-seen');}catch(e){}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+@font-face { font-family:'Now'; font-weight:300; font-style:normal; font-display:swap;
+  src:url("./now OTF/Now-Light.otf") format('opentype'); }
+@font-face { font-family:'Now'; font-weight:400; font-style:normal; font-display:swap;
+  src:url("./now OTF/Now-Regular.otf") format('opentype'); }
+@font-face { font-family:'BN'; font-weight:400; font-style:italic; font-display:swap;
+  src:url("./Behind the nineties OTF/ITALIC/Behind-The-Nineties-It.otf") format('opentype'); }
+
+:root{
+  --ink:#5e1803; --paper:#f4f2eb; --sand:#e7daca; --sienna:#9F6C52;
+  --rule:rgba(94,24,3,0.16);
+  --f-now:'Now', system-ui, sans-serif;
+  --f-body:'Lora', Georgia, serif;
+  --f-read:'Libre Baskerville', Georgia, serif;
+  --f-bn:'BN', Georgia, serif;
+  --ease:cubic-bezier(0.25, 1, 0.5, 1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-read);
+  font-size:16px;line-height:1.85;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;cursor:none}
+@media (hover: none){body{cursor:auto}}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:none}
+@media (hover: none){button{cursor:auto}}
+
+#cursor{position:fixed;z-index:100001;pointer-events:none;width:28px;height:28px;
+  top:0;left:0;transform:translate(-50%,-50%);display:none}
+@media (hover: hover){#cursor{display:block}}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+
+/* nav, same as the book page */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;height:80px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 52px;
+  background:transparent}
+.nav-logo{font-family:var(--f-now);font-weight:300;font-size:9.5px;
+  letter-spacing:0.16em;text-transform:uppercase;color:rgba(94,24,3,0.82)}
+.nav-logo span{opacity:0.45;margin:0 7px}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-family:var(--f-now);font-size:9px;font-weight:300;
+  letter-spacing:0.16em;text-transform:uppercase;color:rgba(94,24,3,0.62);
+  transition:opacity .2s}
+.nav-links a:hover{opacity:0.6}
+@media (max-width: 720px){ .nav{padding:0 28px} .nav-links{gap:18px} }
+
+/* hero band, the same photograph as the book page */
+.band{position:relative;width:100%;min-height:clamp(300px,34vw,460px);
+  display:grid;place-items:center;text-align:center;overflow:hidden;
+  border-radius:0 0 22px 22px}
+.band img{position:absolute;left:0;right:0;top:-8%;width:100%;height:116%;
+  object-fit:cover;object-position:center 43%}
+.band::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 42%, rgba(244,242,235,0.32) 0%,
+    rgba(244,242,235,0.62) 46%, rgba(244,242,235,0.88) 100%)}
+.band-inner{position:relative;z-index:2;padding:118px 5vw 44px;max-width:min(88vw,780px)}
+h1{font-family:var(--f-bn);font-style:italic;font-weight:400;
+  font-size:clamp(32px,4.3vw,58px);line-height:1.12;margin-bottom:18px;
+  text-shadow:0 1px 26px rgba(244,242,235,0.9)}
+.lede{max-width:44ch;margin:0 auto;text-shadow:0 1px 18px rgba(244,242,235,0.95)}
+
+/* the two routes */
+.routes{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3.4vw,48px);
+  align-items:start;padding:clamp(56px,7vw,96px) 0 clamp(20px,3vw,36px)}
+.route{border:1px solid var(--rule);border-radius:22px;padding:clamp(28px,3vw,42px);
+  display:flex;flex-direction:column;align-items:flex-start}
+.route-label{font-family:var(--f-now);font-weight:400;font-size:11px;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--sienna);
+  margin-bottom:14px}
+.route h2{font-family:var(--f-bn);font-style:italic;font-weight:400;
+  font-size:clamp(22px,2.4vw,30px);line-height:1.25;margin-bottom:12px}
+.route p{font-size:15px;line-height:1.8;margin-bottom:24px}
+.route .spacer{display:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:var(--f-body);font-style:italic;font-size:13px;letter-spacing:0.12em;
+  padding:14px 32px;border-radius:100px;background:var(--ink);color:var(--paper);
+  box-shadow:0 4px 20px rgba(94,24,3,0.18);transition:all .28s var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(94,24,3,0.26)}
+.qr{margin-top:26px;width:100%;max-width:230px;align-self:center;
+  border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(94,24,3,0.12)}
+.qr-note{font-size:13px;line-height:1.7;opacity:0.7;margin-top:14px;
+  align-self:center;text-align:center;max-width:30ch}
+
+.tail{padding:0 0 clamp(60px,7vw,96px);text-align:center}
+.tail p{max-width:46ch;margin:0 auto;font-size:15px;opacity:0.72}
+.tail .thanks{font-family:var(--f-bn);font-style:italic;font-size:clamp(19px,2vw,25px);
+  opacity:1;margin-bottom:16px;line-height:1.45}
+
+footer{border-top:1px solid var(--rule);padding:40px 0 56px;text-align:center}
+.foot-links{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;margin-bottom:16px}
+.foot-links a, .foot-copy{font-family:var(--f-body);font-size:13px;
+  letter-spacing:0.05em;color:rgba(94,24,3,0.55);transition:color .2s ease}
+.foot-links a:hover{color:rgba(94,24,3,0.95)}
+
+@media (max-width: 780px){
+  .routes{grid-template-columns:1fr}
+  .band-inner{padding:104px 24px 34px}
+}
+</style>
+</head>
+<body>
+
+<div id="cursor" aria-hidden="true">
+  <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+    <path d="M14,1 L15.7,11.3 L26,14 L15.7,16.7 L14,27 L12.3,16.7 L2,14 L12.3,11.3 Z"
+      fill="#A7B9C6" opacity="0.78"/>
+    <circle cx="14" cy="14" r="2.2" fill="#A7B9C6"/>
+  </svg>
+</div>
+
+<nav class="nav" role="navigation" aria-label="Main">
+  <div class="nav-logo">Lara Yap <span>·</span> Mind Aligner</div>
+  <ul class="nav-links" role="list">
+    <li><a href="/book.html">The Book</a></li>
+    <li><a href="/">The Realign</a></li>
+  </ul>
+</nav>
+
+<section class="band">
+  <img src="./Website FINAL Images/Spark.jpg" alt="">
+  <div class="band-inner">
+    <h1>Keep the Spark Alive</h1>
+    <p class="lede">This book is gifted openly, because knowledge this fundamental belongs to everyone who seeks to know. If it helped you, a small donation keeps this work going.</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="routes">
+
+    <div class="route">
+      <p class="route-label">From anywhere</p>
+      <h2>Card or bank</h2>
+      <p>Give any amount you like, in USD. There is no suggested figure and no minimum worth mentioning.</p>
+      <div class="spacer"></div>
+      <a class="btn" href="https://buy.stripe.com/8x2bJ1ffnejk1Tg7Kx38402" target="_blank" rel="noopener">
+        Give what feels right
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="route">
+      <p class="route-label">From Malaysia</p>
+      <h2>Touch 'n Go or any bank</h2>
+      <p>Open Touch 'n Go directly, or scan the code below with any Malaysian banking app or eWallet. Nothing is deducted in fees, so the whole amount arrives.</p>
+      <a class="btn" href="https://payment.tngdigital.com.my/sc/bDLonVc72J" target="_blank" rel="noopener">
+        Open Touch 'n Go
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <div class="qr">
+        <img src="./Website FINAL Images/DuitNow QR.png" alt="DuitNow QR code for The Present, accepted by Malaysian banks and eWallets">
+      </div>
+      <p class="qr-note">Works with Maybank, CIMB, Public Bank, Boost, GrabPay and the rest. If you can, put <strong>SPARK</strong> as the reference.</p>
+    </div>
+
+  </div>
+
+  <div class="tail">
+    <p class="thanks">Thank you for keeping it going.</p>
+    <p>Every contribution goes back into the work: the writing, the videos, and keeping the book free for whoever finds it next.</p>
+  </div>
+
+  <footer>
+    <div class="foot-links">
+      <a href="/book.html">Read the book, free</a>
+      <a href="/">The Realign</a>
+      <a href="https://calendly.com/larayapjy/30min" target="_blank" rel="noopener">Clarity Call (Free)</a>
+    </div>
+    <p class="foot-copy">&copy; 2026 Present Sdn Bhd. All rights reserved.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var cur=document.getElementById('cursor'); if(!cur)return;
+  var mx=innerWidth/2,my=innerHeight/2,cx=mx,cy=my;
+  document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;});
+  (function step(){cx+=(mx-cx)*0.25;cy+=(my-cy)*0.25;
+    cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(step);})();
+  var svg=cur.querySelector('svg'); svg.style.transition='transform 0.3s ease';
+  document.querySelectorAll('a, button').forEach(function(el){
+    el.addEventListener('mouseenter',function(){svg.style.transform='scale(1.5) rotate(45deg)';});
+    el.addEventListener('mouseleave',function(){svg.style.transform='scale(1) rotate(0deg)';});
+  });
+})();
+</script>
+
+</body>
+</html>
