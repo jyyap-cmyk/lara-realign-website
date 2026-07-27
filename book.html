@@ -77,9 +77,7 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
 /* ══ NAV, lifted from index.html (light variant) ═════════ */
 .nav{position:fixed;top:0;left:0;right:0;z-index:200;height:80px;
   display:flex;align-items:center;justify-content:space-between;padding:0 52px;
-  background:rgba(244,242,235,0.82);backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(94,24,3,0.07)}
+  background:transparent}
 .nav-logo{font-family:var(--f-now);font-weight:300;font-size:9.5px;
   letter-spacing:0.16em;text-transform:uppercase;color:rgba(94,24,3,0.82)}
 .nav-logo span{opacity:0.45;margin:0 7px}
@@ -186,9 +184,11 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
 .cell p{font-size:1.0093cqw;line-height:1.62;margin:0}
 
 /* ══ LETTING THE OLD WORLD DIE (sand band) ═══════════════ */
-.s-meta{padding-top:9.4cqw;padding-bottom:9.4cqw;background:var(--sand);
-  box-shadow:0 0 0 100vmax var(--sand);clip-path:inset(0 -100vmax)}
+.s-meta{padding-top:7.6cqw;padding-bottom:8.4cqw;background:var(--sand);
+  border-radius:22px;margin:2cqw 0}
+.meta-head{margin-bottom:4.2cqw}
 .meta-img{width:41.115%;margin:0 auto 6.4cqw}
+.meta-after-quote{margin-top:30px}
 .meta-img img{aspect-ratio:478/493;width:100%;object-fit:contain}
 .copy-967{width:83.176%;margin:0 auto}
 .copy-967 blockquote{margin-left:4.137%;width:91.727%;font-style:italic}
@@ -477,12 +477,13 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
 
   <!-- ══ LETTING THE OLD WORLD DIE (sand band) ═════════ -->
   <section class="s-meta pad">
+    <div class="copy-967 meta-head">
+      <h2>What it means to let your old world die</h2>
+    </div>
     <div class="meta-img">
       <img src="./Website FINAL Images/Book NEW.png" alt="Death of the Old World" loading="lazy">
     </div>
     <div class="copy-967">
-      <span class="eyebrow">Metamorphosis</span>
-      <h2>What it means to let your old world die</h2>
       <div class="body">
         <p>Letting your old world go is a process of death. Like metamorphosis, the caterpillar dissolves completely before it becomes a butterfly.</p>
         <p>Your limiting beliefs were installed before you were old enough to question them. The fear running your decisions, the pattern you keep calling bad luck, the same fight, the same disappointment, the same person in different bodies. None of it is random. It's wired. Literally, biologically wired into you, repeating itself because your nervous system mistook familiar for safe a long time ago.</p>
@@ -493,7 +494,7 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
       <div class="body">
         <blockquote>"Felt like I woke up in a completely different room today. The weird daze…or should I say high? lasted for about two days. I'm looking at life from a higher lens and ngl it's disorienting. But this morning my mind finally settles down, I haven't felt this peace in years."</blockquote>
       </div>
-      <div class="body">
+      <div class="body meta-after-quote">
         <p>The design of this game is perfect. Before you crack the code, you have to survive the question mark.</p>
         <p>That initial disorientation is just the autopilot fighting to stay on. It knows what it is about to lose. What feels like falling apart is just the death of our old iterations.</p>
         <p>Your old world has to dissolve before you can step into the vacuum of infinite possibilities. The loop belonged to your past. The exit belongs to you. Once you step through, you reclaim your power, as the architect, writer, creator of your own story.</p>
@@ -538,7 +539,7 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
           </details>
           <details>
             <summary>Can I share it with someone?</summary>
-            <div class="faq-a body"><p>Please do. If someone comes to mind while you're reading, send it to them.</p></div>
+            <div class="faq-a body"><p>Please do. Knowledge was never meant to be kept. If someone comes to mind while you're reading, send it to them, and let it keep travelling from there.</p><p>If the book gave you something and you would like to support the work, there is a way to do that at the bottom of this page.</p></div>
           </details>
         </div>
       </div>
@@ -559,8 +560,8 @@ h4{font-family:var(--f-now);font-weight:400;font-size:1.3129cqw;
 
     <!-- ══ SUPPORT THE WORK ════════════════════════════ -->
     <section class="s-support">
-      <p class="support-line">The book is free. Keeping the work going is not.</p>
-      <p class="support-sub">If it gave you something, you are welcome to give something back. Any amount, or none at all.</p>
+      <p class="support-line">On a mission to awaken the power within us all.</p>
+      <p class="support-sub">If it helped you, a small donation keeps this work going.</p>
       <a class="btn-ghost" href="https://buy.stripe.com/8x2bJ1ffnejk1Tg7Kx38402" target="_blank" rel="noopener">
         Keep the Spark Alive
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
