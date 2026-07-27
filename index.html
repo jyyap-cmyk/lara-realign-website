@@ -1237,6 +1237,85 @@
     .book-right .body p + p { margin-top: 20px; }
     .book-btn-wrap { margin-top: 36px; }
 
+    /* Desktop: drop the right column so it starts level with the h2,
+       not level with the eyebrow. Image stays vertically centred. */
+    @media (min-width: 1024px) {
+      .book-grid { align-items: start; }
+      .book-img-wrap { align-self: center; }
+      .book-right { padding-top: 44px; }
+    }
+
+    /* Quiet "more about the book" link, sits under the description */
+    .book-more {
+      display: inline-flex; align-items: center; gap: 7px;
+      margin-top: 22px;
+      font-family: var(--f-body); font-style: italic;
+      font-size: 12.5px; letter-spacing: 0.06em;
+      color: rgba(238,231,221,0.60);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: rgba(238,231,221,0.28);
+      transition: color 0.28s var(--ease), text-decoration-color 0.28s var(--ease);
+    }
+    .book-more svg { transition: transform 0.28s var(--ease); }
+    .book-more:hover {
+      color: rgba(238,231,221,0.92);
+      text-decoration-color: rgba(238,231,221,0.55);
+    }
+    .book-more:hover svg { transform: translateX(4px); }
+
+    /* Free-book email capture (MailerLite form CVXA32) */
+    .book-signup { margin-top: 36px; max-width: 460px; }
+    .book-signup-lead {
+      font-family: var(--f-bn); font-style: italic;
+      font-size: clamp(17px, 1.5vw, 20px);
+      line-height: 1.5;
+      color: rgba(238,231,221,0.86);
+      margin: 0 0 16px 0;
+    }
+    .book-signup-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .book-signup-input {
+      flex: 1 1 200px; min-width: 0;
+      font-family: var(--f-body); font-size: 13px;
+      letter-spacing: 0.04em; line-height: 1.6;
+      color: rgba(238,231,221,0.94);
+      background: rgba(238,231,221,0.08);
+      border: 1px solid rgba(238,231,221,0.22);
+      border-radius: 100px;
+      padding: 13px 22px;
+      transition: all 0.28s var(--ease);
+      -webkit-appearance: none; appearance: none;
+    }
+    .book-signup-input::placeholder { color: rgba(238,231,221,0.42); font-style: italic; }
+    .book-signup-input:focus {
+      outline: none;
+      border-color: rgba(238,231,221,0.48);
+      background: rgba(238,231,221,0.13);
+    }
+    .book-signup-btn {
+      flex: 0 0 auto; cursor: pointer;
+      font-family: var(--f-body); font-style: italic;
+      justify-content: center;
+    }
+    .book-signup-note {
+      font-family: var(--f-body); font-size: 11.5px;
+      letter-spacing: 0.04em;
+      color: rgba(238,231,221,0.42);
+      margin: 14px 0 0 0;
+    }
+    .book-signup-success {
+      font-family: var(--f-bn); font-style: italic;
+      font-size: clamp(17px, 1.5vw, 20px);
+      line-height: 1.55;
+      color: rgba(238,231,221,0.86);
+      margin: 0;
+    }
+    @media (max-width: 560px) {
+      .book-signup-row { flex-direction: column; }
+      .book-signup-btn { width: 100%; }
+    }
+
     /* ═══════════════════════════════════════════════════
        FAQ
     ═══════════════════════════════════════════════════ */
@@ -1871,8 +1950,31 @@
             <p data-i18n="book-p3">After 11 years of researching consciousness and the psychology of the mind, I wrote the book my younger self wished had existed.</p>
             <p data-i18n="book-p4">Drawn from science, philosophy, and ancient wisdom. Non-religious. For the ones who were always meant to know.</p>
           </div>
-          <div class="book-btn-wrap">
-            <a href="https://www.thepresent.club/shop/p/death-of-the-old-world-7-universal-truths-of-existence-ebook" class="btn btn-cream" data-i18n="book-btn">Go deeper</a>
+          <a href="https://www.thepresent.club/shop/p/death-of-the-old-world-7-universal-truths-of-existence-ebook"
+             class="book-more" target="_blank" rel="noopener">
+            <span data-i18n="book-more">Read more about the book</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <div id="mlb2-44160109" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-44160109 book-signup">
+            <div class="row-form">
+              <p class="book-signup-lead" data-i18n="book-form-lead">The full book, free.</p>
+              <form class="ml-block-form"
+                    action="https://assets.mailerlite.com/jsonp/1930411/forms/194111055899657286/subscribe"
+                    data-code="" method="post" target="_blank">
+                <div class="book-signup-row">
+                  <input aria-label="Email" aria-required="true" type="email" required
+                         class="book-signup-input" name="fields[email]"
+                         placeholder="Email" autocomplete="email">
+                  <input type="hidden" name="ml-submit" value="1">
+                  <input type="hidden" name="anticsrf" value="true">
+                  <button type="submit" class="btn btn-cream book-signup-btn" data-i18n="book-btn">Send me the book</button>
+                </div>
+              </form>
+              <p class="book-signup-note" data-i18n="book-form-note">One email. The book arrives straight away.</p>
+            </div>
+            <div class="row-success" style="display:none">
+              <p class="book-signup-success" data-i18n="book-form-success">Check your inbox, the book is on its way. If it is not there in a few minutes, look in Promotions or spam.</p>
+            </div>
           </div>
         </div>
 
@@ -2002,7 +2104,7 @@
           <p class="footer-col-label">Book</p>
           <ul class="footer-links">
             <li><a href="https://calendly.com/larayapjy/30min">Clarity Call (Free)</a></li>
-            <li><a href="https://www.thepresent.club/shop/p/death-of-the-old-world-7-universal-truths-of-existence-ebook">Get the Book</a></li>
+            <li><a href="#book">Read the Book (Free)</a></li>
           </ul>
         </div>
       </div>
@@ -2765,7 +2867,11 @@
         'book-p2': "Most books answer one question. This one follows them all the way down: why reality is not what it appears, how your inner world shapes your outer one, what time and death are, and what you are capable of when you understand how consciousness works.",
         'book-p3': 'After 11 years of researching consciousness and the psychology of the mind, I wrote the book my younger self wished had existed.',
         'book-p4': 'Drawn from science, philosophy, and ancient wisdom. Non-religious. For the ones who were always meant to know.',
-        'book-btn': 'Go deeper',
+        'book-btn': 'Send me the book',
+        'book-more': 'Read more about the book',
+        'book-form-lead': 'The full book, free.',
+        'book-form-note': 'One email. The book arrives straight away.',
+        'book-form-success': 'Check your inbox, the book is on its way. If it is not there in a few minutes, look in Promotions or spam.',
         'faq-eyebrow': 'Questions', 'faq-h2': 'FAQs',
         'faq-q1': 'How is The Realign different from counselling or coaching? <span class="faq-icon" aria-hidden="true">+</span>',
         'faq-q2': 'What actually happens in a session? <span class="faq-icon" aria-hidden="true">+</span>',
@@ -2851,7 +2957,11 @@
         'book-p2': '大多数书回答一个问题。而这本书追随所有问题一路向下：现实为何不是表面的那样，你的内心世界如何塑造外部世界，时间与死亡是什么，以及当你理解意识如何运作时，你所能做到的一切。',
         'book-p3': '经过11年对意识与心理学的研究，我写下了那本年轻时的自己渴望拥有的书。',
         'book-p4': '源自科学、哲学与古老智慧。非宗教性。为那些本就注定要知晓的人而写。',
-        'book-btn': '深入了解',
+        'book-btn': '把书寄给我',
+        'book-more': '了解更多关于这本书',
+        'book-form-lead': '全书免费。',
+        'book-form-note': '一封邮件，书立即送达。',
+        'book-form-success': '请查看您的收件箱，书正在寄来的路上。若几分钟内没有收到，请查看promotions或垃圾邮件。',
         'faq-eyebrow': '常见问题', 'faq-h2': 'FAQs',
         'faq-q1': 'Realign 与心理咨询或教练有何不同？<span class="faq-icon" aria-hidden="true">+</span>',
         'faq-q2': '一次疗程中实际会发生什么？<span class="faq-icon" aria-hidden="true">+</span>',
@@ -2991,6 +3101,19 @@
     })();
   </script>
 
+  <!-- MailerLite embedded form (Death of the Old World, form CVXA32) -->
+  <script>
+    function ml_webform_success_44160109() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-44160109 .row-success').show();
+      $('.ml-subscribe-form-44160109 .row-form').hide();
+    }
+  </script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
+  <script>
+    fetch("https://assets.mailerlite.com/jsonp/1930411/forms/194111055899657286/takel");
+  </script>
+  <!-- End MailerLite -->
 
 </body>
 </html>
