@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/book", "destination": "/deathoftheoldworldbook", "permanent": true },
+    { "source": "/book.html", "destination": "/deathoftheoldworldbook", "permanent": true }
+  ]
+}
